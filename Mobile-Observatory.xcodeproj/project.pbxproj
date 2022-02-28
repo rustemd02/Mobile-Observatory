@@ -14,6 +14,7 @@
 		CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF2F322527CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld */; };
 		CF2F322927CD37BD0043A12B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322827CD37BD0043A12B /* Assets.xcassets */; };
 		CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */; };
+		CF2F323427CD37DE0043A12B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF2F323327CD37DE0043A12B /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CF2F322827CD37BD0043A12B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF2F322B27CD37BD0043A12B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF2F322D27CD37BD0043A12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF2F323327CD37DE0043A12B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */,
 				CF2F322D27CD37BD0043A12B /* Info.plist */,
 				CF2F322527CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld */,
+				CF2F323327CD37DE0043A12B /* .gitignore */,
 			);
 			path = "Mobile-Observatory";
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2F323427CD37DE0043A12B /* .gitignore in Resources */,
 				CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */,
 				CF2F322927CD37BD0043A12B /* Assets.xcassets in Resources */,
 				CF2F322427CD37BB0043A12B /* Main.storyboard in Resources */,
