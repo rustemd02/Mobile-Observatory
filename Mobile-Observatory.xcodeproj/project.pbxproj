@@ -15,6 +15,10 @@
 		CF2F322927CD37BD0043A12B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322827CD37BD0043A12B /* Assets.xcassets */; };
 		CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */; };
 		CF2F323427CD37DE0043A12B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF2F323327CD37DE0043A12B /* .gitignore */; };
+		CF2F323727CD38E70043A12B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323627CD38E70043A12B /* Post.swift */; };
+		CF2F323927CD391B0043A12B /* WeatherPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323827CD391B0043A12B /* WeatherPost.swift */; };
+		CF2F323B27CD39710043A12B /* PictureOfDayPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */; };
+		CF2F323D27CD39BC0043A12B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323C27CD39BC0043A12B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		CF2F322B27CD37BD0043A12B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF2F322D27CD37BD0043A12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2F323327CD37DE0043A12B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CF2F323627CD38E70043A12B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		CF2F323827CD391B0043A12B /* WeatherPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPost.swift; sourceTree = "<group>"; };
+		CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayPost.swift; sourceTree = "<group>"; };
+		CF2F323C27CD39BC0043A12B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +69,11 @@
 		CF2F321B27CD37BB0043A12B /* Mobile-Observatory */ = {
 			isa = PBXGroup;
 			children = (
+				CF2F324027CD3A830043A12B /* Controllers */,
+				CF2F323F27CD39DE0043A12B /* Services */,
+				CF2F323527CD38A00043A12B /* Entities */,
 				CF2F321C27CD37BB0043A12B /* AppDelegate.swift */,
 				CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */,
-				CF2F322027CD37BB0043A12B /* ViewController.swift */,
 				CF2F322227CD37BB0043A12B /* Main.storyboard */,
 				CF2F322827CD37BD0043A12B /* Assets.xcassets */,
 				CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */,
@@ -71,6 +81,40 @@
 				CF2F322527CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld */,
 			);
 			path = "Mobile-Observatory";
+			sourceTree = "<group>";
+		};
+		CF2F323527CD38A00043A12B /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				CF2F323E27CD39C30043A12B /* Feed */,
+				CF2F323C27CD39BC0043A12B /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		CF2F323E27CD39C30043A12B /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				CF2F323627CD38E70043A12B /* Post.swift */,
+				CF2F323827CD391B0043A12B /* WeatherPost.swift */,
+				CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		CF2F323F27CD39DE0043A12B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CF2F324027CD3A830043A12B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CF2F322027CD37BB0043A12B /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +193,10 @@
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
+				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
+				CF2F323B27CD39710043A12B /* PictureOfDayPost.swift in Sources */,
+				CF2F323927CD391B0043A12B /* WeatherPost.swift in Sources */,
+				CF2F323727CD38E70043A12B /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
