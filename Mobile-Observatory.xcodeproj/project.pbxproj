@@ -15,13 +15,17 @@
 		CF2F322927CD37BD0043A12B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322827CD37BD0043A12B /* Assets.xcassets */; };
 		CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */; };
 		CF2F323427CD37DE0043A12B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF2F323327CD37DE0043A12B /* .gitignore */; };
-		CF2F323727CD38E70043A12B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323627CD38E70043A12B /* Post.swift */; };
-		CF2F323927CD391B0043A12B /* WeatherPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323827CD391B0043A12B /* WeatherPost.swift */; };
-		CF2F323B27CD39710043A12B /* PictureOfDayPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */; };
+		CF2F323927CD391B0043A12B /* WeatherOnMarsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */; };
+		CF2F323B27CD39710043A12B /* PictureOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323A27CD39710043A12B /* PictureOfDay.swift */; };
 		CF2F323D27CD39BC0043A12B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323C27CD39BC0043A12B /* User.swift */; };
-
+		CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52927D512F400E05249 /* Asteroid.swift */; };
+		CFEEA52C27D515B000E05249 /* NearEarthAsteroids.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52B27D515B000E05249 /* NearEarthAsteroids.swift */; };
+		CFEEA52E27D51A4000E05249 /* PictureOfEarth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52D27D51A4000E05249 /* PictureOfEarth.swift */; };
+		CFEEA53027D51C1300E05249 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52F27D51C1300E05249 /* Planet.swift */; };
+		CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53127D5227300E05249 /* PictureFromMars.swift */; };
+		CFEEA53427D5284200E05249 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53327D5284200E05249 /* SearchResult.swift */; };
+		CFEEA53627D52C7900E05249 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53527D52C7900E05249 /* Article.swift */; };
 		E0743D679ED3B9CCDF784BA7 /* Pods_Mobile_Observatory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E6F013F1D4B64A2F1FAD54E /* Pods_Mobile_Observatory.framework */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +42,16 @@
 		CF2F322B27CD37BD0043A12B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF2F322D27CD37BD0043A12B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF2F323327CD37DE0043A12B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		CF2F323627CD38E70043A12B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		CF2F323827CD391B0043A12B /* WeatherPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPost.swift; sourceTree = "<group>"; };
-		CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayPost.swift; sourceTree = "<group>"; };
+		CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsInfo.swift; sourceTree = "<group>"; };
+		CF2F323A27CD39710043A12B /* PictureOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDay.swift; sourceTree = "<group>"; };
 		CF2F323C27CD39BC0043A12B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		CF2F324127CDEE400043A12B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CFEEA52927D512F400E05249 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
+		CFEEA52B27D515B000E05249 /* NearEarthAsteroids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearEarthAsteroids.swift; sourceTree = "<group>"; };
+		CFEEA52D27D51A4000E05249 /* PictureOfEarth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfEarth.swift; sourceTree = "<group>"; };
+		CFEEA52F27D51C1300E05249 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		CFEEA53127D5227300E05249 /* PictureFromMars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFromMars.swift; sourceTree = "<group>"; };
+		CFEEA53327D5284200E05249 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		CFEEA53527D52C7900E05249 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +72,6 @@
 				4D48BAEC088B6E4ACC5B849F /* Pods-Mobile-Observatory.debug.xcconfig */,
 				65FA936531B6B0CB6012FA16 /* Pods-Mobile-Observatory.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -123,9 +131,15 @@
 		CF2F323E27CD39C30043A12B /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				CF2F323627CD38E70043A12B /* Post.swift */,
-				CF2F323827CD391B0043A12B /* WeatherPost.swift */,
-				CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */,
+				CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */,
+				CF2F323A27CD39710043A12B /* PictureOfDay.swift */,
+				CFEEA52927D512F400E05249 /* Asteroid.swift */,
+				CFEEA52B27D515B000E05249 /* NearEarthAsteroids.swift */,
+				CFEEA53127D5227300E05249 /* PictureFromMars.swift */,
+				CFEEA52D27D51A4000E05249 /* PictureOfEarth.swift */,
+				CFEEA52F27D51C1300E05249 /* Planet.swift */,
+				CFEEA53327D5284200E05249 /* SearchResult.swift */,
+				CFEEA53527D52C7900E05249 /* Article.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -133,7 +147,6 @@
 		CF2F323F27CD39DE0043A12B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CF2F324127CDEE400043A12B /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -263,14 +276,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF2F322127CD37BB0043A12B /* ViewController.swift in Sources */,
+				CFEEA52C27D515B000E05249 /* NearEarthAsteroids.swift in Sources */,
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
+				CFEEA53027D51C1300E05249 /* Planet.swift in Sources */,
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
-				CF2F324227CDEE400043A12B /* NetworkService.swift in Sources */,
+				CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
-				CF2F323B27CD39710043A12B /* PictureOfDayPost.swift in Sources */,
-				CF2F323927CD391B0043A12B /* WeatherPost.swift in Sources */,
-				CF2F323727CD38E70043A12B /* Post.swift in Sources */,
+				CFEEA53427D5284200E05249 /* SearchResult.swift in Sources */,
+				CF2F323B27CD39710043A12B /* PictureOfDay.swift in Sources */,
+				CF2F323927CD391B0043A12B /* WeatherOnMarsInfo.swift in Sources */,
+				CFEEA52E27D51A4000E05249 /* PictureOfEarth.swift in Sources */,
+				CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */,
+				CFEEA53627D52C7900E05249 /* Article.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
