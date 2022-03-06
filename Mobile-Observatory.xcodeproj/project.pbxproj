@@ -19,6 +19,7 @@
 		CF2F323927CD391B0043A12B /* WeatherPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323827CD391B0043A12B /* WeatherPost.swift */; };
 		CF2F323B27CD39710043A12B /* PictureOfDayPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */; };
 		CF2F323D27CD39BC0043A12B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323C27CD39BC0043A12B /* User.swift */; };
+		CF2F324227CDEE400043A12B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F324127CDEE400043A12B /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CF2F323827CD391B0043A12B /* WeatherPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPost.swift; sourceTree = "<group>"; };
 		CF2F323A27CD39710043A12B /* PictureOfDayPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayPost.swift; sourceTree = "<group>"; };
 		CF2F323C27CD39BC0043A12B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CF2F324127CDEE400043A12B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		CF2F323F27CD39DE0043A12B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CF2F324127CDEE400043A12B /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
+				CF2F324227CDEE400043A12B /* NetworkService.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
 				CF2F323B27CD39710043A12B /* PictureOfDayPost.swift in Sources */,
 				CF2F323927CD391B0043A12B /* WeatherPost.swift in Sources */,
