@@ -12,6 +12,14 @@ enum MediaType {
     case audio
     case video
     case image
+    
+    var description : String {
+        switch self {
+        case .audio: return "audio"
+        case .video: return "video"
+        case .image: return "image"
+        }
+    }
 }
 
 struct SearchResult {

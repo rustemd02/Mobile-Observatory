@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct PictureOfEarthPost {
+struct PictureOfEarth {
     var date: Date
     var image: UIImage
     var latitude: Float

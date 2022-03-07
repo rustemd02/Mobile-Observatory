@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct PictureOfDayPost {
+struct PictureOfDay {
     var date: Date
     var description: String
     var title: String
