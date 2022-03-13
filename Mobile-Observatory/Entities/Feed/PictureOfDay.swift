@@ -8,9 +8,17 @@
 import Foundation
 import UIKit
 
-struct PictureOfDayPost {
+struct PictureOfDay: Decodable {
     var date: Date
     var description: String
     var title: String
-    var image: UIImage
+    var imageUrl: URL
+    
+    enum CodingKeys: String, CodingKey {
+        case date = "date"
+        case description = "explanation"
+        case imageUrl = "url"
+        case title = "title"
+        
+    }
 }

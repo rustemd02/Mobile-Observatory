@@ -8,12 +8,23 @@
 import Foundation
 import UIKit
 
-struct Article {
+struct Article: Decodable {
     var id: Int
     var title: String
     var createdAt: Date
     var summary: String
-    var picture: UIImage
+    var picture: URL
     var articleUrl: URL
     var newsSite: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case createdAt = "publishedAt"
+        case summary = "summary"
+        case picture = "imageUrl"
+        case articleUrl = "url"
+        case newsSite = "newsSite"
+    }
+    
 }

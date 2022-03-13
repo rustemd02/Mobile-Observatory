@@ -11,7 +11,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if #available(iOS 15, *) {
+            NetworkService.shared.getPicFromMars(date: Date.init(year: 2015, month: 10, day: 10, hour: 0, minute: 0)) {[weak self] result in
+                print(result)
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
 
