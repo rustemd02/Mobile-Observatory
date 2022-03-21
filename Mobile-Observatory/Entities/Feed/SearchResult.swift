@@ -11,7 +11,7 @@ import Foundation
 // MARK: - SearchResult
 struct SearchResult: Codable {
     let collection: Collection
-    let links: [CollectionLink]
+    let links: [CollectionLink]?
 }
 
 // MARK: - Collection

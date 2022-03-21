@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherOnMarsInfo: Decodable {
+    var id: Int?
     var sol: Int
     var earthDate: Date
     var minTemp: Int
