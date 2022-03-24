@@ -10,6 +10,7 @@ import Alamofire
 import SwiftDate
 import UIKit
 
+// MARK: - Enum
 enum NetworkError: Error {
     case inputError
     case noDataAvailable
@@ -19,6 +20,7 @@ enum NetworkError: Error {
 
 class NetworkService {
     
+    // MARK: - Properties
     static let shared = NetworkService()
     
     let nasaApiKey = "ZK8OvbXd3MxDwOD8RU2dyTCx9zT14eIjdVdTZmrI"
@@ -32,9 +34,10 @@ class NetworkService {
     let weatherApiUrl = "https://api.maas2.apollorion.com/"
     let spaceNewsArticlesUrl = "https://api.spaceflightnewsapi.net/v3/articles?_start="
     
-    
+    // MARK: - Lifecycle
     private init(){}
     
+    // MARK: - Functions
     //На вход может подаваться конкретный сол, тогда выдаётся результат для него, иначе выдается погода на сегодня
     func getWeatherData(sol: String, completion: @escaping(Result<WeatherOnMarsInfo, NetworkError>) -> Void) {
         AF.request(weatherApiUrl + sol).response { (responseData) in
@@ -104,7 +107,7 @@ class NetworkService {
     }
     
     //Метод возвращает фото дня по данной на вход дате (по умолчанию - сегодня)
-    func getPicOfDay (date: Date, completion: @escaping(Result<PictureOfDay, NetworkError>) -> Void) {
+    func getPicOfDay(date: Date, completion: @escaping(Result<PictureOfDay, NetworkError>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate = dateFormatter.string(from: date)
@@ -128,7 +131,7 @@ class NetworkService {
     }
     
     //Метод возвращает фото дня по данной на вход дате (по умолчанию - сегодня)
-    func getPicFromMars (date: Date, completion: @escaping(Result<PictureFromMars, NetworkError>) -> Void) {
+    func getPicFromMars(date: Date, completion: @escaping(Result<PictureFromMars, NetworkError>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate = dateFormatter.string(from: date)
@@ -152,7 +155,7 @@ class NetworkService {
     }
     
     //На вход подаётся дата, если по дате есть снимки в ответ возвращаются метаданные, по которым на стороне вызова метода получается изображение
-    func getPicOfEarth (date: Date, completion: @escaping(Result<PictureOfEarth, NetworkError>) -> Void) {
+    func getPicOfEarth(date: Date, completion: @escaping(Result<PictureOfEarth, NetworkError>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate = dateFormatter.string(from: date)
@@ -164,6 +167,7 @@ class NetworkService {
             }
             do {
                 let jsonDecoder = JSONDecoder()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                 jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
                 let pictureOfEarth = try jsonDecoder.decode(PictureOfEarth.self, from: data)
                 guard !pictureOfEarth.isEmpty else {
@@ -180,7 +184,7 @@ class NetworkService {
     
     
     //На вход подаётся поисковый запрос на английском языке
-    func getSearchResults (searchQuery: String, completion: @escaping(Result<SearchResult, NetworkError>) -> Void) {
+    func getSearchResults(searchQuery: String, completion: @escaping(Result<SearchResult, NetworkError>) -> Void) {
         AF.request(searchUrl + searchQuery).response { (responseData) in
             guard let data = responseData.data else {
                 completion(.failure(.noDataAvailable))
