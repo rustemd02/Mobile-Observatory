@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NearEarthAsteroidsPost {
+struct NearEarthAsteroids {
     var prevLink: URL
     var nextLink: URL
     var asteroids: [Asteroid]
