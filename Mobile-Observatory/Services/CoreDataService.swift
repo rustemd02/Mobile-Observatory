@@ -13,6 +13,7 @@ class CoreDataService{
     
     // MARK: - Properties
     static let shared = CoreDataService()
+    private let fileManager = LocalFileManager.shared
     
     // MARK: - Core Data stack
     lazy public var persistentContainer: NSPersistentContainer = {
@@ -25,47 +26,43 @@ class CoreDataService{
         return container
     }()
     
-    lazy public var context = persistentContainer.viewContext
-    
     private init() {
     }
     
+    lazy public var context = persistentContainer.viewContext
+    
     // MARK: - Weather on Mars Info
     public func saveWeatherOnMarsInfo(_ weatherInfo: WeatherOnMarsInfo){
-        let weatherOnMarsInfoEntity = WeatherOnMarsInfoEntity(context: context)
-        weatherOnMarsInfoEntity.sol = NSNumber(value: weatherInfo.sol)
-        weatherOnMarsInfoEntity.atmoOpacity = weatherInfo.atmoOpacity
-        weatherOnMarsInfoEntity.earthDate = weatherInfo.earthDate
-        weatherOnMarsInfoEntity.maxTemp = NSNumber(value: weatherInfo.maxTemp)
-        weatherOnMarsInfoEntity.minTemp = NSNumber(value: weatherInfo.minTemp)
-        weatherOnMarsInfoEntity.monthOnMars = NSNumber(value: weatherInfo.monthOnMars)
-        weatherOnMarsInfoEntity.pressure = NSNumber(value: weatherInfo.pressure)
-        weatherOnMarsInfoEntity.pressureString = weatherInfo.pressureString
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+        persistentContainer.performBackgroundTask{ (context) in
+            let weatherOnMarsInfoEntity = WeatherOnMarsInfoEntity(context: context)
+            weatherOnMarsInfoEntity.update(with: weatherInfo)
+            do {
+                try context.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
     }
     
     // MARK: - Picture of day
     public func savePictureOfDay(_ pictureOfDay: PictureOfDay){
-        let pictureOfDayEntity = PictureOfDayEntity(context: context)
-        let imageData = pictureOfDay.image.pngData();
-        pictureOfDayEntity.title = pictureOfDay.title
-        pictureOfDayEntity.descr = pictureOfDay.description
-        pictureOfDayEntity.image = imageData
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
-        }
+        persistentContainer.performBackgroundTask{ (context) in
+            let pictureOfDayEntity = PictureOfDayEntity(context: context)
+            
+            pictureOfDayEntity.title = pictureOfDay.title
+            pictureOfDayEntity.descr = pictureOfDay.description
+            pictureOfDayEntity.image = imageData
+            
+            do {
+                try context.save()
+            } catch let error {
+                print("Error: \(error)")
+            }}
     }
     
     // MARK: - Asteroids near Earth
     public func saveNearEarthAsteroids(_ nearEarthAsteroids: NearEarthAsteroids){
+        persistentContainer.performBackgroundTask{ (context) in
         let nearEarthAsteroidsEntity = NearEarthAsteroidsEntity(context: context)
         nearEarthAsteroidsEntity.nextLink = nearEarthAsteroids.nextLink.absoluteString
         nearEarthAsteroidsEntity.prevLink = nearEarthAsteroids.prevLink.absoluteString
@@ -77,34 +74,41 @@ class CoreDataService{
         } catch let error {
             print("Error: \(error)")
         }
+        }
     }
     
     private func convertAsteroidsArrayToSet(asteroids: [Asteroid]) -> NSSet {
         var asteroidsSet: [AsteroidEntity] = []
         for currentAsteroid in asteroids {
-            let temp = saveAsteroid(currentAsteroid)
+            saveAsteroid(currentAsteroid)
+            let temp =
             asteroidsSet.append(temp)
         }
         return NSSet(array: asteroidsSet)
     }
     
     private func saveAsteroid(_ asteroid: Asteroid) -> AsteroidEntity{
-        let asteroidEntity = AsteroidEntity(context: context)
-        asteroidEntity.id = NSNumber(value: asteroid.id)
-        asteroidEntity.approachDate = asteroid.approachDate
-        asteroidEntity.estimatedDiameter = NSNumber(value: asteroid.estimatedDiameter)
-        asteroidEntity.infoLink = asteroid.infoLink.absoluteString
-        asteroidEntity.isHazardous = asteroid.isHazardous
-        asteroidEntity.missDistance = NSNumber(value: asteroid.missDistance)
-        asteroidEntity.velocity = NSNumber(value: asteroid.velocity)
-        asteroidEntity.name = asteroid.name
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+        context.perform {
+            <#code#>
         }
-        return asteroidEntity
+         persistentContainer.performBackgroundTask{ (context) in
+            let asteroidEntity = AsteroidEntity(context: context)
+            asteroidEntity.id = NSNumber(value: asteroid.id)
+            asteroidEntity.approachDate = asteroid.approachDate
+            asteroidEntity.estimatedDiameter = NSNumber(value: asteroid.estimatedDiameter)
+            asteroidEntity.infoLink = asteroid.infoLink.absoluteString
+            asteroidEntity.isHazardous = asteroid.isHazardous
+            asteroidEntity.missDistance = NSNumber(value: asteroid.missDistance)
+            asteroidEntity.velocity = NSNumber(value: asteroid.velocity)
+            asteroidEntity.name = asteroid.name
+            
+            do {
+                try context.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+            return asteroidEntity
+        }
     }
     
     // MARK: - Picture from Mars

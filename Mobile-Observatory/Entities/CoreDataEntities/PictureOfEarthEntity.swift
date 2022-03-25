@@ -1,15 +1,15 @@
 //
-//  PictureOfEarthEntity+CoreDataClass.swift
+//  PictureOfEarthEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-
+@objc(PictureOfEarthEntity)
 public class PictureOfEarthEntity: NSManagedObject {
 
 }
@@ -21,9 +21,10 @@ extension PictureOfEarthEntity {
     }
 
     @NSManaged public var date: Date?
-    @NSManaged public var image: Data?
-    @NSManaged public var latitude: NSNumber
-    @NSManaged public var longtitude: NSNumber
+    @NSManaged public var image: String?
+    @NSManaged public var latitude: NSNumber?
+    @NSManaged public var longtitude: NSNumber?
+    @NSManaged public var id: NSNumber
 
 }
 

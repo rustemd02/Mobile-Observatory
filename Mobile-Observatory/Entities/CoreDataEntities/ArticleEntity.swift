@@ -1,8 +1,8 @@
 //
-//  ArticleEntity+CoreDataClass.swift
+//  ArticleEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
@@ -20,13 +20,13 @@ extension ArticleEntity {
         return NSFetchRequest<ArticleEntity>(entityName: "ArticleEntity")
     }
 
-    @NSManaged public var id: NSNumber
-    @NSManaged public var title: String?
-    @NSManaged public var createdAt: Date?
-    @NSManaged public var summary: String?
-    @NSManaged public var picture: Data?
     @NSManaged public var articleUrl: String?
+    @NSManaged public var createdAt: Date?
+    @NSManaged public var id: NSNumber
     @NSManaged public var newsSite: String?
+    @NSManaged public var picture: String?
+    @NSManaged public var summary: String?
+    @NSManaged public var title: String?
 
 }
 

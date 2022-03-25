@@ -1,15 +1,15 @@
 //
-//  PlanetEntity+CoreDataClass.swift
+//  PlanetEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-
+@objc(PlanetEntity)
 public class PlanetEntity: NSManagedObject {
 
 }
@@ -20,12 +20,13 @@ extension PlanetEntity {
         return NSFetchRequest<PlanetEntity>(entityName: "PlanetEntity")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var mass: NSNumber
-    @NSManaged public var radius: NSNumber
-    @NSManaged public var discoveredWhen: Date?
-    @NSManaged public var gravity: NSNumber
     @NSManaged public var bodyType: String?
+    @NSManaged public var discoveredWhen: Date?
+    @NSManaged public var gravity: NSNumber?
+    @NSManaged public var mass: NSNumber?
+    @NSManaged public var name: String?
+    @NSManaged public var radius: NSNumber?
+    @NSManaged public var id: NSNumber
     @NSManaged public var moons: NSSet?
 
 }

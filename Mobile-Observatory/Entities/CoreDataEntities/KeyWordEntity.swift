@@ -1,15 +1,15 @@
 //
-//  KeyWordEntity+CoreDataClass.swift
+//  KeyWordEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-
+@objc(KeyWordEntity)
 public class KeyWordEntity: NSManagedObject {
 
 }
@@ -21,6 +21,7 @@ extension KeyWordEntity {
     }
 
     @NSManaged public var keyWord: String?
+    @NSManaged public var id: NSNumber
     @NSManaged public var searchResult: NSSet?
 
 }

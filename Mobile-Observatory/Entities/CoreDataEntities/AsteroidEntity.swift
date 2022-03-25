@@ -1,15 +1,15 @@
 //
-//  AsteroidEntity+CoreDataClass.swift
+//  AsteroidEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-
+@objc(AsteroidEntity)
 public class AsteroidEntity: NSManagedObject {
 
 }
@@ -20,14 +20,14 @@ extension AsteroidEntity {
         return NSFetchRequest<AsteroidEntity>(entityName: "AsteroidEntity")
     }
 
-    @NSManaged public var id: NSNumber
-    @NSManaged public var name: String?
-    @NSManaged public var infoLink: String?
-    @NSManaged public var estimatedDiameter: NSNumber
-    @NSManaged public var isHazardous: Bool
     @NSManaged public var approachDate: Date?
-    @NSManaged public var velocity: NSNumber
-    @NSManaged public var missDistance: NSNumber
+    @NSManaged public var estimatedDiameter: NSNumber?
+    @NSManaged public var id: NSNumber
+    @NSManaged public var infoLink: String?
+    @NSManaged public var isHazardous: Bool
+    @NSManaged public var missDistance: NSNumber?
+    @NSManaged public var name: String?
+    @NSManaged public var velocity: NSNumber?
     @NSManaged public var nearEarthAsteroids: NSSet?
 
 }

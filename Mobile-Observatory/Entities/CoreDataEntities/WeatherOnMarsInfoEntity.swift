@@ -1,8 +1,8 @@
 //
-//  WeatherOnMarsInfoEntity+CoreDataClass.swift
+//  WeatherOnMarsInfoEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
@@ -20,17 +20,29 @@ extension WeatherOnMarsInfoEntity {
         return NSFetchRequest<WeatherOnMarsInfoEntity>(entityName: "WeatherOnMarsInfoEntity")
     }
 
-    @NSManaged public var sol: NSNumber
-    @NSManaged public var earthDate: Date?
-    @NSManaged public var minTemp: NSNumber
-    @NSManaged public var maxTemp: NSNumber
-    @NSManaged public var pressure: NSNumber
-    @NSManaged public var pressureString: String?
     @NSManaged public var atmoOpacity: String?
-    @NSManaged public var monthOnMars: NSNumber
+    @NSManaged public var earthDate: Date?
+    @NSManaged public var maxTemp: NSNumber?
+    @NSManaged public var minTemp: NSNumber?
+    @NSManaged public var monthOnMars: NSNumber?
+    @NSManaged public var pressure: NSNumber?
+    @NSManaged public var pressureString: String?
+    @NSManaged public var sol: NSNumber?
+    @NSManaged public var id: NSNumber
+    
 
 }
 
 extension WeatherOnMarsInfoEntity : Identifiable {
 
+    func update(with weatherInfo: WeatherOnMarsInfo) {
+       sol = NSNumber(value: weatherInfo.sol)
+       atmoOpacity = weatherInfo.atmoOpacity
+       earthDate = weatherInfo.earthDate
+       maxTemp = NSNumber(value: weatherInfo.maxTemp)
+       minTemp = NSNumber(value: weatherInfo.minTemp)
+       monthOnMars = NSNumber(value: weatherInfo.monthOnMars)
+       pressure = NSNumber(value: weatherInfo.pressure)
+       pressureString = weatherInfo.pressureString
+    }
 }

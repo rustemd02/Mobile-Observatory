@@ -5,7 +5,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="newsSite" optional="YES" attributeType="String"/>
-        <attribute name="picture" optional="YES" attributeType="Binary"/>
+        <attribute name="picture" optional="YES" attributeType="String"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
@@ -20,12 +20,13 @@
         <attribute name="velocity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="nearEarthAsteroids" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NearEarthAsteroidsEntity" inverseName="asteroids" inverseEntity="NearEarthAsteroidsEntity"/>
     </entity>
-    <entity name="HOWTODELETETHIS" representedClassName=".HOWTODELETETHIS" syncable="YES"/>
     <entity name="KeyWordEntity" representedClassName=".KeyWordEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="keyWord" optional="YES" attributeType="String"/>
         <relationship name="searchResult" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchResultEntity" inverseName="keyWords" inverseEntity="SearchResultEntity"/>
     </entity>
     <entity name="MoonEntity" representedClassName=".MoonEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="moonName" optional="YES" attributeType="String"/>
         <relationship name="planet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlanetEntity" inverseName="moons" inverseEntity="PlanetEntity"/>
     </entity>
@@ -37,17 +38,20 @@
     </entity>
     <entity name="PictureFromMarsEntity" representedClassName=".PictureFromMarsEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="picture" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="picture" optional="YES" attributeType="String"/>
         <attribute name="rover" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PictureOfDayEntity" representedClassName=".PictureOfDayEntity" syncable="YES">
         <attribute name="descr" optional="YES" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="PictureOfEarthEntity" representedClassName=".PictureOfEarthEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longtitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
@@ -55,6 +59,7 @@
         <attribute name="bodyType" optional="YES" attributeType="String"/>
         <attribute name="discoveredWhen" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="gravity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="mass" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="radius" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -65,7 +70,8 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="credit" optional="YES" attributeType="String"/>
         <attribute name="descr" optional="YES" attributeType="String"/>
-        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="mediaType" optional="YES" attributeType="String"/>
         <attribute name="nasaId" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -75,6 +81,7 @@
     <entity name="WeatherOnMarsInfoEntity" representedClassName=".WeatherOnMarsInfoEntity" syncable="YES">
         <attribute name="atmoOpacity" optional="YES" attributeType="String"/>
         <attribute name="earthDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="maxTemp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="minTemp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="monthOnMars" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -83,17 +90,16 @@
         <attribute name="sol" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="WeatherOnMarsInfoEntity" positionX="-28.278076171875" positionY="-243.7298736572266" width="128" height="163"/>
-        <element name="PictureOfDayEntity" positionX="-18.15087890625" positionY="5.357513427734375" width="128" height="88"/>
+        <element name="ArticleEntity" positionX="154.7058715820312" positionY="-65.07745361328125" width="128" height="134"/>
         <element name="AsteroidEntity" positionX="-205.5304565429688" positionY="192.3423461914062" width="128" height="178"/>
+        <element name="KeyWordEntity" positionX="128.623046875" positionY="376.9512939453125" width="128" height="74"/>
+        <element name="MoonEntity" positionX="207.2808837890625" positionY="269.1203918457031" width="128" height="74"/>
         <element name="NearEarthAsteroidsEntity" positionX="-187.8876953125" positionY="33.07791137695312" width="128" height="103"/>
-        <element name="PictureFromMarsEntity" positionX="-201.1103515625" positionY="-117.7656860351562" width="128" height="88"/>
-        <element name="PictureOfEarthEntity" positionX="-183.9835205078125" positionY="-273.8130187988281" width="128" height="103"/>
-        <element name="PlanetEntity" positionX="182.5570678710938" positionY="95.79074096679688" width="128" height="148"/>
-        <element name="ArticleEntity" positionX="154.7058715820312" positionY="-65.07745361328125" width="128" height="148"/>
-        <element name="SearchResultEntity" positionX="-25.74310302734375" positionY="246.7599792480469" width="128" height="193"/>
-        <element name="HOWTODELETETHIS" positionX="129.8624267578125" positionY="-142.6227722167969" width="128" height="43"/>
-        <element name="MoonEntity" positionX="207.2808837890625" positionY="269.1203918457031" width="128" height="73"/>
-        <element name="KeyWordEntity" positionX="128.623046875" positionY="376.9512939453125" width="128" height="73"/>
+        <element name="PictureFromMarsEntity" positionX="-201.1103515625" positionY="-117.7656860351562" width="128" height="89"/>
+        <element name="PictureOfDayEntity" positionX="-18.15087890625" positionY="5.357513427734375" width="128" height="89"/>
+        <element name="PictureOfEarthEntity" positionX="-183.9835205078125" positionY="-273.8130187988281" width="128" height="104"/>
+        <element name="PlanetEntity" positionX="182.5570678710938" positionY="95.79074096679688" width="128" height="149"/>
+        <element name="SearchResultEntity" positionX="-25.74310302734375" positionY="246.7599792480469" width="128" height="194"/>
+        <element name="WeatherOnMarsInfoEntity" positionX="-28.278076171875" positionY="-243.7298736572266" width="128" height="164"/>
     </elements>
 </model>

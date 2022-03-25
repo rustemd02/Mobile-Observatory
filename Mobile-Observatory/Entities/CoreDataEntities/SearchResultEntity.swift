@@ -1,15 +1,15 @@
 //
-//  SearchResultEntity+CoreDataClass.swift
+//  SearchResultEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 07.03.2022.
+//  Created by andrewoch on 20.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-
+@objc(SearchResultEntity)
 public class SearchResultEntity: NSManagedObject {
 
 }
@@ -20,15 +20,16 @@ extension SearchResultEntity {
         return NSFetchRequest<SearchResultEntity>(entityName: "SearchResultEntity")
     }
 
+    @NSManaged public var audioURL: String?
+    @NSManaged public var createdAt: Date?
+    @NSManaged public var credit: String?
+    @NSManaged public var descr: String?
+    @NSManaged public var image: String?
+    @NSManaged public var mediaType: String?
     @NSManaged public var nasaId: String?
     @NSManaged public var title: String?
-    @NSManaged public var descr: String?
-    @NSManaged public var mediaType: String?
-    @NSManaged public var createdAt: Date?
     @NSManaged public var videoURL: String?
-    @NSManaged public var image: Data?
-    @NSManaged public var audioURL: String?
-    @NSManaged public var credit: String?
+    @NSManaged public var id: NSNumber
     @NSManaged public var keyWords: NSSet?
 
 }
