@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct Asteroid {
+struct NearEarthAsteroids: Decodable {
+    var prevLink: URL
+    var nextLink: URL
+    var asteroids: [Asteroid]
+}
+
+struct Asteroid: Decodable {
     var id: Int
     var name: String
     var infoLink: URL

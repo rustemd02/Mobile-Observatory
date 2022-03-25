@@ -5,12 +5,13 @@
 //  Created by Рустем on 06.03.2022.
 //
 
+
 import Foundation
 
 // MARK: - SearchResult
 struct SearchResult: Codable {
     let collection: Collection
-    let links: [CollectionLink]
+    let links: [CollectionLink]?
 }
 
 // MARK: - Collection
