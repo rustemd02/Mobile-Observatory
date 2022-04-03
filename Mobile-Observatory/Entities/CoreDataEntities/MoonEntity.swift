@@ -2,14 +2,13 @@
 //  MoonEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 20.03.2022.
+//  Created by andrewoch on 27.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-@objc(MoonEntity)
 public class MoonEntity: NSManagedObject {
 
 }
@@ -20,8 +19,8 @@ extension MoonEntity {
         return NSFetchRequest<MoonEntity>(entityName: "MoonEntity")
     }
 
+    @NSManaged public var id: UUID
     @NSManaged public var moonName: String?
-    @NSManaged public var id: NSNumber
     @NSManaged public var planet: PlanetEntity?
 
 }

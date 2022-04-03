@@ -2,7 +2,7 @@
 //  SearchResultEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 20.03.2022.
+//  Created by andrewoch on 27.03.2022.
 //
 //
 
@@ -20,37 +20,51 @@ extension SearchResultEntity {
         return NSFetchRequest<SearchResultEntity>(entityName: "SearchResultEntity")
     }
 
-    @NSManaged public var audioURL: String?
-    @NSManaged public var createdAt: Date?
-    @NSManaged public var credit: String?
-    @NSManaged public var descr: String?
-    @NSManaged public var image: String?
-    @NSManaged public var mediaType: String?
-    @NSManaged public var nasaId: String?
-    @NSManaged public var title: String?
-    @NSManaged public var videoURL: String?
-    @NSManaged public var id: NSNumber
-    @NSManaged public var keyWords: NSSet?
+    @NSManaged public var id: UUID
+    @NSManaged public var collectionLinks: NSSet?
+    @NSManaged public var items: NSSet?
 
 }
 
-// MARK: Generated accessors for keyWords
+// MARK: Generated accessors for collectionLinks
 extension SearchResultEntity {
 
-    @objc(addKeyWordsObject:)
-    @NSManaged public func addToKeyWords(_ value: KeyWordEntity)
+    @objc(addCollectionLinksObject:)
+    @NSManaged public func addToCollectionLinks(_ value: SearchResultCollectionLinkEntity)
 
-    @objc(removeKeyWordsObject:)
-    @NSManaged public func removeFromKeyWords(_ value: KeyWordEntity)
+    @objc(removeCollectionLinksObject:)
+    @NSManaged public func removeFromCollectionLinks(_ value: SearchResultCollectionLinkEntity)
 
-    @objc(addKeyWords:)
-    @NSManaged public func addToKeyWords(_ values: NSSet)
+    @objc(addCollectionLinks:)
+    @NSManaged public func addToCollectionLinks(_ values: NSSet)
 
-    @objc(removeKeyWords:)
-    @NSManaged public func removeFromKeyWords(_ values: NSSet)
+    @objc(removeCollectionLinks:)
+    @NSManaged public func removeFromCollectionLinks(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for items
+extension SearchResultEntity {
+
+    @objc(addItemsObject:)
+    @NSManaged public func addToItems(_ value: SearchResultItemEntity)
+
+    @objc(removeItemsObject:)
+    @NSManaged public func removeFromItems(_ value: SearchResultItemEntity)
+
+    @objc(addItems:)
+    @NSManaged public func addToItems(_ values: NSSet)
+
+    @objc(removeItems:)
+    @NSManaged public func removeFromItems(_ values: NSSet)
 
 }
 
 extension SearchResultEntity : Identifiable {
-
+    
+    func convertToFeedEntity() -> SearchResult {
+        
+        let collection = Collection(items: items?.allObjects as! [Item])
+        return SearchResult(collection: collection, links: collectionLinks?.allObjects as? [CollectionLink])
+    }
 }

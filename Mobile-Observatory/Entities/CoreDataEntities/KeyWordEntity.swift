@@ -2,7 +2,7 @@
 //  KeyWordEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 20.03.2022.
+//  Created by andrewoch on 27.03.2022.
 //
 //
 
@@ -20,26 +20,9 @@ extension KeyWordEntity {
         return NSFetchRequest<KeyWordEntity>(entityName: "KeyWordEntity")
     }
 
+    @NSManaged public var id: UUID
     @NSManaged public var keyWord: String?
-    @NSManaged public var id: NSNumber
-    @NSManaged public var searchResult: NSSet?
-
-}
-
-// MARK: Generated accessors for searchResult
-extension KeyWordEntity {
-
-    @objc(addSearchResultObject:)
-    @NSManaged public func addToSearchResult(_ value: SearchResultEntity)
-
-    @objc(removeSearchResultObject:)
-    @NSManaged public func removeFromSearchResult(_ value: SearchResultEntity)
-
-    @objc(addSearchResult:)
-    @NSManaged public func addToSearchResult(_ values: NSSet)
-
-    @objc(removeSearchResult:)
-    @NSManaged public func removeFromSearchResult(_ values: NSSet)
+    @NSManaged public var datum: SearchResultEntity?
 
 }
 

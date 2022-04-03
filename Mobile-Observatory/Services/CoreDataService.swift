@@ -29,179 +29,512 @@ class CoreDataService{
     private init() {
     }
     
-    lazy public var context = persistentContainer.viewContext
+    lazy private var viewContext = persistentContainer.viewContext
+    lazy private var saveContext = persistentContainer.newBackgroundContext()
     
     // MARK: - Weather on Mars Info
     public func saveWeatherOnMarsInfo(_ weatherInfo: WeatherOnMarsInfo){
-        persistentContainer.performBackgroundTask{ (context) in
-            let weatherOnMarsInfoEntity = WeatherOnMarsInfoEntity(context: context)
+        saveContext.perform {
+            
+            let weatherOnMarsInfoEntity = WeatherOnMarsInfoEntity(context: self.saveContext)
             weatherOnMarsInfoEntity.update(with: weatherInfo)
             do {
-                try context.save()
+                try self.saveContext.save()
             } catch let error {
                 print("Error: \(error)")
             }
         }
     }
     
+    public func getAllWeatherOnMarsInfo() -> [WeatherOnMarsInfo]{
+        let fetchRequest = WeatherOnMarsInfoEntity.fetchRequest()
+        var weatherEntities: [WeatherOnMarsInfoEntity] = []
+        var weatherInfos: [WeatherOnMarsInfo] = []
+        do {
+            weatherEntities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in weatherEntities {
+            weatherInfos.append(entity.convertToFeedEntity())
+        }
+        return weatherInfos
+    }
+    
+    
     // MARK: - Picture of day
     public func savePictureOfDay(_ pictureOfDay: PictureOfDay){
-        persistentContainer.performBackgroundTask{ (context) in
-            let pictureOfDayEntity = PictureOfDayEntity(context: context)
+        saveContext.perform {
             
-            pictureOfDayEntity.title = pictureOfDay.title
-            pictureOfDayEntity.descr = pictureOfDay.description
-            pictureOfDayEntity.image = imageData
-            
+            let entity = PictureOfDayEntity(context: self.saveContext)
+            entity.update(with: pictureOfDay)
             do {
-                try context.save()
+                try self.saveContext.save()
             } catch let error {
                 print("Error: \(error)")
             }}
     }
     
+    public func getAllPictureOfDay() -> [PictureOfDay]{
+        let fetchRequest = PictureOfDayEntity.fetchRequest()
+        var entities: [PictureOfDayEntity] = []
+        var feedEntities: [PictureOfDay] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
+    }
+    
     // MARK: - Asteroids near Earth
     public func saveNearEarthAsteroids(_ nearEarthAsteroids: NearEarthAsteroids){
         persistentContainer.performBackgroundTask{ (context) in
-        let nearEarthAsteroidsEntity = NearEarthAsteroidsEntity(context: context)
-        nearEarthAsteroidsEntity.nextLink = nearEarthAsteroids.nextLink.absoluteString
-        nearEarthAsteroidsEntity.prevLink = nearEarthAsteroids.prevLink.absoluteString
-        let asteroids: NSSet = convertAsteroidsArrayToSet(asteroids: nearEarthAsteroids.asteroids)
-        nearEarthAsteroidsEntity.addToAsteroids(asteroids)
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
-        }
-        }
-    }
-    
-    private func convertAsteroidsArrayToSet(asteroids: [Asteroid]) -> NSSet {
-        var asteroidsSet: [AsteroidEntity] = []
-        for currentAsteroid in asteroids {
-            saveAsteroid(currentAsteroid)
-            let temp =
-            asteroidsSet.append(temp)
-        }
-        return NSSet(array: asteroidsSet)
-    }
-    
-    private func saveAsteroid(_ asteroid: Asteroid) -> AsteroidEntity{
-        context.perform {
-            <#code#>
-        }
-         persistentContainer.performBackgroundTask{ (context) in
-            let asteroidEntity = AsteroidEntity(context: context)
-            asteroidEntity.id = NSNumber(value: asteroid.id)
-            asteroidEntity.approachDate = asteroid.approachDate
-            asteroidEntity.estimatedDiameter = NSNumber(value: asteroid.estimatedDiameter)
-            asteroidEntity.infoLink = asteroid.infoLink.absoluteString
-            asteroidEntity.isHazardous = asteroid.isHazardous
-            asteroidEntity.missDistance = NSNumber(value: asteroid.missDistance)
-            asteroidEntity.velocity = NSNumber(value: asteroid.velocity)
-            asteroidEntity.name = asteroid.name
+            let nearEarthAsteroidsEntity = NearEarthAsteroidsEntity(context: context)
+            nearEarthAsteroidsEntity.nextLink = nearEarthAsteroids.nextLink.absoluteString
+            nearEarthAsteroidsEntity.prevLink = nearEarthAsteroids.prevLink.absoluteString
+            let asteroids: NSSet = self.convertAsteroidsArrayToSet(asteroids: nearEarthAsteroids.asteroids)
+            nearEarthAsteroidsEntity.addToAsteroids(asteroids)
             
             do {
                 try context.save()
             } catch let error {
                 print("Error: \(error)")
             }
-            return asteroidEntity
         }
+    }
+    
+    public func getAllNearEarthAsteroids() -> [NearEarthAsteroids]{
+        let fetchRequest = NearEarthAsteroidsEntity.fetchRequest()
+        var entities: [NearEarthAsteroidsEntity] = []
+        var feedEntities: [NearEarthAsteroids] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
+    }
+    
+    private func convertAsteroidsArrayToSet(asteroids: [Asteroid]) -> NSSet {
+        var asteroidsSet: [AsteroidEntity] = []
+        for currentAsteroid in asteroids {
+            var temp = currentAsteroid
+            temp.uuid = UUID.init()
+            saveAsteroid(temp)
+            guard let savedEntity = getAsteroidEntity(uuid: temp.uuid!) else { continue }
+            asteroidsSet.append(savedEntity)
+        }
+        return NSSet(array: asteroidsSet)
+    }
+    
+    private func saveAsteroid(_ asteroid: Asteroid) {
+        saveContext.perform {
+            let asteroidEntity = AsteroidEntity(context: self.saveContext)
+            asteroidEntity.update(with: asteroid)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    private func getAsteroidEntity(uuid: UUID) -> AsteroidEntity?{
+        let fetchRequest = AsteroidEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
+        
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
     }
     
     // MARK: - Picture from Mars
     public func savePictureFromMars(_ pictureFromMars: PictureFromMars){
-        let pictureFromMarsEntity = PictureFromMarsEntity(context: context)
-        let imageData = pictureFromMars.picture.pngData();
-        pictureFromMarsEntity.rover = pictureFromMars.rover
-        pictureFromMarsEntity.date = pictureFromMars.date
-        pictureFromMarsEntity.picture = imageData
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+        saveContext.perform {
+            
+            let pictureFromMarsEntity = PicturesFromMarsCollectionEntity(context: self.saveContext)
+            pictureFromMarsEntity.addToPictures(self.convertPhotosArrayToSet(photos: pictureFromMars.photos, collection: pictureFromMarsEntity))
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }}
+    
+    private func convertPhotosArrayToSet(photos: [Photo], collection: PicturesFromMarsCollectionEntity) -> NSSet {
+        var set: [PictureFromMarsEntity] = []
+        for currentAsteroid in photos {
+            var temp = currentAsteroid
+            temp.uuid = UUID.init()
+            savePhotoFromMars(temp, collection: collection)
+            guard let savedEntity = getPhotoFromMarsEntity(uuid: temp.uuid!) else { continue }
+            set.append(savedEntity)
+        }
+        return NSSet(array: set)
+    }
+    
+    private func savePhotoFromMars(_ photo: Photo, collection: PicturesFromMarsCollectionEntity) {
+        saveContext.perform {
+            let photoEntity = PictureFromMarsEntity(context: self.saveContext)
+            photoEntity.update(with: photo, collection: collection)
+            self.saveRover(photo.rover, photo: photoEntity)
+            photoEntity.rover = self.getRoverEntity(id: photo.rover.id)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
     }
     
-    // MARK: - Picture of Earth
-    public func savePictureOfEarth(_ pictureOfEarth: PictureOfEarth){
-        let pictureOfEarthEntity = PictureOfEarthEntity(context: context)
-        let imageData = pictureOfEarth.image.pngData();
-        pictureOfEarthEntity.date = pictureOfEarth.date
-        pictureOfEarthEntity.latitude = NSNumber(value: pictureOfEarth.latitude)
-        pictureOfEarthEntity.longtitude = NSNumber(value: pictureOfEarth.longtitude)
-        pictureOfEarthEntity.image = imageData
-        
+    private func getPhotoFromMarsEntity(uuid: UUID) -> PictureFromMarsEntity?{
+        let fetchRequest = PictureFromMarsEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
         do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
         }
+        return nil
+    }
+    
+    private func saveRover(_ rover: Rover, photo: PictureFromMarsEntity) {
+        saveContext.perform {
+            let roverEntity = RoverEntity(context: self.saveContext)
+            roverEntity.update(with: rover, photo: photo)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    private func getRoverEntity(id: Int) -> RoverEntity?{
+        let fetchRequest = RoverEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    public func getAllPicturesFromMars() -> [PictureFromMars]{
+        let fetchRequest = PicturesFromMarsCollectionEntity.fetchRequest()
+        var entities: [PicturesFromMarsCollectionEntity] = []
+        var feedEntities: [PictureFromMars] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
+    }
+    
+    // MARK: - Picture of Earth
+    public func savePictureOfEarth(_ pictureOfEarth: PictureOfEarthElement){
+        saveContext.perform {
+            let pictureOfEarthEntity = PictureOfEarthEntity(context: self.saveContext)
+            pictureOfEarthEntity.update(with: pictureOfEarth)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func getAllPicturesOfEarth() -> [PictureOfEarthElement]{
+        let fetchRequest = PictureOfEarthEntity.fetchRequest()
+        var entities: [PictureOfEarthEntity] = []
+        var feedEntities: [PictureOfEarthElement] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
     }
     
     // MARK: - Planet
     public func savePlanet(_ planet: Planet){
-        let planetEntity = PlanetEntity(context: context)
-        planetEntity.name = planet.name
-        planetEntity.bodyType = planet.bodyType
-        planetEntity.discoveredWhen = planet.discoveredWhen
-        planetEntity.gravity = NSNumber(value: planet.gravity)
-        planetEntity.mass = NSNumber(value: planet.mass)
-        planetEntity.radius = NSNumber(value: planet.radius)
-        let moons: NSSet = convertMoonsArrayToSet(moons: planet.moons)
-        planetEntity.addToMoons(moons)
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+        saveContext.perform {
+            let planetEntity = PlanetEntity(context: self.saveContext)
+            planetEntity.update(with: planet)
+            let moons: NSSet = self.convertMoonsArrayToSet(moons: planet.moons, planet: planetEntity)
+            planetEntity.addToMoons(moons)
+            
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
     }
     
-    private func convertMoonsArrayToSet(moons: [String]) -> NSSet {
+    public func getAllPlanets() -> [Planet]{
+        let fetchRequest = PlanetEntity.fetchRequest()
+        var entities: [PlanetEntity] = []
+        var feedEntities: [Planet] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
+    }
+    
+    private func convertMoonsArrayToSet(moons: [String], planet: PlanetEntity) -> NSSet {
         var moonsSet: [MoonEntity] = []
         for currentMoon in moons {
-            let temp = saveMoon(currentMoon)
+            saveMoon(currentMoon, planet: planet)
+            guard let temp = self.getMoonEntity(name: currentMoon) else { continue }
             moonsSet.append(temp)
         }
         return NSSet(array: moonsSet)
     }
     
-    private func saveMoon(_ moon: String) -> MoonEntity{
-        let moonEntity = MoonEntity(context: context)
-        moonEntity.moonName = moon
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+    private func saveMoon(_ moon: String, planet: PlanetEntity){
+        saveContext.perform {
+            let moonEntity = MoonEntity(context: self.saveContext)
+            moonEntity.moonName = moon
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
-        return moonEntity
+    }
+    
+    private func getMoonEntity(name: String) -> MoonEntity?{
+        let fetchRequest = MoonEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "moonName == %@", name)
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
     }
     
     // MARK: - Search result
     public func saveSearchResult(_ searchResult: SearchResult){
-        let searchResultEntity = SearchResultEntity(context: context)
-        searchResultEntity.title = searchResult.title
-        searchResultEntity.createdAt = searchResult.createdAt
-        searchResultEntity.descr = searchResult.description
-        searchResultEntity.audioURL = searchResult.audioURL?.absoluteString
-        searchResultEntity.image = searchResult.image?.pngData()
-        searchResultEntity.credit = searchResult.credit
-        searchResultEntity.mediaType = searchResult.mediaType.description
-        searchResultEntity.nasaId = searchResult.nasaId
-        searchResultEntity.videoURL = searchResult.videoURL?.absoluteString
-        
-        let keyWords: NSSet = convertKeyWordsArrayToSet(keyWords: searchResult.keyWords)
-        searchResultEntity.addToKeyWords(keyWords)
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+        saveContext.perform {
+            let searchResultEntity = SearchResultEntity(context: self.saveContext)
+            let items = self.convertCollectionItemsArrayToSet(items: searchResult.collection.items, searchResult: searchResultEntity)
+            searchResultEntity.addToItems(items)
+            let links = self.convertCollectionLinksArrayToSet(links: searchResult.links ?? [], searchResult: searchResultEntity)
+            searchResultEntity.addToCollectionLinks(links)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
+    }
+    
+    private func convertCollectionItemsArrayToSet(items: [Item], searchResult: SearchResultEntity) -> NSSet {
+        var set: [SearchResultItemEntity] = []
+        for current in items {
+            let uuid = UUID.init()
+            saveSearchResultItem(current, uuid: uuid, searchResult: searchResult)
+            guard let temp = getSearchResultItemEntity(uuid: uuid) else { continue }
+            set.append(temp)
+        }
+        return NSSet(array: set)
+    }
+    
+    private func saveSearchResultItem(_ item: Item, uuid: UUID, searchResult: SearchResultEntity){
+        saveContext.perform {
+            let itemEntity = SearchResultItemEntity(context: self.saveContext)
+            itemEntity.id = uuid
+            itemEntity.href = item.href
+            itemEntity.searchResult = searchResult
+            
+            let itemLinks = self.convertItemLinksArrayToSet(itemsLinks: item.links, searchResultItem: itemEntity)
+            itemEntity.addToLinks(itemLinks)
+            
+            
+            //TODO
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    private func convertDataArrayToSet(data: [Datum], searchResultItem: SearchResultItemEntity) -> NSSet {
+        var set: [DatumEntity] = []
+        for current in data {
+            let uuid = UUID.init()
+            saveDatum(current, uuid: uuid, searchResultItem: searchResultItem)
+            guard let temp = getDatumEntity(uuid: uuid) else { continue }
+            set.append(temp)
+        }
+        return NSSet(array: set)
+    }
+    
+    private func saveDatum(_ datum: Datum, uuid: UUID, searchResultItem: SearchResultItemEntity){
+        saveContext.perform {
+            let datumEntity = DatumEntity(context: self.saveContext)
+            datumEntity.id = uuid
+            datumEntity.mediaType = datum.mediaType.rawValue
+            datumEntity.createdAt = datum.dateCreated
+            datumEntity.item = searchResultItem
+            datumEntity.title = datum.title
+            datumEntity.descr = datum.datumDescription
+            datumEntity.nasaID = datum.nasaID
+            datumEntity.photographer = datum.photographer
+            
+            //TODO
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    private func getDatumEntity(uuid: UUID) -> DatumEntity?{
+        let fetchRequest = DatumEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    private func convertItemLinksArrayToSet(itemsLinks: [ItemLink], searchResultItem: SearchResultItemEntity) -> NSSet {
+        var set: [SearchResultItemLinkEntity] = []
+        for current in itemsLinks {
+            let uuid = UUID.init()
+            saveSearchResultItemLink(current, uuid: uuid, searchResultItem: searchResultItem)
+            guard let temp = getSearchResultItemLinkEntity(uuid: uuid) else { continue }
+            set.append(temp)
+        }
+        return NSSet(array: set)
+    }
+    
+    private func saveSearchResultItemLink(_ item: ItemLink, uuid: UUID, searchResultItem: SearchResultItemEntity){
+        saveContext.perform {
+            let itemLinkEntity = SearchResultItemLinkEntity(context: self.saveContext)
+            itemLinkEntity.id = uuid
+            itemLinkEntity.href = item.href
+            itemLinkEntity.item = searchResultItem
+            itemLinkEntity.mediaType = item.render?.rawValue
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    private func getSearchResultItemLinkEntity(uuid: UUID) -> SearchResultItemLinkEntity?{
+        let fetchRequest = SearchResultItemLinkEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    private func getSearchResultItemEntity(uuid: UUID) -> SearchResultItemEntity?{
+        let fetchRequest = SearchResultItemEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    private func convertCollectionLinksArrayToSet(links: [CollectionLink], searchResult: SearchResultEntity) -> NSSet {
+        var set: [SearchResultCollectionLinkEntity] = []
+        for current in links {
+            let uuid = UUID.init()
+            saveCollectionLink(current, uuid: uuid, searchResult: searchResult)
+            guard let temp = getCollectionLinkEntity(uuid: uuid) else { continue }
+            set.append(temp)
+        }
+        return NSSet(array: set)
+    }
+    
+    private func saveCollectionLink(_ link: CollectionLink, uuid: UUID, searchResult: SearchResultEntity){
+        saveContext.perform {
+            let itemEntity = SearchResultCollectionLinkEntity(context: self.saveContext)
+            itemEntity.id = uuid
+            itemEntity.collection = searchResult
+            itemEntity.href = link.href
+            itemEntity.prompt = link.prompt
+            itemEntity.rel = link.rel
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    private func getCollectionLinkEntity(uuid: UUID) -> SearchResultCollectionLinkEntity?{
+        let fetchRequest = SearchResultCollectionLinkEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
+        do {
+            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+            return result
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    public func getAllSearchResults() -> [SearchResult]{
+        let fetchRequest = SearchResultEntity.fetchRequest()
+        var entities: [SearchResultEntity] = []
+        var feedEntities: [SearchResult] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
     }
     
     private func convertKeyWordsArrayToSet(keyWords: [String]) -> NSSet {
@@ -214,11 +547,11 @@ class CoreDataService{
     }
     
     private func saveKeyWord(_ keyWord: String) -> KeyWordEntity{
-        let keyWordEntity = KeyWordEntity(context: context)
+        let keyWordEntity = KeyWordEntity(context: viewContext)
         keyWordEntity.keyWord = keyWord
         
         do {
-            try context.save()
+            try viewContext.save()
         } catch let error {
             print("Error: \(error)")
         }
@@ -227,20 +560,29 @@ class CoreDataService{
     
     // MARK: - Article
     public func saveArticle(_ article: Article){
-        let artcileEntity = ArticleEntity(context: context)
-        let imageData = article.picture.pngData();
-        artcileEntity.id = NSNumber(value: article.id)
-        artcileEntity.title = article.title
-        artcileEntity.articleUrl = article.articleUrl.absoluteString
-        artcileEntity.createdAt = article.createdAt
-        artcileEntity.newsSite = article.newsSite
-        artcileEntity.summary = article.summary
-        artcileEntity.picture = imageData
-        
-        do {
-            try context.save()
-        } catch let error {
-            print("Error: \(error)")
+        saveContext.perform {
+            let articleEntity = ArticleEntity(context: self.saveContext)
+            articleEntity.update(with: article)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
+    }
+    
+    public func getAllArticles() -> [Article]{
+        let fetchRequest = ArticleEntity.fetchRequest()
+        var entities: [ArticleEntity] = []
+        var feedEntities: [Article] = []
+        do {
+            entities = try viewContext.fetch(fetchRequest)
+        } catch {
+            print(error)
+        }
+        for entity in entities {
+            feedEntities.append(entity.convertToFeedEntity())
+        }
+        return feedEntities
     }
 }

@@ -2,14 +2,13 @@
 //  NearEarthAsteroidsEntity+CoreDataProperties.swift
 //  Mobile-Observatory
 //
-//  Created by andrewoch on 20.03.2022.
+//  Created by andrewoch on 27.03.2022.
 //
 //
 
 import Foundation
 import CoreData
 
-@objc(NearEarthAsteroidsEntity)
 public class NearEarthAsteroidsEntity: NSManagedObject {
 
 }
@@ -20,7 +19,7 @@ extension NearEarthAsteroidsEntity {
         return NSFetchRequest<NearEarthAsteroidsEntity>(entityName: "NearEarthAsteroidsEntity")
     }
 
-    @NSManaged public var id: NSNumber
+    @NSManaged public var id: UUID
     @NSManaged public var nextLink: String?
     @NSManaged public var prevLink: String?
     @NSManaged public var asteroids: NSSet?
@@ -46,4 +45,12 @@ extension NearEarthAsteroidsEntity {
 
 extension NearEarthAsteroidsEntity : Identifiable {
 
+    func update(with weatherInfo: NearEarthAsteroids) {
+        
+    }
+    
+    func convertToFeedEntity() -> NearEarthAsteroids {
+        
+        return NearEarthAsteroids(prevLink: URL.init(fileURLWithPath: nextLink ?? ""), nextLink: URL.init(fileURLWithPath: prevLink ?? ""), asteroids: asteroids?.allObjects as! [Asteroid])
+    }
 }
