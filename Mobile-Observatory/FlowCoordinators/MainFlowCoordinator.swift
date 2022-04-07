@@ -10,6 +10,7 @@ import UIKit
 final class MainFlowCoordinator: FlowCoordinatorProtocol {
 
     private let rootView: UIViewController
+    private var tabBarView: UITabBarController?
 
     init(rootView: UIViewController) {
         self.rootView = rootView
@@ -22,5 +23,11 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
 
     func finish(animated: Bool) {
         
+    }
+}
+
+extension MainFlowCoordinator: TabBarFlowCoordinatorProtocol {
+    func appendView(_ view: UIViewController) {
+        tabBarView?.addChild(view)
     }
 }
