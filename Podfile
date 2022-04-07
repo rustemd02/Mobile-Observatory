@@ -7,7 +7,7 @@ target 'Mobile-Observatory' do
 
 	pod 'Alamofire', '~> 5.5'
 	pod 'SnapKit', '~> 5.0.0'
-  pod 'SwiftDate', '~> 5.0'
+  	pod 'SwiftDate', '~> 5.0'
 	pod 'SwiftLint'
 
   # Pods for Mobile-Observatory

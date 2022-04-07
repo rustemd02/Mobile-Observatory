@@ -13,7 +13,8 @@ struct Article: Decodable {
     var title: String
     var createdAt: Date
     var summary: String
-    var picture: URL
+    var pictureUrl: URL
+    var pictureLocalPath: URL?
     var articleUrl: URL
     var newsSite: String
     
@@ -22,9 +23,19 @@ struct Article: Decodable {
         case title = "title"
         case createdAt = "publishedAt"
         case summary = "summary"
-        case picture = "imageUrl"
+        case pictureUrl = "imageUrl"
         case articleUrl = "url"
         case newsSite = "newsSite"
     }
     
+    init(id: Int, title: String, createdAt: Date, summary: String, pictureUrl: URL, pictureLocalPath: URL?, articleUrl: URL, newsSite: String) {
+        self.id = id
+        self.title = title
+        self.createdAt = createdAt
+        self.summary = summary
+        self.pictureUrl = pictureUrl
+        self.pictureLocalPath = pictureLocalPath
+        self.articleUrl = articleUrl
+        self.newsSite = newsSite
+    }
 }

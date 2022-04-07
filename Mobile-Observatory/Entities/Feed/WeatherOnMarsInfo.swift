@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherOnMarsInfo: Decodable {
+    
     var id: Int?
     var sol: Int
     var earthDate: Date
@@ -27,6 +28,18 @@ struct WeatherOnMarsInfo: Decodable {
         case pressureString = "pressure_string"
         case atmoOpacity = "atmo_opacity"
         case monthOnMars = "season"
+    }
+    
+    init(id: Int?, sol: Int, earthDate: Date, minTemp: Int, maxTemp: Int, pressure: Int, pressureString: String, atmoOpacity: String, monthOnMars: String) {
+        self.id = id
+        self.sol = sol
+        self.earthDate = earthDate
+        self.minTemp = minTemp
+        self.maxTemp = maxTemp
+        self.pressure = pressure
+        self.pressureString = pressureString
+        self.atmoOpacity = atmoOpacity
+        self.monthOnMars = monthOnMars
     }
 
 }
