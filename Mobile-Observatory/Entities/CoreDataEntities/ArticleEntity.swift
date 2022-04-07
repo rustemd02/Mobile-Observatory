@@ -61,6 +61,6 @@ extension ArticleEntity : Identifiable {
     
     func convertToFeedEntity() -> Article {
         
-        return Article(id: Int(truncating: id), title: title!, createdAt: createdAt!, summary: summary!, pictureUrl: URL.init(fileURLWithPath: pictureURL ?? ""), pictureLocalPath: URL.init(string: pictureLocalPath!)!, articleUrl: URL.init(fileURLWithPath: articleUrl ?? ""), newsSite: newsSite!)
+        return Article(id: Int(truncating: id), title: title!, createdAt: createdAt!, summary: summary!, pictureUrl: URL.init(fileURLWithPath: pictureURL ?? ""), pictureLocalPath: nil, articleUrl: URL.init(fileURLWithPath: articleUrl ?? ""), newsSite: newsSite!)
     }
 }

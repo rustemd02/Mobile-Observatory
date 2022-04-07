@@ -12,13 +12,26 @@ class SavedPostsPresenter {
 
     weak var view: ViewControllerInput?
     var interactor: SavedPostsInteractor
+    private var isFetching = false
+    var posts: [Post] = []
 
     init(){
         interactor = SavedPostsInteractor()
     }
 
     private func updateView() {
-        view?.updateView(with: interactor.coreDataService.getAllSearchResults())
+//        loadArticles()
+//        MockService.shared.savePosts()
+        posts = CoreDataService.shared.getAllArticles()
+        view?.updateView(with: posts)
+    }
+    
+    private func loadArticles() {
+        isFetching = true
+//        MockService.shared.getArticles(howManySkip: 0) { [weak self] in
+//            self?.posts =
+//        }
+        isFetching = false
     }
 }
 

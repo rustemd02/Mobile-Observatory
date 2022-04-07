@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct Article: Decodable {
+struct Article: Decodable, Post {
     var id: Int
     var title: String
     var createdAt: Date

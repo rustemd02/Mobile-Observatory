@@ -40,6 +40,9 @@ class SavedPostsViewController: UIViewController {
 extension SavedPostsViewController: ViewControllerInput {
     func updateView(with items: [Post]) {
         savedPosts = items
+        print(savedPosts)
+        tableView.dataSource = savedPosts as? UITableViewDataSource
+        tableView.reloadData()
     }
 
     func showError() {
