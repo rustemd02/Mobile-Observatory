@@ -11,6 +11,7 @@
 		04B2C16F27FEC65200F0C617 /* FlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */; };
 		04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */; };
 		04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */; };
+		04B2C17827FECC3300F0C617 /* SavedPostsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17727FECC3300F0C617 /* SavedPostsModuleBuilder.swift */; };
 		04CF3D3327F0896300685553 /* PictureOfEarthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */; };
 		04CF3D3527F0896300685553 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1127F0896300685553 /* PlanetEntity.swift */; };
 		04CF3D3727F0896300685553 /* NearEarthAsteroidsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */; };
@@ -56,6 +57,7 @@
 		04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsFlowCoordinator.swift; sourceTree = "<group>"; };
+		04B2C17727FECC3300F0C617 /* SavedPostsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsModuleBuilder.swift; sourceTree = "<group>"; };
 		04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfEarthEntity.swift; sourceTree = "<group>"; };
 		04CF3D1127F0896300685553 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
 		04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearEarthAsteroidsEntity.swift; sourceTree = "<group>"; };
@@ -125,8 +127,25 @@
 		04B2C17427FEC99200F0C617 /* SavedPostsModule */ = {
 			isa = PBXGroup;
 			children = (
+				04B2C17627FECBD200F0C617 /* Presenter */,
+				04B2C17527FECBC800F0C617 /* View */,
+				04B2C17727FECC3300F0C617 /* SavedPostsModuleBuilder.swift */,
 			);
 			path = SavedPostsModule;
+			sourceTree = "<group>";
+		};
+		04B2C17527FECBC800F0C617 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04B2C17627FECBD200F0C617 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		04CFF39D27D5DD150066A8D2 /* CoreDataEntities */ = {
@@ -393,6 +412,7 @@
 				CF2F323B27CD39710043A12B /* PictureOfDay.swift in Sources */,
 				04CF3D4D27F0896300685553 /* PictureOfDayEntity.swift in Sources */,
 				04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */,
+				04B2C17827FECC3300F0C617 /* SavedPostsModuleBuilder.swift in Sources */,
 				CF7EC6D727D533BF007197E6 /* NetworkService.swift in Sources */,
 				CF2F323927CD391B0043A12B /* WeatherOnMarsInfo.swift in Sources */,
 				040C725A27E73B09008A268A /* LocalFileManager.swift in Sources */,
