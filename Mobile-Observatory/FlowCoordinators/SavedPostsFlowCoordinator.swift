@@ -10,16 +10,16 @@ import UIKit
 
 final class SavedPostsFlowCoordinator: FlowCoordinatorProtocol {
 
-    private let rootController: MainFlowCoordinator
+    private let rootController: TabBarFlowCoordinatorProtocol
 
     private weak var savedPostsScreenView: UIViewController?
 
-    init(rootController: MainFlowCoordinator) {
+    init(rootController: TabBarFlowCoordinatorProtocol) {
         self.rootController = rootController
     }
 
     func start(animated: Bool) {
-        savedPostsScreenView = UIViewController()
+//        rootController.appendView(ExampleModuleBuilder().build())
     }
 
     func finish(animated: Bool) {

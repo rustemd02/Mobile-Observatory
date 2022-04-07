@@ -11,6 +11,7 @@
 		04B2C16F27FEC65200F0C617 /* FlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */; };
 		04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */; };
 		04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */; };
+		04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */; };
 		04CF3D3327F0896300685553 /* PictureOfEarthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */; };
 		04CF3D3527F0896300685553 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1127F0896300685553 /* PlanetEntity.swift */; };
 		04CF3D3727F0896300685553 /* NearEarthAsteroidsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */; };
@@ -56,6 +57,7 @@
 		04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsFlowCoordinator.swift; sourceTree = "<group>"; };
+		04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFlowCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfEarthEntity.swift; sourceTree = "<group>"; };
 		04CF3D1127F0896300685553 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
 		04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearEarthAsteroidsEntity.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */,
 				04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */,
 				04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */,
+				04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */,
 			);
 			path = FlowCoordinators;
 			sourceTree = "<group>";
@@ -127,6 +130,14 @@
 			children = (
 			);
 			path = SavedPostsModule;
+			sourceTree = "<group>";
+		};
+		04B2C17927FECDE000F0C617 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				04B2C17427FEC99200F0C617 /* SavedPostsModule */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		04CFF39D27D5DD150066A8D2 /* CoreDataEntities */ = {
@@ -193,7 +204,7 @@
 		CF2F321B27CD37BB0043A12B /* Mobile-Observatory */ = {
 			isa = PBXGroup;
 			children = (
-				04B2C17427FEC99200F0C617 /* SavedPostsModule */,
+				04B2C17927FECDE000F0C617 /* Modules */,
 				04B2C16D27FEC63200F0C617 /* FlowCoordinators */,
 				CF2F324027CD3A830043A12B /* Controllers */,
 				CF2F323F27CD39DE0043A12B /* Services */,
@@ -376,6 +387,7 @@
 				04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */,
 				CFEEA53027D51C1300E05249 /* Planet.swift in Sources */,
 				04CFF39C27D560120066A8D2 /* CoreDataService.swift in Sources */,
+				04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */,
 				04CF3D4127F0896300685553 /* MoonEntity.swift in Sources */,
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
