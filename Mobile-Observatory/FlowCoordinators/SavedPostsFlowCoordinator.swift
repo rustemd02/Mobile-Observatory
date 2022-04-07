@@ -19,7 +19,7 @@ final class SavedPostsFlowCoordinator: FlowCoordinatorProtocol {
     }
 
     func start(animated: Bool) {
-//        rootController.appendView(ExampleModuleBuilder().build())
+        rootController.appendView(SavedPostsModuleBuilder().build())
     }
 
     func finish(animated: Bool) {
