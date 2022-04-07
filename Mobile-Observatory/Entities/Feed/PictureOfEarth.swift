@@ -2,7 +2,7 @@
 import Foundation
 
 // MARK: - PictureOfEarthElement
-struct PictureOfEarthElement: Codable {
+struct PictureOfEarthElement: Codable, Post {
     let imageUrl: String
     let centroidCoordinates: CentroidCoordinates
     let date: Date

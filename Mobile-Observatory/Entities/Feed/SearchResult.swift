@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - SearchResult
-struct SearchResult: Codable {
+struct SearchResult: Codable, Post {
     let collection: Collection
     let links: [CollectionLink]?
 }
