@@ -96,7 +96,6 @@ class NetworkService {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sssz"
                 jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
-                
                 let articles = try jsonDecoder.decode([Article].self, from: data)
                 completion(.success(articles))
             } catch {
@@ -251,5 +250,4 @@ class NetworkService {
             
         }
     }
-    
 }
