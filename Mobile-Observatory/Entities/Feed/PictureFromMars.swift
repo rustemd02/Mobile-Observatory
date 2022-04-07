@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct PictureFromMars: Codable {
+struct PictureFromMars: Codable, Post {
     let photos: [Photo]
 }
 
