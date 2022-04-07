@@ -9,7 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController, UIScrollViewDelegate {
     let api = NetworkService.shared
-    var howManyArticlesToSkip = 100
+    var howManyArticlesToSkip = 0
     private var isFetching = false
     var flag: Bool = false
     private var articleFetch = ArticleFetchController()
