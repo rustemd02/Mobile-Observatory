@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ViewControllerInput: AnyObject {
-    func updateView(with items: [String])
+    func updateView(with items: [Post])
     func showError()
 }
 

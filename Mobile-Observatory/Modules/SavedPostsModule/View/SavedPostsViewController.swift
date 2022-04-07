@@ -5,15 +5,19 @@
 //  Created by andrewoch on 07.04.2022.
 //
 
+import SnapKit
 import UIKit
 
 class SavedPostsViewController: UIViewController {
 
     private let output: ViewControllerOutput
     let tableView = UITableView()
+    var savedPosts: [Post]?
 
     init(output: ViewControllerOutput) {
         self.output = output
+        super.init(nibName: nil, bundle: nil)
+        setupView()
     }
 
     required init?(coder: NSCoder) {
@@ -26,39 +30,36 @@ class SavedPostsViewController: UIViewController {
     }
 
     private func setupView() {
+        title = "Liked posts"
+        view.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaInsets, attribute: .bottom, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view.safeAreaInsets, attribute: .top, multiplier: 1, constant: 0)
-        ])
+                view.addSubview(tableView)
     }
 }
 
 extension SavedPostsViewController: ViewControllerInput {
-    func updateView(with items: [String]) {
-        <#code#>
+    func updateView(with items: [Post]) {
+        savedPosts = items
     }
 
     func showError() {
-        <#code#>
+        
     }
 }
 
 extension SavedPostsViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        return UITableViewCell()
     }
 }
 
 extension SavedPostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 }

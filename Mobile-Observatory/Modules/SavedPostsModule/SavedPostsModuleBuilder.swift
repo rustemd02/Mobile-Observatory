@@ -11,10 +11,9 @@ import UIKit
 final class SavedPostsModuleBuilder {
 
     func build() -> UIViewController {
-//        let presenter = Presenter(dataService: DataService())
-//    output: presenter
-        let viewConrtoller = ViewController()
-//        presenter.view = viewConrtoller
-        return viewConrtoller
+        let presenter = SavedPostsPresenter()
+        let viewController = SavedPostsViewController(output: presenter)
+        presenter.view = viewController
+        return viewController
     }
 }

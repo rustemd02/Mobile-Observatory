@@ -11,14 +11,14 @@ import UIKit
 class SavedPostsPresenter {
 
     weak var view: ViewControllerInput?
-//    private var dataService: DataServiceProtocol
+    var interactor: SavedPostsInteractor
 
-//    init(dataService: DataServiceProtocol) {
-//        self.dataService = dataService
-//    }
+    init(){
+        interactor = SavedPostsInteractor()
+    }
 
     private func updateView() {
-        view?.updateView(with: ["Albert", "Krasavchik"])
+        view?.updateView(with: interactor.coreDataService.getAllSearchResults())
     }
 }
 
@@ -30,6 +30,10 @@ extension SavedPostsPresenter: ViewControllerOutput {
     func didSelectRow(at: Int) {
 
     }
+    
+    func didLoadData(){
+        
+    }
 }
 
 extension SavedPostsPresenter: LoginPresenterInput {
@@ -37,9 +41,3 @@ extension SavedPostsPresenter: LoginPresenterInput {
         UIViewController()
     }
 }
-//
-//extension SavedPostsPresenter: RegistrationPresenterInput {
-//    func start() -> UIViewController {
-//        UIViewController()
-//    }
-//}
