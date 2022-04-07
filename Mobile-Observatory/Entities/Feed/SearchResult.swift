@@ -9,34 +9,51 @@
 import Foundation
 
 // MARK: - SearchResult
+
 struct SearchResult: Codable, Post {
-    let collection: Collection
-    let links: [CollectionLink]?
+    var collection: Collection
+    var links: [CollectionLink]?
+    
+    init(collection: Collection, links: [CollectionLink]?) {
+        self.collection = collection
+        self.links = links
+    }
+
 }
 
 // MARK: - Collection
 struct Collection: Codable {
-    let items: [Item]
+    var items: [Item]
+    
+    init(items: [Item]) {
+        self.items = items
+    }
 }
 
 // MARK: - Item
 struct Item: Codable {
-    let href: String
-    let data: [Datum]
-    let links: [ItemLink]
+    var href: String
+    var data: [Datum]
+    var links: [ItemLink]
+    
+    init(href: String, data: [Datum], links: [ItemLink]) {
+        self.href = href
+        self.data = data
+        self.links = links
+    }
 }
 
 // MARK: - Datum
 struct Datum: Codable {
-    let title: String
-    let photographer: String?
-    let nasaID: String
-    let dateCreated: Date
-    let keywords: [String]?
-    let mediaType: MediaType
-    let datumDescription: String
-    let album: [String]?
-
+    var title: String
+    var photographer: String?
+    var nasaID: String
+    var dateCreated: Date
+    var keywords: [String]?
+    var mediaType: MediaType
+    var datumDescription: String
+    var album: [String]?
+    
     enum CodingKeys: String, CodingKey {
         case title, photographer
         case nasaID = "nasa_id"
@@ -45,6 +62,17 @@ struct Datum: Codable {
         case mediaType = "media_type"
         case datumDescription = "description"
         case album
+    }
+    
+    init(title: String, photographer: String?, nasaID: String, dateCreated: Date, keywords: [String]?, mediaType: MediaType, datumDescription: String, album: [String]?) {
+        self.title = title
+        self.photographer = photographer
+        self.nasaID = nasaID
+        self.dateCreated = dateCreated
+        self.keywords = keywords
+        self.mediaType = mediaType
+        self.datumDescription = datumDescription
+        self.album = album
     }
 }
 
@@ -56,13 +84,24 @@ enum MediaType: String, Codable {
 
 // MARK: - ItemLink
 struct ItemLink: Codable {
-    let href: String
-    let render: MediaType?
+    var href: String
+    var render: MediaType?
+    
+    init(href: String, render: MediaType?) {
+        self.href = href
+        self.render = render
+    }
 }
 
 
 // MARK: - CollectionLink
 struct CollectionLink: Codable {
-    let rel, prompt: String
-    let href: String
+    var rel, prompt: String
+    var href: String
+    
+    init(rel: String, prompt: String, href: String) {
+        self.rel = rel
+        self.prompt = prompt
+        self.href = href
+    }
 }

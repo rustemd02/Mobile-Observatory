@@ -16,4 +16,13 @@ struct Planet {
     var gravity: Float
     var bodyType: String
     
+    init(name: String, moons: [String], mass: Float, radius: Float, discoveredWhen: Date?, gravity: Float, bodyType: String) {
+        self.name = name
+        self.moons = moons
+        self.mass = mass
+        self.radius = radius
+        self.discoveredWhen = discoveredWhen
+        self.gravity = gravity
+        self.bodyType = bodyType
+    }
 }
