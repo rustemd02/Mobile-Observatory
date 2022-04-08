@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 
 final class SavedPostsFlowCoordinator: FlowCoordinatorProtocol {
-
+    
     private let rootController: TabBarFlowCoordinatorProtocol
-
+    
     private weak var savedPostsScreenView: UIViewController?
-
+    
     init(rootController: TabBarFlowCoordinatorProtocol) {
         self.rootController = rootController
     }
-
+    
     func start(animated: Bool) {
-
+        
     }
-
+    
     func finish(animated: Bool) {
         savedPostsScreenView = nil
     }
