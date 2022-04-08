@@ -18,8 +18,8 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-//    var siteLabel = UILabel()
-//    var dateLabel = UILabel()
+    //    var siteLabel = UILabel()
+    //    var dateLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,19 +27,19 @@ class ArticleDetailViewController: UIViewController {
         configure()
     }
     
-//    private func uiInit () {
-//
-//        view.addSubview(siteLabel)
-//        view.addSubview(dateLabel)
-//
-//        siteLabel.snp.makeConstraints { make in
-//            make.top.left.equalToSuperview().inset(8)
-//        }
-//        dateLabel.snp.makeConstraints { make in
-//            make.top.right.equalToSuperview().inset(8)
-//        }
-//
-//    }
+    //    private func uiInit () {
+    //
+    //        view.addSubview(siteLabel)
+    //        view.addSubview(dateLabel)
+    //
+    //        siteLabel.snp.makeConstraints { make in
+    //            make.top.left.equalToSuperview().inset(8)
+    //        }
+    //        dateLabel.snp.makeConstraints { make in
+    //            make.top.right.equalToSuperview().inset(8)
+    //        }
+    //
+    //    }
     
     func configure() {
         guard let article = article else {
@@ -65,7 +65,7 @@ class ArticleDetailViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
-        
+            
         })
     }
     

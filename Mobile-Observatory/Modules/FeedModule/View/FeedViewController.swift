@@ -7,17 +7,59 @@
 
 import UIKit
 
+protocol ViewControllerInput: AnyObject {
+    func updateView(with items: [Post])
+    func showError()
+}
+
+protocol ViewControllerOutput {
+    func viewDidLoad()
+    func didSelectRow(at: Int)
+}
+
 class FeedViewController: UIViewController, UIScrollViewDelegate {
     let api = NetworkService.shared
+    private var output: ViewControllerOutput
     var howManyArticlesToSkip = 0
     private var isFetching = false
-    var flag: Bool = false
     private var articleFetch = ArticleFetchController()
+    var feedTableView = UITableView()
     
-    @IBOutlet weak var feedTableView: UITableView!
+    // @IBOutlet weak var feedTableView: UITableView!
+    
+    init(output: ViewControllerOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    private func setupView() {
+        title = "Лента"
+        view.backgroundColor = .white
+        
+        self.navigationItem.title = "Лента"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        feedTableView = UITableView(frame: view.bounds, style: .plain)
+        feedTableView.delegate = self
+        feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        view.addSubview(feedTableView)
+        feedTableView.snp.makeConstraints{ maker in
+            maker.top.equalToSuperview().inset(100)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.viewDidLoad()
         loadArticles()
         
         self.feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
@@ -48,6 +90,8 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     
     
 }
+
+
 
 extension FeedViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
