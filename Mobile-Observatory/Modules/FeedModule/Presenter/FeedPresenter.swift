@@ -8,31 +8,35 @@
 import Foundation
 
 protocol FeedPresenterProtocol {
-    func loadArticles()
     func feedPrefethcing(indexPaths: [IndexPath])
 }
 
 class FeedPresenter: FeedPresenterProtocol {
-   
+    
     private let interactor: FeedInteractorProtocol
     weak var view: ViewControllerInput?
     
     
+    
     init(interactor: FeedInteractorProtocol) {
-            self.interactor = interactor
-        }
+        self.interactor = interactor
+    }
     
     func feedPrefethcing(indexPaths: [IndexPath]) {
         //
-    }
-    
-    func loadArticles() {
         
     }
+    
+    func getArticles() {
+        
+    }
+    
     
 }
 
 extension FeedPresenter: ViewControllerOutput {
+    
+    
     func viewDidLoad() {
         
     }
@@ -40,6 +44,7 @@ extension FeedPresenter: ViewControllerOutput {
     func didSelectRow(at: Int) {
         
     }
+    
     
     
 }

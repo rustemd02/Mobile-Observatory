@@ -32,12 +32,59 @@ class Mobile_ObservatoryTests: XCTestCase {
                 if (weatherInfo.maxTemp == -23) {
                     expectation.fulfill()
                 }
-            case.failure(let error):
+            case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
         }
         wait(for: [expectation], timeout: 5)
     }
+    
+    func testIfModuleBuilderCreatesAllComponents() {
+        
+        let viewController = FeedModuleBuilder().build()
+        XCTAssertNotNil(viewController)
+    }
+    
+    
+    
+    func testIfNetworkErrorIsCaught() {
+        let expectation = expectation(description: "Should return .noDataAvailable error")
+        networkService.getImageByUrl(url: "blablabla") { result in
+            switch result {
+            case .success(_):
+                XCTFail()
+            case.failure(let error):
+                if (error == .noDataAvailable) {
+                    expectation.fulfill()
+                }
+            }
+        }
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    
+    func testIfPictureUrlConvertsToUIImage() {
+        let expectation = expectation(description: "Function returns not nil UIImage")
+        networkService.getPicOfDay(date: Date.init(year: 2020, month: 05, day: 01, hour: 0, minute: 0)) { result in
+            switch result {
+            case .success(let picOfDay):
+                self.networkService.getImageByUrl(url: picOfDay.imageUrl.description) { result in
+                    switch result {
+                    case .success(let image):
+                        XCTAssertNotNil(image)
+                        expectation.fulfill()
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                    }
+                
+                }
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 5)
+    }
+    
     
     
 

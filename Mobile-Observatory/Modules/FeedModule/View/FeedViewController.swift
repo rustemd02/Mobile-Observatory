@@ -10,6 +10,7 @@ import UIKit
 protocol ViewControllerInput: AnyObject {
     func updateView(with items: [Post])
     func showError()
+    func loadArticles()
 }
 
 protocol ViewControllerOutput {
@@ -25,12 +26,10 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     private var articleFetch = ArticleFetchController()
     var feedTableView = UITableView()
     
-    // @IBOutlet weak var feedTableView: UITableView!
     
     init(output: ViewControllerOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
-        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -54,19 +53,20 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewDidLoad()
+        
+        setupView()
         loadArticles()
-        
-        self.feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
-        self.feedTableView.register(UINib.init(nibName: "WeatherOnMarsTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
-        
         feedTableView.delegate = self
         feedTableView.prefetchDataSource = self
+        self.feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        self.feedTableView.register(UINib.init(nibName: "WeatherOnMarsTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         
         feedTableView.refreshControl = UIRefreshControl()
         feedTableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
