@@ -11,7 +11,7 @@ import UIKit
 class SavedPostsViewController: UIViewController {
 
     private let output: ViewControllerOutput
-    let tableView = UITableView()
+    var tableView = UITableView()
     var savedPosts: [Post]?
 
     init(output: ViewControllerOutput) {
@@ -30,18 +30,41 @@ class SavedPostsViewController: UIViewController {
     }
 
     private func setupView() {
-        title = "Liked posts"
+        title = "Saved posts"
         view.backgroundColor = .white
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-                view.addSubview(tableView)
+        
+        self.navigationItem.title = "Saved posts"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView.delegate = self
+        tableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints{ maker in
+            maker.top.equalToSuperview().inset(100)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+        
+        let label = UILabel()
+        label.text = "Saved posts"
+        label.textAlignment = .center
+        label.sizeToFit()
+        view.addSubview(label)
+        label.snp.makeConstraints{ maker in
+            maker.left.equalToSuperview().inset(100)
+            maker.right.equalToSuperview().inset(100)
+            maker.top.equalToSuperview().inset(50)
+        }
     }
 }
 
 extension SavedPostsViewController: ViewControllerInput {
     func updateView(with items: [Post]) {
         savedPosts = items
-        print(savedPosts)
-        tableView.dataSource = savedPosts as? UITableViewDataSource
+        tableView.dataSource = self
         tableView.reloadData()
     }
 
@@ -51,18 +74,28 @@ extension SavedPostsViewController: ViewControllerInput {
 }
 
 extension SavedPostsViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let posts = savedPosts else { return 0 }
+        return posts.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
+            return UITableViewCell()
+        }
+        let article = savedPosts?[indexPath.row]
+        cell.configure(article: article as! Article)
+        return cell
     }
 }
 
 extension SavedPostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let article = savedPosts?[indexPath.row]
+        let sb = UIStoryboard(name: "Feed", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "ArticleDetailViewController") as! ArticleDetailViewController
+        vc.article = article as? Article
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

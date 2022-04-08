@@ -20,18 +20,8 @@ class SavedPostsPresenter {
     }
 
     private func updateView() {
-//        loadArticles()
-//        MockService.shared.savePosts()
         posts = CoreDataService.shared.getAllArticles()
         view?.updateView(with: posts)
-    }
-    
-    private func loadArticles() {
-        isFetching = true
-//        MockService.shared.getArticles(howManySkip: 0) { [weak self] in
-//            self?.posts =
-//        }
-        isFetching = false
     }
 }
 
