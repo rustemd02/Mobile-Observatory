@@ -14,6 +14,7 @@ final class SavedPostsModuleBuilder {
         let presenter = SavedPostsPresenter()
         let viewController = SavedPostsViewController(output: presenter)
         presenter.view = viewController
+        presenter.viewDidLoad()
         return viewController
     }
 }

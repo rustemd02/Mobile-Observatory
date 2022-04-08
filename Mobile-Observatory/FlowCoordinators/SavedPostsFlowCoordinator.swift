@@ -19,11 +19,7 @@ final class SavedPostsFlowCoordinator: FlowCoordinatorProtocol {
     }
 
     func start(animated: Bool) {
-        let presenter = SavedPostsPresenter()
-        let viewController = SavedPostsViewController(output: presenter)
-        presenter.view = viewController
-        presenter.viewDidLoad()
-        rootController.appendView(viewController, item: .contacts)
+        rootController.appendView(SavedPostsModuleBuilder().build(), item: .contacts)
     }
 
     func finish(animated: Bool) {

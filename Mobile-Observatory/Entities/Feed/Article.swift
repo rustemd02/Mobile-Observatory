@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 struct Article: Decodable, Post {
+    
+    var uuid: UUID?
     var id: Int
     var title: String
     var createdAt: Date
@@ -37,5 +39,19 @@ struct Article: Decodable, Post {
         self.pictureLocalPath = pictureLocalPath
         self.articleUrl = articleUrl
         self.newsSite = newsSite
+    }
+}
+
+extension Article: Equatable {
+    
+    static func == (larc: Article, rarc: Article) -> Bool {
+            return
+//                larc.id != rarc.id &&
+                larc.title != rarc.title &&
+//                larc.createdAt != rarc.createdAt &&
+                larc.summary != rarc.summary &&
+//                larc.pictureUrl != rarc.pictureUrl &&
+//                larc.articleUrl != rarc.articleUrl &&
+                larc.newsSite != rarc.newsSite
     }
 }

@@ -39,13 +39,12 @@ class SavedPostsViewController: UIViewController {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
         tableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(tableView)
         tableView.snp.makeConstraints{ maker in
             maker.top.equalToSuperview().inset(100)
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.bottom.equalToSuperview()
+            maker.bottom.equalToSuperview().inset(500)
         }
         
         let label = UILabel()

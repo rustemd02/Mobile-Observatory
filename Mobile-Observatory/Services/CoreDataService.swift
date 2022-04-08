@@ -571,6 +571,50 @@ class CoreDataService{
         }
     }
     
+    public func deleteArticle(_ article: Article){
+        saveContext.perform {
+            let fetchRequest = ArticleEntity.fetchRequest()
+            var entities: [ArticleEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == article){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllArticles(){
+        saveContext.perform {
+            let fetchRequest = ArticleEntity.fetchRequest()
+            var entities: [ArticleEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
     public func getAllArticles() -> [Article]{
         let fetchRequest = ArticleEntity.fetchRequest()
         var entities: [ArticleEntity] = []

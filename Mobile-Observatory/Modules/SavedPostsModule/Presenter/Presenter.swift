@@ -20,7 +20,7 @@ class SavedPostsPresenter {
     }
 
     private func updateView() {
-        posts = CoreDataService.shared.getAllArticles()
+        posts = interactor.getSavedArticles()
         view?.updateView(with: posts)
     }
 }

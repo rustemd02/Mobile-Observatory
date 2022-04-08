@@ -9,9 +9,13 @@ import Foundation
 
 class SavedPostsInteractor {
     
-    var coreDataService: CoreDataService
+    private var coreDataService: CoreDataService
     
     init(){
         coreDataService = CoreDataService.shared
+    }
+    
+    func getSavedArticles() -> [Article]{
+        return coreDataService.getAllArticles()
     }
 }

@@ -34,16 +34,16 @@ extension ArticleEntity {
 extension ArticleEntity : Identifiable {
 
     func update(with article: Article) {
-        articleUrl = article.articleUrl.absoluteString
+        articleUrl = article.articleUrl.relativeString
         createdAt = article.createdAt
         newsSite = article.newsSite
         summary = article.summary
         title = article.title
-        pictureURL = article.pictureUrl.absoluteString
+        pictureURL = article.pictureUrl.relativeString
         
         var uiImage: UIImage? = nil
         
-        NetworkService.shared.getImageByUrl(url: article.pictureUrl.absoluteString){
+        NetworkService.shared.getImageByUrl(url: article.pictureUrl.relativeString){
             image in
             do{
                 uiImage = try image.get()
@@ -56,11 +56,10 @@ extension ArticleEntity : Identifiable {
         }
         
         let localPath = LocalFileManager.shared.saveImage(image: uiImage!, name: article.pictureUrl.lastPathComponent)
-        pictureLocalPath = localPath?.absoluteString
+        pictureLocalPath = localPath?.relativeString
     }
     
     func convertToFeedEntity() -> Article {
-        
         return Article(id: Int(truncating: id), title: title!, createdAt: createdAt!, summary: summary!, pictureUrl: URL.init(fileURLWithPath: pictureURL ?? ""), pictureLocalPath: nil, articleUrl: URL.init(fileURLWithPath: articleUrl ?? ""), newsSite: newsSite!)
     }
 }
