@@ -18,8 +18,8 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    //    var siteLabel = UILabel()
-    //    var dateLabel = UILabel()
+    var siteLabel = UILabel()
+    var dateLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,26 +9,45 @@ import Foundation
 
 protocol FeedInteractorProtocol {
     func feedPrefetching(indexPaths: [IndexPath])
+    func getArticlesData() -> [Article]
+    func getArticles(howManySkip: Int, completion: @escaping () -> ())
+    func numberOfRowsInSection(section: Int) -> Int
+    func cellForRowAt (indexPath: IndexPath) -> Article
 }
 
 class FeedInteractor: FeedInteractorProtocol {
-    private let networkService: NetworkService
+    private var api = NetworkService.shared
+    var articlesData = [Article]()
     
-    
-    init() {
-        networkService = NetworkService.shared
+    func getArticlesData() -> [Article] {
+        return articlesData
     }
     
-    //    func getArticles(posts: Int) -> (Result<[Article], NetworkError>) {
-    //        networkService.getArticles(postsToSkip: 0) { result in
-    //            switch result {
-    //            case .success(let articles):
-    //                return articles
-    //            case .failure(_):
-    //                return nil
-    //            }
-    //        }
-    //    }
+    func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
+        api.getArticles(postsToSkip: howManySkip) { [weak self] result in
+            switch result {
+            case .success(let articles):
+                for article in articles {
+                    self?.articlesData.append(article)
+                }
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int {
+        guard !articlesData.isEmpty else {
+            return 0
+        }
+        return articlesData.count
+    }
+    
+    func cellForRowAt (indexPath: IndexPath) -> Article {
+        return articlesData[indexPath.row]
+    }
+  
     
     func feedPrefetching(indexPaths: [IndexPath]) {
         //        for index in indexPaths {

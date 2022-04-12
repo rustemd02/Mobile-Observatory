@@ -39,7 +39,6 @@
 		CF1CB18627EF5380003FF24E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18527EF5380003FF24E /* FeedViewController.swift */; };
 		CF1CB18827F1A9E6003FF24E /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */; };
 		CF1CB18A27F1DEED003FF24E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18927F1DEED003FF24E /* Post.swift */; };
-		CF1CB18C27F2E0FA003FF24E /* ArticleFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18B27F2E0FA003FF24E /* ArticleFetchController.swift */; };
 		CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */; };
 		CF296E482800427100616F48 /* Mobile_ObservatoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */; };
 		CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321C27CD37BB0043A12B /* AppDelegate.swift */; };
@@ -114,7 +113,6 @@
 		CF1CB18527EF5380003FF24E /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		CF1CB18927F1DEED003FF24E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		CF1CB18B27F2E0FA003FF24E /* ArticleFetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFetchController.swift; sourceTree = "<group>"; };
 		CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleBuilder.swift; sourceTree = "<group>"; };
 		CF296E452800427100616F48 /* Mobile-ObservatoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile-ObservatoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile_ObservatoryTests.swift; sourceTree = "<group>"; };
@@ -186,6 +184,7 @@
 		04B2C17927FECDE000F0C617 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CF296E4E280553B200616F48 /* ArticleModule */,
 				CF6B18A327FEF577005D09B6 /* FeedModule */,
 				04B2C17427FEC99200F0C617 /* SavedPostsModule */,
 			);
@@ -240,6 +239,42 @@
 				CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */,
 			);
 			path = "Mobile-ObservatoryTests";
+			sourceTree = "<group>";
+		};
+		CF296E4E280553B200616F48 /* ArticleModule */ = {
+			isa = PBXGroup;
+			children = (
+				CF296E51280553CF00616F48 /* Presenter */,
+				CF296E50280553C900616F48 /* Interactor */,
+				CF296E4F280553C400616F48 /* View */,
+			);
+			path = ArticleModule;
+			sourceTree = "<group>";
+		};
+		CF296E4F280553C400616F48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */,
+				CF1CB17E27EF3642003FF24E /* ArticleTableViewCell.xib */,
+				CF1CB17D27EF3642003FF24E /* ArticleTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF296E50280553C900616F48 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18B027FEFBEF005D09B6 /* ArticleDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF296E51280553CF00616F48 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CF2F321027CD37BB0043A12B = {
@@ -341,10 +376,7 @@
 		CF6B18A427FEF5A9005D09B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CF1CB17D27EF3642003FF24E /* ArticleTableViewCell.swift */,
 				CF1CB18527EF5380003FF24E /* FeedViewController.swift */,
-				CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */,
-				CF1CB17E27EF3642003FF24E /* ArticleTableViewCell.xib */,
 				CF1CB18127EF3660003FF24E /* WeatherOnMarsTableViewCell.swift */,
 				CF1CB18227EF3660003FF24E /* WeatherOnMarsTableViewCell.xib */,
 			);
@@ -355,8 +387,6 @@
 			isa = PBXGroup;
 			children = (
 				CF6B18AE27FEFBE3005D09B6 /* FeedInteractor.swift */,
-				CF1CB18B27F2E0FA003FF24E /* ArticleFetchController.swift */,
-				CF6B18B027FEFBEF005D09B6 /* ArticleDetailInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -365,7 +395,6 @@
 			isa = PBXGroup;
 			children = (
 				CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */,
-				CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -395,6 +424,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF2F323027CD37BD0043A12B /* Build configuration list for PBXNativeTarget "Mobile-Observatory" */;
 			buildPhases = (
+				CF296E522805589A00616F48 /* Run Script */,
 				0BFB162EABF0AD0510A92F80 /* [CP] Check Pods Manifest.lock */,
 				CF2F321527CD37BB0043A12B /* Sources */,
 				CF2F321627CD37BB0043A12B /* Frameworks */,
@@ -512,6 +542,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mobile-Observatory/Pods-Mobile-Observatory-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CF296E522805589A00616F48 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -553,7 +601,6 @@
 				04B2C16F27FEC65200F0C617 /* FlowCoordinatorProtocol.swift in Sources */,
 				CFEEA53427D5284200E05249 /* SearchResult.swift in Sources */,
 				CF1CB18827F1A9E6003FF24E /* ArticleDetailViewController.swift in Sources */,
-				CF1CB18C27F2E0FA003FF24E /* ArticleFetchController.swift in Sources */,
 				CF2F323B27CD39710043A12B /* PictureOfDay.swift in Sources */,
 				CF1CB18627EF5380003FF24E /* FeedViewController.swift in Sources */,
 				04CF3D4327F0896300685553 /* ArticleEntity.swift in Sources */,

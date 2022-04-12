@@ -27,14 +27,17 @@ class FeedPresenter: FeedPresenterProtocol {
         
     }
     
-    func getArticles() {
-        
-    }
+    
     
     
 }
 
 extension FeedPresenter: ViewControllerOutput {
+    
+    func getArticlesData() -> [Article] {
+        return interactor.getArticlesData()
+    }
+    
     
     
     func viewDidLoad() {
@@ -44,6 +47,21 @@ extension FeedPresenter: ViewControllerOutput {
     func didSelectRow(at: Int) {
         
     }
+    
+    
+    func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
+        return interactor.getArticles(howManySkip: howManySkip, completion: completion)
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int {
+        return interactor.numberOfRowsInSection(section: section)
+    }
+    
+    func cellForRowAt (indexPath: IndexPath) -> Article {
+        return interactor.cellForRowAt(indexPath: indexPath)
+    }
+    
+    
     
     
     
