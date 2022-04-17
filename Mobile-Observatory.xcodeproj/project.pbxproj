@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040C725927E73B09008A268A /* LocalFilesService.swift */; };
-		046EBE192800842000677839 /* Mobile_ObservatoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EBE182800842000677839 /* Mobile_ObservatoryTests.swift */; };
+		046EBE192800842000677839 /* MobileObservatory_CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EBE182800842000677839 /* MobileObservatory_CoreDataTests.swift */; };
 		04B2C16F27FEC65200F0C617 /* FlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */; };
 		04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */; };
 		04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */; };
@@ -87,7 +87,7 @@
 		046EBE072800765D00677839 /* SwiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		046EBE0928007C5600677839 /* SwiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		046EBE0F2800840800677839 /* Mobile-ObservatoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile-ObservatoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		046EBE182800842000677839 /* Mobile_ObservatoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mobile_ObservatoryTests.swift; sourceTree = "<group>"; };
+		046EBE182800842000677839 /* MobileObservatory_CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileObservatory_CoreDataTests.swift; sourceTree = "<group>"; };
 		046EBE1A280086AC00677839 /* SwiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		046EBE102800840800677839 /* Mobile-ObservatoryTests */ = {
 			isa = PBXGroup;
 			children = (
-				046EBE182800842000677839 /* Mobile_ObservatoryTests.swift */,
+				046EBE182800842000677839 /* MobileObservatory_CoreDataTests.swift */,
 			);
 			path = "Mobile-ObservatoryTests";
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046EBE192800842000677839 /* Mobile_ObservatoryTests.swift in Sources */,
+				046EBE192800842000677839 /* MobileObservatory_CoreDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

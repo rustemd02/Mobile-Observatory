@@ -34,3 +34,15 @@ struct PictureOfDay: Decodable, Post {
         self.imageLocalPath = imageLocalPath
     }
 }
+
+extension PictureOfDay: Equatable {
+    
+    static func == (larc: PictureOfDay, rarc: PictureOfDay) -> Bool {
+            return
+                larc.date == rarc.date &&
+                larc.description == rarc.description &&
+                larc.title == rarc.title &&
+                larc.imageUrl == rarc.imageUrl &&
+                larc.imageLocalPath == rarc.imageLocalPath
+    }
+}

@@ -20,6 +20,16 @@ struct NearEarthAsteroids: Decodable {
     }
 }
 
+extension NearEarthAsteroids: Equatable {
+    
+    static func == (larc: NearEarthAsteroids, rarc: NearEarthAsteroids) -> Bool {
+            return
+                larc.prevLink == rarc.prevLink &&
+                larc.nextLink == rarc.nextLink &&
+                larc.asteroids == rarc.asteroids
+    }
+}
+
 struct Asteroid: Decodable {
     
     var uuid: UUID?
@@ -42,5 +52,19 @@ struct Asteroid: Decodable {
         self.approachDate = approachDate
         self.velocity = velocity
         self.missDistance = missDistance
+    }
+}
+
+extension Asteroid: Equatable {
+    
+    static func == (larc: Asteroid, rarc: Asteroid) -> Bool {
+            return
+                larc.name == rarc.name &&
+                larc.infoLink == rarc.infoLink &&
+                larc.estimatedDiameter == rarc.estimatedDiameter &&
+                larc.isHazardous == rarc.isHazardous &&
+                larc.approachDate == rarc.approachDate &&
+                larc.velocity == rarc.velocity &&
+                larc.missDistance == rarc.missDistance
     }
 }

@@ -59,7 +59,7 @@ extension PictureOfEarthEntity : Identifiable {
     func convertToFeedEntity() -> PictureOfEarthElement {
         let coordinates: CentroidCoordinates = CentroidCoordinates(lat: Double(truncating: latitude), lon: Double(truncating: longtitude))
         return PictureOfEarthElement(imageUrl: pictureURL!,
-                                     imageLocalPath: pictureLocalPath!,
+                                     imageLocalPath: pictureLocalPath,
                                      centroidCoordinates: coordinates, date: date!)
     }
 }

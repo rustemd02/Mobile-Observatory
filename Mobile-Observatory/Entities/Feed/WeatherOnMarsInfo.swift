@@ -45,3 +45,17 @@ struct WeatherOnMarsInfo: Decodable, Post {
 
 }
 
+extension WeatherOnMarsInfo: Equatable {
+    
+    static func == (larc: WeatherOnMarsInfo, rarc: WeatherOnMarsInfo) -> Bool {
+            return
+                larc.sol == rarc.sol &&
+                larc.earthDate == rarc.earthDate &&
+                larc.minTemp == rarc.minTemp &&
+                larc.maxTemp == rarc.maxTemp &&
+                larc.pressure == rarc.pressure &&
+                larc.pressureString == rarc.pressureString &&
+                larc.atmoOpacity == rarc.atmoOpacity &&
+                larc.monthOnMars == rarc.monthOnMars
+    }
+}

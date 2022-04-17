@@ -46,11 +46,11 @@ extension Article: Equatable {
     
     static func == (larc: Article, rarc: Article) -> Bool {
             return
-                larc.title != rarc.title &&
-                larc.createdAt != rarc.createdAt &&
-                larc.summary != rarc.summary &&
-                larc.pictureUrl != rarc.pictureUrl &&
-                larc.articleUrl != rarc.articleUrl &&
-                larc.newsSite != rarc.newsSite
+                larc.title == rarc.title &&
+                larc.createdAt == rarc.createdAt &&
+                larc.summary == rarc.summary &&
+                larc.pictureUrl == rarc.pictureUrl &&
+                larc.articleUrl == rarc.articleUrl &&
+                larc.newsSite == rarc.newsSite
     }
 }

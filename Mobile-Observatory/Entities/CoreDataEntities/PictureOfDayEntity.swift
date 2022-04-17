@@ -54,11 +54,11 @@ extension PictureOfDayEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> PictureOfDay {
-        return PictureOfDay(uuid: id,
+        return PictureOfDay(uuid: nil,
                             date: date!,
-                            description: description,
+                            description: descr!,
                             title: title!,
                             imageUrl: pictureURL ?? "",
-                            imageLocalPath: pictureLocalPath ?? "")
+                            imageLocalPath: pictureLocalPath)
     }
 }

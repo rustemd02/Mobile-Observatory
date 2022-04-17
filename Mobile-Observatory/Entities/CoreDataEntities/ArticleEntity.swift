@@ -66,7 +66,7 @@ extension ArticleEntity : Identifiable {
                        createdAt: createdAt!,
                        summary: summary!,
                        pictureUrl: pictureURL ?? "",
-                       pictureLocalPath: pictureLocalPath ?? "",
+                       pictureLocalPath: pictureLocalPath,
                        articleUrl: articleUrl ?? "",
                        newsSite: newsSite!)
     }

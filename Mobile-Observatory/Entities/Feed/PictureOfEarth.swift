@@ -22,6 +22,17 @@ struct PictureOfEarthElement: Codable, Post {
     }
 }
 
+extension PictureOfEarthElement: Equatable {
+    
+    static func == (larc: PictureOfEarthElement, rarc: PictureOfEarthElement) -> Bool {
+            return
+                larc.imageUrl == rarc.imageUrl &&
+                larc.imageLocalPath == rarc.imageLocalPath &&
+                larc.centroidCoordinates == rarc.centroidCoordinates &&
+                larc.date == rarc.date
+    }
+}
+
 // MARK: - CentroidCoordinates
 struct CentroidCoordinates: Codable {
     var lat, lon: Double
@@ -29,6 +40,15 @@ struct CentroidCoordinates: Codable {
     init(lat: Double, lon: Double) {
         self.lat = lat
         self.lon = lon
+    }
+}
+
+extension CentroidCoordinates: Equatable {
+    
+    static func == (larc: CentroidCoordinates, rarc: CentroidCoordinates) -> Bool {
+            return
+                larc.lat == rarc.lat &&
+                larc.lon == rarc.lon
     }
 }
 

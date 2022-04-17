@@ -46,6 +46,50 @@ class CoreDataService{
         }
     }
     
+    public func deleteWeatherOnMarsInfo(_ weatherOnMarsInfo: WeatherOnMarsInfo){
+        saveContext.perform {
+            let fetchRequest = WeatherOnMarsInfoEntity.fetchRequest()
+            var entities: [WeatherOnMarsInfoEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == weatherOnMarsInfo){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllWeatherOnMarsInfos(){
+        saveContext.perform {
+            let fetchRequest = WeatherOnMarsInfoEntity.fetchRequest()
+            var entities: [WeatherOnMarsInfoEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
     public func getAllWeatherOnMarsInfo() -> [WeatherOnMarsInfo]{
         let fetchRequest = WeatherOnMarsInfoEntity.fetchRequest()
         var weatherEntities: [WeatherOnMarsInfoEntity] = []
@@ -75,7 +119,51 @@ class CoreDataService{
             }}
     }
     
-    public func getAllPictureOfDay() -> [PictureOfDay]{
+    public func deletePictureOfDay(_ pictureOfDay: PictureOfDay){
+        saveContext.perform {
+            let fetchRequest = PictureOfDayEntity.fetchRequest()
+            var entities: [PictureOfDayEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == pictureOfDay){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllPicturesOfDay(){
+        saveContext.perform {
+            let fetchRequest = PictureOfDayEntity.fetchRequest()
+            var entities: [PictureOfDayEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func getAllPicturesOfDay() -> [PictureOfDay]{
         let fetchRequest = PictureOfDayEntity.fetchRequest()
         var entities: [PictureOfDayEntity] = []
         var feedEntities: [PictureOfDay] = []
@@ -101,6 +189,50 @@ class CoreDataService{
             
             do {
                 try context.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteNearEarthAsteroids(_ nearEarthAsteroids: NearEarthAsteroids){
+        saveContext.perform {
+            let fetchRequest = NearEarthAsteroidsEntity.fetchRequest()
+            var entities: [NearEarthAsteroidsEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == nearEarthAsteroids){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllNearEarthAsteroids(){
+        saveContext.perform {
+            let fetchRequest = NearEarthAsteroidsEntity.fetchRequest()
+            var entities: [NearEarthAsteroidsEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
+            do {
+                try self.saveContext.save()
             } catch let error {
                 print("Error: \(error)")
             }
@@ -234,6 +366,50 @@ class CoreDataService{
         return nil
     }
     
+    public func deletePictureFromMars(_ pictureFromMars: PictureFromMars){
+        saveContext.perform {
+            let fetchRequest = PicturesFromMarsCollectionEntity.fetchRequest()
+            var entities: [PicturesFromMarsCollectionEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == pictureFromMars){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllPicturesFromMars(){
+        saveContext.perform {
+            let fetchRequest = PictureFromMarsEntity.fetchRequest()
+            var entities: [PictureFromMarsEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
     public func getAllPicturesFromMars() -> [PictureFromMars]{
         let fetchRequest = PicturesFromMarsCollectionEntity.fetchRequest()
         var entities: [PicturesFromMarsCollectionEntity] = []
@@ -254,6 +430,50 @@ class CoreDataService{
         saveContext.perform {
             let pictureOfEarthEntity = PictureOfEarthEntity(context: self.saveContext)
             pictureOfEarthEntity.update(with: pictureOfEarth)
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deletePictureOfEarth(_ pictureOfEarthElement: PictureOfEarthElement){
+        saveContext.perform {
+            let fetchRequest = PictureOfEarthEntity.fetchRequest()
+            var entities: [PictureOfEarthEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == pictureOfEarthElement){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllPictureOfEarthElements(){
+        saveContext.perform {
+            let fetchRequest = PictureOfEarthEntity.fetchRequest()
+            var entities: [PictureOfEarthEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
             do {
                 try self.saveContext.save()
             } catch let error {
@@ -285,6 +505,50 @@ class CoreDataService{
             let moons: NSSet = self.convertMoonsArrayToSet(moons: planet.moons, planet: planetEntity)
             planetEntity.addToMoons(moons)
             
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deletePictureFromMars(_ planet: Planet){
+        saveContext.perform {
+            let fetchRequest = PlanetEntity.fetchRequest()
+            var entities: [PlanetEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == planet){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllPlanets(){
+        saveContext.perform {
+            let fetchRequest = PlanetEntity.fetchRequest()
+            var entities: [PlanetEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
             do {
                 try self.saveContext.save()
             } catch let error {
@@ -520,6 +784,50 @@ class CoreDataService{
             print(error)
         }
         return nil
+    }
+    
+    public func deleteSearchResult(_ searchResult: SearchResult){
+        saveContext.perform {
+            let fetchRequest = SearchResultEntity.fetchRequest()
+            var entities: [SearchResultEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                let e = entity.convertToFeedEntity()
+                if(e == searchResult){
+                    self.saveContext.delete(entity)
+                    break
+                }
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    public func deleteAllSearchResults(){
+        saveContext.perform {
+            let fetchRequest = SearchResultEntity.fetchRequest()
+            var entities: [SearchResultEntity] = []
+            do {
+                entities = try self.saveContext.fetch(fetchRequest)
+            } catch {
+                print(error)
+            }
+            for entity in entities {
+                self.saveContext.delete(entity)
+            }
+            do {
+                try self.saveContext.save()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
     }
     
     public func getAllSearchResults() -> [SearchResult]{
