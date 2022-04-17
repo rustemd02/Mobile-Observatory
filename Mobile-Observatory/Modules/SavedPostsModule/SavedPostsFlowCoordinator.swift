@@ -19,7 +19,12 @@ final class SavedPostsFlowCoordinator: FlowCoordinatorProtocol {
     }
 
     func start(animated: Bool) {
-        rootController.appendView(SavedPostsModuleBuilder().build(), item: .contacts)
+        
+        let tabBarItem: UITabBarItem = UITabBarItem()
+        tabBarItem.title = "Saved posts"
+        tabBarItem.image = UIImage(systemName: "suit.heart")
+        tabBarItem.image = UIImage(systemName: "suit.heart.fill")
+        rootController.appendView(SavedPostsModuleBuilder().build(), item: tabBarItem)
     }
 
     func finish(animated: Bool) {

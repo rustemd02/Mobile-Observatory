@@ -63,8 +63,8 @@ extension SearchResultEntity {
 extension SearchResultEntity : Identifiable {
     
     func convertToFeedEntity() -> SearchResult {
-        
         let collection = Collection(items: items?.allObjects as! [Item])
-        return SearchResult(collection: collection, links: collectionLinks?.allObjects as? [CollectionLink])
+        return SearchResult(collection: collection,
+                            links: collectionLinks?.allObjects as? [CollectionLink])
     }
 }

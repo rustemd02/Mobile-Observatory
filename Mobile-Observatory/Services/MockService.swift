@@ -28,6 +28,6 @@ class MockService{
     }
     
     func savePosts(){
-    CoreDataService.shared.saveArticle(Article(id: 1, title: "Hello", createdAt: Date(milliseconds: 1), summary: "summary", pictureUrl: URL(fileURLWithPath: ""), pictureLocalPath: nil, articleUrl: URL(fileURLWithPath: ""), newsSite: "vigvamcev.com"))
+    CoreDataService.shared.saveArticle(Article(id: 1, title: "Hello", createdAt: Date(milliseconds: 1), summary: "summary", pictureUrl: "", pictureLocalPath: nil, articleUrl: "", newsSite: "vigvamcev.com"))
     }
 }

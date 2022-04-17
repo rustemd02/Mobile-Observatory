@@ -51,6 +51,8 @@ extension NearEarthAsteroidsEntity : Identifiable {
     
     func convertToFeedEntity() -> NearEarthAsteroids {
         
-        return NearEarthAsteroids(prevLink: URL.init(fileURLWithPath: nextLink ?? ""), nextLink: URL.init(fileURLWithPath: prevLink ?? ""), asteroids: asteroids?.allObjects as! [Asteroid])
+        return NearEarthAsteroids(prevLink: nextLink ?? "",
+                                  nextLink: prevLink ?? "",
+                                  asteroids: asteroids?.allObjects as! [Asteroid])
     }
 }

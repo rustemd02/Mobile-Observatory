@@ -46,17 +46,6 @@ class SavedPostsViewController: UIViewController {
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview().inset(500)
         }
-        
-        let label = UILabel()
-        label.text = "Saved posts"
-        label.textAlignment = .center
-        label.sizeToFit()
-        view.addSubview(label)
-        label.snp.makeConstraints{ maker in
-            maker.left.equalToSuperview().inset(100)
-            maker.right.equalToSuperview().inset(100)
-            maker.top.equalToSuperview().inset(50)
-        }
     }
 }
 

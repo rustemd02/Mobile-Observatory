@@ -31,9 +31,10 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
 }
 
 extension MainFlowCoordinator: TabBarFlowCoordinatorProtocol {
-    func appendView(_ view: UIViewController, item: UITabBarItem.SystemItem) {
+    func appendView(_ view: UIViewController, item: UITabBarItem) {
         let navigationController = UINavigationController(rootViewController: view)
-        navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: item, tag: tabBarView.children.count)
-        tabBarView.addChild(view)
+        item.tag = tabBarView.children.count
+        navigationController.tabBarItem = item
+        tabBarView.addChild(navigationController)
     }
 }

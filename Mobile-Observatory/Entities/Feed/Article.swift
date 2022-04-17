@@ -15,9 +15,9 @@ struct Article: Decodable, Post {
     var title: String
     var createdAt: Date
     var summary: String
-    var pictureUrl: URL
-    var pictureLocalPath: URL?
-    var articleUrl: URL
+    var pictureUrl: String
+    var pictureLocalPath: String?
+    var articleUrl: String
     var newsSite: String
     
     enum CodingKeys: String, CodingKey {
@@ -30,7 +30,7 @@ struct Article: Decodable, Post {
         case newsSite = "newsSite"
     }
     
-    init(id: Int, title: String, createdAt: Date, summary: String, pictureUrl: URL, pictureLocalPath: URL?, articleUrl: URL, newsSite: String) {
+    init(id: Int, title: String, createdAt: Date, summary: String, pictureUrl: String, pictureLocalPath: String?, articleUrl: String, newsSite: String) {
         self.id = id
         self.title = title
         self.createdAt = createdAt
@@ -46,12 +46,11 @@ extension Article: Equatable {
     
     static func == (larc: Article, rarc: Article) -> Bool {
             return
-//                larc.id != rarc.id &&
                 larc.title != rarc.title &&
-//                larc.createdAt != rarc.createdAt &&
+                larc.createdAt != rarc.createdAt &&
                 larc.summary != rarc.summary &&
-//                larc.pictureUrl != rarc.pictureUrl &&
-//                larc.articleUrl != rarc.articleUrl &&
+                larc.pictureUrl != rarc.pictureUrl &&
+                larc.articleUrl != rarc.articleUrl &&
                 larc.newsSite != rarc.newsSite
     }
 }

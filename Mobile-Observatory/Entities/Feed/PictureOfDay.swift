@@ -14,8 +14,8 @@ struct PictureOfDay: Decodable, Post {
     var date: Date
     var description: String
     var title: String
-    var imageUrl: URL
-    var imageLocalPath: URL?
+    var imageUrl: String
+    var imageLocalPath: String?
     
     enum CodingKeys: String, CodingKey {
         case date = "date"
@@ -25,7 +25,7 @@ struct PictureOfDay: Decodable, Post {
         
     }
     
-    init(uuid: UUID?, date: Date, description: String, title: String, imageUrl: URL, imageLocalPath: URL?) {
+    init(uuid: UUID?, date: Date, description: String, title: String, imageUrl: String, imageLocalPath: String?) {
         self.uuid = uuid
         self.date = date
         self.description = description

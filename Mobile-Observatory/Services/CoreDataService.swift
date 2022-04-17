@@ -13,7 +13,7 @@ class CoreDataService{
     
     // MARK: - Properties
     static let shared = CoreDataService()
-    private let fileManager = LocalFileManager.shared
+    private let fileManager = LocalFilesService.shared
     
     // MARK: - Core Data stack
     lazy public var persistentContainer: NSPersistentContainer = {
@@ -94,8 +94,8 @@ class CoreDataService{
     public func saveNearEarthAsteroids(_ nearEarthAsteroids: NearEarthAsteroids){
         persistentContainer.performBackgroundTask{ (context) in
             let nearEarthAsteroidsEntity = NearEarthAsteroidsEntity(context: context)
-            nearEarthAsteroidsEntity.nextLink = nearEarthAsteroids.nextLink.absoluteString
-            nearEarthAsteroidsEntity.prevLink = nearEarthAsteroids.prevLink.absoluteString
+            nearEarthAsteroidsEntity.nextLink = nearEarthAsteroids.nextLink
+            nearEarthAsteroidsEntity.prevLink = nearEarthAsteroids.prevLink
             let asteroids: NSSet = self.convertAsteroidsArrayToSet(asteroids: nearEarthAsteroids.asteroids)
             nearEarthAsteroidsEntity.addToAsteroids(asteroids)
             

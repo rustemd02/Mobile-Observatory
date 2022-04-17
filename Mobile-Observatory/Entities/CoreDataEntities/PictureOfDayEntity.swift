@@ -36,11 +36,11 @@ extension PictureOfDayEntity : Identifiable {
         title = pictureOfDay.title
         descr = pictureOfDay.description
         date = pictureOfDay.date
-        pictureURL = pictureOfDay.imageUrl.absoluteString
+        pictureURL = pictureOfDay.imageUrl
         
         var uiImage: UIImage = UIImage()
         
-        NetworkService.shared.getImageByUrl(url: pictureOfDay.imageUrl.absoluteString){
+        NetworkService.shared.getImageByUrl(url: pictureOfDay.imageUrl){
             image in
             do{
                 uiImage = try image.get()
@@ -48,12 +48,17 @@ extension PictureOfDayEntity : Identifiable {
                 print("Error: \(error)")
             }
         }
-        let localPath = LocalFileManager.shared.saveImage(image: uiImage, name: pictureOfDay.imageUrl.lastPathComponent)
+        let imageUrl = URL.init(string: pictureOfDay.imageUrl)
+        let localPath = LocalFilesService.shared.saveImage(image: uiImage, name: imageUrl!.lastPathComponent)
         pictureLocalPath = localPath?.absoluteString
     }
     
     func convertToFeedEntity() -> PictureOfDay {
-        
-        return PictureOfDay(uuid: id, date: date!, description: description, title: title!, imageUrl: URL.init(fileURLWithPath: pictureURL ?? ""), imageLocalPath: URL.init(fileURLWithPath: pictureLocalPath ?? ""))
+        return PictureOfDay(uuid: id,
+                            date: date!,
+                            description: description,
+                            title: title!,
+                            imageUrl: pictureURL ?? "",
+                            imageLocalPath: pictureLocalPath ?? "")
     }
 }
