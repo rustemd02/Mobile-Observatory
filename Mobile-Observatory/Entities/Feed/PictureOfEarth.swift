@@ -27,7 +27,6 @@ extension PictureOfEarthElement: Equatable {
     static func == (larc: PictureOfEarthElement, rarc: PictureOfEarthElement) -> Bool {
             return
                 larc.imageUrl == rarc.imageUrl &&
-                larc.imageLocalPath == rarc.imageLocalPath &&
                 larc.centroidCoordinates == rarc.centroidCoordinates &&
                 larc.date == rarc.date
     }

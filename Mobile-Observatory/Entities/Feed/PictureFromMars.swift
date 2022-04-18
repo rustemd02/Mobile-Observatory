@@ -61,7 +61,6 @@ extension Photo: Equatable {
                 larc.id == rarc.id &&
                 larc.sol == rarc.sol &&
                 larc.imgSrc == rarc.imgSrc &&
-                larc.imgLocalPath == rarc.imgLocalPath &&
                 larc.earthDate == rarc.earthDate &&
                 larc.rover == rarc.rover
     }

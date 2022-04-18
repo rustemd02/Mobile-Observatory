@@ -19,3 +19,4 @@ class SavedPostsInteractor {
         return coreDataService.getAllArticles()
     }
 }
+ 

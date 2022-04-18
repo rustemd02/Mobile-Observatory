@@ -42,7 +42,6 @@ extension PictureOfDay: Equatable {
                 larc.date == rarc.date &&
                 larc.description == rarc.description &&
                 larc.title == rarc.title &&
-                larc.imageUrl == rarc.imageUrl &&
-                larc.imageLocalPath == rarc.imageLocalPath
+                larc.imageUrl == rarc.imageUrl
     }
 }
