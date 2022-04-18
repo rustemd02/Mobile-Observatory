@@ -50,7 +50,7 @@ extension NearEarthAsteroidsEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> NearEarthAsteroids {
-        
+        // swiftlint:disable:next force_cast
         return NearEarthAsteroids(prevLink: URL.init(fileURLWithPath: nextLink ?? ""), nextLink: URL.init(fileURLWithPath: prevLink ?? ""), asteroids: asteroids?.allObjects as! [Asteroid])
     }
 }

@@ -64,7 +64,7 @@ extension AsteroidEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> Asteroid {
-        
+        // swiftlint:disable:next force_cast
         return Asteroid(uuid: uuid, id: id as! Int, name: name!, infoLink: URL.init(fileURLWithPath: infoLink ?? ""), estimatedDiameter: Float(truncating: estimatedDiameter), isHazardous: isHazardous, approachDate: approachDate!, velocity: Float(truncating: velocity), missDistance: Float(truncating: missDistance))
     }
 }
