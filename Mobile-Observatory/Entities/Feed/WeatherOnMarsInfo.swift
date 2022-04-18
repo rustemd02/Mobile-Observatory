@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct WeatherOnMarsInfo: Decodable {
-    
+
+struct WeatherOnMarsInfo: Decodable, Post {
+
     var id: Int?
     var sol: Int
     var earthDate: Date

@@ -60,7 +60,7 @@ extension PlanetEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> Planet {
-        
+        // swiftlint:disable:next force_cast
         return Planet(name: name!, moons: moons?.allObjects as! [String], mass: Float(truncating: mass), radius: Float(truncating: radius), discoveredWhen: discoveredWhen, gravity: Float(truncating: gravity), bodyType: bodyType!)
     }
 }

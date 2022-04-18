@@ -9,7 +9,8 @@
 import Foundation
 
 // MARK: - SearchResult
-struct SearchResult: Codable {
+
+struct SearchResult: Codable, Post {
     var collection: Collection
     var links: [CollectionLink]?
     
@@ -17,6 +18,7 @@ struct SearchResult: Codable {
         self.collection = collection
         self.links = links
     }
+
 }
 
 // MARK: - Collection

@@ -8,12 +8,14 @@
 import Foundation
 
 
-struct PictureFromMars: Codable {
+
+struct PictureFromMars: Codable, Post {
     var photos: [Photo]
     
     init(photos: [Photo]) {
         self.photos = photos
     }
+
 }
 
 // MARK: - Photo

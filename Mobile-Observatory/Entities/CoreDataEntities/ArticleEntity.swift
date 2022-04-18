@@ -60,7 +60,7 @@ extension ArticleEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> Article {
-        
+        // swiftlint:disable:next force_cast
         return Article(id: Int(truncating: id), title: title!, createdAt: createdAt!, summary: summary!, pictureUrl: URL.init(fileURLWithPath: pictureURL ?? ""), pictureLocalPath: URL.init(string: pictureLocalPath!)!, articleUrl: URL.init(fileURLWithPath: articleUrl ?? ""), newsSite: newsSite!)
     }
 }

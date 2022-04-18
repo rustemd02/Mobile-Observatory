@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //для тестирования
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,4 +17,5 @@ class ViewController: UIViewController {
 
 
 }
+
 

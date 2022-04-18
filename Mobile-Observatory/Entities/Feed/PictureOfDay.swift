@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct PictureOfDay: Decodable {
+struct PictureOfDay: Decodable, Post {
     
     var uuid: UUID?
     var date: Date
