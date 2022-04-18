@@ -8,7 +8,7 @@
 import UIKit
 
 final class MainFlowCoordinator: FlowCoordinatorProtocol {
-
+    
     private let rootView: UIViewController
     private var tabBarView: UITabBarController
 
@@ -16,15 +16,14 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
         self.rootView = rootView
         self.tabBarView = tabBarView
     }
-
+    
     func start(animated: Bool) {
+        let feedFlow = FeedFlowCoordinator(rootController: self)
+        feedFlow.start(animated: true)
         let savedPostsFlow = SavedPostsFlowCoordinator(rootController: self)
         savedPostsFlow.start(animated: true)
-        
-
-        
     }
-
+    
     func finish(animated: Bool) {
         
     }

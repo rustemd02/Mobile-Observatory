@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct PictureFromMars: Codable, Post {
     var photos: [Photo]
     

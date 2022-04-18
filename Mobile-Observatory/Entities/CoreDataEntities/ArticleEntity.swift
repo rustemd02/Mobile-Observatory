@@ -61,6 +61,7 @@ extension ArticleEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> Article {
+        // swiftlint:disable:next force_cast
         return Article(id: Int(truncating: id),
                        title: title!,
                        createdAt: createdAt!,

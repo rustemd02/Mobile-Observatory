@@ -7,28 +7,73 @@
 
 import UIKit
 
+protocol ViewControllerInput: AnyObject {
+    func updateView(with items: [Post])
+    func showError()
+    func loadArticles()
+}
+
+protocol ViewControllerOutput {
+    func viewDidLoad()
+    func didSelectRow(at: Int)
+    func getArticles(howManySkip: Int, completion: @escaping () -> ())
+    func numberOfRowsInSection(section: Int) -> Int
+    func cellForRowAt (indexPath: IndexPath) -> Article
+    func getArticlesData() -> [Article]
+}
+
 class FeedViewController: UIViewController, UIScrollViewDelegate {
     let api = NetworkService.shared
-    var howManyArticlesToSkip = 100
+    private var output: ViewControllerOutput
+    var howManyArticlesToSkip = 0
     private var isFetching = false
-    var flag: Bool = false
-    private var articleFetch = ArticleFetchController()
+    var feedTableView = UITableView()
     
-    @IBOutlet weak var feedTableView: UITableView!
+    
+    init(output: ViewControllerOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.viewDidLoad()
+        
+        setupView()
         loadArticles()
-        
-        self.feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
-        self.feedTableView.register(UINib.init(nibName: "WeatherOnMarsTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
-        
         feedTableView.delegate = self
         feedTableView.prefetchDataSource = self
+        self.feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        self.feedTableView.register(UINib.init(nibName: "WeatherOnMarsTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         
         feedTableView.refreshControl = UIRefreshControl()
         feedTableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
+    
+    private func setupView() {
+        title = "Лента"
+        view.backgroundColor = .white
+        
+        self.navigationItem.title = "Лента"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        feedTableView = UITableView(frame: view.bounds, style: .plain)
+        feedTableView.delegate = self
+        feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        view.addSubview(feedTableView)
+        feedTableView.snp.makeConstraints{ maker in
+            maker.top.equalToSuperview().inset(100)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+        
+    }
+   
     
     @objc private func didPullToRefresh() {
         howManyArticlesToSkip = 0
@@ -39,7 +84,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     
     private func loadArticles() {
         isFetching = true
-        articleFetch.getArticles(howManySkip: howManyArticlesToSkip) { [weak self] in
+        output.getArticles(howManySkip: howManyArticlesToSkip) { [weak self] in
             self?.feedTableView.dataSource = self
             self?.feedTableView.reloadData()
         }
@@ -49,10 +94,12 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     
 }
 
+
+
 extension FeedViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= (articleFetch.articlesData.count - 3) && !isFetching {
+            if index.row >= (output.getArticlesData().count - 3) && !isFetching {
                 howManyArticlesToSkip+=10
                 print(howManyArticlesToSkip)
                 loadArticles()
@@ -66,7 +113,7 @@ extension FeedViewController: UITableViewDataSourcePrefetching {
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleFetch.numberOfRowsInSection(section: section)
+        return output.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,7 +126,7 @@ extension FeedViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
             return UITableViewCell()
         }
-        let article = articleFetch.cellForRowAt(indexPath: indexPath)
+        let article = output.cellForRowAt(indexPath: indexPath)
         cell.configure(article: article)
         return cell
     }
@@ -90,10 +137,12 @@ extension FeedViewController: UITableViewDataSource {
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let article = articleFetch.cellForRowAt(indexPath: indexPath)
+        let article = output.cellForRowAt(indexPath: indexPath)
         let sb = UIStoryboard(name: "Feed", bundle: nil)
+        // swiftlint:disable:next force_cast
         let vc = sb.instantiateViewController(identifier: "ArticleDetailViewController") as! ArticleDetailViewController
         vc.article = article
         navigationController?.pushViewController(vc, animated: true)
+        //к аутпуту
     }
 }

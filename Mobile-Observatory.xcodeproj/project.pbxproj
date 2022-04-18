@@ -54,6 +54,8 @@
 		CF1CB18827F1A9E6003FF24E /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */; };
 		CF1CB18A27F1DEED003FF24E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18927F1DEED003FF24E /* Post.swift */; };
 		CF1CB18C27F2E0FA003FF24E /* ArticleFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18B27F2E0FA003FF24E /* ArticleFetchController.swift */; };
+		CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */; };
+		CF296E482800427100616F48 /* Mobile_ObservatoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */; };
 		CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321C27CD37BB0043A12B /* AppDelegate.swift */; };
 		CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */; };
 		CF2F322427CD37BB0043A12B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322227CD37BB0043A12B /* Main.storyboard */; };
@@ -62,6 +64,12 @@
 		CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */; };
 		CF2F323427CD37DE0043A12B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF2F323327CD37DE0043A12B /* .gitignore */; };
 		CF2F323D27CD39BC0043A12B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323C27CD39BC0043A12B /* User.swift */; };
+		CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */; };
+		CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */; };
+		CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */; };
+		CF6B18AF27FEFBE3005D09B6 /* FeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18AE27FEFBE3005D09B6 /* FeedInteractor.swift */; };
+		CF6B18B127FEFBEF005D09B6 /* ArticleDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18B027FEFBEF005D09B6 /* ArticleDetailInteractor.swift */; };
+		CF7EC6D727D533BF007197E6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EC6D627D533BF007197E6 /* NetworkService.swift */; };
 		CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52927D512F400E05249 /* Asteroid.swift */; };
 		CFEEA53027D51C1300E05249 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52F27D51C1300E05249 /* Planet.swift */; };
 		CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53127D5227300E05249 /* PictureFromMars.swift */; };
@@ -70,6 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+
 		046EBE132800840800677839 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF2F321127CD37BB0043A12B /* Project object */;
@@ -134,7 +143,9 @@
 		CF1CB18527EF5380003FF24E /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		CF1CB18927F1DEED003FF24E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		CF1CB18B27F2E0FA003FF24E /* ArticleFetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFetchController.swift; sourceTree = "<group>"; };
+		CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleBuilder.swift; sourceTree = "<group>"; };
+		CF296E452800427100616F48 /* Mobile-ObservatoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile-ObservatoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile_ObservatoryTests.swift; sourceTree = "<group>"; };
 		CF2F321927CD37BB0043A12B /* Mobile-Observatory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile-Observatory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2F321C27CD37BB0043A12B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +158,11 @@
 		CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsInfo.swift; sourceTree = "<group>"; };
 		CF2F323A27CD39710043A12B /* PictureOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDay.swift; sourceTree = "<group>"; };
 		CF2F323C27CD39BC0043A12B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowCoordinator.swift; sourceTree = "<group>"; };
+		CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
+		CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailPresenter.swift; sourceTree = "<group>"; };
+		CF6B18AE27FEFBE3005D09B6 /* FeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractor.swift; sourceTree = "<group>"; };
+		CF6B18B027FEFBEF005D09B6 /* ArticleDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailInteractor.swift; sourceTree = "<group>"; };
 		CF7EC6D627D533BF007197E6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CFEEA52927D512F400E05249 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		CFEEA52D27D51A4000E05249 /* PictureOfEarth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfEarth.swift; sourceTree = "<group>"; };
@@ -160,7 +176,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+
 		046EBE0C2800840800677839 /* Frameworks */ = {
+
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -198,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */,
+				CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */,
 				04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */,
 				04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */,
 			);
@@ -219,6 +238,8 @@
 		04B2C17927FECDE000F0C617 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				CF296E4E280553B200616F48 /* ArticleModule */,
+				CF6B18A327FEF577005D09B6 /* FeedModule */,
 				04B2C17427FEC99200F0C617 /* SavedPostsModule */,
 			);
 			path = Modules;
@@ -296,6 +317,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF296E462800427100616F48 /* Mobile-ObservatoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */,
+			);
+			path = "Mobile-ObservatoryTests";
+			sourceTree = "<group>";
+		};
+		CF296E4E280553B200616F48 /* ArticleModule */ = {
+			isa = PBXGroup;
+			children = (
+				CF296E51280553CF00616F48 /* Presenter */,
+				CF296E50280553C900616F48 /* Interactor */,
+				CF296E4F280553C400616F48 /* View */,
+			);
+			path = ArticleModule;
+			sourceTree = "<group>";
+		};
+		CF296E4F280553C400616F48 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */,
+				CF1CB17E27EF3642003FF24E /* ArticleTableViewCell.xib */,
+				CF1CB17D27EF3642003FF24E /* ArticleTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF296E50280553C900616F48 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18B027FEFBEF005D09B6 /* ArticleDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF296E51280553CF00616F48 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		CF2F321027CD37BB0043A12B = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2F321927CD37BB0043A12B /* Mobile-Observatory.app */,
+
 				046EBE0F2800840800677839 /* Mobile-ObservatoryTests.xctest */,
 			);
 			name = Products;
@@ -323,6 +389,7 @@
 				04B2C17927FECDE000F0C617 /* Modules */,
 				04B2C16D27FEC63200F0C617 /* FlowCoordinators */,
 				CF1CB17B27EF33FE003FF24E /* Feed.storyboard */,
+
 				CF2F324027CD3A830043A12B /* Controllers */,
 				CF2F323F27CD39DE0043A12B /* Services */,
 				CF2F323527CD38A00043A12B /* Entities */,
@@ -385,8 +452,47 @@
 				CF1CB18727F1A9E5003FF24E /* ArticleDetailViewController.swift */,
 				CF1CB18527EF5380003FF24E /* FeedViewController.swift */,
 				CF1CB18B27F2E0FA003FF24E /* ArticleFetchController.swift */,
+				CF2F322027CD37BB0043A12B /* ViewController.swift */,
+
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CF6B18A327FEF577005D09B6 /* FeedModule */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18A627FEF5C8005D09B6 /* Presenter */,
+				CF6B18A527FEF5C0005D09B6 /* Interactor */,
+				CF6B18A427FEF5A9005D09B6 /* View */,
+				CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */,
+			);
+			path = FeedModule;
+			sourceTree = "<group>";
+		};
+		CF6B18A427FEF5A9005D09B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF1CB18527EF5380003FF24E /* FeedViewController.swift */,
+				CF1CB18127EF3660003FF24E /* WeatherOnMarsTableViewCell.swift */,
+				CF1CB18227EF3660003FF24E /* WeatherOnMarsTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF6B18A527FEF5C0005D09B6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18AE27FEFBE3005D09B6 /* FeedInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF6B18A627FEF5C8005D09B6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,22 +505,27 @@
 				046EBE0B2800840800677839 /* Sources */,
 				046EBE0C2800840800677839 /* Frameworks */,
 				046EBE0D2800840800677839 /* Resources */,
+
 			);
 			buildRules = (
 			);
 			dependencies = (
+
 				046EBE142800840800677839 /* PBXTargetDependency */,
 			);
 			name = "Mobile-ObservatoryTests";
 			productName = "Mobile-ObservatoryTests";
 			productReference = 046EBE0F2800840800677839 /* Mobile-ObservatoryTests.xctest */;
+
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		CF2F321827CD37BB0043A12B /* Mobile-Observatory */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF2F323027CD37BD0043A12B /* Build configuration list for PBXNativeTarget "Mobile-Observatory" */;
 			buildPhases = (
-				8539E55D34F6AB75178A1DE8 /* [CP] Check Pods Manifest.lock */,
+
+				CF296E522805589A00616F48 /* Run Script */,
+				0BFB162EABF0AD0510A92F80 /* [CP] Check Pods Manifest.lock */,
 				CF2F321527CD37BB0043A12B /* Sources */,
 				CF2F321627CD37BB0043A12B /* Frameworks */,
 				CF2F321727CD37BB0043A12B /* Resources */,
@@ -436,6 +547,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
@@ -469,6 +581,7 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		046EBE0D2800840800677839 /* Resources */ = {
+
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -531,14 +644,35 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CF296E522805589A00616F48 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+
 		046EBE0B2800840800677839 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				046EBE192800842000677839 /* MobileObservatory_CoreDataTests.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,19 +687,29 @@
 				04B2C18F27FEEA9600F0C617 /* NetworkService.swift in Sources */,
 				04B2C18E27FEEA8900F0C617 /* WeatherOnMarsInfo.swift in Sources */,
 				04CF3D5527F0896300685553 /* PicturesFromMarsCollectionEntity.swift in Sources */,
+
 				04B2C18927FED20300F0C617 /* Presenter.swift in Sources */,
+
+				CF6B18B127FEFBEF005D09B6 /* ArticleDetailInteractor.swift in Sources */,
+
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
 				04CF3D3727F0896300685553 /* NearEarthAsteroidsEntity.swift in Sources */,
 				04CF3D4527F0896300685553 /* WeatherOnMarsInfoEntity.swift in Sources */,
 				04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */,
+				CF6B18AF27FEFBE3005D09B6 /* FeedInteractor.swift in Sources */,
+				CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */,
 				CFEEA53027D51C1300E05249 /* Planet.swift in Sources */,
 				04CFF39C27D560120066A8D2 /* CoreDataService.swift in Sources */,
+
 				04B2C19827FF7F5300F0C617 /* MockService.swift in Sources */,
+				CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */,
 				04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */,
+				CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */,
 				04CF3D4127F0896300685553 /* MoonEntity.swift in Sources */,
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
 				CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */,
+				CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */,
 				04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
 				04B2C18727FED1EA00F0C617 /* PresenterProtocols.swift in Sources */,
@@ -573,6 +717,10 @@
 				04CF3D3D27F0896300685553 /* PictureFromMarsEntity.swift in Sources */,
 				04B2C16F27FEC65200F0C617 /* FlowCoordinatorProtocol.swift in Sources */,
 				CFEEA53427D5284200E05249 /* SearchResult.swift in Sources */,
+
+				CF1CB18827F1A9E6003FF24E /* ArticleDetailViewController.swift in Sources */,
+				CF2F323B27CD39710043A12B /* PictureOfDay.swift in Sources */,
+				CF1CB18627EF5380003FF24E /* FeedViewController.swift in Sources */,
 				04CF3D4327F0896300685553 /* ArticleEntity.swift in Sources */,
 				04B2C18127FED10A00F0C617 /* SavedPostsModuleBuilder.swift in Sources */,
 				04CF3D5327F0896300685553 /* RoverEntity.swift in Sources */,
@@ -588,9 +736,19 @@
 				CF1CB18827F1A9E6003FF24E /* ArticleDetailViewController.swift in Sources */,
 				CF1CB18C27F2E0FA003FF24E /* ArticleFetchController.swift in Sources */,
 				CF1CB18627EF5380003FF24E /* FeedViewController.swift in Sources */,
+                
+				CF7EC6D727D533BF007197E6 /* NetworkService.swift in Sources */,
 				CF1CB17F27EF3642003FF24E /* ArticleTableViewCell.swift in Sources */,
+				CF2F323927CD391B0043A12B /* WeatherOnMarsInfo.swift in Sources */,
+
 				CF1CB18327EF3660003FF24E /* WeatherOnMarsTableViewCell.swift in Sources */,
 				CF1CB18A27F1DEED003FF24E /* Post.swift in Sources */,
+
+				
+				CFEEA52E27D51A4000E05249 /* PictureOfEarth.swift in Sources */,
+				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
+				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
+
 				CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */,
 				CFEEA53627D52C7900E05249 /* Article.swift in Sources */,
 				04CF3D3F27F0896300685553 /* SearchResultItemEntity.swift in Sources */,
@@ -603,10 +761,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+
 		046EBE142800840800677839 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CF2F321827CD37BB0043A12B /* Mobile-Observatory */;
 			targetProxy = 046EBE132800840800677839 /* PBXContainerItemProxy */;
+
 		};
 /* End PBXTargetDependency section */
 
@@ -630,12 +790,15 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+
 		046EBE162800840800677839 /* Debug */ = {
+
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+
 				DEVELOPMENT_TEAM = 7944299YL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -644,6 +807,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vigvamcev-media.Mobile-ObservatoryTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -654,12 +818,15 @@
 			};
 			name = Debug;
 		};
+
 		046EBE172800840800677839 /* Release */ = {
+
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+
 				DEVELOPMENT_TEAM = 7944299YL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -668,6 +835,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vigvamcev-media.Mobile-ObservatoryTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -881,11 +1049,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+
 		046EBE152800840800677839 /* Build configuration list for PBXNativeTarget "Mobile-ObservatoryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				046EBE162800840800677839 /* Debug */,
 				046EBE172800840800677839 /* Release */,
+
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
