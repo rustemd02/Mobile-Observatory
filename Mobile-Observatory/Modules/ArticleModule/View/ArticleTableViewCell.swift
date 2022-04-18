@@ -13,6 +13,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var createdAtLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     
     override func awakeFromNib() {
@@ -30,7 +31,17 @@ class ArticleTableViewCell: UITableViewCell {
         
         self.sourceLabel.text = article.newsSite
         self.summaryLabel.text = article.summary
+        
+        
+        
+        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        
     }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        
+    }
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
