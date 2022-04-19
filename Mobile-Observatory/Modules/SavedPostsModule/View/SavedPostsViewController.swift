@@ -10,11 +10,11 @@ import UIKit
 
 class SavedPostsViewController: UIViewController {
 
-    private let output: ViewControllerOutput
+    private let output: SavedPostsViewControllerOutput
     var tableView = UITableView()
     var savedPosts: [Post]?
 
-    init(output: ViewControllerOutput) {
+    init(output: SavedPostsViewControllerOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
         setupView()
@@ -27,6 +27,12 @@ class SavedPostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output.fetchSavedArticles()
+        tableView.reloadData()
     }
 
     private func setupView() {
@@ -44,12 +50,12 @@ class SavedPostsViewController: UIViewController {
             maker.top.equalToSuperview().inset(100)
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
-            maker.bottom.equalToSuperview().inset(500)
+            maker.bottom.equalToSuperview()
         }
     }
 }
 
-extension SavedPostsViewController: ViewControllerInput {
+extension SavedPostsViewController: SavedPostsViewControllerInput {
     func updateView(with items: [Post]) {
         savedPosts = items
         tableView.dataSource = self
@@ -72,7 +78,7 @@ extension SavedPostsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let article = savedPosts?[indexPath.row]
-        cell.configure(article: article as! Article)
+        cell.configure(article: article as! Article, delegate: nil)
         return cell
     }
 }

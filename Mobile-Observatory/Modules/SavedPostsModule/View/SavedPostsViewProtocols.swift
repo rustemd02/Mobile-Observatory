@@ -7,12 +7,13 @@
 
 import Foundation
 
-protocol ViewControllerInput: AnyObject {
+protocol SavedPostsViewControllerInput: AnyObject {
     func updateView(with items: [Post])
     func showError()
 }
 
-protocol ViewControllerOutput {
+protocol SavedPostsViewControllerOutput {
     func viewDidLoad()
     func didSelectRow(at: Int)
+    func fetchSavedArticles()
 }

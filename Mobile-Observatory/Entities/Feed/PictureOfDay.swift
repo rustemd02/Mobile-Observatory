@@ -17,12 +17,13 @@ struct PictureOfDay: Decodable, Post {
     var imageUrl: String
     var imageLocalPath: String?
     
+    var isSaved: Bool?
+    
     enum CodingKeys: String, CodingKey {
         case date = "date"
         case description = "explanation"
         case imageUrl = "url"
         case title = "title"
-        
     }
     
     init(uuid: UUID?, date: Date, description: String, title: String, imageUrl: String, imageLocalPath: String?) {

@@ -9,7 +9,8 @@ import Foundation
 
 
 struct WeatherOnMarsInfo: Decodable, Post {
-
+    var isSaved: Bool?
+    
     var id: Int?
     var sol: Int
     var earthDate: Date

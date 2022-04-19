@@ -7,30 +7,32 @@
 
 import UIKit
 
-protocol ViewControllerInput: AnyObject {
+protocol FeedViewControllerInput: AnyObject {
     func updateView(with items: [Post])
     func showError()
     func loadArticles()
 }
 
-protocol ViewControllerOutput {
+protocol FeedViewControllerOutput {
     func viewDidLoad()
     func didSelectRow(at: Int)
     func getArticles(howManySkip: Int, completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Article
     func getArticlesData() -> [Article]
+    func savePost(post: Post)
+    func removePostFromSaved(post: Post)
 }
 
 class FeedViewController: UIViewController, UIScrollViewDelegate {
     let api = NetworkService.shared
-    private var output: ViewControllerOutput
+    private var output: FeedViewControllerOutput
     var howManyArticlesToSkip = 0
     private var isFetching = false
     var feedTableView = UITableView()
     
     
-    init(output: ViewControllerOutput) {
+    init(output: FeedViewControllerOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
     }
@@ -127,10 +129,9 @@ extension FeedViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let article = output.cellForRowAt(indexPath: indexPath)
-        cell.configure(article: article)
+        cell.configure(article: article, delegate: self)
         return cell
     }
-    
     
 }
 
@@ -144,5 +145,16 @@ extension FeedViewController: UITableViewDelegate {
         vc.article = article
         navigationController?.pushViewController(vc, animated: true)
         //к аутпуту
+    }
+}
+
+extension FeedViewController: SavePostButtonDelegate {
+    
+    func savePost(post: Post) {
+        output.savePost(post: post)
+    }
+    
+    func removePostFromSaved(post: Post) {
+        output.removePostFromSaved(post: post)
     }
 }

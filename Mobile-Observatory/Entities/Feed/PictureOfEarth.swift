@@ -3,6 +3,8 @@ import Foundation
 
 // MARK: - PictureOfEarthElement
 struct PictureOfEarthElement: Codable, Post {
+    var isSaved: Bool?
+    
     var imageUrl: String
     var imageLocalPath: String?
     var centroidCoordinates: CentroidCoordinates

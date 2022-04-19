@@ -20,6 +20,9 @@ struct Article: Decodable, Post {
     var articleUrl: String
     var newsSite: String
     
+    var isSaved: Bool?
+    var type = "ef"
+    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"

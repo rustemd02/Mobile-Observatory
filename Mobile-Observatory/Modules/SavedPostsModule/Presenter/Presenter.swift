@@ -10,7 +10,7 @@ import UIKit
 
 class SavedPostsPresenter {
 
-    weak var view: ViewControllerInput?
+    weak var view: SavedPostsViewControllerInput?
     var interactor: SavedPostsInteractor
     private var isFetching = false
     var posts: [Post] = []
@@ -25,7 +25,12 @@ class SavedPostsPresenter {
     }
 }
 
-extension SavedPostsPresenter: ViewControllerOutput {
+extension SavedPostsPresenter: SavedPostsViewControllerOutput {
+    
+    func fetchSavedArticles() {
+        updateView()
+    }
+    
     func viewDidLoad() {
         updateView()
     }

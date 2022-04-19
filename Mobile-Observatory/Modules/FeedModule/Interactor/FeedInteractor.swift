@@ -13,10 +13,13 @@ protocol FeedInteractorProtocol {
     func getArticles(howManySkip: Int, completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Article
+    func saveArticle(article: Article)
+    func removeArticleFromSaved(article: Article)
 }
 
 class FeedInteractor: FeedInteractorProtocol {
     private var api = NetworkService.shared
+    private var coreData = CoreDataService.shared
     var articlesData = [Article]()
     
     func getArticlesData() -> [Article] {
@@ -58,6 +61,14 @@ class FeedInteractor: FeedInteractorProtocol {
         //                break
         //            }
         //        }
+    }
+    
+    func saveArticle(article: Article) {
+        coreData.saveArticle(article)
+    }
+    
+    func removeArticleFromSaved(article: Article) {
+        coreData.deleteArticle(article)
     }
     
 }

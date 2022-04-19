@@ -8,6 +8,8 @@
 import Foundation
 
 struct PictureFromMars: Codable, Post {
+    var isSaved: Bool?
+    
     var photos: [Photo]
     
     init(photos: [Photo]) {
