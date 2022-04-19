@@ -13,7 +13,7 @@ class FeedModuleBuilder {
         let interactor = FeedInteractor()
         let presenter = FeedPresenter(interactor: interactor)
         let viewController = FeedViewController(output: presenter)
-        presenter.view = viewController as? ViewControllerInput
+        presenter.view = viewController as? FeedViewControllerInput
         return viewController
     }
 }

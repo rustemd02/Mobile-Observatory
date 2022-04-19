@@ -14,23 +14,35 @@ struct PictureOfDay: Decodable, Post {
     var date: Date
     var description: String
     var title: String
-    var imageUrl: URL
-    var imageLocalPath: URL?
+    var imageUrl: String
+    var imageLocalPath: String?
+    
+    var isSaved: Bool?
     
     enum CodingKeys: String, CodingKey {
         case date = "date"
         case description = "explanation"
         case imageUrl = "url"
         case title = "title"
-        
     }
     
-    init(uuid: UUID?, date: Date, description: String, title: String, imageUrl: URL, imageLocalPath: URL?) {
+    init(uuid: UUID?, date: Date, description: String, title: String, imageUrl: String, imageLocalPath: String?) {
         self.uuid = uuid
         self.date = date
         self.description = description
         self.title = title
         self.imageUrl = imageUrl
         self.imageLocalPath = imageLocalPath
+    }
+}
+
+extension PictureOfDay: Equatable {
+    
+    static func == (larc: PictureOfDay, rarc: PictureOfDay) -> Bool {
+            return
+                larc.date == rarc.date &&
+                larc.description == rarc.description &&
+                larc.title == rarc.title &&
+                larc.imageUrl == rarc.imageUrl
     }
 }

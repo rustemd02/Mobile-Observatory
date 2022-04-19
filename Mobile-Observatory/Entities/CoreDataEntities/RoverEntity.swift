@@ -46,7 +46,6 @@ extension RoverEntity {
 extension RoverEntity : Identifiable {
     
     func update(with rover: Rover, photo: PictureFromMarsEntity) {
-        
         id = NSNumber(value: rover.id)
         name = rover.name
         addToPictures(photo)

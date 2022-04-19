@@ -34,16 +34,16 @@ extension ArticleEntity {
 extension ArticleEntity : Identifiable {
 
     func update(with article: Article) {
-        articleUrl = article.articleUrl.absoluteString
+        articleUrl = article.articleUrl
         createdAt = article.createdAt
         newsSite = article.newsSite
         summary = article.summary
         title = article.title
-        pictureURL = article.pictureUrl.absoluteString
+        pictureURL = article.pictureUrl
         
         var uiImage: UIImage? = nil
         
-        NetworkService.shared.getImageByUrl(url: article.pictureUrl.absoluteString){
+        NetworkService.shared.getImageByUrl(url: article.pictureUrl){
             image in
             do{
                 uiImage = try image.get()
@@ -55,12 +55,20 @@ extension ArticleEntity : Identifiable {
             return
         }
         
-        let localPath = LocalFileManager.shared.saveImage(image: uiImage!, name: article.pictureUrl.lastPathComponent)
-        pictureLocalPath = localPath?.absoluteString
+        let imageUrl = URL.init(string: article.pictureUrl)
+        let localPath = LocalFilesService.shared.saveImage(image: uiImage!, name: imageUrl!.lastPathComponent)
+        pictureLocalPath = localPath?.relativeString
     }
     
     func convertToFeedEntity() -> Article {
         // swiftlint:disable:next force_cast
-        return Article(id: Int(truncating: id), title: title!, createdAt: createdAt!, summary: summary!, pictureUrl: URL.init(fileURLWithPath: pictureURL ?? ""), pictureLocalPath: URL.init(string: pictureLocalPath!)!, articleUrl: URL.init(fileURLWithPath: articleUrl ?? ""), newsSite: newsSite!)
+        return Article(id: Int(truncating: id),
+                       title: title!,
+                       createdAt: createdAt!,
+                       summary: summary!,
+                       pictureUrl: pictureURL ?? "",
+                       pictureLocalPath: pictureLocalPath,
+                       articleUrl: articleUrl ?? "",
+                       newsSite: newsSite!)
     }
 }

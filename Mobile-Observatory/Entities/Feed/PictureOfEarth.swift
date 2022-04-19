@@ -2,8 +2,9 @@
 import Foundation
 
 // MARK: - PictureOfEarthElement
-
 struct PictureOfEarthElement: Codable, Post {
+    var isSaved: Bool?
+    
     var imageUrl: String
     var imageLocalPath: String?
     var centroidCoordinates: CentroidCoordinates
@@ -23,6 +24,16 @@ struct PictureOfEarthElement: Codable, Post {
     }
 }
 
+extension PictureOfEarthElement: Equatable {
+    
+    static func == (larc: PictureOfEarthElement, rarc: PictureOfEarthElement) -> Bool {
+            return
+                larc.imageUrl == rarc.imageUrl &&
+                larc.centroidCoordinates == rarc.centroidCoordinates &&
+                larc.date == rarc.date
+    }
+}
+
 // MARK: - CentroidCoordinates
 struct CentroidCoordinates: Codable {
     var lat, lon: Double
@@ -33,5 +44,13 @@ struct CentroidCoordinates: Codable {
     }
 }
 
-typealias PictureOfEarth = [PictureOfEarthElement]
+extension CentroidCoordinates: Equatable {
+    
+    static func == (larc: CentroidCoordinates, rarc: CentroidCoordinates) -> Bool {
+            return
+                larc.lat == rarc.lat &&
+                larc.lon == rarc.lon
+    }
+}
 
+typealias PictureOfEarth = [PictureOfEarthElement]

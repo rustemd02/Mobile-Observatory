@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-class LocalFileManager{
+class LocalFilesService{
     
-    static let shared = LocalFileManager()
+    static let shared = LocalFilesService()
     
     func saveImage(image: UIImage, name:String) -> URL?{
         guard let data = image.jpegData(compressionQuality: 1.0),

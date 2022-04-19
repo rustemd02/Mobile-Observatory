@@ -7,9 +7,9 @@
 
 import Foundation
 
-
-
 struct PictureFromMars: Codable, Post {
+    var isSaved: Bool?
+    
     var photos: [Photo]
     
     init(photos: [Photo]) {
@@ -17,6 +17,15 @@ struct PictureFromMars: Codable, Post {
     }
 
 }
+
+extension PictureFromMars: Equatable {
+    
+    static func == (larc: PictureFromMars, rarc: PictureFromMars) -> Bool {
+            return
+                larc.photos == rarc.photos
+    }
+}
+
 
 // MARK: - Photo
 struct Photo: Codable {
@@ -46,6 +55,18 @@ struct Photo: Codable {
     }
 }
 
+extension Photo: Equatable {
+    
+    static func == (larc: Photo, rarc: Photo) -> Bool {
+            return
+                larc.id == rarc.id &&
+                larc.sol == rarc.sol &&
+                larc.imgSrc == rarc.imgSrc &&
+                larc.earthDate == rarc.earthDate &&
+                larc.rover == rarc.rover
+    }
+}
+
 // MARK: - Rover
 struct Rover: Codable {
     var id: Int
@@ -61,3 +82,11 @@ struct Rover: Codable {
     }
 }
 
+extension Rover: Equatable {
+    
+    static func == (larc: Rover, rarc: Rover) -> Bool {
+            return
+                larc.id == rarc.id &&
+                larc.name == rarc.name
+    }
+}

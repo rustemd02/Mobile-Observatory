@@ -65,6 +65,7 @@ extension SearchResultEntity : Identifiable {
     func convertToFeedEntity() -> SearchResult {
         // swiftlint:disable:next force_cast
         let collection = Collection(items: items?.allObjects as! [Item])
-        return SearchResult(collection: collection, links: collectionLinks?.allObjects as? [CollectionLink])
+        return SearchResult(collection: collection,
+                            links: collectionLinks?.allObjects as? [CollectionLink])
     }
 }

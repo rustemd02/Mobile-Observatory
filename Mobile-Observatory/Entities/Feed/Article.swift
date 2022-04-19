@@ -8,15 +8,20 @@
 import Foundation
 import UIKit
 
-struct Article: Decodable {
+struct Article: Decodable, Post {
+    
+    var uuid: UUID?
     var id: Int
     var title: String
     var createdAt: Date
     var summary: String
-    var pictureUrl: URL
-    var pictureLocalPath: URL?
-    var articleUrl: URL
+    var pictureUrl: String
+    var pictureLocalPath: String?
+    var articleUrl: String
     var newsSite: String
+    
+    var isSaved: Bool?
+    var type = "ef"
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -28,7 +33,7 @@ struct Article: Decodable {
         case newsSite = "newsSite"
     }
     
-    init(id: Int, title: String, createdAt: Date, summary: String, pictureUrl: URL, pictureLocalPath: URL?, articleUrl: URL, newsSite: String) {
+    init(id: Int, title: String, createdAt: Date, summary: String, pictureUrl: String, pictureLocalPath: String?, articleUrl: String, newsSite: String) {
         self.id = id
         self.title = title
         self.createdAt = createdAt
@@ -37,5 +42,18 @@ struct Article: Decodable {
         self.pictureLocalPath = pictureLocalPath
         self.articleUrl = articleUrl
         self.newsSite = newsSite
+    }
+}
+
+extension Article: Equatable {
+    
+    static func == (larc: Article, rarc: Article) -> Bool {
+            return
+                larc.title == rarc.title &&
+                larc.createdAt == rarc.createdAt &&
+                larc.summary == rarc.summary &&
+                larc.pictureUrl == rarc.pictureUrl &&
+                larc.articleUrl == rarc.articleUrl &&
+                larc.newsSite == rarc.newsSite
     }
 }
