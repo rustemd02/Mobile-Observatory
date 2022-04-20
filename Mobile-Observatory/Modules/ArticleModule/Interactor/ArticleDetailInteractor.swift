@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+protocol ArticleDetailInteractorProtocol {
+    func getImage() -> UIImage
+}
+
+class ArticleDetailInteractor: ArticleDetailInteractorProtocol {
+    func getImage() -> UIImage {
+        return UIImage()
+    }
+    
+    
+}

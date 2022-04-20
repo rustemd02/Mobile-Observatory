@@ -41,6 +41,8 @@
 		CF1CB18A27F1DEED003FF24E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18927F1DEED003FF24E /* Post.swift */; };
 		CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */; };
 		CF296E482800427100616F48 /* Mobile_ObservatoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */; };
+		CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */; };
+		CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */; };
 		CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321C27CD37BB0043A12B /* AppDelegate.swift */; };
 		CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */; };
 		CF2F322127CD37BB0043A12B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F322027CD37BB0043A12B /* ViewController.swift */; };
@@ -116,6 +118,8 @@
 		CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleBuilder.swift; sourceTree = "<group>"; };
 		CF296E452800427100616F48 /* Mobile-ObservatoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile-ObservatoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF296E472800427100616F48 /* Mobile_ObservatoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile_ObservatoryTests.swift; sourceTree = "<group>"; };
+		CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailModuleBuilder.swift; sourceTree = "<group>"; };
+		CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailFlowCoordinator.swift; sourceTree = "<group>"; };
 		CF2F321927CD37BB0043A12B /* Mobile-Observatory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile-Observatory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2F321C27CD37BB0043A12B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 				04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */,
 				04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */,
 				04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */,
+				CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */,
 			);
 			path = FlowCoordinators;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				CF296E51280553CF00616F48 /* Presenter */,
 				CF296E50280553C900616F48 /* Interactor */,
 				CF296E4F280553C400616F48 /* View */,
+				CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */,
 			);
 			path = ArticleModule;
 			sourceTree = "<group>";
@@ -594,7 +600,9 @@
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
 				CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */,
+				CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */,
 				CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */,
+				CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */,
 				04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
 				04CF3D3527F0896300685553 /* PlanetEntity.swift in Sources */,

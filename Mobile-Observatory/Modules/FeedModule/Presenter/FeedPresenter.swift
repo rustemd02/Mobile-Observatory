@@ -24,11 +24,7 @@ class FeedPresenter: FeedPresenterProtocol {
     
     func feedPrefethcing(indexPaths: [IndexPath]) {
         //
-        
     }
-    
-    
-    
     
 }
 
@@ -37,7 +33,6 @@ extension FeedPresenter: ViewControllerOutput {
     func getArticlesData() -> [Article] {
         return interactor.getArticlesData()
     }
-    
     
     
     func viewDidLoad() {
@@ -60,9 +55,5 @@ extension FeedPresenter: ViewControllerOutput {
     func cellForRowAt (indexPath: IndexPath) -> Article {
         return interactor.cellForRowAt(indexPath: indexPath)
     }
-    
-    
-    
-    
     
 }

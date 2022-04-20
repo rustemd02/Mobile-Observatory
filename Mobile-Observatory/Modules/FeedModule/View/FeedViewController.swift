@@ -66,7 +66,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
         view.addSubview(feedTableView)
         feedTableView.snp.makeConstraints{ maker in
-            maker.top.equalToSuperview().inset(100)
+            maker.top.equalTo(view.safeAreaLayoutGuide)
             maker.left.equalToSuperview()
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
@@ -138,9 +138,7 @@ extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let article = output.cellForRowAt(indexPath: indexPath)
-        let sb = UIStoryboard(name: "Feed", bundle: nil)
-        // swiftlint:disable:next force_cast
-        let vc = sb.instantiateViewController(identifier: "ArticleDetailViewController") as! ArticleDetailViewController
+        let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
         vc.article = article
         navigationController?.pushViewController(vc, animated: true)
         //к аутпуту
