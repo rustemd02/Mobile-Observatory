@@ -34,7 +34,6 @@ extension WeatherOnMarsInfoEntity {
 extension WeatherOnMarsInfoEntity : Identifiable {
     
     func update(with weatherInfo: WeatherOnMarsInfo) {
-        
         sol = NSNumber(value: weatherInfo.sol)
         atmoOpacity = weatherInfo.atmoOpacity
         earthDate = weatherInfo.earthDate
@@ -46,7 +45,14 @@ extension WeatherOnMarsInfoEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> WeatherOnMarsInfo {
-        // swiftlint:disable:next force_cast
-        return WeatherOnMarsInfo(id: Int(truncating: self.id), sol: Int(truncating: self.sol), earthDate: earthDate!, minTemp: Int(truncating: self.minTemp), maxTemp: Int(truncating: self.maxTemp), pressure: Int(truncating: self.pressure), pressureString: pressureString ?? "", atmoOpacity: atmoOpacity!, monthOnMars: monthOnMars ?? "")
+        return WeatherOnMarsInfo(id: Int(truncating: self.id),
+                                 sol: Int(truncating: self.sol),
+                                 earthDate: earthDate!,
+                                 minTemp: Int(truncating: self.minTemp),
+                                 maxTemp: Int(truncating: self.maxTemp),
+                                 pressure: Int(truncating: self.pressure),
+                                 pressureString: pressureString ?? "",
+                                 atmoOpacity: atmoOpacity!,
+                                 monthOnMars: monthOnMars ?? "")
     }
 }

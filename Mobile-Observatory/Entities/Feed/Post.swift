@@ -8,4 +8,5 @@
 import Foundation
 
 protocol Post {
+    var isSaved: Bool? { get set }
 }

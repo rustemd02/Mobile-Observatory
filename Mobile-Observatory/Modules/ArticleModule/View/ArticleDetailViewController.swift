@@ -103,7 +103,7 @@ class ArticleDetailViewController: UIViewController {
         self.titleLabel.text = article.title
         self.descriptionTextView.text = article.summary
         self.imageView.image = UIImage(named: "loading")
-        NetworkService.shared.getImageByUrl(url: article.pictureUrl.description, completion: { result in
+        NetworkService.shared.getImageByUrl(url: article.pictureUrl, completion: { result in
             switch result {
             case .success(let image):
                 self.imageView.image = image

@@ -25,4 +25,19 @@ struct Planet {
         self.gravity = gravity
         self.bodyType = bodyType
     }
+
+}
+
+extension Planet: Equatable {
+    
+    static func == (larc: Planet, rarc: Planet) -> Bool {
+            return
+                larc.name == rarc.name &&
+                larc.moons == rarc.moons &&
+                larc.mass == rarc.mass &&
+                larc.radius == rarc.radius &&
+                larc.discoveredWhen == rarc.discoveredWhen &&
+                larc.gravity == rarc.gravity &&
+                larc.bodyType == rarc.bodyType
+    }
 }

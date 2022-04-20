@@ -52,13 +52,14 @@ extension PictureOfEarthEntity : Identifiable {
             return
         }
         
-        let localPath = LocalFileManager.shared.saveImage(image: uiImage!, name: pictureOfEarth.imageUrl)
-        pictureLocalPath = localPath?.absoluteString
+        let localPath = LocalFilesService.shared.saveImage(image: uiImage!, name: pictureOfEarth.imageUrl)?.path
+        pictureLocalPath = localPath
     }
     
     func convertToFeedEntity() -> PictureOfEarthElement {
-        
         let coordinates: CentroidCoordinates = CentroidCoordinates(lat: Double(truncating: latitude), lon: Double(truncating: longtitude))
-        return PictureOfEarthElement(imageUrl: pictureURL!, imageLocalPath: pictureLocalPath!, centroidCoordinates: coordinates, date: date!)
+        return PictureOfEarthElement(imageUrl: pictureURL!,
+                                     imageLocalPath: pictureLocalPath,
+                                     centroidCoordinates: coordinates, date: date!)
     }
 }

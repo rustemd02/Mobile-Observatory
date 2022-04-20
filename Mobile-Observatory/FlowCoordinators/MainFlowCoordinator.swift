@@ -11,7 +11,7 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
     
     private let rootView: UIViewController
     private var tabBarView: UITabBarController
-    
+
     init(rootView: UIViewController, tabBarView: UITabBarController) {
         self.rootView = rootView
         self.tabBarView = tabBarView
@@ -20,7 +20,8 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
     func start(animated: Bool) {
         let feedFlow = FeedFlowCoordinator(rootController: self)
         feedFlow.start(animated: true)
-        
+        let savedPostsFlow = SavedPostsFlowCoordinator(rootController: self)
+        savedPostsFlow.start(animated: true)
     }
     
     func finish(animated: Bool) {
@@ -29,9 +30,10 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
 }
 
 extension MainFlowCoordinator: TabBarFlowCoordinatorProtocol {
-    func appendView(_ view: UIViewController, item: UITabBarItem.SystemItem) {
+    func appendView(_ view: UIViewController, item: UITabBarItem) {
         let navigationController = UINavigationController(rootViewController: view)
-        navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: item, tag: tabBarView.children.count)
+        item.tag = tabBarView.children.count
+        navigationController.tabBarItem = item
         tabBarView.addChild(navigationController)
     }
 }

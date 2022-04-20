@@ -20,7 +20,11 @@ final class FeedFlowCoordinator: FlowCoordinatorProtocol {
     }
     
     func start(animated: Bool) {
-        rootController.appendView(FeedModuleBuilder().build(), item: .featured)
+        let tabBarItem: UITabBarItem = UITabBarItem()
+        tabBarItem.title = "Feed"
+        tabBarItem.image = UIImage(systemName: "newspaper")
+        tabBarItem.image = UIImage(systemName: "newspaper.fill")
+        rootController.appendView(FeedModuleBuilder().build(), item: tabBarItem)
     }
     
     func finish(animated: Bool) {

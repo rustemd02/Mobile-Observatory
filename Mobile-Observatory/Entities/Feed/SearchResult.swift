@@ -9,51 +9,62 @@
 import Foundation
 
 // MARK: - SearchResult
-
 struct SearchResult: Codable, Post {
-    var collection: Collection
-    var links: [CollectionLink]?
+    var isSaved: Bool?
     
-    init(collection: Collection, links: [CollectionLink]?) {
-        self.collection = collection
-        self.links = links
-    }
+    let collection: Collection
+    let links: [CollectionLink]?
+}
 
+extension SearchResult: Equatable {
+    
+    static func == (larc: SearchResult, rarc: SearchResult) -> Bool {
+            return
+                larc.collection == rarc.collection &&
+                larc.links == rarc.links
+    }
 }
 
 // MARK: - Collection
 struct Collection: Codable {
-    var items: [Item]
+    let items: [Item]
+}
+
+extension Collection: Equatable {
     
-    init(items: [Item]) {
-        self.items = items
+    static func == (larc: Collection, rarc: Collection) -> Bool {
+            return larc.items == rarc.items
     }
 }
 
 // MARK: - Item
 struct Item: Codable {
-    var href: String
-    var data: [Datum]
-    var links: [ItemLink]
+    let href: String
+    let data: [Datum]
+    let links: [ItemLink]
+}
+
+extension Item: Equatable {
     
-    init(href: String, data: [Datum], links: [ItemLink]) {
-        self.href = href
-        self.data = data
-        self.links = links
+    static func == (larc: Item, rarc: Item) -> Bool {
+            return
+                larc.href == rarc.href &&
+                larc.data == rarc.data &&
+                larc.links == larc.links
     }
 }
 
 // MARK: - Datum
 struct Datum: Codable {
-    var title: String
-    var photographer: String?
-    var nasaID: String
-    var dateCreated: Date
-    var keywords: [String]?
-    var mediaType: MediaType
-    var datumDescription: String
-    var album: [String]?
-    
+    let title: String
+    let photographer: String?
+    let nasaID: String
+    let dateCreated: Date
+    let keywords: [String]?
+    let mediaType: MediaType
+    let datumDescription: String
+    let album: [String]?
+
     enum CodingKeys: String, CodingKey {
         case title, photographer
         case nasaID = "nasa_id"
@@ -63,17 +74,6 @@ struct Datum: Codable {
         case datumDescription = "description"
         case album
     }
-    
-    init(title: String, photographer: String?, nasaID: String, dateCreated: Date, keywords: [String]?, mediaType: MediaType, datumDescription: String, album: [String]?) {
-        self.title = title
-        self.photographer = photographer
-        self.nasaID = nasaID
-        self.dateCreated = dateCreated
-        self.keywords = keywords
-        self.mediaType = mediaType
-        self.datumDescription = datumDescription
-        self.album = album
-    }
 }
 
 enum MediaType: String, Codable {
@@ -82,26 +82,48 @@ enum MediaType: String, Codable {
     case audio = "audio"
 }
 
-// MARK: - ItemLink
-struct ItemLink: Codable {
-    var href: String
-    var render: MediaType?
+extension Datum: Equatable {
     
-    init(href: String, render: MediaType?) {
-        self.href = href
-        self.render = render
+    static func == (larc: Datum, rarc: Datum) -> Bool {
+            return
+                larc.title == rarc.title &&
+                larc.photographer == rarc.photographer &&
+                larc.nasaID == larc.nasaID &&
+                larc.dateCreated == larc.dateCreated &&
+                larc.keywords == larc.keywords &&
+                larc.mediaType == larc.mediaType &&
+                larc.datumDescription == larc.datumDescription &&
+                larc.album == larc.album
     }
 }
 
+// MARK: - ItemLink
+struct ItemLink: Codable {
+    let href: String
+    let render: MediaType?
+}
+
+extension ItemLink: Equatable {
+    
+    static func == (larc: ItemLink, rarc: ItemLink) -> Bool {
+            return
+                larc.href == rarc.href &&
+                larc.render == rarc.render
+    }
+}
 
 // MARK: - CollectionLink
 struct CollectionLink: Codable {
-    var rel, prompt: String
-    var href: String
+    let rel, prompt: String
+    let href: String
+}
+
+extension CollectionLink: Equatable {
     
-    init(rel: String, prompt: String, href: String) {
-        self.rel = rel
-        self.prompt = prompt
-        self.href = href
+    static func == (larc: CollectionLink, rarc: CollectionLink) -> Bool {
+            return
+                larc.rel == rarc.rel &&
+                larc.prompt == rarc.prompt &&
+                larc.href == rarc.href
     }
 }

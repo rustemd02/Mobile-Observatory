@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol TabBarFlowCoordinatorProtocol {
-    func appendView(_ view: UIViewController, item: UITabBarItem.SystemItem)
+    func appendView(_ view: UIViewController, item: UITabBarItem)
 }

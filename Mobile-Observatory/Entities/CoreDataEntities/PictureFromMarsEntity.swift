@@ -33,7 +33,6 @@ extension PictureFromMarsEntity {
 extension PictureFromMarsEntity : Identifiable {
 
     func update(with pictureFromMars: Photo, collection: PicturesFromMarsCollectionEntity) {
-        
         date = Date.init(pictureFromMars.earthDate)
         pictureURL = pictureFromMars.imgSrc
         sol = pictureFromMars.sol as NSNumber
@@ -53,8 +52,7 @@ extension PictureFromMarsEntity : Identifiable {
         if(uiImage == nil){
             return
         }
-        
-        let localPath = LocalFileManager.shared.saveImage(image: uiImage!, name: pictureFromMars.imgSrc)
-        pictureLocalPath = localPath?.absoluteString
+        let localPath = LocalFilesService.shared.saveImage(image: uiImage!, name: pictureFromMars.imgSrc)
+        pictureLocalPath = localPath?.path
     }
 }

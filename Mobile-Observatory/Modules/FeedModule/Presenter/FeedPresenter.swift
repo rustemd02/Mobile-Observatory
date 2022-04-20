@@ -14,9 +14,7 @@ protocol FeedPresenterProtocol {
 class FeedPresenter: FeedPresenterProtocol {
     
     private let interactor: FeedInteractorProtocol
-    weak var view: ViewControllerInput?
-    
-    
+    weak var view: FeedViewControllerInput?
     
     init(interactor: FeedInteractorProtocol) {
         self.interactor = interactor
@@ -25,15 +23,13 @@ class FeedPresenter: FeedPresenterProtocol {
     func feedPrefethcing(indexPaths: [IndexPath]) {
         //
     }
-    
 }
 
-extension FeedPresenter: ViewControllerOutput {
+extension FeedPresenter: FeedViewControllerOutput {
     
     func getArticlesData() -> [Article] {
         return interactor.getArticlesData()
     }
-    
     
     func viewDidLoad() {
         
@@ -56,4 +52,11 @@ extension FeedPresenter: ViewControllerOutput {
         return interactor.cellForRowAt(indexPath: indexPath)
     }
     
+    func savePost(post: Post) {
+        interactor.saveArticle(article: post as! Article)
+    }
+    
+    func removePostFromSaved(post: Post) {
+        interactor.removeArticleFromSaved(article: post as! Article)
+    }
 }
