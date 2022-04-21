@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040C725927E73B09008A268A /* LocalFilesService.swift */; };
 		046EBE192800842000677839 /* MobileObservatory_CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046EBE182800842000677839 /* MobileObservatory_CoreDataTests.swift */; };
-		049EB8D1280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EB8CE280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.xib */; };
 		049EB8D2280DB2C00088C7B5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB8CF280DB2C00088C7B5 /* FeedViewController.swift */; };
-		049EB8D3280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB8D0280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.swift */; };
 		049EB8D7280DB2CC0088C7B5 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB8D4280DB2CC0088C7B5 /* ArticleDetailViewController.swift */; };
 		049EB8D8280DB2CC0088C7B5 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EB8D5280DB2CC0088C7B5 /* ArticleTableViewCell.swift */; };
 		049EB8D9280DB2CC0088C7B5 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EB8D6280DB2CC0088C7B5 /* ArticleTableViewCell.xib */; };
@@ -56,6 +54,8 @@
 		CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */; };
 		CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */; };
 		CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */; };
+		CF296E5D2811971600616F48 /* WeatherOnMarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E5B2811971600616F48 /* WeatherOnMarsTableViewCell.swift */; };
+		CF296E5E2811971600616F48 /* WeatherOnMarsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF296E5C2811971600616F48 /* WeatherOnMarsTableViewCell.xib */; };
 		CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321C27CD37BB0043A12B /* AppDelegate.swift */; };
 		CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */; };
 		CF2F322427CD37BB0043A12B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322227CD37BB0043A12B /* Main.storyboard */; };
@@ -97,9 +97,7 @@
 		046EBE0F2800840800677839 /* Mobile-ObservatoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mobile-ObservatoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		046EBE182800842000677839 /* MobileObservatory_CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileObservatory_CoreDataTests.swift; sourceTree = "<group>"; };
 		046EBE1A280086AC00677839 /* SwiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		049EB8CE280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherOnMarsTableViewCell.xib; sourceTree = "<group>"; };
 		049EB8CF280DB2C00088C7B5 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		049EB8D0280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsTableViewCell.swift; sourceTree = "<group>"; };
 		049EB8D4280DB2CC0088C7B5 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		049EB8D5280DB2CC0088C7B5 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		049EB8D6280DB2CC0088C7B5 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
@@ -144,6 +142,8 @@
 		CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleBuilder.swift; sourceTree = "<group>"; };
 		CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailFlowCoordinator.swift; sourceTree = "<group>"; };
+		CF296E5B2811971600616F48 /* WeatherOnMarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherOnMarsTableViewCell.swift; path = "Mobile-Observatory/Modules/WeatherOnMarsModule/WeatherOnMarsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		CF296E5C2811971600616F48 /* WeatherOnMarsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeatherOnMarsTableViewCell.xib; path = "Mobile-Observatory/Modules/WeatherOnMarsModule/WeatherOnMarsTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		CF2F321927CD37BB0043A12B /* Mobile-Observatory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile-Observatory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2F321C27CD37BB0043A12B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -379,8 +379,8 @@
 		CF296E5A28118CFB00616F48 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				049EB8D0280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.swift */,
-				049EB8CE280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.xib */,
+				CF296E5B2811971600616F48 /* WeatherOnMarsTableViewCell.swift */,
+				CF296E5C2811971600616F48 /* WeatherOnMarsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -587,10 +587,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049EB8D1280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.xib in Resources */,
 				CF2F323427CD37DE0043A12B /* .gitignore in Resources */,
 				CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */,
 				049EB8D9280DB2CC0088C7B5 /* ArticleTableViewCell.xib in Resources */,
+				CF296E5E2811971600616F48 /* WeatherOnMarsTableViewCell.xib in Resources */,
 				CF2F322927CD37BD0043A12B /* Assets.xcassets in Resources */,
 				CF2F322427CD37BB0043A12B /* Main.storyboard in Resources */,
 			);
@@ -650,7 +650,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049EB8D3280DB2C00088C7B5 /* WeatherOnMarsTableViewCell.swift in Sources */,
 				04B2C19627FF2B7C00F0C617 /* ViewController.swift in Sources */,
 				04B2C19527FF2B7800F0C617 /* SavedPostsViewController.swift in Sources */,
 				04B2C19027FEEAAA00F0C617 /* PictureOfDay.swift in Sources */,
@@ -699,6 +698,7 @@
 				04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */,
 				04B2C18B27FED5D900F0C617 /* SavedPostsInteractor.swift in Sources */,
 				040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */,
+				CF296E5D2811971600616F48 /* WeatherOnMarsTableViewCell.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
 				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
 				CF1CB18C27F2E0FA003FF24E /* (null) in Sources */,
