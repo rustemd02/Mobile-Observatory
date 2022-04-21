@@ -48,11 +48,9 @@ class ArticleTableViewCell: UITableViewCell {
     func updateSaveButtonView() {
         if (article?.isSaved ?? false) {
             likeButton.setTitle("Понравилось", for: .normal)
-//            likeButton.titleLabel?.text = "Понравилось"
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else{
             likeButton.setTitle("Нравится", for: .normal)
-//            likeButton.titleLabel?.text = "Нравится"
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }

@@ -6,20 +6,25 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ArticleDetailPresenterProtocol {
-    
+    func getImage(url: String, completion: @escaping (UIImage) -> Void)
 }
 
 class ArticleDetailPresenter: ArticleDetailPresenterProtocol {
+    
     private let interactor: ArticleDetailInteractorProtocol
-    weak var view: ViewControllerInput?
+    weak var view: ArticleDetailViewControllerInput?
     
     init(interactor: ArticleDetailInteractorProtocol) {
         self.interactor = interactor
     }
+   
 }
 
 extension ArticleDetailPresenter: ArticleDetailViewControllerOutput {
-    
+    func getImage(url: String, completion: @escaping (UIImage) -> Void) {
+        return interactor.getImage(url: url, completion: completion)
+    }
 }

@@ -13,7 +13,7 @@ class ArticleDetailModuleBuilder {
         let interactor = ArticleDetailInteractor()
         let presenter = ArticleDetailPresenter(interactor: interactor)
         let viewController = ArticleDetailViewController(output: presenter)
-        presenter.view = viewController as? ViewControllerInput
+        presenter.view = viewController as? ArticleDetailViewControllerInput
         return viewController
     }
 }
