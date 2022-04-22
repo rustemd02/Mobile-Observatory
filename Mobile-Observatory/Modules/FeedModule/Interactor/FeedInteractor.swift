@@ -9,10 +9,12 @@ import Foundation
 
 protocol FeedInteractorProtocol {
     func feedPrefetching(indexPaths: [IndexPath])
-    func getArticlesData() -> [Article]
-    func getArticles(howManySkip: Int, completion: @escaping () -> ())
+    func getPostsData() -> [Post]
+    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ())
+//    func getArticles(howManySkip: Int, completion: @escaping () -> ())
+//    func getWeatherOnMars(sol: Int, completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
-    func cellForRowAt (indexPath: IndexPath) -> Article
+    func cellForRowAt (indexPath: IndexPath) -> Post
     func saveArticle(article: Article)
     func removeArticleFromSaved(article: Article)
 }
@@ -20,10 +22,19 @@ protocol FeedInteractorProtocol {
 class FeedInteractor: FeedInteractorProtocol {
     private var api = NetworkService.shared
     private var coreData = CoreDataService.shared
-    var articlesData = [Article]()
+    var postsData = [Post]()
     
-    func getArticlesData() -> [Article] {
-        return articlesData
+    func getPostsData() -> [Post] {
+        return postsData
+    }
+    
+    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ()) {
+        getArticles(howManySkip: howManySkip, completion: completion)
+        if !(postsData.contains(where: { post in
+            post.postType == .weatherOnMars
+        })) {
+            getWeatherOnMars(sol: sol, completion: completion)
+        }
     }
     
     func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
@@ -31,7 +42,7 @@ class FeedInteractor: FeedInteractorProtocol {
             switch result {
             case .success(let articles):
                 for article in articles {
-                    self?.articlesData.append(article)
+                    self?.postsData.append(article)
                 }
                 completion()
             case .failure(let error):
@@ -40,15 +51,27 @@ class FeedInteractor: FeedInteractorProtocol {
         }
     }
     
-    func numberOfRowsInSection(section: Int) -> Int {
-        guard !articlesData.isEmpty else {
-            return 0
+    func getWeatherOnMars(sol: String, completion: @escaping () -> ()) {
+        api.getWeatherData(sol: sol) { [weak self] result in
+            switch result {
+            case .success(let weatherData):
+                self?.postsData.append(weatherData)
+                completion()
+            case .failure(let error):
+                print(error)
+            }
         }
-        return articlesData.count
     }
     
-    func cellForRowAt (indexPath: IndexPath) -> Article {
-        return articlesData[indexPath.row]
+    func numberOfRowsInSection(section: Int) -> Int {
+        guard !postsData.isEmpty else {
+            return 0
+        }
+        return postsData.count
+    }
+    
+    func cellForRowAt (indexPath: IndexPath) -> Post {
+        return postsData[indexPath.row]
     }
   
     

@@ -56,6 +56,10 @@
 		CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */; };
 		CF296E5D2811971600616F48 /* WeatherOnMarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E5B2811971600616F48 /* WeatherOnMarsTableViewCell.swift */; };
 		CF296E5E2811971600616F48 /* WeatherOnMarsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF296E5C2811971600616F48 /* WeatherOnMarsTableViewCell.xib */; };
+		CF296E602812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E5F2812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift */; };
+		CF296E622812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E612812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift */; };
+		CF296E642812ECE100616F48 /* WeatherOnMarsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E632812ECE100616F48 /* WeatherOnMarsDetailViewController.swift */; };
+		CF296E662812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E652812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift */; };
 		CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321C27CD37BB0043A12B /* AppDelegate.swift */; };
 		CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */; };
 		CF2F322427CD37BB0043A12B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322227CD37BB0043A12B /* Main.storyboard */; };
@@ -144,6 +148,10 @@
 		CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailFlowCoordinator.swift; sourceTree = "<group>"; };
 		CF296E5B2811971600616F48 /* WeatherOnMarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherOnMarsTableViewCell.swift; path = "Mobile-Observatory/Modules/WeatherOnMarsModule/WeatherOnMarsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		CF296E5C2811971600616F48 /* WeatherOnMarsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WeatherOnMarsTableViewCell.xib; path = "Mobile-Observatory/Modules/WeatherOnMarsModule/WeatherOnMarsTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		CF296E5F2812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsDetailInteractor.swift; sourceTree = "<group>"; };
+		CF296E612812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsDetailPresenter.swift; sourceTree = "<group>"; };
+		CF296E632812ECE100616F48 /* WeatherOnMarsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherOnMarsDetailViewController.swift; path = "Mobile-Observatory/Modules/WeatherOnMarsModule/Presenter/WeatherOnMarsDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
+		CF296E652812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsDetailModuleBuilder.swift; sourceTree = "<group>"; };
 		CF2F321927CD37BB0043A12B /* Mobile-Observatory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile-Observatory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2F321C27CD37BB0043A12B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF2F321E27CD37BB0043A12B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -358,6 +366,7 @@
 				CF296E5A28118CFB00616F48 /* View */,
 				CF296E5928118CF400616F48 /* Interactor */,
 				CF296E5828118CED00616F48 /* Presenter */,
+				CF296E652812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift */,
 			);
 			path = WeatherOnMarsModule;
 			sourceTree = "<group>";
@@ -365,6 +374,7 @@
 		CF296E5828118CED00616F48 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CF296E612812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -372,6 +382,7 @@
 		CF296E5928118CF400616F48 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				CF296E5F2812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -381,6 +392,7 @@
 			children = (
 				CF296E5B2811971600616F48 /* WeatherOnMarsTableViewCell.swift */,
 				CF296E5C2811971600616F48 /* WeatherOnMarsTableViewCell.xib */,
+				CF296E632812ECE100616F48 /* WeatherOnMarsDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -665,11 +677,14 @@
 				04CF3D4527F0896300685553 /* WeatherOnMarsInfoEntity.swift in Sources */,
 				04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */,
 				CF6B18AF27FEFBE3005D09B6 /* FeedInteractor.swift in Sources */,
+				CF296E622812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift in Sources */,
 				CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */,
 				CFEEA53027D51C1300E05249 /* Planet.swift in Sources */,
 				04CFF39C27D560120066A8D2 /* CoreDataService.swift in Sources */,
 				04B2C19827FF7F5300F0C617 /* MockService.swift in Sources */,
+				CF296E602812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift in Sources */,
 				CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */,
+				CF296E662812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift in Sources */,
 				049EB8D7280DB2CC0088C7B5 /* ArticleDetailViewController.swift in Sources */,
 				04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */,
 				CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */,
@@ -700,6 +715,7 @@
 				040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */,
 				CF296E5D2811971600616F48 /* WeatherOnMarsTableViewCell.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
+				CF296E642812ECE100616F48 /* WeatherOnMarsDetailViewController.swift in Sources */,
 				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
 				CF1CB18C27F2E0FA003FF24E /* (null) in Sources */,
 				CF7EC6D727D533BF007197E6 /* NetworkService.swift in Sources */,

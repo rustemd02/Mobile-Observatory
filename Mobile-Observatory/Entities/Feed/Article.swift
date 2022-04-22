@@ -10,6 +10,8 @@ import UIKit
 
 struct Article: Decodable, Post {
     
+    var postType: PostType? = .article
+    
     var uuid: UUID?
     var id: Int
     var title: String
@@ -21,7 +23,6 @@ struct Article: Decodable, Post {
     var newsSite: String
     
     var isSaved: Bool?
-    var type = "ef"
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

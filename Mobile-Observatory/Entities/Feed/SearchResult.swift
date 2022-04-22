@@ -9,7 +9,8 @@
 import Foundation
 
 // MARK: - SearchResult
-struct SearchResult: Codable, Post {
+struct SearchResult: Codable {
+    
     var isSaved: Bool?
     
     let collection: Collection

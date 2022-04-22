@@ -10,6 +10,8 @@ import UIKit
 
 struct PictureOfDay: Decodable, Post {
     
+    var postType: PostType? = .pictureOfDay
+    
     var uuid: UUID?
     var date: Date
     var description: String

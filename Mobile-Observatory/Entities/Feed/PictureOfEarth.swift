@@ -3,6 +3,8 @@ import Foundation
 
 // MARK: - PictureOfEarthElement
 struct PictureOfEarthElement: Codable, Post {
+    
+    var postType: PostType? = .pictureOfEarth
     var isSaved: Bool?
     
     var imageUrl: String

@@ -13,8 +13,8 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         
     }
     
-    func configure() {
-        let _ = api.getWeatherData(sol: "") { [weak self] result in
+    func configure(sol: String) {
+        let _ = api.getWeatherData(sol: sol) { [weak self] result in
             switch result {
             case .success(let weatherInfo):
                 self?.temperatureLabel.text = weatherInfo.minTemp.description + "°C"

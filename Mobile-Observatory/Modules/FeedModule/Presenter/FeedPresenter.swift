@@ -27,8 +27,9 @@ class FeedPresenter: FeedPresenterProtocol {
 
 extension FeedPresenter: FeedViewControllerOutput {
     
-    func getArticlesData() -> [Article] {
-        return interactor.getArticlesData()
+    
+    func getPostsData() -> [Post] {
+        return interactor.getPostsData()
     }
     
     func viewDidLoad() {
@@ -40,15 +41,24 @@ extension FeedPresenter: FeedViewControllerOutput {
     }
     
     
-    func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
-        return interactor.getArticles(howManySkip: howManySkip, completion: completion)
+    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ()) {
+        return interactor.getData(howManySkip: howManySkip, sol: sol, completion: completion)
     }
+    
+//    func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
+//        return interactor.getArticles(howManySkip: howManySkip, completion: completion)
+//    }
+//
+//    func getWeatherOnMars(sol: Int, completion: @escaping () -> ()) {
+//        return interactor.getWeatherOnMars(sol: sol, completion: completion)
+//    }
+    
     
     func numberOfRowsInSection(section: Int) -> Int {
         return interactor.numberOfRowsInSection(section: section)
     }
     
-    func cellForRowAt (indexPath: IndexPath) -> Article {
+    func cellForRowAt (indexPath: IndexPath) -> Post {
         return interactor.cellForRowAt(indexPath: indexPath)
     }
     

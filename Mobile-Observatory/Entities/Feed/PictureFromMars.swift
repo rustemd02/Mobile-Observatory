@@ -10,10 +10,16 @@ import Foundation
 struct PictureFromMars: Codable, Post {
     var isSaved: Bool?
     
+    var postType: PostType? = .pictureFromMars
+    
     var photos: [Photo]
     
     init(photos: [Photo]) {
         self.photos = photos
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case photos = "photos"
     }
 
 }

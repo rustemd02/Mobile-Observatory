@@ -9,6 +9,8 @@ import Foundation
 
 
 struct WeatherOnMarsInfo: Decodable, Post {
+    
+    var postType: PostType? = .weatherOnMars
     var isSaved: Bool?
     
     var id: Int?
