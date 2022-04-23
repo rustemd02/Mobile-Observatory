@@ -26,6 +26,15 @@ class FeedPresenter: FeedPresenterProtocol {
 }
 
 extension FeedPresenter: FeedViewControllerOutput {
+   
+    func getHowManyArticlesToSkip() -> Int {
+        return interactor.getHowManyArticlesToSkip()
+    }
+    
+    func setHowManyArticlesToSkip(howMany: Int) {
+        return interactor.setHowManyArticlesToSkip(howMany: howMany)
+    }
+    
     
     
     func getPostsData() -> [Post] {
@@ -41,19 +50,11 @@ extension FeedPresenter: FeedViewControllerOutput {
     }
     
     
-    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ()) {
-        return interactor.getData(howManySkip: howManySkip, sol: sol, completion: completion)
+    func getData(completion: @escaping () -> ()) {
+        return interactor.getData(completion: completion)
     }
     
-//    func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
-//        return interactor.getArticles(howManySkip: howManySkip, completion: completion)
-//    }
-//
-//    func getWeatherOnMars(sol: Int, completion: @escaping () -> ()) {
-//        return interactor.getWeatherOnMars(sol: sol, completion: completion)
-//    }
-    
-    
+
     func numberOfRowsInSection(section: Int) -> Int {
         return interactor.numberOfRowsInSection(section: section)
     }

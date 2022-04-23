@@ -78,7 +78,8 @@ extension SavedPostsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let article = savedPosts?[indexPath.row]
-        cell.configure(article: article as! Article, delegate: nil)
+        
+        cell.configure(delegate: nil)
         return cell
     }
 }

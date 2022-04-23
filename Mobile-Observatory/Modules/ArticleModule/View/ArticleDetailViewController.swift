@@ -76,7 +76,6 @@ class ArticleDetailViewController: UIViewController {
         
         let maxWidthContainer: CGFloat = 374
         let maxHeightContainer: CGFloat = 225
-        imageView.layer.cornerRadius = 10
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalTo(view.safeAreaLayoutGuide)

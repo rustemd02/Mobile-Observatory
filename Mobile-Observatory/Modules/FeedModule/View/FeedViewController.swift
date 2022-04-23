@@ -16,20 +16,19 @@ protocol FeedViewControllerInput: AnyObject {
 protocol FeedViewControllerOutput {
     func viewDidLoad()
     func didSelectRow(at: Int)
-    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ())
-//    func getArticles(howManySkip: Int, completion: @escaping () -> ())
-//    func getWeatherOnMars(sol: Int, completion: @escaping () -> ())
+    func getData(completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Post
     func getPostsData() -> [Post]
     func savePost(post: Post)
     func removePostFromSaved(post: Post)
+    func getHowManyArticlesToSkip() -> Int
+    func setHowManyArticlesToSkip(howMany: Int)
 }
 
 class FeedViewController: UIViewController, UIScrollViewDelegate {
     let api = NetworkService.shared
     private var output: FeedViewControllerOutput
-    var howManyArticlesToSkip = 0
     private var isFetching = false
     var feedTableView = UITableView()
     
@@ -64,8 +63,9 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         feedTableView = UITableView(frame: view.bounds, style: .plain)
         feedTableView.delegate = self
         feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
-        feedTableView.register(UINib.init(nibName: "WeatherOnMarsTableViewCell", bundle: nil), forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
+        feedTableView.register(WeatherOnMarsTableViewCell.self, forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         view.addSubview(feedTableView)
+        feedTableView.register(PictureOfDayTableViewCell.self, forCellReuseIdentifier: "PictureOfDayTableViewCell")
         feedTableView.snp.makeConstraints { maker in
             maker.top.equalTo(view.safeAreaLayoutGuide)
             maker.left.equalToSuperview()
@@ -76,7 +76,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func didPullToRefresh() {
-        howManyArticlesToSkip = 0
+        output.setHowManyArticlesToSkip(howMany: 0)
         loadData()
         feedTableView.reloadData()
         self.feedTableView.refreshControl?.endRefreshing()
@@ -84,42 +84,20 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     
     private func loadData() {
         isFetching = true
-        output.getData(howManySkip: howManyArticlesToSkip, sol: "") { [weak self] in
+        output.getData() { [weak self] in
             self?.feedTableView.dataSource = self
             self?.feedTableView.reloadData()
         }
         isFetching = false
     }
-    
-//    private func loadArticles() {
-//        isFetching = true
-//        output.getArticles(howManySkip: howManyArticlesToSkip) { [weak self] in
-//            self?.feedTableView.dataSource = self
-//            self?.feedTableView.reloadData()
-//        }
-//        isFetching = false
-//    }
-//
-//    private func loadWeatherData() {
-//        isFetching = true
-//        randomSol = Int.random(in: 1...3000)
-//        output.getWeatherOnMars(sol: randomSol) { [weak self] in
-//            self?.feedTableView.dataSource = self
-//            self?.feedTableView.reloadData()
-//        }
-//        isFetching = false
-//    }
 }
 
 extension FeedViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
             if index.row >= (output.getPostsData().count - 3) && !isFetching {
-                howManyArticlesToSkip+=10
-                print(howManyArticlesToSkip)
+                output.setHowManyArticlesToSkip(howMany: output.getHowManyArticlesToSkip() + 10)
                 loadData()
-//                loadArticles()
-//                loadWeatherData()
                 break
             }
         }
@@ -138,28 +116,35 @@ extension FeedViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
                 return UITableViewCell()
             }
-            let article = output.cellForRowAt(indexPath: indexPath)
-            cell.configure(article: article as! Article, delegate: self)
+            cell.article = post as? Article
+            cell.configure(delegate: self)
             return cell
         case .weatherOnMars:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherOnMarsTableViewCell", for: indexPath) as? WeatherOnMarsTableViewCell else {
                 return UITableViewCell()
             }
-            cell.backgroundImageView.layer.cornerRadius = 20
-            cell.configure(sol: "")
+            cell.weatherOnMars = post as? WeatherOnMarsInfo
+            cell.configure()
             return cell
         
         case .none: break
             //
-        case .some(.pictureOfDay): break
-            //
+        case .pictureOfDay:
+            let pictureOfDay = output.cellForRowAt(indexPath: indexPath) as? PictureOfDay
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
+                    PictureOfDayTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.pictureOfDay = post as? PictureOfDay
+            cell.configure()
+            return cell
         case .some(.pictureFromMars): break
             //
         case .some(.pictureOfEarth): break
             //
         case .some(.asteroid): break
             //
-        case .some(.planet): break
+        case .planet: break
             //
         case .some(.searchResult): break
             //
@@ -184,8 +169,9 @@ extension FeedViewController: UITableViewDelegate {
         
         case .none: break
             //
-        case .some(.pictureOfDay): break
-            //
+        case .some(.pictureOfDay): 
+            let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
+            navigationController?.pushViewController(vc, animated: true)
         case .some(.pictureFromMars): break
             //
         case .some(.pictureOfEarth): break

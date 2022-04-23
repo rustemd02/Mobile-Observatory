@@ -8,9 +8,6 @@
 import Foundation
 
 protocol FlowCoordinatorProtocol {
-    
-    
-    
     func start(animated: Bool)
     func finish(animated: Bool)
 }

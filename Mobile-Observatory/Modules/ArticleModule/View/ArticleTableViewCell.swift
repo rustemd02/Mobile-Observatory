@@ -20,27 +20,27 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
-    private var article: Article?
+    var article: Article?
     private var savePostsButtonDelegate: SavePostButtonDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(article: Article, delegate: SavePostButtonDelegate?) {
+    func configure(delegate: SavePostButtonDelegate?) {
+        
         
         self.savePostsButtonDelegate = delegate
-        self.article = article
         
-        self.titleLabel.text = article.title
+        self.titleLabel.text = article?.title
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.YYYY"
-        let stringDate = dateFormatter.string(from: article.createdAt)
+        let stringDate = dateFormatter.string(from: article?.createdAt ?? Date())
         self.createdAtLabel.text = stringDate
         
-        self.sourceLabel.text = article.newsSite
-        self.summaryLabel.text = article.summary
+        self.sourceLabel.text = article?.newsSite
+        self.summaryLabel.text = article?.summary
         
         updateSaveButtonView()
     }
@@ -60,9 +60,9 @@ class ArticleTableViewCell: UITableViewCell {
         let saved = article?.isSaved ?? false
         article?.isSaved = !saved
         
-        if(article?.isSaved ?? false){
+        if (article?.isSaved ?? false) {
             savePostsButtonDelegate?.savePost(post: article!)
-        }else{
+        } else {
             savePostsButtonDelegate?.removePostFromSaved(post: article!)
         }
         updateSaveButtonView()

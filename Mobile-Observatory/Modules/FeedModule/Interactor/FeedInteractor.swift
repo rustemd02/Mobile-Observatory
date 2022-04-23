@@ -10,31 +10,41 @@ import Foundation
 protocol FeedInteractorProtocol {
     func feedPrefetching(indexPaths: [IndexPath])
     func getPostsData() -> [Post]
-    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ())
-//    func getArticles(howManySkip: Int, completion: @escaping () -> ())
-//    func getWeatherOnMars(sol: Int, completion: @escaping () -> ())
+    func getData(completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Post
     func saveArticle(article: Article)
     func removeArticleFromSaved(article: Article)
+    func getHowManyArticlesToSkip() -> Int
+    func setHowManyArticlesToSkip(howMany: Int)
 }
 
 class FeedInteractor: FeedInteractorProtocol {
     private var api = NetworkService.shared
     private var coreData = CoreDataService.shared
+    var howManyArticlesToSkip = 0
     var postsData = [Post]()
     
     func getPostsData() -> [Post] {
         return postsData
     }
     
-    func getData(howManySkip: Int, sol: String, completion: @escaping () -> ()) {
-        getArticles(howManySkip: howManySkip, completion: completion)
+    func getHowManyArticlesToSkip() -> Int {
+        return howManyArticlesToSkip
+    }
+    func setHowManyArticlesToSkip(howMany: Int) {
+        howManyArticlesToSkip = howMany
+    }
+    
+    func getData(completion: @escaping () -> ()) {
+        getArticles(howManySkip: howManyArticlesToSkip, completion: completion)
         if !(postsData.contains(where: { post in
             post.postType == .weatherOnMars
         })) {
-            getWeatherOnMars(sol: sol, completion: completion)
+            getWeatherOnMars(sol: "", completion: completion)
         }
+        
+        
     }
     
     func getArticles(howManySkip: Int, completion: @escaping () -> ()) {
@@ -60,6 +70,19 @@ class FeedInteractor: FeedInteractorProtocol {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    func getPicOfDay(date: Date, completion: @escaping () -> ()) {
+        api.getPicOfDay(date: date) { [weak self] result in
+            switch result {
+            case .success(let picOfDay):
+                self?.postsData.append(picOfDay)
+                completion()
+            case .failure(let error):
+                print(error)
+            }
+        
         }
     }
     

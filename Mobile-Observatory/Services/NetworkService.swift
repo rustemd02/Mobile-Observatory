@@ -204,20 +204,6 @@ class NetworkService {
         }
     }
     
-    func getImageByUrl(url: String, completion: @escaping(Result<UIImage, NetworkError>) -> Void) {
-        AF.request(url).response { (responseData) in
-            guard let data = responseData.data else {
-                completion(.failure(.noDataAvailable))
-                return
-            }
-            guard let image = UIImage(data: data) else {
-                completion(.failure(.processingError))
-                return
-            }
-            completion(.success(image))
-            
-        }
-    }
     
     //Для метода getPicOfEarth
     func getImageByName(date: Date, imageName: String, completion: @escaping(Result<UIImage, NetworkError>) -> Void) {
