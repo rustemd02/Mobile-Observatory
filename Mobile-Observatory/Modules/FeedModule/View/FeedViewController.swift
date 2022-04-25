@@ -128,7 +128,6 @@ extension FeedViewController: UITableViewDataSource {
         case .none: break
             //
         case .pictureOfDay:
-            let pictureOfDay = output.cellForRowAt(indexPath: indexPath) as? PictureOfDay
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
                     PictureOfDayTableViewCell else {
                 return UITableViewCell()
@@ -136,15 +135,15 @@ extension FeedViewController: UITableViewDataSource {
             cell.pictureOfDay = post as? PictureOfDay
             cell.configure()
             return cell
-        case .some(.pictureFromMars): break
+        case .pictureFromMars: break
             //
-        case .some(.pictureOfEarth): break
+        case .pictureOfEarth: break
             //
-        case .some(.asteroid): break
+        case .asteroid: break
             //
         case .planet: break
             //
-        case .some(.searchResult): break
+        case .searchResult: break
             //
         }
         return UITableViewCell()
@@ -170,6 +169,7 @@ extension FeedViewController: UITableViewDelegate {
         case .some(.pictureOfDay): 
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             navigationController?.pushViewController(vc, animated: true)
+            
         case .some(.pictureFromMars): break
             //
         case .some(.pictureOfEarth): break

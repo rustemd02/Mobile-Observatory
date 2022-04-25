@@ -13,6 +13,8 @@ class PictureOfDayTableViewCell: UITableViewCell {
         
     var picOfDayImageView = UIImageView()
     var picOfDayLabel = UILabel()
+    var likeButton = UIButton()
+
     
     var pictureOfDay: PictureOfDay?
     
@@ -30,6 +32,8 @@ class PictureOfDayTableViewCell: UITableViewCell {
 
         contentView.addSubview(picOfDayImageView)
         contentView.addSubview(picOfDayLabel)
+        contentView.addSubview(likeButton)
+
         
         picOfDayImageView.image = UIImage(named: "loading")
         picOfDayImageView.layer.cornerRadius = 25
@@ -48,9 +52,17 @@ class PictureOfDayTableViewCell: UITableViewCell {
             make.centerX.equalToSuperview()
         }
         
+        likeButton.isHidden = true
+        likeButton.snp.makeConstraints { make in
+            make.bottom.equalTo(picOfDayImageView).inset(12)
+            make.left.equalTo(picOfDayImageView).offset(12)
+        }
+        
     }
     
     func configure() {
+        picOfDayImageView.image = UIImage(named: "loading")
+        //self.picOfDayImageView.image = pictureOfDay?.imageUrl
         api.getImageByUrl(url: pictureOfDay?.imageUrl ?? String()) { result in
             switch result {
             case .success(let image):
@@ -59,8 +71,21 @@ class PictureOfDayTableViewCell: UITableViewCell {
                 print(error)
             }
         }
+        updateSaveButtonView()
+
     }
 
+    
+    func updateSaveButtonView() {
+        if (pictureOfDay?.isSaved ?? false) {
+            likeButton.setTitle(" Понравилось", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else{
+            likeButton.setTitle(" Нравится", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -59,6 +59,7 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         }
         
         
+        
     }
     
     func configure() {
@@ -73,6 +74,7 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         self.backgroundImageView.image = UIImage(named: "WeatherOnMarsBackground")
         
     }
+    
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {

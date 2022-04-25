@@ -44,9 +44,25 @@ class FeedInteractor: FeedInteractorProtocol {
         api.getArticles(postsToSkip: howManyArticlesToSkip) { [weak self] result in
             switch result {
             case .success(let articles):
-                for article in articles {
-                    self?.postsData.append(article)
+                guard let posts = self?.postsData else { return }
+                if (posts.isEmpty) {
+                    for article in articles {
+                        self?.postsData.append(article)
+                    }
+                } else {
+                    for article in articles {
+                        var alreadyLoaded: Bool = false
+                        if (posts.contains(where: { post in
+                            post as? Article == article
+                        })) {
+                            alreadyLoaded = true
+                        }
+                        if (!alreadyLoaded) {
+                            self?.postsData.append(article)
+                        }
+                    }
                 }
+                
                 self?.lastFetchedDate = articles.last?.createdAt ?? Date()
                 self?.howManyArticlesToSkip += 10
                 completion()
