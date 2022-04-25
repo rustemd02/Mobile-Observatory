@@ -14,7 +14,7 @@ protocol ArticleDetailInteractorProtocol {
 
 class ArticleDetailInteractor: ArticleDetailInteractorProtocol {
     func getImage(url: String, completion: @escaping(UIImage) -> Void) {
-        NetworkService.shared.getImageByUrl(url: url, completion: { result in
+        ImageByUrlService.shared.getImageByUrl(url: url, completion: { result in
             switch result {
             case .success(let image):
                 completion(image)

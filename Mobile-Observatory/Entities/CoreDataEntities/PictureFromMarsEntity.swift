@@ -41,7 +41,7 @@ extension PictureFromMarsEntity : Identifiable {
         
         var uiImage: UIImage? = nil
         
-        NetworkService.shared.getImageByUrl(url: pictureFromMars.imgSrc){
+        ImageByUrlService.shared.getImageByUrl(url: pictureFromMars.imgSrc){
             image in
             do{
                 uiImage = try image.get()

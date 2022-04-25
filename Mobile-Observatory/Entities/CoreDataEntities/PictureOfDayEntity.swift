@@ -40,7 +40,7 @@ extension PictureOfDayEntity : Identifiable {
         
         var uiImage: UIImage = UIImage()
         
-        NetworkService.shared.getImageByUrl(url: pictureOfDay.imageUrl){
+        ImageByUrlService.shared.getImageByUrl(url: pictureOfDay.imageUrl){
             image in
             do{
                 uiImage = try image.get()

@@ -40,7 +40,7 @@ extension PictureOfEarthEntity : Identifiable {
         
         var uiImage: UIImage? = nil
         
-        NetworkService.shared.getImageByUrl(url: pictureOfEarth.imageUrl){
+        ImageByUrlService.shared.getImageByUrl(url: pictureOfEarth.imageUrl){
             image in
             do{
                 uiImage = try image.get()

@@ -26,16 +26,6 @@ class FeedPresenter: FeedPresenterProtocol {
 }
 
 extension FeedPresenter: FeedViewControllerOutput {
-   
-    func getHowManyArticlesToSkip() -> Int {
-        return interactor.getHowManyArticlesToSkip()
-    }
-    
-    func setHowManyArticlesToSkip(howMany: Int) {
-        return interactor.setHowManyArticlesToSkip(howMany: howMany)
-    }
-    
-    
     
     func getPostsData() -> [Post] {
         return interactor.getPostsData()
@@ -49,6 +39,9 @@ extension FeedPresenter: FeedViewControllerOutput {
         
     }
     
+    func resetFeed() {
+        interactor.resetData()
+    }
     
     func getData(completion: @escaping () -> ()) {
         return interactor.getData(completion: completion)
@@ -64,10 +57,10 @@ extension FeedPresenter: FeedViewControllerOutput {
     }
     
     func savePost(post: Post) {
-        interactor.saveArticle(article: post as! Article)
+        interactor.savePost(post: post)
     }
     
     func removePostFromSaved(post: Post) {
-        interactor.removeArticleFromSaved(article: post as! Article)
+        interactor.removePostFromSaved(post: post)
     }
 }

@@ -43,7 +43,7 @@ extension ArticleEntity : Identifiable {
         
         var uiImage: UIImage? = nil
         
-        NetworkService.shared.getImageByUrl(url: article.pictureUrl){
+        ImageByUrlService.shared.getImageByUrl(url: article.pictureUrl){
             image in
             do{
                 uiImage = try image.get()

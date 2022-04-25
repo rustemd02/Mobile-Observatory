@@ -22,8 +22,7 @@ protocol FeedViewControllerOutput {
     func getPostsData() -> [Post]
     func savePost(post: Post)
     func removePostFromSaved(post: Post)
-    func getHowManyArticlesToSkip() -> Int
-    func setHowManyArticlesToSkip(howMany: Int)
+    func resetFeed()
 }
 
 class FeedViewController: UIViewController, UIScrollViewDelegate {
@@ -76,7 +75,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc private func didPullToRefresh() {
-        output.setHowManyArticlesToSkip(howMany: 0)
+        output.resetFeed()
         loadData()
         feedTableView.reloadData()
         self.feedTableView.refreshControl?.endRefreshing()
@@ -96,7 +95,6 @@ extension FeedViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
             if index.row >= (output.getPostsData().count - 3) && !isFetching {
-                output.setHowManyArticlesToSkip(howMany: output.getHowManyArticlesToSkip() + 10)
                 loadData()
                 break
             }
