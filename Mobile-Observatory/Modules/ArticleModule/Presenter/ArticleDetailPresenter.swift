@@ -28,3 +28,13 @@ extension ArticleDetailPresenter: ArticleDetailViewControllerOutput {
         return interactor.getImage(url: url, completion: completion)
     }
 }
+
+extension ArticleDetailPresenter: SavePostButtonDelegate {
+    func savePost(post: Post) {
+        interactor.savePost(post: post)
+    }
+    
+    func removePostFromSaved(post: Post) {
+        interactor.removePostFromSaved(post: post)
+    }
+}

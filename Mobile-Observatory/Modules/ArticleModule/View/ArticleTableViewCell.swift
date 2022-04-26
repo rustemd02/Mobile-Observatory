@@ -8,11 +8,6 @@
 import UIKit
 import SwiftUI
 
-protocol SavePostButtonDelegate {
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
-}
-
 class ArticleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var sourceLabel: UILabel!

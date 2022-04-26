@@ -19,6 +19,7 @@ protocol ArticleDetailViewControllerOutput {
 class ArticleDetailViewController: UIViewController {
     
     private var output: ArticleDetailViewControllerOutput
+    private var saveButtonDelegate: SavePostButtonDelegate
     
     var article: Article?
     var sourceLabel = UILabel()
@@ -29,9 +30,9 @@ class ArticleDetailViewController: UIViewController {
     var shareButton = UIButton(type: .roundedRect)
     var likeButton = UIButton(type: .roundedRect)
     
-    
-    init(output: ArticleDetailViewControllerOutput) {
+    init(output: ArticleDetailViewControllerOutput, saveButtonDelegate: SavePostButtonDelegate) {
         self.output = output
+        self.saveButtonDelegate = saveButtonDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -102,6 +103,7 @@ class ArticleDetailViewController: UIViewController {
             make.right.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
         
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.setTitle(" Нравится", for: .normal)
         likeButton.setTitleColor(.link, for: .normal)
@@ -129,6 +131,30 @@ class ArticleDetailViewController: UIViewController {
         output.getImage(url: article.pictureUrl) { loadedImage in
             self.imageView.image = loadedImage
         }
+        
+        updateSaveButtonView()
+    }
+    
+    func updateSaveButtonView() {
+        if (article?.isSaved ?? false) {
+            likeButton.setTitle("Понравилось", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else{
+            likeButton.setTitle("Нравится", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        let saved = article?.isSaved ?? false
+        article?.isSaved = !saved
+        
+        if (article?.isSaved ?? false) {
+            saveButtonDelegate.savePost(post: article!)
+        } else {
+            saveButtonDelegate.removePostFromSaved(post: article!)
+        }
+        updateSaveButtonView()
     }
     
     @objc func presentShareMenu() {

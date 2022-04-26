@@ -9,10 +9,8 @@ import SnapKit
 import UIKit
 
 class SavedPostsViewController: UIViewController {
-
     private let output: SavedPostsViewControllerOutput
     var tableView = UITableView()
-    var savedPosts: [Post]?
 
     init(output: SavedPostsViewControllerOutput) {
         self.output = output
@@ -31,8 +29,7 @@ class SavedPostsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        output.fetchSavedArticles()
-        tableView.reloadData()
+        updateView()
     }
 
     private func setupView() {
@@ -45,6 +42,8 @@ class SavedPostsViewController: UIViewController {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
         tableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        tableView.register(WeatherOnMarsTableViewCell.self, forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
+        tableView.register(PictureOfDayTableViewCell.self, forCellReuseIdentifier: "PictureOfDayTableViewCell")
         view.addSubview(tableView)
         tableView.snp.makeConstraints{ maker in
             maker.top.equalToSuperview().inset(100)
@@ -56,8 +55,8 @@ class SavedPostsViewController: UIViewController {
 }
 
 extension SavedPostsViewController: SavedPostsViewControllerInput {
-    func updateView(with items: [Post]) {
-        savedPosts = items
+    func updateView() {
+        output.fetchSavedPosts()
         tableView.dataSource = self
         tableView.reloadData()
     }
@@ -69,28 +68,87 @@ extension SavedPostsViewController: SavedPostsViewControllerInput {
 
 extension SavedPostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let posts = savedPosts else { return 0 }
-        return posts.count
+        output.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
-            return UITableViewCell()
+        let post = output.cellForRowAt(indexPath: indexPath)
+        switch post.postType {
+        case .article:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.article = post as? Article
+            cell.configure(delegate: self)
+            return cell
+        case .weatherOnMars:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherOnMarsTableViewCell", for: indexPath) as? WeatherOnMarsTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.weatherOnMars = post as? WeatherOnMarsInfo
+            cell.configure(delegate: self)
+            return cell
+        case .pictureOfDay:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
+                    PictureOfDayTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.pictureOfDay = post as? PictureOfDay
+            cell.configure()
+            return cell
+        case .pictureFromMars: break
+            //
+        case .pictureOfEarth: break
+            //
+        case .asteroid: break
+            //
+        case .planet: break
+            //
+        case .searchResult: break
+            //
+        case .none: break
         }
-        let article = savedPosts?[indexPath.row]
-        
-        cell.configure(delegate: nil)
-        return cell
+        return UITableViewCell()
     }
 }
 
 extension SavedPostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let article = savedPosts?[indexPath.row]
-        let sb = UIStoryboard(name: "Feed", bundle: nil)
-        let vc = sb.instantiateViewController(identifier: "ArticleDetailViewController") as! ArticleDetailViewController
-        vc.article = article as? Article
-        navigationController?.pushViewController(vc, animated: true)
+        let post = output.cellForRowAt(indexPath: indexPath)
+        switch post.postType {
+        case .article:
+            let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
+            vc.article = post as? Article
+            navigationController?.pushViewController(vc, animated: true)
+        case .weatherOnMars:
+            let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
+            navigationController?.pushViewController(vc, animated: true)
+        case .some(.pictureOfDay):
+            let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case .some(.pictureFromMars): break
+            //
+        case .some(.pictureOfEarth): break
+            //
+        case .some(.asteroid): break
+            //
+        case .some(.planet): break
+            //
+        case .some(.searchResult): break
+            //
+        case .none: break
+        }
+    }
+}
+
+extension SavedPostsViewController: SavePostButtonDelegate {
+    func savePost(post: Post) {
+        output.savePost(post: post)
+    }
+    
+    func removePostFromSaved(post: Post) {
+        output.removePostFromSaved(post: post)
     }
 }

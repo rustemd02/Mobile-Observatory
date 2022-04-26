@@ -19,8 +19,7 @@
 		04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */; };
 		04B2C18127FED10A00F0C617 /* SavedPostsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18027FED10A00F0C617 /* SavedPostsModuleBuilder.swift */; };
 		04B2C18327FED12600F0C617 /* SavedPostsViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18227FED12600F0C617 /* SavedPostsViewProtocols.swift */; };
-		04B2C18727FED1EA00F0C617 /* PresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18627FED1EA00F0C617 /* PresenterProtocols.swift */; };
-		04B2C18927FED20300F0C617 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18827FED20300F0C617 /* Presenter.swift */; };
+		04B2C18927FED20300F0C617 /* SavedPostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18827FED20300F0C617 /* SavedPostsPresenter.swift */; };
 		04B2C18B27FED5D900F0C617 /* SavedPostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18A27FED5D900F0C617 /* SavedPostsInteractor.swift */; };
 		04B2C18E27FEEA8900F0C617 /* WeatherOnMarsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */; };
 		04B2C18F27FEEA9600F0C617 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EC6D627D533BF007197E6 /* NetworkService.swift */; };
@@ -117,8 +116,7 @@
 		04B2C18027FED10A00F0C617 /* SavedPostsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsModuleBuilder.swift; sourceTree = "<group>"; };
 		04B2C18227FED12600F0C617 /* SavedPostsViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsViewProtocols.swift; sourceTree = "<group>"; };
 		04B2C18427FED14000F0C617 /* SavedPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsViewController.swift; sourceTree = "<group>"; };
-		04B2C18627FED1EA00F0C617 /* PresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocols.swift; sourceTree = "<group>"; };
-		04B2C18827FED20300F0C617 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		04B2C18827FED20300F0C617 /* SavedPostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsPresenter.swift; sourceTree = "<group>"; };
 		04B2C18A27FED5D900F0C617 /* SavedPostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsInteractor.swift; sourceTree = "<group>"; };
 		04B2C19327FF2A7E00F0C617 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04B2C19727FF7F5300F0C617 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
@@ -229,8 +227,9 @@
 		04B2C16D27FEC63200F0C617 /* FlowCoordinators */ = {
 			isa = PBXGroup;
 			children = (
-				04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */,
+				04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */,
 				CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */,
+				04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */,
 				04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */,
 				04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */,
 				CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */,
@@ -245,7 +244,6 @@
 				04B2C17F27FED0DA00F0C617 /* View */,
 				04B2C17E27FED0D500F0C617 /* Presenter */,
 				04B2C18027FED10A00F0C617 /* SavedPostsModuleBuilder.swift */,
-				04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */,
 			);
 			path = SavedPostsModule;
 			sourceTree = "<group>";
@@ -265,8 +263,7 @@
 		04B2C17E27FED0D500F0C617 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				04B2C18627FED1EA00F0C617 /* PresenterProtocols.swift */,
-				04B2C18827FED20300F0C617 /* Presenter.swift */,
+				04B2C18827FED20300F0C617 /* SavedPostsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -586,6 +583,7 @@
 				CF2F321627CD37BB0043A12B /* Frameworks */,
 				CF2F321727CD37BB0043A12B /* Resources */,
 				5C90FE5CA864E2C3859A1BDF /* [CP] Embed Pods Frameworks */,
+				048FC0632817047A0060EEB3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -657,6 +655,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		048FC0632817047A0060EEB3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		5C90FE5CA864E2C3859A1BDF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -690,8 +705,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\n    else\n    echo \"No SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -716,7 +730,7 @@
 				04B2C18F27FEEA9600F0C617 /* NetworkService.swift in Sources */,
 				04B2C18E27FEEA8900F0C617 /* WeatherOnMarsInfo.swift in Sources */,
 				04CF3D5527F0896300685553 /* PicturesFromMarsCollectionEntity.swift in Sources */,
-				04B2C18927FED20300F0C617 /* Presenter.swift in Sources */,
+				04B2C18927FED20300F0C617 /* SavedPostsPresenter.swift in Sources */,
 				CF6B18B127FEFBEF005D09B6 /* ArticleDetailInteractor.swift in Sources */,
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
 				CF296E722812F0B300616F48 /* PictureOfDayDetailInteractor.swift in Sources */,
@@ -746,7 +760,6 @@
 				04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */,
 				CF296E7A28148D8300616F48 /* ImageByUrlService.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
-				04B2C18727FED1EA00F0C617 /* PresenterProtocols.swift in Sources */,
 				04CF3D3527F0896300685553 /* PlanetEntity.swift in Sources */,
 				04CF3D3D27F0896300685553 /* PictureFromMarsEntity.swift in Sources */,
 				04B2C16F27FEC65200F0C617 /* FlowCoordinatorProtocol.swift in Sources */,

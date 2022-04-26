@@ -7,9 +7,11 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
     var backgroundImageView = UIImageView()
     var temperatureLabel = UILabel()
     var dateLabel = UILabel()
+    var likeButton = UIButton()
+    
+    private var savePostsButtonDelegate: SavePostButtonDelegate?
     
     var weatherOnMars: WeatherOnMarsInfo?
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,6 +27,7 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         contentView.addSubview(currentlyOnMarsLabel)
         contentView.addSubview(temperatureLabel)
         contentView.addSubview(dateLabel)
+        contentView.addSubview(likeButton)
         
         backgroundImageView.image = UIImage(named: "loading")
         backgroundImageView.layer.cornerRadius = 25
@@ -58,11 +61,15 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
             make.bottom.right.equalTo(backgroundImageView).inset(12)
         }
         
-        
-        
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
+        likeButton.snp.makeConstraints { make in
+            make.top.equalTo(backgroundImageView).inset(10)
+            make.left.equalToSuperview().offset(20)
+        }
+        updateSaveButtonView()
     }
     
-    func configure() {
+    func configure(delegate: SavePostButtonDelegate?) {
         guard let weatherOnMars = weatherOnMars else {
             return
         }
@@ -72,10 +79,30 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         let stringDate = dateFormatter.string(from: weatherOnMars.earthDate)
         self.dateLabel.text = "данные от " + stringDate
         self.backgroundImageView.image = UIImage(named: "WeatherOnMarsBackground")
-        
+        self.savePostsButtonDelegate = delegate
     }
     
+    func updateSaveButtonView() {
+        if (weatherOnMars?.isSaved ?? false) {
+            likeButton.setTitle("Понравилось", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else{
+            likeButton.setTitle("Нравится", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
     
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        
+        let saved = weatherOnMars?.isSaved ?? false
+        weatherOnMars?.isSaved = !saved
+        if (weatherOnMars?.isSaved ?? false) {
+            savePostsButtonDelegate?.savePost(post: weatherOnMars as! Post)
+        } else {
+            savePostsButtonDelegate?.removePostFromSaved(post: weatherOnMars as! Post)
+        }
+        updateSaveButtonView()
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

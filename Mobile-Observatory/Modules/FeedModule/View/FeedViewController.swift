@@ -26,11 +26,9 @@ protocol FeedViewControllerOutput {
 }
 
 class FeedViewController: UIViewController, UIScrollViewDelegate {
-    let api = NetworkService.shared
     private var output: FeedViewControllerOutput
     private var isFetching = false
     var feedTableView = UITableView()
-    
     
     init(output: FeedViewControllerOutput) {
         self.output = output
@@ -122,11 +120,8 @@ extension FeedViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.weatherOnMars = post as? WeatherOnMarsInfo
-            cell.configure()
+            cell.configure(delegate: self)
             return cell
-        
-        case .none: break
-            //
         case .pictureOfDay:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
                     PictureOfDayTableViewCell else {
@@ -145,6 +140,7 @@ extension FeedViewController: UITableViewDataSource {
             //
         case .searchResult: break
             //
+        case .none: break
         }
         return UITableViewCell()
         
@@ -163,9 +159,6 @@ extension FeedViewController: UITableViewDelegate {
         case .weatherOnMars:
             let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
             navigationController?.pushViewController(vc, animated: true)
-        
-        case .none: break
-            //
         case .some(.pictureOfDay): 
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             navigationController?.pushViewController(vc, animated: true)
@@ -180,9 +173,9 @@ extension FeedViewController: UITableViewDelegate {
             //
         case .some(.searchResult): break
             //
+        case .none: break
+            //
         }
-        
-        //к аутпуту
     }
 }
 

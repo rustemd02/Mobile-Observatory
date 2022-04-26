@@ -25,7 +25,7 @@ class MobileObservatory_CoreDataTests: XCTestCase {
     }
     
     override func setUpWithError() throws {
-        
+         
     }
 
     override class func tearDown() {

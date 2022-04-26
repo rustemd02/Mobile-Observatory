@@ -62,7 +62,7 @@ extension ArticleEntity : Identifiable {
     
     func convertToFeedEntity() -> Article {
         // swiftlint:disable:next force_cast
-        return Article(id: Int(truncating: id),
+        var article = Article(id: Int(truncating: id),
                        title: title!,
                        createdAt: createdAt!,
                        summary: summary!,
@@ -70,5 +70,7 @@ extension ArticleEntity : Identifiable {
                        pictureLocalPath: pictureLocalPath,
                        articleUrl: articleUrl ?? "",
                        newsSite: newsSite!)
+        article.isSaved = true
+        return article
     }
 }
