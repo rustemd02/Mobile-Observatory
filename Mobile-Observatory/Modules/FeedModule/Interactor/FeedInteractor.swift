@@ -125,14 +125,7 @@ class FeedInteractor: FeedInteractorProtocol {
     }
     
     func feedPrefetching(indexPaths: [IndexPath]) {
-        //        for index in indexPaths {
-        //            if index.row >= (articleFetch.articlesData.count - 3) && !isFetching {
-        //                howManyArticlesToSkip+=10
-        //                print(howManyArticlesToSkip)
-        //                loadArticles()
-        //                break
-        //            }
-        //        }
+       
     }
     
     func savePost(post: Post){

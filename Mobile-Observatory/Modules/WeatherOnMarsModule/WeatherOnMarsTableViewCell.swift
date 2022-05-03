@@ -1,15 +1,12 @@
 import UIKit
 
 class WeatherOnMarsTableViewCell: UITableViewCell {
-    let api = NetworkService.shared
-    
     var currentlyOnMarsLabel = UILabel()
     var backgroundImageView = UIImageView()
     var temperatureLabel = UILabel()
     var dateLabel = UILabel()
     
     var weatherOnMars: WeatherOnMarsInfo?
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -66,7 +63,7 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         guard let weatherOnMars = weatherOnMars else {
             return
         }
-        self.temperatureLabel.text = (weatherOnMars.minTemp.description) + "°C"
+        self.temperatureLabel.text = ((weatherOnMars.minTemp + weatherOnMars.maxTemp)/2).description + "°C"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.YYYY"
         let stringDate = dateFormatter.string(from: weatherOnMars.earthDate)

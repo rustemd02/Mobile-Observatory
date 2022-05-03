@@ -51,6 +51,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         feedTableView.refreshControl = UIRefreshControl()
         feedTableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
+  
     
     private func setupView() {
         title = "Лента"
@@ -67,9 +68,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         feedTableView.register(PictureOfDayTableViewCell.self, forCellReuseIdentifier: "PictureOfDayTableViewCell")
         feedTableView.snp.makeConstraints { maker in
             maker.top.equalTo(view.safeAreaLayoutGuide)
-            maker.left.equalToSuperview()
-            maker.right.equalToSuperview()
-            maker.bottom.equalToSuperview()
+            maker.left.right.bottom.equalToSuperview()
         }
         
     }
@@ -162,12 +161,14 @@ extension FeedViewController: UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case .weatherOnMars:
             let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
+            vc.weatherOnMars = post as? WeatherOnMarsInfo
             navigationController?.pushViewController(vc, animated: true)
         
         case .none: break
             //
         case .some(.pictureOfDay): 
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
+            vc.picOfDay = post as? PictureOfDay
             navigationController?.pushViewController(vc, animated: true)
             
         case .some(.pictureFromMars): break

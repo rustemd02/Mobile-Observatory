@@ -91,7 +91,7 @@ class ArticleDetailViewController: UIViewController {
             make.top.equalTo(titleLabel.snp_bottomMargin).offset(12)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(8)
             make.right.equalTo(view.safeAreaLayoutGuide).inset(8)
-            make.bottom.equalTo(shareButton.safeAreaLayoutGuide)
+            make.bottom.equalTo(shareButton.safeAreaLayoutGuide).inset(32)
         }
         shareButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         shareButton.setTitle(" Поделиться", for: .normal)

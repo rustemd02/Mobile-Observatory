@@ -11,6 +11,7 @@ class PictureOfDayTableViewCell: UITableViewCell {
     
     var api = ImageByUrlService()
         
+    
     var picOfDayImageView = UIImageView()
     var picOfDayLabel = UILabel()
     var likeButton = UIButton()
@@ -34,10 +35,9 @@ class PictureOfDayTableViewCell: UITableViewCell {
         contentView.addSubview(picOfDayLabel)
         contentView.addSubview(likeButton)
 
-        
-        picOfDayImageView.image = UIImage(named: "loading")
         picOfDayImageView.layer.cornerRadius = 25
         picOfDayImageView.clipsToBounds = true
+        picOfDayImageView.contentMode = .scaleAspectFill
         picOfDayImageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(16)
             make.right.bottom.equalToSuperview().inset(16)
@@ -62,7 +62,6 @@ class PictureOfDayTableViewCell: UITableViewCell {
     
     func configure() {
         picOfDayImageView.image = UIImage(named: "loading")
-        //self.picOfDayImageView.image = pictureOfDay?.imageUrl
         api.getImageByUrl(url: pictureOfDay?.imageUrl ?? String()) { result in
             switch result {
             case .success(let image):
@@ -89,7 +88,6 @@ class PictureOfDayTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

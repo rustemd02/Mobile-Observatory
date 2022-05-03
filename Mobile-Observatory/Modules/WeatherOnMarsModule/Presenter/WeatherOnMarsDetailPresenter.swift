@@ -23,5 +23,8 @@ class WeatherOnMarsDetailPresenter: WeatherOnMarsDetailPresenterProtocol {
 }
 
 extension WeatherOnMarsDetailPresenter: WeatherOnMarsDetailViewControllerOutput {
+    func getWeatherInfo(sol: String, completion: @escaping (WeatherOnMarsInfo) -> Void) {
+        return interactor.getWeatherInfo(sol: sol, completion: completion)
+    }
     
 }

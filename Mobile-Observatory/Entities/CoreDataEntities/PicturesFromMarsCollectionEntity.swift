@@ -45,7 +45,6 @@ extension PicturesFromMarsCollectionEntity {
 extension PicturesFromMarsCollectionEntity : Identifiable {
     
     func convertToFeedEntity() -> PictureFromMars {
-        // swiftlint:disable:next force_cast
         return PictureFromMars(photos: pictures?.allObjects as! [Photo])
     }
 }
