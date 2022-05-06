@@ -11,12 +11,10 @@ class PictureOfDayTableViewCell: UITableViewCell {
     
     var api = ImageByUrlService()
         
-    
     var picOfDayImageView = UIImageView()
     var picOfDayLabel = UILabel()
     var likeButton = UIButton()
 
-    
     var pictureOfDay: PictureOfDay?
     
     

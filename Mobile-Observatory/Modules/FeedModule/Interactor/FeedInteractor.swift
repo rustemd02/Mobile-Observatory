@@ -38,6 +38,7 @@ class FeedInteractor: FeedInteractorProtocol {
             getWeatherOnMars(sol: "", completion: completion)
         }
         getPicOfDay(completion: completion)
+        getPicFromMars(completion: completion)
     }
     
     private func getArticles(completion: @escaping () -> ()) {
@@ -97,8 +98,35 @@ class FeedInteractor: FeedInteractorProtocol {
                         break
                     }
                 }
-                if(!alreadyShown) {
+                if (!alreadyShown) {
                     self?.postsData.append(picOfDay)
+                    completion()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getPicFromMars(completion: @escaping () -> ()) {
+        api.getPicFromMars(date: lastFetchedDate) { [weak self] result in
+            switch result {
+            case .success(let picFromMars):
+                if (picFromMars.photos.isEmpty) {
+                    completion()
+                    return
+                }
+                var alreadyShown: Bool = false
+                guard let posts = self?.postsData else { return }
+                for post in posts {
+                    guard let pic = post as? PictureFromMars else { continue }
+                    if (pic == picFromMars) {
+                        alreadyShown = true
+                        break
+                    }
+                }
+                if (!alreadyShown) {
+                    self?.postsData.append(picFromMars)
                     completion()
                 }
             case .failure(let error):
@@ -125,7 +153,7 @@ class FeedInteractor: FeedInteractorProtocol {
     }
     
     func feedPrefetching(indexPaths: [IndexPath]) {
-       
+        
     }
     
     func savePost(post: Post){

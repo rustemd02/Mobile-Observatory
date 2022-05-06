@@ -66,6 +66,7 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         feedTableView.register(WeatherOnMarsTableViewCell.self, forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         view.addSubview(feedTableView)
         feedTableView.register(PictureOfDayTableViewCell.self, forCellReuseIdentifier: "PictureOfDayTableViewCell")
+        feedTableView.register(PictureFromMarsTableViewCell.self, forCellReuseIdentifier: "PictureFromMarsTableViewCell")
         feedTableView.snp.makeConstraints { maker in
             maker.top.equalTo(view.safeAreaLayoutGuide)
             maker.left.right.bottom.equalToSuperview()
@@ -134,8 +135,13 @@ extension FeedViewController: UITableViewDataSource {
             cell.pictureOfDay = post as? PictureOfDay
             cell.configure()
             return cell
-        case .pictureFromMars: break
-            //
+        case .pictureFromMars: 
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureFromMarsTableViewCell", for: indexPath) as? PictureFromMarsTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.picFromMars = post as? PictureFromMars
+            cell.configure()
+            return cell
         case .pictureOfEarth: break
             //
         case .asteroid: break
@@ -164,23 +170,27 @@ extension FeedViewController: UITableViewDelegate {
             vc.weatherOnMars = post as? WeatherOnMarsInfo
             navigationController?.pushViewController(vc, animated: true)
         
-        case .none: break
-            //
-        case .some(.pictureOfDay): 
+        case .pictureOfDay:
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             vc.picOfDay = post as? PictureOfDay
             navigationController?.pushViewController(vc, animated: true)
             
-        case .some(.pictureFromMars): break
+        case .pictureFromMars:
+            let vc: PictureFromMarsDetailViewController = PictureFromMarsDetailModuleBuilder().build()
+            vc.picFromMars = post as? PictureFromMars
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case .pictureOfEarth: break
             //
-        case .some(.pictureOfEarth): break
+        case .asteroid: break
             //
-        case .some(.asteroid): break
+        case .planet: break
             //
-        case .some(.planet): break
+        case .searchResult: break
             //
-        case .some(.searchResult): break
-            //
+            
+        case .none: break
+                //
         }
         
         //к аутпуту
