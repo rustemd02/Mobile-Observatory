@@ -33,13 +33,16 @@ class PictureOfDayTableViewCell: UITableViewCell {
         contentView.addSubview(picOfDayLabel)
         contentView.addSubview(likeButton)
 
+        let maxWidthContainer: CGFloat = 374
+        let maxHeightContainer: CGFloat = 225
         picOfDayImageView.layer.cornerRadius = 25
         picOfDayImageView.clipsToBounds = true
         picOfDayImageView.contentMode = .scaleAspectFill
         picOfDayImageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(16)
             make.right.bottom.equalToSuperview().inset(16)
-            make.height.lessThanOrEqualTo(200)
+            make.width.equalTo(picOfDayImageView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
+            make.width.height.equalToSuperview().priority(.high)
         }
         
         picOfDayLabel.textColor = .white

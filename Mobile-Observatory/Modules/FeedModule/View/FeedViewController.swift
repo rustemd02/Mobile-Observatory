@@ -62,9 +62,10 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
         
         feedTableView = UITableView(frame: view.bounds, style: .plain)
         feedTableView.delegate = self
-        feedTableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
-        feedTableView.register(WeatherOnMarsTableViewCell.self, forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         view.addSubview(feedTableView)
+        
+        feedTableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: "ArticleTableViewCell")
+        feedTableView.register(WeatherOnMarsTableViewCell.self, forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         feedTableView.register(PictureOfDayTableViewCell.self, forCellReuseIdentifier: "PictureOfDayTableViewCell")
         feedTableView.register(PictureFromMarsTableViewCell.self, forCellReuseIdentifier: "PictureFromMarsTableViewCell")
         feedTableView.snp.makeConstraints { maker in

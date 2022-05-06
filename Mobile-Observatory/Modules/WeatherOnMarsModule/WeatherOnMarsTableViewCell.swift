@@ -23,13 +23,16 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         contentView.addSubview(temperatureLabel)
         contentView.addSubview(dateLabel)
         
+        let maxWidthContainer: CGFloat = 374
+        let maxHeightContainer: CGFloat = 225
         backgroundImageView.image = UIImage(named: "loading")
         backgroundImageView.layer.cornerRadius = 25
         backgroundImageView.clipsToBounds = true
         backgroundImageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(16)
             make.right.bottom.equalToSuperview().inset(16)
-            make.height.lessThanOrEqualTo(200)
+            make.width.equalTo(backgroundImageView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
+            make.width.height.equalToSuperview().priority(.high)
         }
         
         

@@ -31,13 +31,16 @@ class PictureFromMarsTableViewCell: UITableViewCell {
         contentView.addSubview(picFromMarsLabel)
         contentView.addSubview(likeButton)
         
+        let maxWidthContainer: CGFloat = 374
+        let maxHeightContainer: CGFloat = 225
         picFromMarsImageView.layer.cornerRadius = 25
         picFromMarsImageView.clipsToBounds = true
         picFromMarsImageView.contentMode = .scaleAspectFill
         picFromMarsImageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(16)
             make.right.bottom.equalToSuperview().inset(16)
-            make.height.lessThanOrEqualTo(200)
+            make.width.equalTo(picFromMarsImageView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
+            make.width.height.equalToSuperview().priority(.high)
         }
         
         picFromMarsLabel.textColor = .white
