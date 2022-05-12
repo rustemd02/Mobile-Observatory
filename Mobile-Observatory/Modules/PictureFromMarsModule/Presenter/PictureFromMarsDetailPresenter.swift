@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PictureFromMarsDetailPresenterProtocol {
-    
+    func getImage(url: String, completion: @escaping (UIImage) -> Void)
+    func getPicFromMars(date: Date, completion: @escaping (PictureFromMars) -> Void)
 }
 
 class PictureFromMarsDetailPresenter: PictureFromMarsDetailPresenterProtocol {
@@ -21,5 +23,11 @@ class PictureFromMarsDetailPresenter: PictureFromMarsDetailPresenterProtocol {
 }
 
 extension PictureFromMarsDetailPresenter: PictureFromMarsDetailViewControllerOutput {
+    func getImage(url: String, completion: @escaping (UIImage) -> Void) {
+        return interactor.getImage(url: url, completion: completion)
+    }
     
+    func getPicFromMars(date: Date, completion: @escaping (PictureFromMars) -> Void) {
+        return interactor.getPicFromMars(date: date, completion: completion)
+    }
 }

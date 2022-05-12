@@ -80,7 +80,7 @@ class PictureOfDayDetailViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .bold)
+        titleLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         titleLabel.numberOfLines = 0
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(picOfDayImageView.snp_bottomMargin).offset(16)

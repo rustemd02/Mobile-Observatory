@@ -33,7 +33,7 @@ extension PictureFromMarsEntity {
 extension PictureFromMarsEntity : Identifiable {
 
     func update(with pictureFromMars: Photo, collection: PicturesFromMarsCollectionEntity) {
-        date = Date.init(pictureFromMars.earthDate)
+        date = pictureFromMars.earthDate
         pictureURL = pictureFromMars.imgSrc
         sol = pictureFromMars.sol as NSNumber
         self.collection = collection
