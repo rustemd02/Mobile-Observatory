@@ -22,7 +22,6 @@ final class FeedFlowCoordinator: FlowCoordinatorProtocol {
     func start(animated: Bool) {
         let tabBarItem: UITabBarItem = UITabBarItem()
         tabBarItem.title = "Feed"
-        tabBarItem.image = UIImage(systemName: "newspaper")
         tabBarItem.image = UIImage(systemName: "newspaper.fill")
         rootController.appendView(FeedModuleBuilder().build(), item: tabBarItem)
     }
