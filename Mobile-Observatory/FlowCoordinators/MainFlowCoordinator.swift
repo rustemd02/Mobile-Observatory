@@ -22,6 +22,8 @@ final class MainFlowCoordinator: FlowCoordinatorProtocol {
         feedFlow.start(animated: true)
         let savedPostsFlow = SavedPostsFlowCoordinator(rootController: self)
         savedPostsFlow.start(animated: true)
+        let spaceArchiveFlow = SpaceArchiveFlowCoordinator(rootController: self)
+        spaceArchiveFlow.start(animated: true)
     }
     
     func finish(animated: Bool) {

@@ -40,7 +40,7 @@ struct Photo: Codable {
     var id, sol: Int
     var imgSrc: String
     var imgLocalPath: String?
-    var earthDate: String
+    var earthDate: Date
     var rover: Rover
     
     enum CodingKeys: String, CodingKey {
@@ -50,7 +50,7 @@ struct Photo: Codable {
         case rover
     }
     
-    init(uuid: UUID, id: Int, sol: Int, imgSrc: String, imgLocalPath: String?, earthDate: String, rover: Rover) {
+    init(uuid: UUID, id: Int, sol: Int, imgSrc: String, imgLocalPath: String?, earthDate: Date, rover: Rover) {
         self.uuid = uuid
         self.id = id
         self.sol = sol
