@@ -19,6 +19,8 @@ protocol SpaceArchiveViewControllerOutput {
 
 class SpaceArchiveViewController: UIViewController {
     private var output: SpaceArchiveViewControllerOutput
+    var scrollView = UIScrollView()
+    var contentView = UIView()
     var searchController = UISearchController()
     var spaceXImageView = UIImageView()
     var planetsImageView = UIImageView()
@@ -40,10 +42,15 @@ class SpaceArchiveViewController: UIViewController {
         setupView()
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Поиск по базе знаний"
         
         let spaceXTap = UITapGestureRecognizer(target: self, action: #selector(goToSpaceXScreen))
         spaceXImageView.isUserInteractionEnabled = true
         spaceXImageView.addGestureRecognizer(spaceXTap)
+        
+        let planetsTap = UITapGestureRecognizer(target: self, action: #selector(goToPlanetsScreen))
+        planetsImageView.isUserInteractionEnabled = true
+        planetsImageView.addGestureRecognizer(planetsTap)
     }
     
     func setupView() {
@@ -52,17 +59,29 @@ class SpaceArchiveViewController: UIViewController {
         
         self.navigationItem.title = "База знаний"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        view.addSubview(searchController.searchBar)
-        view.addSubview(spaceXImageView)
-        view.addSubview(planetsImageView)
-        view.addSubview(planetsLabel)
-        view.addSubview(asteroidsImageView)
-        view.addSubview(asteroidsLabel)
+        
+        view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { make in
+            make.left.bottom.right.top.equalToSuperview()
+        }
+        scrollView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints { make in
+            make.left.right.equalTo(self.view)
+            make.width.height.top.bottom.equalTo(self.scrollView)
+        }
+        
+        contentView.addSubview(searchController.searchBar)
+        contentView.addSubview(spaceXImageView)
+        contentView.addSubview(planetsImageView)
+        contentView.addSubview(planetsLabel)
+        contentView.addSubview(asteroidsImageView)
+        contentView.addSubview(asteroidsLabel)
         
         searchController.searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(8)
-            make.right.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(contentView.safeAreaLayoutGuide)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(8)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(8)
             
         }
         let maxWidthContainerBig: CGFloat = 374
@@ -71,9 +90,9 @@ class SpaceArchiveViewController: UIViewController {
         spaceXImageView.layer.cornerRadius = 25
         spaceXImageView.clipsToBounds = true
         spaceXImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(8)
-            make.right.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(contentView.safeAreaLayoutGuide)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(8)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(8)
             make.width.equalTo(spaceXImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
             make.width.height.equalToSuperview().priority(.high)
         }
@@ -86,8 +105,8 @@ class SpaceArchiveViewController: UIViewController {
         let maxHeightContainerSmall: CGFloat = 150
         planetsImageView.snp.makeConstraints { make in
             make.top.equalTo(spaceXImageView.snp_bottomMargin).offset(16)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(8)
-            make.right.equalTo(view.snp_centerXWithinMargins).offset(-4)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(8)
+            make.right.equalTo(contentView.snp_centerXWithinMargins).offset(-4)
             make.width.equalTo(planetsImageView.snp.height).multipliedBy(maxWidthContainerSmall/maxHeightContainerSmall)
             make.width.height.equalToSuperview().priority(.high)
         }
@@ -106,8 +125,8 @@ class SpaceArchiveViewController: UIViewController {
         asteroidsImageView.contentMode = .scaleAspectFill
         asteroidsImageView.snp.makeConstraints { make in
             make.top.equalTo(spaceXImageView.snp_bottomMargin).offset(16)
-            make.left.equalTo(view.snp_centerXWithinMargins).offset(4)
-            make.right.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.left.equalTo(contentView.snp_centerXWithinMargins).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(8)
             make.width.equalTo(asteroidsImageView.snp.height).multipliedBy(maxWidthContainerSmall/maxHeightContainerSmall)
             make.width.height.equalToSuperview().priority(.high)
         }
@@ -124,6 +143,11 @@ class SpaceArchiveViewController: UIViewController {
     
     @objc func goToSpaceXScreen() {
         let vc: SpaceXViewController = SpaceXModuleBuilder().build()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToPlanetsScreen() {
+        let vc: PlanetsViewController = PlanetsModuleBuilder().build()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
