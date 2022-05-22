@@ -7,37 +7,26 @@
 
 import Foundation
 
-struct Planet {
-    var name: String
-    var moons: [String]
-    var mass: Float
-    var radius: Float
-    var discoveredWhen: Date?
-    var gravity: Float
-    var bodyType: String
-    
-    init(name: String, moons: [String], mass: Float, radius: Float, discoveredWhen: Date?, gravity: Float, bodyType: String) {
-        self.name = name
-        self.moons = moons
-        self.mass = mass
-        self.radius = radius
-        self.discoveredWhen = discoveredWhen
-        self.gravity = gravity
-        self.bodyType = bodyType
-    }
+// MARK: - Planet
+struct Planet: Codable {
+    let id: Int
+    let name, mass: String
+    let diameter, density: Int
+    let gravity, rotationPeriod, lengthOfDay, distanceFromSun: String
+    let orbitalPeriod, orbitalVelocity: String
+    let meanTemperature, numberOfMoons: Int
 
-}
+    enum CodingKeys: String, CodingKey {
+        case id, name, mass, diameter, density, gravity
+        case rotationPeriod = "rotation_period"
+        case lengthOfDay = "length_of_day"
+        case distanceFromSun = "distance_from_sun"
+        case orbitalPeriod = "orbital_period"
+        case orbitalVelocity = "orbital_velocity"
+        case meanTemperature = "mean_temperature"
+        case numberOfMoons = "number_of_moons"
 
-extension Planet: Equatable {
-    
-    static func == (larc: Planet, rarc: Planet) -> Bool {
-            return
-                larc.name == rarc.name &&
-                larc.moons == rarc.moons &&
-                larc.mass == rarc.mass &&
-                larc.radius == rarc.radius &&
-                larc.discoveredWhen == rarc.discoveredWhen &&
-                larc.gravity == rarc.gravity &&
-                larc.bodyType == rarc.bodyType
     }
 }
+
+

@@ -52,13 +52,13 @@ class SpaceXViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
-            make.left.bottom.right.top.equalToSuperview()
+            make.edges.equalTo(self.view)
         }
         scrollView.addSubview(contentView)
         
         contentView.snp.makeConstraints { make in
-            make.left.right.equalTo(self.view)
-            make.width.height.top.bottom.equalTo(self.scrollView)
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(self.view)
         }
         
         contentView.addSubview(spaceXImageView)
@@ -90,7 +90,7 @@ class SpaceXViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(launchesImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         launchesLabel.textColor = .white
@@ -109,7 +109,7 @@ class SpaceXViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(crewMembersImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         crewMembersLabel.textColor = .white
@@ -128,7 +128,8 @@ class SpaceXViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(rocketsImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
+            make.bottom.equalTo(contentView.snp.bottom)
         }
         
         rocketsLabel.textColor = .white

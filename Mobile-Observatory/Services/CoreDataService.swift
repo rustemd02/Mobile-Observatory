@@ -498,113 +498,113 @@ class CoreDataService{
     }
     
     // MARK: - Planet
-    public func savePlanet(_ planet: Planet){
-        saveContext.perform {
-            let planetEntity = PlanetEntity(context: self.saveContext)
-            planetEntity.update(with: planet)
-            let moons: NSSet = self.convertMoonsArrayToSet(moons: planet.moons, planet: planetEntity)
-            planetEntity.addToMoons(moons)
-            
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    public func deletePictureFromMars(_ planet: Planet){
-        saveContext.perform {
-            let fetchRequest = PlanetEntity.fetchRequest()
-            var entities: [PlanetEntity] = []
-            do {
-                entities = try self.saveContext.fetch(fetchRequest)
-            } catch {
-                print(error)
-            }
-            for entity in entities {
-                let e = entity.convertToFeedEntity()
-                if(e == planet){
-                    self.saveContext.delete(entity)
-                    break
-                }
-            }
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    public func deleteAllPlanets(){
-        saveContext.perform {
-            let fetchRequest = PlanetEntity.fetchRequest()
-            var entities: [PlanetEntity] = []
-            do {
-                entities = try self.saveContext.fetch(fetchRequest)
-            } catch {
-                print(error)
-            }
-            for entity in entities {
-                self.saveContext.delete(entity)
-            }
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    public func getAllPlanets() -> [Planet]{
-        let fetchRequest = PlanetEntity.fetchRequest()
-        var entities: [PlanetEntity] = []
-        var feedEntities: [Planet] = []
-        do {
-            entities = try viewContext.fetch(fetchRequest)
-        } catch {
-            print(error)
-        }
-        for entity in entities {
-            feedEntities.append(entity.convertToFeedEntity())
-        }
-        return feedEntities
-    }
-    
-    private func convertMoonsArrayToSet(moons: [String], planet: PlanetEntity) -> NSSet {
-        var moonsSet: [MoonEntity] = []
-        for currentMoon in moons {
-            saveMoon(currentMoon, planet: planet)
-            guard let temp = self.getMoonEntity(name: currentMoon) else { continue }
-            moonsSet.append(temp)
-        }
-        return NSSet(array: moonsSet)
-    }
-    
-    private func saveMoon(_ moon: String, planet: PlanetEntity){
-        saveContext.perform {
-            let moonEntity = MoonEntity(context: self.saveContext)
-            moonEntity.moonName = moon
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    private func getMoonEntity(name: String) -> MoonEntity?{
-        let fetchRequest = MoonEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "moonName == %@", name)
-        do {
-            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
-            return result
-        } catch {
-            print(error)
-        }
-        return nil
-    }
+//    public func savePlanet(_ planet: Planet){
+//        saveContext.perform {
+//            let planetEntity = PlanetEntity(context: self.saveContext)
+//            planetEntity.update(with: planet)
+//            let moons: NSSet = self.convertMoonsArrayToSet(moons: planet.moons, planet: planetEntity)
+//            planetEntity.addToMoons(moons)
+//            
+//            do {
+//                try self.saveContext.save()
+//            } catch let error {
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+//    
+//    public func deletePictureFromMars(_ planet: Planet){
+//        saveContext.perform {
+//            let fetchRequest = PlanetEntity.fetchRequest()
+//            var entities: [PlanetEntity] = []
+//            do {
+//                entities = try self.saveContext.fetch(fetchRequest)
+//            } catch {
+//                print(error)
+//            }
+//            for entity in entities {
+//                let e = entity.convertToFeedEntity()
+//                if(e == planet){
+//                    self.saveContext.delete(entity)
+//                    break
+//                }
+//            }
+//            do {
+//                try self.saveContext.save()
+//            } catch let error {
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+//    
+//    public func deleteAllPlanets(){
+//        saveContext.perform {
+//            let fetchRequest = PlanetEntity.fetchRequest()
+//            var entities: [PlanetEntity] = []
+//            do {
+//                entities = try self.saveContext.fetch(fetchRequest)
+//            } catch {
+//                print(error)
+//            }
+//            for entity in entities {
+//                self.saveContext.delete(entity)
+//            }
+//            do {
+//                try self.saveContext.save()
+//            } catch let error {
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+//    
+//    public func getAllPlanets() -> [Planet]{
+//        let fetchRequest = PlanetEntity.fetchRequest()
+//        var entities: [PlanetEntity] = []
+//        var feedEntities: [Planet] = []
+//        do {
+//            entities = try viewContext.fetch(fetchRequest)
+//        } catch {
+//            print(error)
+//        }
+//        for entity in entities {
+//            feedEntities.append(entity.convertToFeedEntity())
+//        }
+//        return feedEntities
+//    }
+//    
+//    private func convertMoonsArrayToSet(moons: [String], planet: PlanetEntity) -> NSSet {
+//        var moonsSet: [MoonEntity] = []
+//        for currentMoon in moons {
+//            saveMoon(currentMoon, planet: planet)
+//            guard let temp = self.getMoonEntity(name: currentMoon) else { continue }
+//            moonsSet.append(temp)
+//        }
+//        return NSSet(array: moonsSet)
+//    }
+//    
+//    private func saveMoon(_ moon: String, planet: PlanetEntity){
+//        saveContext.perform {
+//            let moonEntity = MoonEntity(context: self.saveContext)
+//            moonEntity.moonName = moon
+//            do {
+//                try self.saveContext.save()
+//            } catch let error {
+//                print("Error: \(error)")
+//            }
+//        }
+//    }
+//    
+//    private func getMoonEntity(name: String) -> MoonEntity?{
+//        let fetchRequest = MoonEntity.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(format: "moonName == %@", name)
+//        do {
+//            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
+//            return result
+//        } catch {
+//            print(error)
+//        }
+//        return nil
+//    }
     
     // MARK: - Search result
     public func saveSearchResult(_ searchResult: SearchResult){

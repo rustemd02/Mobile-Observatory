@@ -65,21 +65,39 @@ class PlanetsViewController: UIViewController {
         navigationItem.title = "Планеты"
         uiInit()
         
+        let mercuryTap = UITapGestureRecognizer(target: self, action: #selector(goToMercuryDetailScreen))
+        mercuryImageView.isUserInteractionEnabled = true
+        mercuryImageView.addGestureRecognizer(mercuryTap)
+        
+//        let venusTap = UITapGestureRecognizer(target: self, action: #selector(goToVenusDetailScreen))
+//        venusImageView.isUserInteractionEnabled = true
+//        venusImageView.addGestureRecognizer(venusTap)
+//
+//        let marsTap = UITapGestureRecognizer(target: self, action: #selector(goToMarsDetailScreen))
+//        marsImageView.isUserInteractionEnabled = true
+//        marsImageView.addGestureRecognizer(marsTap)
+        
+    }
+    
+    @objc func goToMercuryDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .mercury
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func uiInit() {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
-            make.left.bottom.right.top.equalToSuperview()
+            make.edges.equalTo(self.view)
         }
         scrollView.addSubview(contentView)
         
         contentView.snp.makeConstraints { make in
-            make.left.right.equalTo(self.view)
-            make.width.height.top.bottom.equalTo(self.scrollView)
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(self.view)
         }
-        
+                
         contentView.addSubview(planetsImageView)
         
         contentView.addSubview(mercuryImageView)
@@ -130,7 +148,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(mercuryImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         mercuryLabel.textColor = .white
@@ -149,7 +167,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(venusImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         venusLabel.textColor = .white
@@ -168,7 +186,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(earthImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         earthLabel.textColor = .white
@@ -187,7 +205,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(marsImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         marsLabel.textColor = .white
@@ -206,7 +224,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(jupiterImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         jupiterLabel.textColor = .white
@@ -225,7 +243,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(saturnImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         saturnLabel.textColor = .white
@@ -244,7 +262,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(uranusImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         uranusLabel.textColor = .white
@@ -263,7 +281,7 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(neptuneImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
         }
         
         neptuneLabel.textColor = .white
@@ -282,7 +300,8 @@ class PlanetsViewController: UIViewController {
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(24)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.width.equalTo(plutoImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
-            make.width.height.equalToSuperview().priority(.high)
+            make.height.equalTo(maxHeightContainerBig)
+            make.bottom.equalTo(contentView.snp.bottom)
         }
         
         plutoLabel.textColor = .white
@@ -294,6 +313,8 @@ class PlanetsViewController: UIViewController {
         }
         
     }
+    
+   
     
 
 }

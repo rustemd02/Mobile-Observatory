@@ -99,6 +99,10 @@
 		CFA23B91282E9FA40028DAD7 /* PlanetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B90282E9FA30028DAD7 /* PlanetsViewController.swift */; };
 		CFA23B93282E9FB30028DAD7 /* PlanetsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B92282E9FB30028DAD7 /* PlanetsInteractor.swift */; };
 		CFA23B95282E9FC10028DAD7 /* PlanetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B94282E9FC10028DAD7 /* PlanetsPresenter.swift */; };
+		CFD5C0F4283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5C0F3283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift */; };
+		CFD5C0F9283AC1D000AD3068 /* PlanetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5C0F8283AC1D000AD3068 /* PlanetDetailViewController.swift */; };
+		CFD5C0FB283AC1DC00AD3068 /* PlanetDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5C0FA283AC1DC00AD3068 /* PlanetDetailInteractor.swift */; };
+		CFD5C0FD283AC1E500AD3068 /* PlanetDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD5C0FC283AC1E500AD3068 /* PlanetDetailPresenter.swift */; };
 		CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52927D512F400E05249 /* Asteroid.swift */; };
 		CFEEA53027D51C1300E05249 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA52F27D51C1300E05249 /* Planet.swift */; };
 		CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53127D5227300E05249 /* PictureFromMars.swift */; };
@@ -220,6 +224,10 @@
 		CFA23B90282E9FA30028DAD7 /* PlanetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsViewController.swift; sourceTree = "<group>"; };
 		CFA23B92282E9FB30028DAD7 /* PlanetsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsInteractor.swift; sourceTree = "<group>"; };
 		CFA23B94282E9FC10028DAD7 /* PlanetsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsPresenter.swift; sourceTree = "<group>"; };
+		CFD5C0F3283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailModuleBuilder.swift; sourceTree = "<group>"; };
+		CFD5C0F8283AC1D000AD3068 /* PlanetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailViewController.swift; sourceTree = "<group>"; };
+		CFD5C0FA283AC1DC00AD3068 /* PlanetDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailInteractor.swift; sourceTree = "<group>"; };
+		CFD5C0FC283AC1E500AD3068 /* PlanetDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailPresenter.swift; sourceTree = "<group>"; };
 		CFEEA52927D512F400E05249 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		CFEEA52D27D51A4000E05249 /* PictureOfEarth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfEarth.swift; sourceTree = "<group>"; };
 		CFEEA52F27D51C1300E05249 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
@@ -736,10 +744,8 @@
 		CFA23B8A282E9EFA0028DAD7 /* PlanetsModule */ = {
 			isa = PBXGroup;
 			children = (
-				CFA23B8D282E9F210028DAD7 /* Presenter */,
-				CFA23B8C282E9F120028DAD7 /* Interactor */,
-				CFA23B8B282E9F0A0028DAD7 /* View */,
-				CFA23B8E282E9F380028DAD7 /* PlanetsModuleBuilder.swift */,
+				CFD5C0F2283ABF8700AD3068 /* PlanetsScreen */,
+				CFD5C0F1283ABF7A00AD3068 /* PlanetDetailScreen */,
 			);
 			path = PlanetsModule;
 			sourceTree = "<group>";
@@ -764,6 +770,52 @@
 			isa = PBXGroup;
 			children = (
 				CFA23B94282E9FC10028DAD7 /* PlanetsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CFD5C0F1283ABF7A00AD3068 /* PlanetDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CFD5C0F7283AC1C100AD3068 /* Presenter */,
+				CFD5C0F6283AC1B800AD3068 /* Interactor */,
+				CFD5C0F5283AC1B300AD3068 /* View */,
+				CFD5C0F3283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift */,
+			);
+			path = PlanetDetailScreen;
+			sourceTree = "<group>";
+		};
+		CFD5C0F2283ABF8700AD3068 /* PlanetsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CFA23B8D282E9F210028DAD7 /* Presenter */,
+				CFA23B8C282E9F120028DAD7 /* Interactor */,
+				CFA23B8B282E9F0A0028DAD7 /* View */,
+				CFA23B8E282E9F380028DAD7 /* PlanetsModuleBuilder.swift */,
+			);
+			path = PlanetsScreen;
+			sourceTree = "<group>";
+		};
+		CFD5C0F5283AC1B300AD3068 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFD5C0F8283AC1D000AD3068 /* PlanetDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CFD5C0F6283AC1B800AD3068 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CFD5C0FA283AC1DC00AD3068 /* PlanetDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CFD5C0F7283AC1C100AD3068 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CFD5C0FC283AC1E500AD3068 /* PlanetDetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -942,6 +994,7 @@
 				CF296E702812F09D00616F48 /* PictureOfDayDetailViewController.swift in Sources */,
 				CF6B18AF27FEFBE3005D09B6 /* FeedInteractor.swift in Sources */,
 				CF296E622812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift in Sources */,
+				CFD5C0FD283AC1E500AD3068 /* PlanetDetailPresenter.swift in Sources */,
 				CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */,
 				CF7E452A28241E4F0038D0A9 /* PictureFromMarsDetailViewController.swift in Sources */,
 				CFA23B6B282D956A0028DAD7 /* SpaceArchiveModuleBuilder.swift in Sources */,
@@ -992,11 +1045,13 @@
 				04B2C18B27FED5D900F0C617 /* SavedPostsInteractor.swift in Sources */,
 				CF7E4530282420770038D0A9 /* PictureFromMarsTableViewCell.swift in Sources */,
 				CF296E6D2812F08800616F48 /* PictureOfDayTableViewCell.swift in Sources */,
+				CFD5C0FB283AC1DC00AD3068 /* PlanetDetailInteractor.swift in Sources */,
 				040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */,
 				CF7E452C28241E6A0038D0A9 /* PictureFromMarsDetailInteractor.swift in Sources */,
 				CFA23B68282D91C70028DAD7 /* Rocket.swift in Sources */,
 				CFA23B80282DAA8D0028DAD7 /* SpaceXPresenter.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
+				CFD5C0F4283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift in Sources */,
 				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
 				CF296E762812F0D200616F48 /* PictureOfDayModuleBuilder.swift in Sources */,
 				CF1CB18C27F2E0FA003FF24E /* (null) in Sources */,
@@ -1011,6 +1066,7 @@
 				04CF3D3B27F0896300685553 /* SearchResultEntity.swift in Sources */,
 				04CF3D6127F1FE7A00685553 /* DatumEntity.swift in Sources */,
 				CFA23B70282D95B30028DAD7 /* SpaceArchiveViewController.swift in Sources */,
+				CFD5C0F9283AC1D000AD3068 /* PlanetDetailViewController.swift in Sources */,
 				04CF3D3327F0896300685553 /* PictureOfEarthEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
