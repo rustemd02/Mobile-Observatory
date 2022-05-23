@@ -70,6 +70,15 @@
 		CF2F322C27CD37BD0043A12B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF2F322A27CD37BD0043A12B /* LaunchScreen.storyboard */; };
 		CF2F323427CD37DE0043A12B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF2F323327CD37DE0043A12B /* .gitignore */; };
 		CF2F323D27CD39BC0043A12B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323C27CD39BC0043A12B /* User.swift */; };
+		CF3930B5283B7B30003583D5 /* CrewModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930B4283B7B30003583D5 /* CrewModuleBuilder.swift */; };
+		CF3930BC283B7B5E003583D5 /* CrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930BB283B7B5E003583D5 /* CrewViewController.swift */; };
+		CF3930BE283B7B66003583D5 /* CrewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930BD283B7B66003583D5 /* CrewInteractor.swift */; };
+		CF3930C0283B7B6F003583D5 /* CrewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930BF283B7B6F003583D5 /* CrewPresenter.swift */; };
+		CF3930C2283B7C9F003583D5 /* CrewMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930C1283B7C9F003583D5 /* CrewMemberTableViewCell.swift */; };
+		CF3930C4283BC890003583D5 /* CrewDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930C3283BC890003583D5 /* CrewDetailModuleBuilder.swift */; };
+		CF3930C9283BC921003583D5 /* CrewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930C8283BC921003583D5 /* CrewDetailViewController.swift */; };
+		CF3930CB283BC92F003583D5 /* CrewDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930CA283BC92F003583D5 /* CrewDetailInteractor.swift */; };
+		CF3930CD283BC939003583D5 /* CrewDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930CC283BC939003583D5 /* CrewDetailPresenter.swift */; };
 		CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */; };
 		CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */; };
 		CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */; };
@@ -195,6 +204,15 @@
 		CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsInfo.swift; sourceTree = "<group>"; };
 		CF2F323A27CD39710043A12B /* PictureOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDay.swift; sourceTree = "<group>"; };
 		CF2F323C27CD39BC0043A12B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CF3930B4283B7B30003583D5 /* CrewModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewModuleBuilder.swift; sourceTree = "<group>"; };
+		CF3930BB283B7B5E003583D5 /* CrewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewViewController.swift; sourceTree = "<group>"; };
+		CF3930BD283B7B66003583D5 /* CrewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewInteractor.swift; sourceTree = "<group>"; };
+		CF3930BF283B7B6F003583D5 /* CrewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewPresenter.swift; sourceTree = "<group>"; };
+		CF3930C1283B7C9F003583D5 /* CrewMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMemberTableViewCell.swift; sourceTree = "<group>"; };
+		CF3930C3283BC890003583D5 /* CrewDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewDetailModuleBuilder.swift; sourceTree = "<group>"; };
+		CF3930C8283BC921003583D5 /* CrewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewDetailViewController.swift; sourceTree = "<group>"; };
+		CF3930CA283BC92F003583D5 /* CrewDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewDetailInteractor.swift; sourceTree = "<group>"; };
+		CF3930CC283BC939003583D5 /* CrewDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewDetailPresenter.swift; sourceTree = "<group>"; };
 		CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowCoordinator.swift; sourceTree = "<group>"; };
 		CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailPresenter.swift; sourceTree = "<group>"; };
@@ -559,6 +577,111 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		CF3930B0283B7AE4003583D5 /* Launches */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Launches;
+			sourceTree = "<group>";
+		};
+		CF3930B1283B7AE9003583D5 /* Crew */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930B7283B7B3E003583D5 /* CrewOverview */,
+			);
+			path = Crew;
+			sourceTree = "<group>";
+		};
+		CF3930B2283B7AF0003583D5 /* Rockets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Rockets;
+			sourceTree = "<group>";
+		};
+		CF3930B3283B7AFE003583D5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CFA23B7C282DAA0A0028DAD7 /* Presenter */,
+				CFA23B7B282DAA030028DAD7 /* Interactor */,
+				CFA23B7A282DA9FF0028DAD7 /* View */,
+				CFA23B7D282DAA350028DAD7 /* SpaceXModuleBuilder.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CF3930B6283B7B35003583D5 /* CrewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930C7283BC8BB003583D5 /* Presenter */,
+				CF3930C6283BC8B6003583D5 /* Interactor */,
+				CF3930C5283BC8B2003583D5 /* View */,
+				CF3930C3283BC890003583D5 /* CrewDetailModuleBuilder.swift */,
+			);
+			path = CrewDetail;
+			sourceTree = "<group>";
+		};
+		CF3930B7283B7B3E003583D5 /* CrewOverview */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930B6283B7B35003583D5 /* CrewDetail */,
+				CF3930BA283B7B52003583D5 /* Presenter */,
+				CF3930B9283B7B4C003583D5 /* Interactor */,
+				CF3930B8283B7B47003583D5 /* View */,
+				CF3930B4283B7B30003583D5 /* CrewModuleBuilder.swift */,
+			);
+			path = CrewOverview;
+			sourceTree = "<group>";
+		};
+		CF3930B8283B7B47003583D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930BB283B7B5E003583D5 /* CrewViewController.swift */,
+				CF3930C1283B7C9F003583D5 /* CrewMemberTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF3930B9283B7B4C003583D5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930BD283B7B66003583D5 /* CrewInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF3930BA283B7B52003583D5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930BF283B7B6F003583D5 /* CrewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF3930C5283BC8B2003583D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930C8283BC921003583D5 /* CrewDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF3930C6283BC8B6003583D5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930CA283BC92F003583D5 /* CrewDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF3930C7283BC8BB003583D5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930CC283BC939003583D5 /* CrewDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		CF6B18A327FEF577005D09B6 /* FeedModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,10 +823,10 @@
 		CFA23B79282DA9F60028DAD7 /* SpaceXModule */ = {
 			isa = PBXGroup;
 			children = (
-				CFA23B7C282DAA0A0028DAD7 /* Presenter */,
-				CFA23B7B282DAA030028DAD7 /* Interactor */,
-				CFA23B7A282DA9FF0028DAD7 /* View */,
-				CFA23B7D282DAA350028DAD7 /* SpaceXModuleBuilder.swift */,
+				CF3930B3283B7AFE003583D5 /* Main */,
+				CF3930B2283B7AF0003583D5 /* Rockets */,
+				CF3930B1283B7AE9003583D5 /* Crew */,
+				CF3930B0283B7AE4003583D5 /* Launches */,
 			);
 			path = SpaceXModule;
 			sourceTree = "<group>";
@@ -975,12 +1098,14 @@
 				04B2C19527FF2B7800F0C617 /* SavedPostsViewController.swift in Sources */,
 				04B2C19027FEEAAA00F0C617 /* PictureOfDay.swift in Sources */,
 				04B2C19127FEEAAA00F0C617 /* PictureOfEarth.swift in Sources */,
+				CF3930B5283B7B30003583D5 /* CrewModuleBuilder.swift in Sources */,
 				049EB8D2280DB2C00088C7B5 /* FeedViewController.swift in Sources */,
 				04B2C18F27FEEA9600F0C617 /* NetworkService.swift in Sources */,
 				04B2C18E27FEEA8900F0C617 /* WeatherOnMarsInfo.swift in Sources */,
 				04CF3D5527F0896300685553 /* PicturesFromMarsCollectionEntity.swift in Sources */,
 				04B2C18927FED20300F0C617 /* Presenter.swift in Sources */,
 				CF6B18B127FEFBEF005D09B6 /* ArticleDetailInteractor.swift in Sources */,
+				CF3930C0283B7B6F003583D5 /* CrewPresenter.swift in Sources */,
 				CFA23B64282D8C560028DAD7 /* Launch.swift in Sources */,
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
 				CFA23B93282E9FB30028DAD7 /* PlanetsInteractor.swift in Sources */,
@@ -1001,6 +1126,8 @@
 				CFA23B76282D97FA0028DAD7 /* SpaceArchiveFlowCoordinator.swift in Sources */,
 				CFA23B82282DAA970028DAD7 /* SpaceXInteractor.swift in Sources */,
 				CFEEA53027D51C1300E05249 /* Planet.swift in Sources */,
+				CF3930BC283B7B5E003583D5 /* CrewViewController.swift in Sources */,
+				CF3930C4283BC890003583D5 /* CrewDetailModuleBuilder.swift in Sources */,
 				04CFF39C27D560120066A8D2 /* CoreDataService.swift in Sources */,
 				04B2C19827FF7F5300F0C617 /* MockService.swift in Sources */,
 				CFA23B8F282E9F390028DAD7 /* PlanetsModuleBuilder.swift in Sources */,
@@ -1016,11 +1143,14 @@
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
 				CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */,
 				CF7E452828241D890038D0A9 /* PictureFromMarsModuleBuilder.swift in Sources */,
+				CF3930BE283B7B66003583D5 /* CrewInteractor.swift in Sources */,
 				CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */,
 				CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */,
 				CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */,
 				CFA23B66282D905D0028DAD7 /* CrewMember.swift in Sources */,
+				CF3930CB283BC92F003583D5 /* CrewDetailInteractor.swift in Sources */,
 				04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */,
+				CF3930CD283BC939003583D5 /* CrewDetailPresenter.swift in Sources */,
 				CF296E7A28148D8300616F48 /* ImageByUrlService.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
 				CFA23B72282D95DB0028DAD7 /* SpaceArchiveInteractor.swift in Sources */,
@@ -1045,10 +1175,12 @@
 				04B2C18B27FED5D900F0C617 /* SavedPostsInteractor.swift in Sources */,
 				CF7E4530282420770038D0A9 /* PictureFromMarsTableViewCell.swift in Sources */,
 				CF296E6D2812F08800616F48 /* PictureOfDayTableViewCell.swift in Sources */,
+				CF3930C2283B7C9F003583D5 /* CrewMemberTableViewCell.swift in Sources */,
 				CFD5C0FB283AC1DC00AD3068 /* PlanetDetailInteractor.swift in Sources */,
 				040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */,
 				CF7E452C28241E6A0038D0A9 /* PictureFromMarsDetailInteractor.swift in Sources */,
 				CFA23B68282D91C70028DAD7 /* Rocket.swift in Sources */,
+				CF3930C9283BC921003583D5 /* CrewDetailViewController.swift in Sources */,
 				CFA23B80282DAA8D0028DAD7 /* SpaceXPresenter.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
 				CFD5C0F4283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift in Sources */,

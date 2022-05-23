@@ -156,6 +156,7 @@ class PlanetDetailViewController: UIViewController {
         
         let maxWidthContainerBig: CGFloat = 374
         let maxHeightContainerBig: CGFloat = 225
+        imageView.image = UIImage(named: "loading")
         imageView.layer.cornerRadius = 25
         imageView.clipsToBounds = true
         imageView.snp.makeConstraints { make in

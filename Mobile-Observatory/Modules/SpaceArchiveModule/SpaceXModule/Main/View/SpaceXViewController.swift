@@ -46,6 +46,15 @@ class SpaceXViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "SpaceX"
         uiInit()
+        
+        let crewTap = UITapGestureRecognizer(target: self, action: #selector(goToCrewMembersScreen))
+        crewMembersImageView.isUserInteractionEnabled = true
+        crewMembersImageView.addGestureRecognizer(crewTap)
+    }
+    
+    @objc func goToCrewMembersScreen() {
+        let vc: CrewViewController = CrewModuleBuilder().build()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func uiInit() {
