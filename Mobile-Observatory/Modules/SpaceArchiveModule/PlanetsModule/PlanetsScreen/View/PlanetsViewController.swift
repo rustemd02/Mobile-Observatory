@@ -69,19 +69,91 @@ class PlanetsViewController: UIViewController {
         mercuryImageView.isUserInteractionEnabled = true
         mercuryImageView.addGestureRecognizer(mercuryTap)
         
-//        let venusTap = UITapGestureRecognizer(target: self, action: #selector(goToVenusDetailScreen))
-//        venusImageView.isUserInteractionEnabled = true
-//        venusImageView.addGestureRecognizer(venusTap)
-//
-//        let marsTap = UITapGestureRecognizer(target: self, action: #selector(goToMarsDetailScreen))
-//        marsImageView.isUserInteractionEnabled = true
-//        marsImageView.addGestureRecognizer(marsTap)
+        let venusTap = UITapGestureRecognizer(target: self, action: #selector(goToVenusDetailScreen))
+        venusImageView.isUserInteractionEnabled = true
+        venusImageView.addGestureRecognizer(venusTap)
+        
+        let earthTap = UITapGestureRecognizer(target: self, action: #selector(goToEarthDetailScreen))
+        earthImageView.isUserInteractionEnabled = true
+        earthImageView.addGestureRecognizer(earthTap)
+
+        let marsTap = UITapGestureRecognizer(target: self, action: #selector(goToMarsDetailScreen))
+        marsImageView.isUserInteractionEnabled = true
+        marsImageView.addGestureRecognizer(marsTap)
+        
+        let jupiterTap = UITapGestureRecognizer(target: self, action: #selector(goToJupiterDetailScreen))
+        jupiterImageView.isUserInteractionEnabled = true
+        jupiterImageView.addGestureRecognizer(jupiterTap)
+        
+        let saturnTap = UITapGestureRecognizer(target: self, action: #selector(goToSaturnDetailScreen))
+        saturnImageView.isUserInteractionEnabled = true
+        saturnImageView.addGestureRecognizer(saturnTap)
+        
+        let uranusTap = UITapGestureRecognizer(target: self, action: #selector(goToUranusDetailScreen))
+        uranusImageView.isUserInteractionEnabled = true
+        uranusImageView.addGestureRecognizer(uranusTap)
+        
+        let neptuneTap = UITapGestureRecognizer(target: self, action: #selector(goToNeptuneDetailScreen))
+        neptuneImageView.isUserInteractionEnabled = true
+        neptuneImageView.addGestureRecognizer(neptuneTap)
+        
+        let plutoTap = UITapGestureRecognizer(target: self, action: #selector(goToPlutoDetailScreen))
+        plutoImageView.isUserInteractionEnabled = true
+        plutoImageView.addGestureRecognizer(plutoTap)
         
     }
     
     @objc func goToMercuryDetailScreen() {
         let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
         vc.planetType = .mercury
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToVenusDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .venus
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToEarthDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .earth
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToMarsDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .mars
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToJupiterDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .jupiter
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToSaturnDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .saturn
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToUranusDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .uranus
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToNeptuneDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .neptune
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToPlutoDetailScreen() {
+        let vc: PlanetDetailViewController = PlanetDetailModuleBuilder().build()
+        vc.planetType = .pluto
         navigationController?.pushViewController(vc, animated: true)
     }
     

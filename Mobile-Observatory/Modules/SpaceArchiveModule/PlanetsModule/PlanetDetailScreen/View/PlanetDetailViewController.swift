@@ -48,30 +48,39 @@ class PlanetDetailViewController: UIViewController {
     
     var planetNameLabel = UILabel()
     var planetNameValue = UILabel()
+    var planetView = UIView()
     
     var massLabel = UILabel()
     var massValue = UILabel()
+    var massView = UIView()
     
     var diameterLabel = UILabel()
     var diameterValue = UILabel()
+    var diameterView = UIView()
     
     var gravityLabel = UILabel()
     var gravityValue = UILabel()
+    var gravityView = UIView()
 
-    var rotationPeriodLabel = UILabel()
-    var rotationPeriodValue = UILabel()
+    var numberOfMoonsLabel = UILabel()
+    var numberOfMoonsValue = UILabel()
+    var numberOfMoonsView = UIView()
     
     var lengthOfDayLabel = UILabel()
     var lengthOfDayValue = UILabel()
+    var lengthOfDayView = UIView()
     
     var distanceFromSunLabel = UILabel()
     var distanceFromSunValue = UILabel()
+    var distanceFromSunView = UIView()
     
     var orbitalVelocityLabel = UILabel()
     var orbitalVelocityValue = UILabel()
+    var orbitalVelocityView = UIView()
     
     var temperatureLabel = UILabel()
     var temperatureValue = UILabel()
+    var temperatureView = UIView()
     
     
     init(output: PlanetDetailViewControllerOutput) {
@@ -108,32 +117,42 @@ class PlanetDetailViewController: UIViewController {
         
         contentView.addSubview(imageView)
         
-        contentView.addSubview(planetNameLabel)
-        contentView.addSubview(planetNameValue)
+        contentView.addSubview(planetView)
+        planetView.addSubview(planetNameLabel)
+        planetView.addSubview(planetNameValue)
         
-        contentView.addSubview(massLabel)
-        contentView.addSubview(massValue)
+        contentView.addSubview(massView)
+        massView.addSubview(massLabel)
+        massView.addSubview(massValue)
         
-        contentView.addSubview(diameterLabel)
-        contentView.addSubview(diameterValue)
+        contentView.addSubview(diameterView)
+        diameterView.addSubview(diameterLabel)
+        diameterView.addSubview(diameterValue)
         
-        contentView.addSubview(gravityLabel)
-        contentView.addSubview(gravityValue)
+        contentView.addSubview(gravityView)
+        gravityView.addSubview(gravityLabel)
+        gravityView.addSubview(gravityValue)
         
-        contentView.addSubview(rotationPeriodLabel)
-        contentView.addSubview(rotationPeriodValue)
+        contentView.addSubview(numberOfMoonsView)
+        numberOfMoonsView.addSubview(numberOfMoonsLabel)
+        numberOfMoonsView.addSubview(numberOfMoonsValue)
         
-        contentView.addSubview(lengthOfDayLabel)
-        contentView.addSubview(lengthOfDayValue)
+        contentView.addSubview(lengthOfDayView)
+        lengthOfDayView.addSubview(lengthOfDayLabel)
+        lengthOfDayView.addSubview(lengthOfDayValue)
         
-        contentView.addSubview(distanceFromSunLabel)
-        contentView.addSubview(distanceFromSunValue)
+        contentView.addSubview(distanceFromSunView)
+        distanceFromSunView.addSubview(distanceFromSunLabel)
+        distanceFromSunView.addSubview(distanceFromSunValue)
         
-        contentView.addSubview(orbitalVelocityLabel)
-        contentView.addSubview(orbitalVelocityValue)
+        contentView.addSubview(orbitalVelocityView)
+        orbitalVelocityView.addSubview(orbitalVelocityLabel)
+        orbitalVelocityView.addSubview(orbitalVelocityValue)
         
-        contentView.addSubview(temperatureLabel)
-        contentView.addSubview(temperatureValue)
+        contentView.addSubview(temperatureView)
+        temperatureView.addSubview(temperatureLabel)
+        temperatureView.addSubview(temperatureValue)
+        
         
         let maxWidthContainerBig: CGFloat = 374
         let maxHeightContainerBig: CGFloat = 225
@@ -147,11 +166,23 @@ class PlanetDetailViewController: UIViewController {
             make.width.height.equalToSuperview().priority(.high)
         }
         
+        //MARK: Name
+        planetView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        planetView.layer.cornerRadius = 12
+        planetView.clipsToBounds = true
+        planetView.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
         planetNameLabel.textColor = .black
         planetNameLabel.attributedText = NSAttributedString(string: "название по-английски", attributes: [.kern: 6])
         planetNameLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         planetNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp_bottomMargin).offset(32)
+            make.top.equalTo(planetView.snp_topMargin).offset(24)
             make.centerX.equalToSuperview()
         }
         
@@ -159,12 +190,226 @@ class PlanetDetailViewController: UIViewController {
         planetNameValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         planetNameValue.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(planetNameLabel).offset(-6)
+            make.bottom.equalTo(planetNameLabel).offset(-14)
+        }
+        
+        //MARK: Mass
+        massView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        massView.layer.cornerRadius = 12
+        massView.clipsToBounds = true
+        massView.snp.makeConstraints { make in
+            make.top.equalTo(planetView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        massLabel.textColor = .black
+        massLabel.attributedText = NSAttributedString(string: "масса", attributes: [.kern: 6])
+        massLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        massLabel.snp.makeConstraints { make in
+            make.top.equalTo(massView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        massValue.textColor = .black
+        massValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        massValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(massLabel).offset(-14)
+        }
+        
+        //MARK: Diameter
+        diameterView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        diameterView.layer.cornerRadius = 12
+        diameterView.clipsToBounds = true
+        diameterView.snp.makeConstraints { make in
+            make.top.equalTo(massView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        diameterLabel.textColor = .black
+        diameterLabel.attributedText = NSAttributedString(string: "диаметр", attributes: [.kern: 6])
+        diameterLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        diameterLabel.snp.makeConstraints { make in
+            make.top.equalTo(diameterView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        diameterValue.textColor = .black
+        diameterValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        diameterValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(diameterLabel).offset(-14)
+        }
+        
+        //MARK: Gravity
+        gravityView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        gravityView.layer.cornerRadius = 12
+        gravityView.clipsToBounds = true
+        gravityView.snp.makeConstraints { make in
+            make.top.equalTo(diameterView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        gravityLabel.textColor = .black
+        gravityLabel.attributedText = NSAttributedString(string: "сила гравитации", attributes: [.kern: 6])
+        gravityLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        gravityLabel.snp.makeConstraints { make in
+            make.top.equalTo(gravityView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        gravityValue.textColor = .black
+        gravityValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        gravityValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(gravityLabel).offset(-14)
+        }
+        
+        //MARK: Rotation period
+        numberOfMoonsView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        numberOfMoonsView.layer.cornerRadius = 12
+        numberOfMoonsView.clipsToBounds = true
+        numberOfMoonsView.snp.makeConstraints { make in
+            make.top.equalTo(gravityView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        numberOfMoonsLabel.textColor = .black
+        numberOfMoonsLabel.attributedText = NSAttributedString(string: "число спутников", attributes: [.kern: 6])
+        numberOfMoonsLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        numberOfMoonsLabel.snp.makeConstraints { make in
+            make.top.equalTo(numberOfMoonsView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        numberOfMoonsValue.textColor = .black
+        numberOfMoonsValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        numberOfMoonsValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(numberOfMoonsLabel).offset(-14)
+        }
+        
+        //MARK: Length of day
+        lengthOfDayView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        lengthOfDayView.layer.cornerRadius = 12
+        lengthOfDayView.clipsToBounds = true
+        lengthOfDayView.snp.makeConstraints { make in
+            make.top.equalTo(numberOfMoonsView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        lengthOfDayLabel.textColor = .black
+        lengthOfDayLabel.attributedText = NSAttributedString(string: "продолжительность суток", attributes: [.kern: 6])
+        lengthOfDayLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        lengthOfDayLabel.snp.makeConstraints { make in
+            make.top.equalTo(lengthOfDayView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        lengthOfDayValue.textColor = .black
+        lengthOfDayValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        lengthOfDayValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(lengthOfDayLabel).offset(-14)
+        }
+        
+        //MARK: Distance from Sun
+        distanceFromSunView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        distanceFromSunView.layer.cornerRadius = 12
+        distanceFromSunView.clipsToBounds = true
+        distanceFromSunView.snp.makeConstraints { make in
+            make.top.equalTo(lengthOfDayView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        distanceFromSunLabel.textColor = .black
+        distanceFromSunLabel.attributedText = NSAttributedString(string: "расстояние от солнца", attributes: [.kern: 6])
+        distanceFromSunLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        distanceFromSunLabel.snp.makeConstraints { make in
+            make.top.equalTo(distanceFromSunView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        distanceFromSunValue.textColor = .black
+        distanceFromSunValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        distanceFromSunValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(distanceFromSunLabel).offset(-14)
+        }
+        
+        //MARK: Velocity
+        orbitalVelocityView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        orbitalVelocityView.layer.cornerRadius = 12
+        orbitalVelocityView.clipsToBounds = true
+        orbitalVelocityView.snp.makeConstraints { make in
+            make.top.equalTo(distanceFromSunView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
+        orbitalVelocityLabel.textColor = .black
+        orbitalVelocityLabel.attributedText = NSAttributedString(string: "скорость вращения", attributes: [.kern: 6])
+        orbitalVelocityLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        orbitalVelocityLabel.snp.makeConstraints { make in
+            make.top.equalTo(orbitalVelocityView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        orbitalVelocityValue.textColor = .black
+        orbitalVelocityValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        orbitalVelocityValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(orbitalVelocityLabel).offset(-14)
         }
         
         
+        //MARK: Temperature
+        temperatureView.backgroundColor = #colorLiteral(red: 0.901840508, green: 0.901840508, blue: 0.901840508, alpha: 1)
+        temperatureView.layer.cornerRadius = 12
+        temperatureView.clipsToBounds = true
+        temperatureView.snp.makeConstraints { make in
+            make.top.equalTo(orbitalVelocityView.snp_bottomMargin).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
+            make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(60)
+            make.bottom.equalTo(contentView.snp.bottom)
+        }
         
+        temperatureLabel.textColor = .black
+        temperatureLabel.attributedText = NSAttributedString(string: "температура поверхности", attributes: [.kern: 6])
+        temperatureLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        temperatureLabel.snp.makeConstraints { make in
+            make.top.equalTo(temperatureView.snp_topMargin).offset(24)
+            make.centerX.equalToSuperview()
+        }
         
+        temperatureValue.textColor = .black
+        temperatureValue.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        temperatureValue.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(temperatureLabel).offset(-14)
+        }
         
     }
     
@@ -176,14 +421,14 @@ class PlanetDetailViewController: UIViewController {
         
         imageView.image = UIImage(named: planetType.enumToString())
         planetNameValue.text = planet.name
-        massValue.text = planet.mass
-        diameterValue.text = planet.diameter.description
-        gravityValue.text = planet.gravity
-        rotationPeriodValue.text = planet.rotationPeriod
-        lengthOfDayValue.text = planet.lengthOfDay
-        distanceFromSunValue.text = planet.distanceFromSun
-        orbitalVelocityValue.text = planet.orbitalVelocity
-        temperatureValue.text = planet.meanTemperature.description
+        massValue.text = planet.mass + " * 10²³ кг"
+        diameterValue.text = planet.diameter.description + " км"
+        gravityValue.text = planet.gravity + " м/с²"
+        numberOfMoonsValue.text = planet.numberOfMoons.description
+        lengthOfDayValue.text = planet.lengthOfDay + " ч."
+        distanceFromSunValue.text = planet.distanceFromSun + " млн. км."
+        orbitalVelocityValue.text = planet.orbitalVelocity + " км/c"
+        temperatureValue.text = planet.meanTemperature.description + " °C"
     }
     
 }
