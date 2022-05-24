@@ -14,7 +14,7 @@ class CrewMemberTableViewCell: UITableViewCell {
     var crewMember: CrewMember?
     var name = UILabel()
     var photo = UIImageView()
-    var agency = UILabel()
+    //var agency = UILabel()
 
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -30,10 +30,10 @@ class CrewMemberTableViewCell: UITableViewCell {
     func uiInit() {
         contentView.addSubview(name)
         contentView.addSubview(photo)
-        contentView.addSubview(agency)
+        //contentView.addSubview(agency)
         
         photo.contentMode = .scaleAspectFill
-        photo.layer.cornerRadius = 25
+        photo.layer.cornerRadius = 15
         photo.clipsToBounds = true
         photo.snp.makeConstraints { make in
             make.left.top.equalTo(contentView.safeAreaLayoutGuide).offset(8)
@@ -48,20 +48,20 @@ class CrewMemberTableViewCell: UITableViewCell {
             make.centerY.equalTo(contentView.safeAreaLayoutGuide)
             
         }
-        
-        agency.textColor = .lightGray
-        agency.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        agency.snp.makeConstraints { make in
-            make.right.equalTo(contentView.safeAreaLayoutGuide).offset(-12)
-            make.centerY.equalTo(contentView.safeAreaLayoutGuide)
-        }
+//
+//        agency.textColor = .lightGray
+//        agency.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+//        agency.snp.makeConstraints { make in
+//            make.right.equalTo(contentView.safeAreaLayoutGuide).offset(-12)
+//            make.centerY.equalTo(contentView.safeAreaLayoutGuide)
+//        }
     }
     
     func configure() {
         guard let crewMember = crewMember else {
             return
         }
-        agency.text = "из " + crewMember.agency
+        //agency.text = "из " + crewMember.agency
         name.text = crewMember.name
         api.getImageByUrl(url: crewMember.image ) { result in
             switch result {

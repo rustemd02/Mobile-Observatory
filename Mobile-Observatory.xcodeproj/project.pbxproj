@@ -84,6 +84,10 @@
 		CF3930D8283CC467003583D5 /* RocketsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930D7283CC467003583D5 /* RocketsInteractor.swift */; };
 		CF3930DA283CC472003583D5 /* RocketsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930D9283CC472003583D5 /* RocketsPresenter.swift */; };
 		CF3930DC283CC675003583D5 /* RocketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930DB283CC675003583D5 /* RocketTableViewCell.swift */; };
+		CF3930DF283CF9EB003583D5 /* RocketDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930DE283CF9EB003583D5 /* RocketDetailModuleBuilder.swift */; };
+		CF3930E4283CFA0A003583D5 /* RocketDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930E3283CFA0A003583D5 /* RocketDetailViewController.swift */; };
+		CF3930E6283CFA15003583D5 /* RocketDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930E5283CFA15003583D5 /* RocketDetailInteractor.swift */; };
+		CF3930E8283CFA21003583D5 /* RocketDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3930E7283CFA21003583D5 /* RocketDetailPresenter.swift */; };
 		CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */; };
 		CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */; };
 		CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */; };
@@ -223,6 +227,10 @@
 		CF3930D7283CC467003583D5 /* RocketsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsInteractor.swift; sourceTree = "<group>"; };
 		CF3930D9283CC472003583D5 /* RocketsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsPresenter.swift; sourceTree = "<group>"; };
 		CF3930DB283CC675003583D5 /* RocketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketTableViewCell.swift; sourceTree = "<group>"; };
+		CF3930DE283CF9EB003583D5 /* RocketDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailModuleBuilder.swift; sourceTree = "<group>"; };
+		CF3930E3283CFA0A003583D5 /* RocketDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailViewController.swift; sourceTree = "<group>"; };
+		CF3930E5283CFA15003583D5 /* RocketDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailInteractor.swift; sourceTree = "<group>"; };
+		CF3930E7283CFA21003583D5 /* RocketDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailPresenter.swift; sourceTree = "<group>"; };
 		CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFlowCoordinator.swift; sourceTree = "<group>"; };
 		CF6B18A927FEFB38005D09B6 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
 		CF6B18AB27FEFB45005D09B6 /* ArticleDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailPresenter.swift; sourceTree = "<group>"; };
@@ -708,6 +716,10 @@
 		CF3930CF283CC413003583D5 /* RocketDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CF3930E2283CF9FB003583D5 /* Presenter */,
+				CF3930E1283CF9F3003583D5 /* Interactor */,
+				CF3930E0283CF9EF003583D5 /* View */,
+				CF3930DE283CF9EB003583D5 /* RocketDetailModuleBuilder.swift */,
 			);
 			path = RocketDetail;
 			sourceTree = "<group>";
@@ -733,6 +745,30 @@
 			isa = PBXGroup;
 			children = (
 				CF3930D9283CC472003583D5 /* RocketsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF3930E0283CF9EF003583D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930E3283CFA0A003583D5 /* RocketDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF3930E1283CF9F3003583D5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930E5283CFA15003583D5 /* RocketDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF3930E2283CF9FB003583D5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF3930E7283CFA21003583D5 /* RocketDetailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1196,9 +1232,11 @@
 				04CF3D4127F0896300685553 /* MoonEntity.swift in Sources */,
 				CFA23B84282DAAA60028DAD7 /* SpaceXViewController.swift in Sources */,
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
+				CF3930E6283CFA15003583D5 /* RocketDetailInteractor.swift in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
 				CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */,
 				CF7E452828241D890038D0A9 /* PictureFromMarsModuleBuilder.swift in Sources */,
+				CF3930DF283CF9EB003583D5 /* RocketDetailModuleBuilder.swift in Sources */,
 				CF3930BE283B7B66003583D5 /* CrewInteractor.swift in Sources */,
 				CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */,
 				CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */,
@@ -1252,11 +1290,13 @@
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
 				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
 				CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */,
+				CF3930E4283CFA0A003583D5 /* RocketDetailViewController.swift in Sources */,
 				CFEEA53627D52C7900E05249 /* Article.swift in Sources */,
 				04CF3D3F27F0896300685553 /* SearchResultItemEntity.swift in Sources */,
 				04CF3D3B27F0896300685553 /* SearchResultEntity.swift in Sources */,
 				04CF3D6127F1FE7A00685553 /* DatumEntity.swift in Sources */,
 				CFA23B70282D95B30028DAD7 /* SpaceArchiveViewController.swift in Sources */,
+				CF3930E8283CFA21003583D5 /* RocketDetailPresenter.swift in Sources */,
 				CFD5C0F9283AC1D000AD3068 /* PlanetDetailViewController.swift in Sources */,
 				04CF3D3327F0896300685553 /* PictureOfEarthEntity.swift in Sources */,
 				CF3930D8283CC467003583D5 /* RocketsInteractor.swift in Sources */,

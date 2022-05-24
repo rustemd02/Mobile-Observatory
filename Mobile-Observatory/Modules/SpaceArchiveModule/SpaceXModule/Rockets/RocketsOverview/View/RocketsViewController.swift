@@ -112,11 +112,11 @@ extension RocketsViewController: UITableViewDataSourcePrefetching {
 
 extension RocketsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let rocket = output.cellForRowAt(indexPath: indexPath)
-//        let vc: RocketsViewController = RocketsModuleBuilder().build()
-//        vc.rocket = rocket
-//        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        let rocket = output.cellForRowAt(indexPath: indexPath)
+        let vc: RocketDetailViewController = RocketDetailModuleBuilder().build()
+        vc.rocket = rocket
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
