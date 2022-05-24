@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 
-enum planets {
+enum Planets {
     case mercury
     case venus
     case earth
@@ -32,13 +32,13 @@ protocol PlanetDetailViewControllerInput: AnyObject {
 }
 
 protocol PlanetDetailViewControllerOutput {
-    func getPlanetInfo(planet: planets, completion: @escaping (Planet) -> Void)
+    func getPlanetInfo(planet: Planets, completion: @escaping (Planet) -> Void)
 }
 
 class PlanetDetailViewController: UIViewController {
     
     private var output: PlanetDetailViewControllerOutput
-    var planetType: planets = .mercury
+    var planetType: Planets = .mercury
     var planet: Planet?
     
     var scrollView = UIScrollView()

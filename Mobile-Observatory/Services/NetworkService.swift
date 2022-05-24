@@ -276,7 +276,7 @@ class NetworkService {
         }
     }
     
-    func getSpaceXRockets(completion: @escaping(Result<Rocket, NetworkError>) -> Void) {
+    func getSpaceXRockets(completion: @escaping(Result<[Rocket], NetworkError>) -> Void) {
         AF.request(spacexRockets).response { (responseData) in
             guard let data = responseData.data else {
                 completion(.failure(.noDataAvailable))
@@ -284,7 +284,7 @@ class NetworkService {
             }
             do {
                 let jsonDecoder = JSONDecoder()
-                let rockets = try jsonDecoder.decode(Rocket.self, from: data)
+                let rockets = try jsonDecoder.decode([Rocket].self, from: data)
                 completion(.success(rockets))
             } catch {
                 print(error)

@@ -8,14 +8,14 @@ import Foundation
 import UIKit
 
 protocol PlanetDetailInteractorProtocol {
-    func getPlanetInfo(planet: planets, completion: @escaping (Planet) -> Void)
+    func getPlanetInfo(planet: Planets, completion: @escaping (Planet) -> Void)
 }
 
 class PlanetDetailInteractor: PlanetDetailInteractorProtocol {
     private var api = NetworkService.shared
     
     
-    func getPlanetInfo(planet: planets, completion: @escaping (Planet) -> Void) {
+    func getPlanetInfo(planet: Planets, completion: @escaping (Planet) -> Void) {
         let stringPlanet = planet.enumToString()
         NetworkService.shared.getPlanetInfo(planet: stringPlanet) { result in
             switch result {

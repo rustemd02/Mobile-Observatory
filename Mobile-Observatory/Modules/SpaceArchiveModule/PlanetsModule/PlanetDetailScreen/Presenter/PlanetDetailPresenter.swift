@@ -23,7 +23,7 @@ class PlanetDetailPresenter: PlanetDetailPresenterProtocol {
 }
 
 extension PlanetDetailPresenter: PlanetDetailViewControllerOutput {
-    func getPlanetInfo(planet: planets, completion: @escaping (Planet) -> Void) {
+    func getPlanetInfo(planet: Planets, completion: @escaping (Planet) -> Void) {
         return interactor.getPlanetInfo(planet: planet, completion: completion)
     }
     

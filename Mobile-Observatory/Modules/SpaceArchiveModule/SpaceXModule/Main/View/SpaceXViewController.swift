@@ -50,10 +50,19 @@ class SpaceXViewController: UIViewController {
         let crewTap = UITapGestureRecognizer(target: self, action: #selector(goToCrewMembersScreen))
         crewMembersImageView.isUserInteractionEnabled = true
         crewMembersImageView.addGestureRecognizer(crewTap)
+        
+        let rocketsTap = UITapGestureRecognizer(target: self, action: #selector(goToRocketsScreen))
+        rocketsImageView.isUserInteractionEnabled = true
+        rocketsImageView.addGestureRecognizer(rocketsTap)
     }
     
     @objc func goToCrewMembersScreen() {
         let vc: CrewViewController = CrewModuleBuilder().build()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToRocketsScreen() {
+        let vc: RocketsViewController = RocketsModuleBuilder().build()
         navigationController?.pushViewController(vc, animated: true)
     }
     
