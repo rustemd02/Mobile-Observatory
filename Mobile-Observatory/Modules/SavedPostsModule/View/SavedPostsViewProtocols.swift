@@ -18,11 +18,11 @@ protocol SavedPostsViewControllerOutput {
     func fetchSavedPosts()
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Post
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
+    func savePost(post: Post, indexPath: IndexPath?)
+    func removePostFromSaved(post: Post, indexPath: IndexPath?)
 }
 
 protocol SavePostButtonDelegate {
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
+    func savePost(post: Post, index: IndexPath?)
+    func removePostFromSaved(post: Post, index: IndexPath?)
 }

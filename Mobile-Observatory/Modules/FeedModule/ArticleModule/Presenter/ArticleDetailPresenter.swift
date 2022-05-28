@@ -20,7 +20,7 @@ class ArticleDetailPresenter: ArticleDetailPresenterProtocol {
     init(interactor: ArticleDetailInteractorProtocol) {
         self.interactor = interactor
     }
-   
+    
 }
 
 extension ArticleDetailPresenter: ArticleDetailViewControllerOutput {
@@ -30,11 +30,12 @@ extension ArticleDetailPresenter: ArticleDetailViewControllerOutput {
 }
 
 extension ArticleDetailPresenter: SavePostButtonDelegate {
-    func savePost(post: Post) {
+    
+    func savePost(post: Post, index: IndexPath?) {
         interactor.savePost(post: post)
     }
     
-    func removePostFromSaved(post: Post) {
+    func removePostFromSaved(post: Post, index: IndexPath?) {
         interactor.removePostFromSaved(post: post)
     }
 }

@@ -128,8 +128,14 @@ class MobileObservatory_CoreDataTests: XCTestCase {
     //MARK: - PictureFromMars Tests
     
     func testSavingPictureFromMarsToCoreData() throws {
-        let entity: PictureFromMars = PictureFromMars(photos: [])
-        
+        var entity: PictureFromMars = PictureFromMars(photos: [])
+        entity.photos.append(Photo(uuid: nil,
+                                               id: 1,
+                                               sol: 234,
+                                               imgSrc: "",
+                                               imgLocalPath: "",
+                                               earthDate: Date(),
+                                               rover: Rover(id: 1, name: "Rover")))
         coreDataService.savePictureFromMars(entity)
         sleep(1)
         let entities: [PictureFromMars] = coreDataService.getAllPicturesFromMars()

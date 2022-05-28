@@ -18,6 +18,7 @@ protocol PictureOfDayDetailViewControllerOutput {
 
 class PictureOfDayDetailViewController: UIViewController {
     private var output: PictureOfDayDetailViewControllerOutput
+    private var saveButtonDelegate: SavePostButtonDelegate
     
     var picOfDay: PictureOfDay?
     
@@ -32,8 +33,9 @@ class PictureOfDayDetailViewController: UIViewController {
     var likeButton = UIButton(type: .roundedRect)
     
 
-    init(output: PictureOfDayDetailViewControllerOutput) {
+    init(output: PictureOfDayDetailViewControllerOutput, delegate: SavePostButtonDelegate) {
         self.output = output
+        self.saveButtonDelegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -106,6 +108,7 @@ class PictureOfDayDetailViewController: UIViewController {
             make.right.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
         
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.setTitle(" Нравится", for: .normal)
         likeButton.setTitleColor(.link, for: .normal)
@@ -157,6 +160,28 @@ class PictureOfDayDetailViewController: UIViewController {
             }
         }))
         present(alert, animated: true)
+    }
+    
+    func updateSaveButtonView() {
+        if (picOfDay?.isSaved ?? false) {
+            likeButton.setTitle("Понравилось", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else{
+            likeButton.setTitle("Нравится", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        let saved = picOfDay?.isSaved ?? false
+        picOfDay?.isSaved = !saved
+        
+        if (picOfDay?.isSaved ?? false) {
+            saveButtonDelegate.savePost(post: picOfDay!, index: nil)
+        } else {
+            saveButtonDelegate.removePostFromSaved(post: picOfDay!, index: nil)
+        }
+        updateSaveButtonView()
     }
 
 }

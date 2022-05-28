@@ -5,8 +5,10 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
     var backgroundImageView = UIImageView()
     var temperatureLabel = UILabel()
     var dateLabel = UILabel()
-    
+    var index: IndexPath?
     var weatherOnMars: WeatherOnMarsInfo?
+    
+    private var savePostsButtonDelegate: SavePostButtonDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -54,12 +56,11 @@ class WeatherOnMarsTableViewCell: UITableViewCell {
         dateLabel.snp.makeConstraints { make in
             make.bottom.right.equalTo(backgroundImageView).inset(12)
         }
-        
-        
-        
     }
     
-    func configure() {
+    func configure(delegate: SavePostButtonDelegate?, index: IndexPath) {
+        savePostsButtonDelegate = delegate
+        self.index = index
         guard let weatherOnMars = weatherOnMars else {
             return
         }

@@ -50,7 +50,7 @@ struct Photo: Codable {
         case rover
     }
     
-    init(uuid: UUID, id: Int, sol: Int, imgSrc: String, imgLocalPath: String?, earthDate: Date, rover: Rover) {
+    init(uuid: UUID?, id: Int, sol: Int, imgSrc: String, imgLocalPath: String?, earthDate: Date, rover: Rover) {
         self.uuid = uuid
         self.id = id
         self.sol = sol

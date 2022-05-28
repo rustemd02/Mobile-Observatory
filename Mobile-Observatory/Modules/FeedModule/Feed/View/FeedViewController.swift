@@ -20,8 +20,8 @@ protocol FeedViewControllerOutput {
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Post
     func getPostsData() -> [Post]
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
+    func savePost(post: Post, index: IndexPath?)
+    func removePostFromSaved(post: Post, index: IndexPath?)
     func resetFeed()
 }
 
@@ -42,14 +42,12 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewDidLoad()
-        
         setupView()
         loadData()
         feedTableView.prefetchDataSource = self
         feedTableView.refreshControl = UIRefreshControl()
         feedTableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
-  
     
     private func setupView() {
         title = "Лента"
@@ -114,29 +112,29 @@ extension FeedViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.article = post as? Article
-            cell.configure(delegate: self)
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .weatherOnMars:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherOnMarsTableViewCell", for: indexPath) as? WeatherOnMarsTableViewCell else {
                 return UITableViewCell()
             }
             cell.weatherOnMars = post as? WeatherOnMarsInfo
-            cell.configure(delegate: self)
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .pictureOfDay:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
                     PictureOfDayTableViewCell else {
-                return UITableViewCell()
-            }
+                        return UITableViewCell()
+                    }
             cell.pictureOfDay = post as? PictureOfDay
-            cell.configure()
+            cell.configure(delegate: self, index: indexPath)
             return cell
-        case .pictureFromMars: 
+        case .pictureFromMars:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureFromMarsTableViewCell", for: indexPath) as? PictureFromMarsTableViewCell else {
                 return UITableViewCell()
             }
             cell.picFromMars = post as? PictureFromMars
-            cell.configure()
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .pictureOfEarth: break
             //
@@ -170,12 +168,10 @@ extension FeedViewController: UITableViewDelegate {
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             vc.picOfDay = post as? PictureOfDay
             navigationController?.pushViewController(vc, animated: true)
-            
         case .pictureFromMars:
             let vc: PictureFromMarsDetailViewController = PictureFromMarsDetailModuleBuilder().build()
             vc.picFromMars = post as? PictureFromMars
             navigationController?.pushViewController(vc, animated: true)
-            
         case .pictureOfEarth: break
             //
         case .asteroid: break
@@ -185,17 +181,17 @@ extension FeedViewController: UITableViewDelegate {
         case .searchResult: break
             //
         case .none: break
-                //
+            //
         }
     }
 }
 
 extension FeedViewController: SavePostButtonDelegate {
-    func savePost(post: Post) {
-        output.savePost(post: post)
+    func savePost(post: Post, index: IndexPath?) {
+        output.savePost(post: post, index: index)
     }
     
-    func removePostFromSaved(post: Post) {
-        output.removePostFromSaved(post: post)
+    func removePostFromSaved(post: Post, index: IndexPath?) {
+        output.removePostFromSaved(post: post, index: index)
     }
 }

@@ -29,6 +29,7 @@ class ArticleDetailViewController: UIViewController {
     var descriptionTextView = UITextView()
     var shareButton = UIButton(type: .roundedRect)
     var likeButton = UIButton(type: .roundedRect)
+    var index: IndexPath?
     
     init(output: ArticleDetailViewControllerOutput, saveButtonDelegate: SavePostButtonDelegate) {
         self.output = output
@@ -150,9 +151,9 @@ class ArticleDetailViewController: UIViewController {
         article?.isSaved = !saved
         
         if (article?.isSaved ?? false) {
-            saveButtonDelegate.savePost(post: article!)
+            saveButtonDelegate.savePost(post: article!, index: nil)
         } else {
-            saveButtonDelegate.removePostFromSaved(post: article!)
+            saveButtonDelegate.removePostFromSaved(post: article!, index: nil)
         }
         updateSaveButtonView()
     }

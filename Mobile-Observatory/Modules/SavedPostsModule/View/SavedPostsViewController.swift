@@ -11,45 +11,44 @@ import UIKit
 class SavedPostsViewController: UIViewController {
     private let output: SavedPostsViewControllerOutput
     var tableView = UITableView()
-
+    
     init(output: SavedPostsViewControllerOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
-        setupView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewDidLoad()
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateView()
     }
-
+    
     private func setupView() {
-        title = "Saved posts"
+        title = "Сохранённые"
         view.backgroundColor = .white
         
-        self.navigationItem.title = "Saved posts"
+        self.navigationItem.title = "Сохранённые"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView = UITableView(frame: view.bounds, style: .plain)
+        view.addSubview(tableView)
         tableView.delegate = self
-        tableView.register(UINib.init(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleTableViewCell")
+        tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: "ArticleTableViewCell")
         tableView.register(WeatherOnMarsTableViewCell.self, forCellReuseIdentifier: "WeatherOnMarsTableViewCell")
         tableView.register(PictureOfDayTableViewCell.self, forCellReuseIdentifier: "PictureOfDayTableViewCell")
-        view.addSubview(tableView)
+        tableView.register(PictureFromMarsTableViewCell.self, forCellReuseIdentifier: "PictureFromMarsTableViewCell")
         tableView.snp.makeConstraints{ maker in
-            maker.top.equalToSuperview().inset(100)
-            maker.left.equalToSuperview()
-            maker.right.equalToSuperview()
-            maker.bottom.equalToSuperview()
+            maker.top.equalTo(view.safeAreaLayoutGuide)
+            maker.left.right.bottom.equalToSuperview()
         }
     }
 }
@@ -60,7 +59,7 @@ extension SavedPostsViewController: SavedPostsViewControllerInput {
         tableView.dataSource = self
         tableView.reloadData()
     }
-
+    
     func showError() {
         
     }
@@ -79,25 +78,30 @@ extension SavedPostsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.article = post as? Article
-            cell.configure(delegate: self)
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .weatherOnMars:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherOnMarsTableViewCell", for: indexPath) as? WeatherOnMarsTableViewCell else {
                 return UITableViewCell()
             }
             cell.weatherOnMars = post as? WeatherOnMarsInfo
-            cell.configure(delegate: self)
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .pictureOfDay:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
                     PictureOfDayTableViewCell else {
+                        return UITableViewCell()
+                    }
+            cell.pictureOfDay = post as? PictureOfDay
+            cell.configure(delegate: self, index: indexPath)
+            return cell
+        case .pictureFromMars:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureFromMarsTableViewCell", for: indexPath) as? PictureFromMarsTableViewCell else {
                 return UITableViewCell()
             }
-            cell.pictureOfDay = post as? PictureOfDay
-            cell.configure()
+            cell.picFromMars = post as? PictureFromMars
+            cell.configure(delegate: self, index: indexPath)
             return cell
-        case .pictureFromMars: break
-            //
         case .pictureOfEarth: break
             //
         case .asteroid: break
@@ -123,20 +127,23 @@ extension SavedPostsViewController: UITableViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case .weatherOnMars:
             let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
+            vc.weatherOnMars = post as? WeatherOnMarsInfo
             navigationController?.pushViewController(vc, animated: true)
-        case .some(.pictureOfDay):
+        case .pictureOfDay:
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
+            vc.picOfDay = post as? PictureOfDay
             navigationController?.pushViewController(vc, animated: true)
-            
-        case .some(.pictureFromMars): break
+        case .pictureFromMars:
+            let vc: PictureFromMarsDetailViewController = PictureFromMarsDetailModuleBuilder().build()
+            vc.picFromMars = post as? PictureFromMars
+            navigationController?.pushViewController(vc, animated: true)
+        case .pictureOfEarth: break
             //
-        case .some(.pictureOfEarth): break
+        case .asteroid: break
             //
-        case .some(.asteroid): break
+        case .planet: break
             //
-        case .some(.planet): break
-            //
-        case .some(.searchResult): break
+        case .searchResult: break
             //
         case .none: break
         }
@@ -144,11 +151,11 @@ extension SavedPostsViewController: UITableViewDelegate {
 }
 
 extension SavedPostsViewController: SavePostButtonDelegate {
-    func savePost(post: Post) {
-        output.savePost(post: post)
+    func savePost(post: Post, index: IndexPath?) {
+        output.savePost(post: post, indexPath: index)
     }
     
-    func removePostFromSaved(post: Post) {
-        output.removePostFromSaved(post: post)
+    func removePostFromSaved(post: Post, index: IndexPath?) {
+        output.removePostFromSaved(post: post, indexPath: index)
     }
 }

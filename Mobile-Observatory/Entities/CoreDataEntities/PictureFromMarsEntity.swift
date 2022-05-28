@@ -55,4 +55,17 @@ extension PictureFromMarsEntity : Identifiable {
         let localPath = LocalFilesService.shared.saveImage(image: uiImage!, name: pictureFromMars.imgSrc)
         pictureLocalPath = localPath?.path
     }
+    
+    func convertToFeedEntity() -> Photo {
+        let rover = Rover(id: Int(truncating: self.rover?.id ?? 0),
+                          name: self.rover?.name ?? "")
+        let photo = Photo(uuid: id,
+                          id: 0,
+                          sol: sol as! Int,
+                          imgSrc: pictureURL ?? "",
+                          imgLocalPath: pictureLocalPath,
+                          earthDate: date ?? Date(),
+                          rover: rover)
+        return photo
+    }
 }

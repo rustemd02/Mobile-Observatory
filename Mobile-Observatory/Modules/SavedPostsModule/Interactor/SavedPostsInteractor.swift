@@ -11,8 +11,8 @@ protocol SavedPostsInteractorProtocol {
     func getSavedPosts() -> [Post]
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Post
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
+    func savePost(post: Post, indexPath: IndexPath?)
+    func removePostFromSaved(post: Post, indexPath: IndexPath?)
 }
 
 class SavedPostsInteractor: SavedPostsInteractorProtocol {
@@ -24,6 +24,7 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
         posts.append(contentsOf: coreDataService.getAllArticles())
         posts.append(contentsOf: coreDataService.getAllWeatherOnMarsInfo())
         posts.append(contentsOf: coreDataService.getAllPicturesOfDay())
+        posts.append(contentsOf: coreDataService.getAllPicturesFromMars())
         return posts
     }
     
@@ -38,7 +39,8 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
         return posts[indexPath.row]
     }
     
-    func savePost(post: Post){
+    func savePost(post: Post, indexPath: IndexPath?){
+        
         switch (post.postType) {
         case .article:
             coreDataService.saveArticle(post as! Article)
@@ -64,9 +66,14 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
         case .none:
             break
         }
+        
+        guard let indexPath = indexPath else {
+            return
+        }
+        posts[indexPath.row].isSaved = true
     }
     
-    func removePostFromSaved(post: Post){
+    func removePostFromSaved(post: Post, indexPath: IndexPath?){
         switch (post.postType) {
         case .article:
             coreDataService.deleteArticle(post as! Article)
@@ -78,7 +85,7 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
             coreDataService.deletePictureOfDay(post as! PictureOfDay)
             break
         case .pictureFromMars:
-            //            coreDataService.deletePictureFromMars(post)
+//            coreDataService.deletePictureFromMars(post)
             break
         case .pictureOfEarth:
             coreDataService.deletePictureOfEarth(post as! PictureOfEarthElement)
@@ -92,6 +99,11 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
         case .none:
             break
         }
+        
+        guard let indexPath = indexPath else {
+            return
+        }
+        posts[indexPath.row].isSaved = false
     }
 }
  

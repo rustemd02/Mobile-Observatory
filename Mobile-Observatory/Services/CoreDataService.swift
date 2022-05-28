@@ -105,6 +105,17 @@ class CoreDataService{
         return weatherInfos
     }
     
+    public func containsWeatherOnMars(sol: Int) -> Bool {
+        let fetchRequest = WeatherOnMarsInfoEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "sol == %@", sol as CVarArg)
+        do {
+            guard (try viewContext.fetch(fetchRequest).first) != nil else { return false }
+            return true
+        } catch {
+            print(error)
+        }
+        return false
+    }
     
     // MARK: - Picture of day
     public func savePictureOfDay(_ pictureOfDay: PictureOfDay){
@@ -176,6 +187,18 @@ class CoreDataService{
             feedEntities.append(entity.convertToFeedEntity())
         }
         return feedEntities
+    }
+    
+    public func containsPictureOfDay(date: Date) -> Bool {
+        let fetchRequest = PictureOfDayEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", date as CVarArg)
+        do {
+            guard (try viewContext.fetch(fetchRequest).first) != nil else { return false }
+            return true
+        } catch {
+            print(error)
+        }
+        return false
     }
     
     // MARK: - Asteroids near Earth
@@ -320,8 +343,10 @@ class CoreDataService{
         saveContext.perform {
             let photoEntity = PictureFromMarsEntity(context: self.saveContext)
             photoEntity.update(with: photo, collection: collection)
-            self.saveRover(photo.rover, photo: photoEntity)
-            photoEntity.rover = self.getRoverEntity(id: photo.rover.id)
+            
+            let roverEntity = RoverEntity(context: self.saveContext)
+            roverEntity.update(with: photo.rover, photo: photoEntity)
+            
             do {
                 try self.saveContext.save()
             } catch let error {
@@ -343,15 +368,7 @@ class CoreDataService{
     }
     
     private func saveRover(_ rover: Rover, photo: PictureFromMarsEntity) {
-        saveContext.perform {
-            let roverEntity = RoverEntity(context: self.saveContext)
-            roverEntity.update(with: rover, photo: photo)
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
+        
     }
     
     private func getRoverEntity(id: Int) -> RoverEntity?{
@@ -423,6 +440,17 @@ class CoreDataService{
             feedEntities.append(entity.convertToFeedEntity())
         }
         return feedEntities
+    }
+    
+    public func containsPictureFromMars(id: Int) -> Bool {
+        let picturesFromMars = getAllPicturesFromMars()
+        var contains = false
+        for pictureFromMars in picturesFromMars {
+            if(pictureFromMars.photos.first?.id == id){
+                contains = true
+            }
+        }
+        return contains
     }
     
     // MARK: - Picture of Earth
@@ -936,5 +964,17 @@ class CoreDataService{
             feedEntities.append(entity.convertToFeedEntity())
         }
         return feedEntities
+    }
+    
+    public func containsArticle(date: Date) -> Bool {
+        let fetchRequest = ArticleEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "createdAt == %@", date as CVarArg)
+        do {
+            guard (try viewContext.fetch(fetchRequest).first) != nil else { return false }
+            return true
+        } catch {
+            print(error)
+        }
+        return false
     }
 }

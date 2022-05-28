@@ -21,7 +21,6 @@ class PictureOfDayDetailPresenter: PictureOfDayDetailPresenterProtocol {
     init(interactor: PictureOfDayDetailInteractorProtocol) {
         self.interactor = interactor
     }
-   
 }
 
 extension PictureOfDayDetailPresenter: PictureOfDayDetailViewControllerOutput {
@@ -31,4 +30,17 @@ extension PictureOfDayDetailPresenter: PictureOfDayDetailViewControllerOutput {
     func getPicOfDay(date: Date, completion: @escaping (PictureOfDay) -> Void) {
         return interactor.getPicOfDay(date: date, completion: completion)
     }
+}
+
+extension PictureOfDayDetailPresenter: SavePostButtonDelegate {
+    
+    func savePost(post: Post, index: IndexPath?) {
+        
+    }
+    
+    func removePostFromSaved(post: Post, index: IndexPath?) {
+        
+    }
+    
+    
 }

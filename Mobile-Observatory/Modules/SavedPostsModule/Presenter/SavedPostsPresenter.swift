@@ -44,12 +44,12 @@ extension SavedPostsPresenter: SavedPostsViewControllerOutput {
         
     }
     
-    func savePost(post: Post) {
-        interactor.savePost(post: post)
+    func savePost(post: Post, indexPath: IndexPath?) {
+        interactor.savePost(post: post, indexPath: indexPath)
     }
     
     
-    func removePostFromSaved(post: Post) {
-        interactor.removePostFromSaved(post: post)
+    func removePostFromSaved(post: Post, indexPath: IndexPath?) {
+        interactor.removePostFromSaved(post: post, indexPath: indexPath)
     }
 }
