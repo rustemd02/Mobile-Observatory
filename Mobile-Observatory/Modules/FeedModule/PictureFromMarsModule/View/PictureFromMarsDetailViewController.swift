@@ -19,20 +19,20 @@ protocol PictureFromMarsDetailViewControllerOutput {
 
 class PictureFromMarsDetailViewController: UIViewController {
     private var output: PictureFromMarsDetailViewControllerOutput
+    var saveButtonDelegate: SavePostButtonDelegate?
     
     var picFromMars: PictureFromMars?
-    var dateLabel = UILabel()
-    var imageView = UIImageView()
-    var shotOnLabel = UILabel()
-    var roverLabel = UILabel()
+    private var dateLabel = UILabel()
+    private var imageView = UIImageView()
+    private var shotOnLabel = UILabel()
+    private var roverLabel = UILabel()
     
-    var stringDate: String?
-    var datePicker = UIDatePicker()
+    private var stringDate: String?
+    private var datePicker = UIDatePicker()
     
-    var shareButton = UIButton(type: .roundedRect)
-    var likeButton = UIButton(type: .roundedRect)
-    
-    
+    private var shareButton = UIButton(type: .roundedRect)
+    private var likeButton = UIButton(type: .roundedRect)
+    var index: IndexPath?
     
     init(output: PictureFromMarsDetailViewControllerOutput) {
         self.output = output
@@ -113,6 +113,7 @@ class PictureFromMarsDetailViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(24)
         }
+        updateSaveButtonView()
     }
     
     func configure() {
@@ -153,8 +154,31 @@ class PictureFromMarsDetailViewController: UIViewController {
             self.output.getPicFromMars(date: self.datePicker.date) { newPicFromMars in
                 self.picFromMars = newPicFromMars
                 self.configure()
+                self.updateSaveButtonView()
             }
         }))
         present(alert, animated: true)
+    }
+    
+    func updateSaveButtonView() {
+        if (picFromMars?.isSaved ?? false) {
+            likeButton.setTitle("Понравилось", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else{
+            likeButton.setTitle("Нравится", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        let saved = picFromMars?.isSaved ?? false
+        picFromMars?.isSaved = !saved
+        
+        if (picFromMars?.isSaved ?? false) {
+            saveButtonDelegate?.savePost(post: picFromMars!, index: index)
+        } else {
+            saveButtonDelegate?.removePostFromSaved(post: picFromMars!, index: index)
+        }
+        updateSaveButtonView()
     }
 }

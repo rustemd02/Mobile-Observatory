@@ -19,9 +19,10 @@ protocol ArticleDetailViewControllerOutput {
 class ArticleDetailViewController: UIViewController {
     
     private var output: ArticleDetailViewControllerOutput
-    private var saveButtonDelegate: SavePostButtonDelegate
+    var saveButtonDelegate: SavePostButtonDelegate?
     
     var article: Article?
+    
     var sourceLabel = UILabel()
     var createdAtLabel = UILabel()
     var titleLabel = UILabel()
@@ -31,9 +32,8 @@ class ArticleDetailViewController: UIViewController {
     var likeButton = UIButton(type: .roundedRect)
     var index: IndexPath?
     
-    init(output: ArticleDetailViewControllerOutput, saveButtonDelegate: SavePostButtonDelegate) {
+    init(output: ArticleDetailViewControllerOutput) {
         self.output = output
-        self.saveButtonDelegate = saveButtonDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -151,9 +151,9 @@ class ArticleDetailViewController: UIViewController {
         article?.isSaved = !saved
         
         if (article?.isSaved ?? false) {
-            saveButtonDelegate.savePost(post: article!, index: nil)
+            saveButtonDelegate?.savePost(post: article!, index: index)
         } else {
-            saveButtonDelegate.removePostFromSaved(post: article!, index: nil)
+            saveButtonDelegate?.removePostFromSaved(post: article!, index: index)
         }
         updateSaveButtonView()
     }

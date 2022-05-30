@@ -31,16 +31,3 @@ extension PictureOfDayDetailPresenter: PictureOfDayDetailViewControllerOutput {
         return interactor.getPicOfDay(date: date, completion: completion)
     }
 }
-
-extension PictureOfDayDetailPresenter: SavePostButtonDelegate {
-    
-    func savePost(post: Post, index: IndexPath?) {
-        
-    }
-    
-    func removePostFromSaved(post: Post, index: IndexPath?) {
-        
-    }
-    
-    
-}

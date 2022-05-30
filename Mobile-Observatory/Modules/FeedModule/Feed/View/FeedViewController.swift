@@ -159,6 +159,8 @@ extension FeedViewController: UITableViewDelegate {
         case .article:
             let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
             vc.article = post as? Article
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .weatherOnMars:
             let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
@@ -167,10 +169,14 @@ extension FeedViewController: UITableViewDelegate {
         case .pictureOfDay:
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             vc.picOfDay = post as? PictureOfDay
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .pictureFromMars:
             let vc: PictureFromMarsDetailViewController = PictureFromMarsDetailModuleBuilder().build()
             vc.picFromMars = post as? PictureFromMars
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .pictureOfEarth: break
             //
@@ -189,9 +195,11 @@ extension FeedViewController: UITableViewDelegate {
 extension FeedViewController: SavePostButtonDelegate {
     func savePost(post: Post, index: IndexPath?) {
         output.savePost(post: post, index: index)
+        feedTableView.reloadData()
     }
     
     func removePostFromSaved(post: Post, index: IndexPath?) {
         output.removePostFromSaved(post: post, index: index)
+        feedTableView.reloadData()
     }
 }

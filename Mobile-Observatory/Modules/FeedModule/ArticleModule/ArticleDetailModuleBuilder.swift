@@ -12,7 +12,7 @@ class ArticleDetailModuleBuilder {
     func build() -> ArticleDetailViewController {
         let interactor = ArticleDetailInteractor()
         let presenter = ArticleDetailPresenter(interactor: interactor)
-        let viewController = ArticleDetailViewController(output: presenter, saveButtonDelegate: presenter)
+        let viewController = ArticleDetailViewController(output: presenter)
         presenter.view = viewController as? ArticleDetailViewControllerInput
         return viewController
     }

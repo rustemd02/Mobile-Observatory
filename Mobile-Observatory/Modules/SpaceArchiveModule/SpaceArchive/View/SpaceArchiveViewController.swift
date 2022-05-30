@@ -71,7 +71,8 @@ class SpaceArchiveViewController: UIViewController {
         searchTableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: "SearchResultTableViewCell")
         searchTableView.snp.makeConstraints { maker in
             maker.top.equalTo(view.safeAreaLayoutGuide)
-            maker.left.right.bottom.equalToSuperview()
+            maker.left.right.equalToSuperview()
+            maker.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
         searchController.searchBar.delegate = self
@@ -185,10 +186,9 @@ extension SpaceArchiveViewController: UITableViewDataSource {
 extension SpaceArchiveViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let result = output.cellForRowAt(indexPath: indexPath)
-        
-        //        let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
-        //        vc.article = result as? Article
-        //        navigationController?.pushViewController(vc, animated: true)
+        let item = output.cellForRowAt(indexPath: indexPath)
+        let vc: SearchResultDetailViewController = SearchResultModuleBuilder().build()
+        vc.item = item
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

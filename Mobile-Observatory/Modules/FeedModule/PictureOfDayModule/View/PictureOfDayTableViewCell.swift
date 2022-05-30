@@ -78,7 +78,6 @@ class PictureOfDayTableViewCell: UITableViewCell {
             }
         }
         updateSaveButtonView()
-        
     }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {

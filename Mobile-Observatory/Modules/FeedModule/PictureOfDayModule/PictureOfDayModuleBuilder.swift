@@ -12,7 +12,7 @@ class PictureOfDayDetailModuleBuilder {
     func build() -> PictureOfDayDetailViewController {
         let interactor = PictureOfDayDetailInteractor()
         let presenter = PictureOfDayDetailPresenter(interactor: interactor)
-        let viewController = PictureOfDayDetailViewController(output: presenter, delegate: presenter)
+        let viewController = PictureOfDayDetailViewController(output: presenter)
         presenter.view = viewController as? PictureOfDayDetailViewControllerInput
         return viewController
     }
