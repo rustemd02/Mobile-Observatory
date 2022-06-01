@@ -46,7 +46,6 @@ class SpaceArchiveViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         navigationItem.searchController = searchController
-        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Поиск по базе знаний"
         
         let spaceXTap = UITapGestureRecognizer(target: self, action: #selector(goToSpaceXScreen))
