@@ -65,7 +65,7 @@ class AsteroidDetailViewController: UIViewController {
         asteroidImageView.layer.cornerRadius = 25
         asteroidImageView.clipsToBounds = true
         asteroidImageView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(40)
+            make.top.equalTo(contentView.safeAreaLayoutGuide)
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(4)
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(4)
             make.width.equalTo(asteroidImageView.snp.height).multipliedBy(maxWidthContainerBig/maxHeightContainerBig)
@@ -82,7 +82,7 @@ class AsteroidDetailViewController: UIViewController {
             addInfoPanel(title: "ОПАСНОСТЬ", value: "НЕ ОПАСЕН")
         }
         guard let approachDatum = asteroid.closeApproachData.first else { return }
-        addInfoPanel(title: "БУДЕТ БЛИЖЕ ВСЕГО К ЗЕМЛЕ", value: approachDatum.closeApproachDate)
+        addInfoPanel(title: "БЛИЖЕ ВСЕГО К ЗЕМЛЕ", value: approachDatum.closeApproachDate)
         let velocity: Double = Double(approachDatum.relativeVelocity.kilometersPerSecond) ?? 0.0
         addInfoPanel(title: "СКОРОСТЬ ДВИЖЕНИЯ", value: String(format: "%.2f", velocity) + " КМ/С")
         let missDistance: Double = Double(approachDatum.missDistance.kilometers) ?? 0.0

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AlbumEntity" representedClassName="AlbumEntity" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="datum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DatumEntity" inverseName="album" inverseEntity="DatumEntity"/>
-    </entity>
     <entity name="ArticleEntity" representedClassName=".ArticleEntity" syncable="YES">
         <attribute name="articleUrl" optional="YES" attributeType="String"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -13,28 +9,6 @@
         <attribute name="pictureURL" optional="YES" attributeType="String"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="DatumEntity" representedClassName=".DatumEntity" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="descr" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="mediaType" optional="YES" attributeType="String"/>
-        <attribute name="nasaID" optional="YES" attributeType="String"/>
-        <attribute name="photographer" optional="YES" attributeType="String"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="album" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AlbumEntity" inverseName="datum" inverseEntity="AlbumEntity"/>
-        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SearchResultItemEntity" inverseName="data" inverseEntity="SearchResultItemEntity"/>
-        <relationship name="keyWords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="KeyWordEntity" inverseName="datum" inverseEntity="KeyWordEntity"/>
-    </entity>
-    <entity name="KeyWordEntity" representedClassName="KeyWordEntity" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="keyWord" optional="YES" attributeType="String"/>
-        <relationship name="datum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DatumEntity" inverseName="keyWords" inverseEntity="DatumEntity"/>
-    </entity>
-    <entity name="MoonEntity" representedClassName=".MoonEntity" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="moonName" optional="YES" attributeType="String"/>
-        <relationship name="planet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlanetEntity" inverseName="moons" inverseEntity="PlanetEntity"/>
     </entity>
     <entity name="PictureFromMarsEntity" representedClassName=".PictureFromMarsEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -65,45 +39,10 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PictureFromMarsEntity" inverseName="collection" inverseEntity="PictureFromMarsEntity"/>
     </entity>
-    <entity name="PlanetEntity" representedClassName=".PlanetEntity" syncable="YES">
-        <attribute name="bodyType" optional="YES" attributeType="String"/>
-        <attribute name="discoveredWhen" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="gravity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="mass" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="radius" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="moons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MoonEntity" inverseName="planet" inverseEntity="MoonEntity"/>
-    </entity>
     <entity name="RoverEntity" representedClassName="RoverEntity" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PictureFromMarsEntity" inverseName="rover" inverseEntity="PictureFromMarsEntity"/>
-    </entity>
-    <entity name="SearchResultCollectionLinkEntity" representedClassName="SearchResultCollectionLinkEntity" syncable="YES">
-        <attribute name="href" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="prompt" optional="YES" attributeType="String"/>
-        <attribute name="rel" optional="YES" attributeType="String"/>
-        <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SearchResultEntity" inverseName="collectionLinks" inverseEntity="SearchResultEntity"/>
-    </entity>
-    <entity name="SearchResultEntity" representedClassName="SearchResultEntity" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="collectionLinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchResultCollectionLinkEntity" inverseName="collection" inverseEntity="SearchResultCollectionLinkEntity"/>
-        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchResultItemEntity" inverseName="searchResult" inverseEntity="SearchResultItemEntity"/>
-    </entity>
-    <entity name="SearchResultItemEntity" representedClassName="SearchResultItemEntity" syncable="YES">
-        <attribute name="href" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="data" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DatumEntity" inverseName="item" inverseEntity="DatumEntity"/>
-        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchResultItemLinkEntity" inverseName="item" inverseEntity="SearchResultItemLinkEntity"/>
-        <relationship name="searchResult" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SearchResultEntity" inverseName="items" inverseEntity="SearchResultEntity"/>
-    </entity>
-    <entity name="SearchResultItemLinkEntity" representedClassName="SearchResultItemLinkEntity" syncable="YES">
-        <attribute name="href" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="mediaType" optional="YES" attributeType="String"/>
-        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SearchResultItemEntity" inverseName="links" inverseEntity="SearchResultItemEntity"/>
     </entity>
     <entity name="WeatherOnMarsInfoEntity" representedClassName=".WeatherOnMarsInfoEntity" syncable="YES">
         <attribute name="atmoOpacity" optional="YES" attributeType="String"/>
@@ -117,21 +56,12 @@
         <attribute name="sol" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="AlbumEntity" positionX="9" positionY="-108" width="128" height="59"/>
         <element name="ArticleEntity" positionX="154.7058715820312" positionY="-65.07745361328125" width="128" height="149"/>
-        <element name="DatumEntity" positionX="-25.74310302734375" positionY="246.7599792480469" width="128" height="179"/>
-        <element name="KeyWordEntity" positionX="0" positionY="-117" width="128" height="74"/>
-        <element name="MoonEntity" positionX="207.2808837890625" positionY="269.1203918457031" width="128" height="74"/>
         <element name="PictureFromMarsEntity" positionX="-201.1103515625" positionY="-117.7656860351562" width="128" height="134"/>
         <element name="PictureOfDayEntity" positionX="-18.15087890625" positionY="5.357513427734375" width="128" height="119"/>
         <element name="PictureOfEarthEntity" positionX="-183.9835205078125" positionY="-273.8130187988281" width="128" height="119"/>
         <element name="PicturesFromMarsCollectionEntity" positionX="9" positionY="-108" width="128" height="59"/>
-        <element name="PlanetEntity" positionX="182.5570678710938" positionY="95.79074096679688" width="128" height="149"/>
         <element name="RoverEntity" positionX="0" positionY="-117" width="128" height="74"/>
-        <element name="SearchResultCollectionLinkEntity" positionX="27" positionY="-90" width="128" height="104"/>
-        <element name="SearchResultEntity" positionX="36" positionY="-81" width="128" height="74"/>
-        <element name="SearchResultItemEntity" positionX="45" positionY="-72" width="128" height="104"/>
-        <element name="SearchResultItemLinkEntity" positionX="54" positionY="-63" width="128" height="89"/>
         <element name="WeatherOnMarsInfoEntity" positionX="-28.278076171875" positionY="-243.7298736572266" width="128" height="164"/>
     </elements>
 </model>
