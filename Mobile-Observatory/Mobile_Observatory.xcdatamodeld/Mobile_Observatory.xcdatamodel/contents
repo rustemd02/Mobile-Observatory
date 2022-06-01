@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AlbumEntity" representedClassName="AlbumEntity" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="datum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DatumEntity" inverseName="album" inverseEntity="DatumEntity"/>
@@ -13,18 +13,6 @@
         <attribute name="pictureURL" optional="YES" attributeType="String"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="AsteroidEntity" representedClassName=".AsteroidEntity" syncable="YES">
-        <attribute name="approachDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="estimatedDiameter" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="infoLink" optional="YES" attributeType="String"/>
-        <attribute name="isHazardous" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="missDistance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="velocity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="nearEarthAsteroids" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NearEarthAsteroidsEntity" inverseName="asteroids" inverseEntity="NearEarthAsteroidsEntity"/>
     </entity>
     <entity name="DatumEntity" representedClassName=".DatumEntity" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -48,20 +36,14 @@
         <attribute name="moonName" optional="YES" attributeType="String"/>
         <relationship name="planet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlanetEntity" inverseName="moons" inverseEntity="PlanetEntity"/>
     </entity>
-    <entity name="NearEarthAsteroidsEntity" representedClassName=".NearEarthAsteroidsEntity" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="nextLink" optional="YES" attributeType="String"/>
-        <attribute name="prevLink" optional="YES" attributeType="String"/>
-        <relationship name="asteroids" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AsteroidEntity" inverseName="nearEarthAsteroids" inverseEntity="AsteroidEntity"/>
-    </entity>
     <entity name="PictureFromMarsEntity" representedClassName=".PictureFromMarsEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="pictureLocalPath" optional="YES" attributeType="String"/>
         <attribute name="pictureURL" optional="YES" attributeType="String"/>
         <attribute name="sol" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PicturesFromMarsCollectionEntity" inverseName="pictures" inverseEntity="PicturesFromMarsCollectionEntity"/>
-        <relationship name="rover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoverEntity" inverseName="pictures" inverseEntity="RoverEntity"/>
+        <relationship name="collection" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PicturesFromMarsCollectionEntity" inverseName="pictures" inverseEntity="PicturesFromMarsCollectionEntity"/>
+        <relationship name="rover" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RoverEntity" inverseName="pictures" inverseEntity="RoverEntity"/>
     </entity>
     <entity name="PictureOfDayEntity" representedClassName=".PictureOfDayEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -81,7 +63,7 @@
     </entity>
     <entity name="PicturesFromMarsCollectionEntity" representedClassName="PicturesFromMarsCollectionEntity" syncable="YES">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PictureFromMarsEntity" inverseName="collection" inverseEntity="PictureFromMarsEntity"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PictureFromMarsEntity" inverseName="collection" inverseEntity="PictureFromMarsEntity"/>
     </entity>
     <entity name="PlanetEntity" representedClassName=".PlanetEntity" syncable="YES">
         <attribute name="bodyType" optional="YES" attributeType="String"/>
@@ -96,7 +78,7 @@
     <entity name="RoverEntity" representedClassName="RoverEntity" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PictureFromMarsEntity" inverseName="rover" inverseEntity="PictureFromMarsEntity"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PictureFromMarsEntity" inverseName="rover" inverseEntity="PictureFromMarsEntity"/>
     </entity>
     <entity name="SearchResultCollectionLinkEntity" representedClassName="SearchResultCollectionLinkEntity" syncable="YES">
         <attribute name="href" optional="YES" attributeType="String"/>
@@ -137,11 +119,9 @@
     <elements>
         <element name="AlbumEntity" positionX="9" positionY="-108" width="128" height="59"/>
         <element name="ArticleEntity" positionX="154.7058715820312" positionY="-65.07745361328125" width="128" height="149"/>
-        <element name="AsteroidEntity" positionX="-205.5304565429688" positionY="192.3423461914062" width="128" height="179"/>
         <element name="DatumEntity" positionX="-25.74310302734375" positionY="246.7599792480469" width="128" height="179"/>
         <element name="KeyWordEntity" positionX="0" positionY="-117" width="128" height="74"/>
         <element name="MoonEntity" positionX="207.2808837890625" positionY="269.1203918457031" width="128" height="74"/>
-        <element name="NearEarthAsteroidsEntity" positionX="-187.8876953125" positionY="33.07791137695312" width="128" height="89"/>
         <element name="PictureFromMarsEntity" positionX="-201.1103515625" positionY="-117.7656860351562" width="128" height="134"/>
         <element name="PictureOfDayEntity" positionX="-18.15087890625" positionY="5.357513427734375" width="128" height="119"/>
         <element name="PictureOfEarthEntity" positionX="-183.9835205078125" positionY="-273.8130187988281" width="128" height="119"/>

@@ -13,7 +13,7 @@ class SpaceArchiveModuleBuilder {
         let interactor = SpaceArchiveInteractor()
         let presenter = SpaceArchivePresenter(interactor: interactor)
         let viewController = SpaceArchiveViewController(output: presenter)
-        presenter.view = viewController as? SpaceArchiveViewControllerInput
+        presenter.view = viewController as? SpaceArchiveInput
         return viewController
     }
 }

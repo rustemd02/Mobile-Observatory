@@ -67,7 +67,7 @@ class NetworkService {
     }
     
     
-    func getNearbyAsteroids(date: Date, completion: @escaping(Result<NearEarthAsteroids, NetworkError>) -> Void) {
+    func getNearbyAsteroids(date: Date, completion: @escaping(Result<Asteroids, NetworkError>) -> Void) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let stringDate = dateFormatter.string(from: date)
@@ -79,9 +79,9 @@ class NetworkService {
             do {
                 let jsonDecoder = JSONDecoder()
                 jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
-                let nearEarthAsteroids = try jsonDecoder.decode(NearEarthAsteroids.self, from: data)
+                let asteroids = try jsonDecoder.decode(Asteroids.self, from: data)
                 
-                completion(.success(nearEarthAsteroids))
+                completion(.success(asteroids))
             } catch {
                 print(error)
                 completion(.failure(.inputError))

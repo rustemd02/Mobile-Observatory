@@ -13,8 +13,8 @@ protocol FeedInteractorProtocol {
     func getData(completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
     func cellForRowAt (indexPath: IndexPath) -> Post
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
+    func savePost(post: Post, indexPath: IndexPath?)
+    func removePostFromSaved(post: Post, indexPath: IndexPath?)
     func resetData()
 }
 
@@ -31,14 +31,25 @@ class FeedInteractor: FeedInteractorProtocol {
     }
     
     func getData(completion: @escaping () -> ()) {
-        getArticles(completion: completion)
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        getArticles {
+            dispatchGroup.leave()
+        }
         if !(postsData.contains(where: { post in
             post.postType == .weatherOnMars
         })) {
-            getWeatherOnMars(sol: "", completion: completion)
+            dispatchGroup.enter()
+            getWeatherOnMars(sol: "", completion: dispatchGroup.leave)
         }
-        getPicOfDay(completion: completion)
-        getPicFromMars(completion: completion)
+        dispatchGroup.enter()
+        getPicOfDay(completion: dispatchGroup.leave)
+        dispatchGroup.enter()
+        getPicFromMars(completion: dispatchGroup.leave)
+        
+        dispatchGroup.notify(queue: .main) {
+            completion()
+        }
     }
     
     private func getArticles(completion: @escaping () -> ()) {
@@ -47,11 +58,16 @@ class FeedInteractor: FeedInteractorProtocol {
             case .success(let articles):
                 guard let posts = self?.postsData else { return }
                 if (posts.isEmpty) {
-                    for article in articles {
+                    for art in articles {
+                        var article = art
+                        if ((self?.coreData.containsArticle(date: article.createdAt)) == true) {
+                            article.isSaved = true
+                        }
                         self?.postsData.append(article)
                     }
                 } else {
-                    for article in articles {
+                    for art in articles {
+                        var article = art
                         var alreadyLoaded: Bool = false
                         if (posts.contains(where: { post in
                             post as? Article == article
@@ -59,6 +75,9 @@ class FeedInteractor: FeedInteractorProtocol {
                             alreadyLoaded = true
                         }
                         if (!alreadyLoaded) {
+                            if ((self?.coreData.containsArticle(date: article.createdAt)) == true) {
+                                article.isSaved = true
+                            }
                             self?.postsData.append(article)
                         }
                     }
@@ -88,7 +107,7 @@ class FeedInteractor: FeedInteractorProtocol {
     private func getPicOfDay(completion: @escaping () -> ()) {
         api.getPicOfDay(date: lastFetchedDate) { [weak self] result in
             switch result {
-            case .success(let picOfDay):
+            case .success(var picOfDay):
                 var alreadyShown: Bool = false
                 guard let posts = self?.postsData else { return }
                 for post in posts {
@@ -99,6 +118,9 @@ class FeedInteractor: FeedInteractorProtocol {
                     }
                 }
                 if (!alreadyShown) {
+                    if ((self?.coreData.containsPictureOfDay(date: picOfDay.date)) == true) {
+                        picOfDay.isSaved = true
+                    }
                     self?.postsData.append(picOfDay)
                     completion()
                 }
@@ -111,7 +133,7 @@ class FeedInteractor: FeedInteractorProtocol {
     private func getPicFromMars(completion: @escaping () -> ()) {
         api.getPicFromMars(date: lastFetchedDate) { [weak self] result in
             switch result {
-            case .success(let picFromMars):
+            case .success(var picFromMars):
                 if (picFromMars.photos.isEmpty) {
                     completion()
                     return
@@ -126,6 +148,9 @@ class FeedInteractor: FeedInteractorProtocol {
                     }
                 }
                 if (!alreadyShown) {
+                    if ((self?.coreData.containsPictureFromMars(id: picFromMars.photos.first?.id ?? -1)) == true) {
+                        picFromMars.isSaved = true
+                    }
                     self?.postsData.append(picFromMars)
                     completion()
                 }
@@ -156,7 +181,7 @@ class FeedInteractor: FeedInteractorProtocol {
         
     }
     
-    func savePost(post: Post){
+    func savePost(post: Post, indexPath: IndexPath?){
         switch (post.postType) {
         case .article:
             coreData.saveArticle(post as! Article)
@@ -173,18 +198,17 @@ class FeedInteractor: FeedInteractorProtocol {
         case .pictureOfEarth:
             coreData.savePictureOfEarth(post as! PictureOfEarthElement)
             break
-        case .asteroid:
-            break
-        case .planet:
-            break
-        case .searchResult:
-            break
         case .none:
             break
         }
+        
+        guard let indexPath = indexPath else {
+            return
+        }
+        postsData[indexPath.row].isSaved = true
     }
     
-    func removePostFromSaved(post: Post){
+    func removePostFromSaved(post: Post, indexPath: IndexPath?){
         switch (post.postType) {
         case .article:
             coreData.deleteArticle(post as! Article)
@@ -196,20 +220,19 @@ class FeedInteractor: FeedInteractorProtocol {
             coreData.deletePictureOfDay(post as! PictureOfDay)
             break
         case .pictureFromMars:
-            //            coreData.deletePictureFromMars(post)
+//            coreData.deletePictureFromMars(post)
             break
         case .pictureOfEarth:
             coreData.deletePictureOfEarth(post as! PictureOfEarthElement)
             break
-        case .asteroid:
-            break
-        case .planet:
-            break
-        case .searchResult:
-            break
         case .none:
             break
         }
+        
+        guard let indexPath = indexPath else {
+            return
+        }
+        postsData[indexPath.row].isSaved = false
     }
 }
 

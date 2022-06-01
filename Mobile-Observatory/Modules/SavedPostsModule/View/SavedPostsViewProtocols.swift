@@ -8,12 +8,21 @@
 import Foundation
 
 protocol SavedPostsViewControllerInput: AnyObject {
-    func updateView(with items: [Post])
+    func updateView()
     func showError()
 }
 
 protocol SavedPostsViewControllerOutput {
     func viewDidLoad()
     func didSelectRow(at: Int)
-    func fetchSavedArticles()
+    func fetchSavedPosts()
+    func numberOfRowsInSection(section: Int) -> Int
+    func cellForRowAt (indexPath: IndexPath) -> Post
+    func savePost(post: Post, indexPath: IndexPath?)
+    func removePostFromSaved(post: Post, indexPath: IndexPath?)
+}
+
+protocol SavePostButtonDelegate {
+    func savePost(post: Post, index: IndexPath?)
+    func removePostFromSaved(post: Post, index: IndexPath?)
 }

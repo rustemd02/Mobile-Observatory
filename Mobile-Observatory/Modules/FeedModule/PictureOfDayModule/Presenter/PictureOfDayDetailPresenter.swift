@@ -21,7 +21,6 @@ class PictureOfDayDetailPresenter: PictureOfDayDetailPresenterProtocol {
     init(interactor: PictureOfDayDetailInteractorProtocol) {
         self.interactor = interactor
     }
-   
 }
 
 extension PictureOfDayDetailPresenter: PictureOfDayDetailViewControllerOutput {

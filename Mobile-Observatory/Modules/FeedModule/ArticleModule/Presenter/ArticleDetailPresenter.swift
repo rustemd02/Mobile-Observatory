@@ -20,7 +20,7 @@ class ArticleDetailPresenter: ArticleDetailPresenterProtocol {
     init(interactor: ArticleDetailInteractorProtocol) {
         self.interactor = interactor
     }
-   
+    
 }
 
 extension ArticleDetailPresenter: ArticleDetailViewControllerOutput {

@@ -18,8 +18,7 @@
 		04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */; };
 		04B2C18127FED10A00F0C617 /* SavedPostsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18027FED10A00F0C617 /* SavedPostsModuleBuilder.swift */; };
 		04B2C18327FED12600F0C617 /* SavedPostsViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18227FED12600F0C617 /* SavedPostsViewProtocols.swift */; };
-		04B2C18727FED1EA00F0C617 /* PresenterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18627FED1EA00F0C617 /* PresenterProtocols.swift */; };
-		04B2C18927FED20300F0C617 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18827FED20300F0C617 /* Presenter.swift */; };
+		04B2C18927FED20300F0C617 /* SavedPostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18827FED20300F0C617 /* SavedPostsPresenter.swift */; };
 		04B2C18B27FED5D900F0C617 /* SavedPostsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18A27FED5D900F0C617 /* SavedPostsInteractor.swift */; };
 		04B2C18E27FEEA8900F0C617 /* WeatherOnMarsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */; };
 		04B2C18F27FEEA9600F0C617 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EC6D627D533BF007197E6 /* NetworkService.swift */; };
@@ -28,9 +27,23 @@
 		04B2C19527FF2B7800F0C617 /* SavedPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C18427FED14000F0C617 /* SavedPostsViewController.swift */; };
 		04B2C19627FF2B7C00F0C617 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C19327FF2A7E00F0C617 /* ViewController.swift */; };
 		04B2C19827FF7F5300F0C617 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2C19727FF7F5300F0C617 /* MockService.swift */; };
+		04CA4C7128424FC600E2D040 /* SearchResultModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C7028424FC600E2D040 /* SearchResultModuleBuilder.swift */; };
+		04CA4C7328424FD200E2D040 /* SearchResultInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C7228424FD200E2D040 /* SearchResultInteractor.swift */; };
+		04CA4C7528424FDF00E2D040 /* SearchResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C7428424FDF00E2D040 /* SearchResultPresenter.swift */; };
+		04CA4C7728424FEC00E2D040 /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C7628424FEC00E2D040 /* SearchResultDetailViewController.swift */; };
+		04CA4C792842509A00E2D040 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C782842509A00E2D040 /* SearchResultTableViewCell.swift */; };
+		04CA4C7F2845316600E2D040 /* AsteroidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C7E2845316600E2D040 /* AsteroidsViewController.swift */; };
+		04CA4C812845317F00E2D040 /* AsteroidsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C802845317F00E2D040 /* AsteroidsPresenter.swift */; };
+		04CA4C832845318C00E2D040 /* AsteroidsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C822845318C00E2D040 /* AsteroidsInteractor.swift */; };
+		04CA4C85284532BF00E2D040 /* AsteroidsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C84284532BF00E2D040 /* AsteroidsModuleBuilder.swift */; };
+		04CA4C87284602C100E2D040 /* AsteroidTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C86284602C100E2D040 /* AsteroidTableViewCell.swift */; };
+		04CA4C892846352700E2D040 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C882846352700E2D040 /* Asteroid.swift */; };
+		04CA4C9F284682C800E2D040 /* AsteroidDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4C9E284682C800E2D040 /* AsteroidDetailModuleBuilder.swift */; };
+		04CA4CA12846834E00E2D040 /* AsteroidDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4CA02846834E00E2D040 /* AsteroidDetailInteractor.swift */; };
+		04CA4CA32846837900E2D040 /* AsteroidDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4CA22846837900E2D040 /* AsteroidDetailPresenter.swift */; };
+		04CA4CA52846839400E2D040 /* AsteroidDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA4CA42846839400E2D040 /* AsteroidDetailViewController.swift */; };
 		04CF3D3327F0896300685553 /* PictureOfEarthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */; };
 		04CF3D3527F0896300685553 /* PlanetEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1127F0896300685553 /* PlanetEntity.swift */; };
-		04CF3D3727F0896300685553 /* NearEarthAsteroidsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */; };
 		04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1527F0896300685553 /* SearchResultCollectionLinkEntity.swift */; };
 		04CF3D3B27F0896300685553 /* SearchResultEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1727F0896300685553 /* SearchResultEntity.swift */; };
 		04CF3D3D27F0896300685553 /* PictureFromMarsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1927F0896300685553 /* PictureFromMarsEntity.swift */; };
@@ -39,7 +52,6 @@
 		04CF3D4327F0896300685553 /* ArticleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D1F27F0896300685553 /* ArticleEntity.swift */; };
 		04CF3D4527F0896300685553 /* WeatherOnMarsInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D2127F0896300685553 /* WeatherOnMarsInfoEntity.swift */; };
 		04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D2527F0896300685553 /* KeyWordEntity.swift */; };
-		04CF3D4B27F0896300685553 /* AsteroidEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D2727F0896300685553 /* AsteroidEntity.swift */; };
 		04CF3D4D27F0896300685553 /* PictureOfDayEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D2927F0896300685553 /* PictureOfDayEntity.swift */; };
 		04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D2B27F0896300685553 /* SearchResultItemLinkEntity.swift */; };
 		04CF3D5127F0896300685553 /* AlbumEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF3D2D27F0896300685553 /* AlbumEntity.swift */; };
@@ -49,10 +61,8 @@
 		04CFF39C27D560120066A8D2 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFF39B27D560120066A8D2 /* CoreDataService.swift */; };
 		8E50F20BCD30923D250AC213 /* Pods_Mobile_Observatory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD86718852AF9DDA447228E /* Pods_Mobile_Observatory.framework */; };
 		CF1CB18A27F1DEED003FF24E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CB18927F1DEED003FF24E /* Post.swift */; };
-		CF1CB18C27F2E0FA003FF24E /* (null) in Sources */ = {isa = PBXBuildFile; };
 		CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */; };
 		CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */; };
-		CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */; };
 		CF296E602812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E5F2812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift */; };
 		CF296E622812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E612812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift */; };
 		CF296E662812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF296E652812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift */; };
@@ -158,8 +168,7 @@
 		04B2C18027FED10A00F0C617 /* SavedPostsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsModuleBuilder.swift; sourceTree = "<group>"; };
 		04B2C18227FED12600F0C617 /* SavedPostsViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsViewProtocols.swift; sourceTree = "<group>"; };
 		04B2C18427FED14000F0C617 /* SavedPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsViewController.swift; sourceTree = "<group>"; };
-		04B2C18627FED1EA00F0C617 /* PresenterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocols.swift; sourceTree = "<group>"; };
-		04B2C18827FED20300F0C617 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		04B2C18827FED20300F0C617 /* SavedPostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsPresenter.swift; sourceTree = "<group>"; };
 		04B2C18A27FED5D900F0C617 /* SavedPostsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsInteractor.swift; sourceTree = "<group>"; };
 		04B2C19327FF2A7E00F0C617 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04B2C19727FF7F5300F0C617 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
@@ -169,9 +178,23 @@
 		04B2C1AE28006E9D00F0C617 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B2C1B228006E9D00F0C617 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B2C1B428006E9D00F0C617 /* SwiftDate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftDate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04CA4C7028424FC600E2D040 /* SearchResultModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModuleBuilder.swift; sourceTree = "<group>"; };
+		04CA4C7228424FD200E2D040 /* SearchResultInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultInteractor.swift; sourceTree = "<group>"; };
+		04CA4C7428424FDF00E2D040 /* SearchResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPresenter.swift; sourceTree = "<group>"; };
+		04CA4C7628424FEC00E2D040 /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
+		04CA4C782842509A00E2D040 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		04CA4C7E2845316600E2D040 /* AsteroidsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsViewController.swift; sourceTree = "<group>"; };
+		04CA4C802845317F00E2D040 /* AsteroidsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsPresenter.swift; sourceTree = "<group>"; };
+		04CA4C822845318C00E2D040 /* AsteroidsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsInteractor.swift; sourceTree = "<group>"; };
+		04CA4C84284532BF00E2D040 /* AsteroidsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidsModuleBuilder.swift; sourceTree = "<group>"; };
+		04CA4C86284602C100E2D040 /* AsteroidTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidTableViewCell.swift; sourceTree = "<group>"; };
+		04CA4C882846352700E2D040 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
+		04CA4C9E284682C800E2D040 /* AsteroidDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDetailModuleBuilder.swift; sourceTree = "<group>"; };
+		04CA4CA02846834E00E2D040 /* AsteroidDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDetailInteractor.swift; sourceTree = "<group>"; };
+		04CA4CA22846837900E2D040 /* AsteroidDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDetailPresenter.swift; sourceTree = "<group>"; };
+		04CA4CA42846839400E2D040 /* AsteroidDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDetailViewController.swift; sourceTree = "<group>"; };
 		04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfEarthEntity.swift; sourceTree = "<group>"; };
 		04CF3D1127F0896300685553 /* PlanetEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetEntity.swift; sourceTree = "<group>"; };
-		04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearEarthAsteroidsEntity.swift; sourceTree = "<group>"; };
 		04CF3D1527F0896300685553 /* SearchResultCollectionLinkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionLinkEntity.swift; sourceTree = "<group>"; };
 		04CF3D1727F0896300685553 /* SearchResultEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultEntity.swift; sourceTree = "<group>"; };
 		04CF3D1927F0896300685553 /* PictureFromMarsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFromMarsEntity.swift; sourceTree = "<group>"; };
@@ -180,7 +203,6 @@
 		04CF3D1F27F0896300685553 /* ArticleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleEntity.swift; sourceTree = "<group>"; };
 		04CF3D2127F0896300685553 /* WeatherOnMarsInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsInfoEntity.swift; sourceTree = "<group>"; };
 		04CF3D2527F0896300685553 /* KeyWordEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyWordEntity.swift; sourceTree = "<group>"; };
-		04CF3D2727F0896300685553 /* AsteroidEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidEntity.swift; sourceTree = "<group>"; };
 		04CF3D2927F0896300685553 /* PictureOfDayEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayEntity.swift; sourceTree = "<group>"; };
 		04CF3D2B27F0896300685553 /* SearchResultItemLinkEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemLinkEntity.swift; sourceTree = "<group>"; };
 		04CF3D2D27F0896300685553 /* AlbumEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumEntity.swift; sourceTree = "<group>"; };
@@ -191,7 +213,6 @@
 		CF1CB18927F1DEED003FF24E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		CF296E3D2800343800616F48 /* FeedModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleBuilder.swift; sourceTree = "<group>"; };
 		CF296E53280FEE0700616F48 /* ArticleDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailModuleBuilder.swift; sourceTree = "<group>"; };
-		CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailFlowCoordinator.swift; sourceTree = "<group>"; };
 		CF296E5F2812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsDetailInteractor.swift; sourceTree = "<group>"; };
 		CF296E612812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsDetailPresenter.swift; sourceTree = "<group>"; };
 		CF296E652812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOnMarsDetailModuleBuilder.swift; sourceTree = "<group>"; };
@@ -256,6 +277,7 @@
 		CFA23B83282DAAA60028DAD7 /* SpaceXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXViewController.swift; sourceTree = "<group>"; };
 		CFA23B85282DAF750028DAD7 /* WeatherOnMarsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherOnMarsDetailViewController.swift; path = "Mobile-Observatory/Modules/FeedModule/WeatherOnMarsModule/View/WeatherOnMarsDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		CFA23B87282DAFC10028DAD7 /* WeatherOnMarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherOnMarsTableViewCell.swift; path = "Mobile-Observatory/Modules/FeedModule/WeatherOnMarsModule/View/WeatherOnMarsTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+
 		CFA23B8E282E9F380028DAD7 /* PlanetsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsModuleBuilder.swift; sourceTree = "<group>"; };
 		CFA23B90282E9FA30028DAD7 /* PlanetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsViewController.swift; sourceTree = "<group>"; };
 		CFA23B92282E9FB30028DAD7 /* PlanetsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsInteractor.swift; sourceTree = "<group>"; };
@@ -313,11 +335,11 @@
 		04B2C16D27FEC63200F0C617 /* FlowCoordinators */ = {
 			isa = PBXGroup;
 			children = (
-				04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */,
+				04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */,
 				CF6B18A127FEEDE8005D09B6 /* FeedFlowCoordinator.swift */,
+				04B2C16E27FEC65200F0C617 /* FlowCoordinatorProtocol.swift */,
 				04B2C17027FEC68E00F0C617 /* MainFlowCoordinator.swift */,
 				04B2C17A27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift */,
-				CF296E55280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift */,
 				CFA23B75282D97FA0028DAD7 /* SpaceArchiveFlowCoordinator.swift */,
 			);
 			path = FlowCoordinators;
@@ -330,7 +352,6 @@
 				04B2C17F27FED0DA00F0C617 /* View */,
 				04B2C17E27FED0D500F0C617 /* Presenter */,
 				04B2C18027FED10A00F0C617 /* SavedPostsModuleBuilder.swift */,
-				04B2C17227FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift */,
 			);
 			path = SavedPostsModule;
 			sourceTree = "<group>";
@@ -348,8 +369,7 @@
 		04B2C17E27FED0D500F0C617 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				04B2C18627FED1EA00F0C617 /* PresenterProtocols.swift */,
-				04B2C18827FED20300F0C617 /* Presenter.swift */,
+				04B2C18827FED20300F0C617 /* SavedPostsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -363,13 +383,128 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		04CA4C6C28424F7300E2D040 /* SearchResultModule */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C6F28424FAE00E2D040 /* View */,
+				04CA4C6E28424FA700E2D040 /* Presenter */,
+				04CA4C6D28424F9A00E2D040 /* Interactor */,
+				04CA4C7028424FC600E2D040 /* SearchResultModuleBuilder.swift */,
+			);
+			path = SearchResultModule;
+			sourceTree = "<group>";
+		};
+		04CA4C6D28424F9A00E2D040 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C7228424FD200E2D040 /* SearchResultInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		04CA4C6E28424FA700E2D040 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C7428424FDF00E2D040 /* SearchResultPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		04CA4C6F28424FAE00E2D040 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C7628424FEC00E2D040 /* SearchResultDetailViewController.swift */,
+				04CA4C782842509A00E2D040 /* SearchResultTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04CA4C7A2845310A00E2D040 /* AsteroidsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C7D2845313800E2D040 /* Interactor */,
+				04CA4C7C2845313200E2D040 /* Presenter */,
+				04CA4C7B2845312B00E2D040 /* View */,
+				04CA4C84284532BF00E2D040 /* AsteroidsModuleBuilder.swift */,
+			);
+			path = AsteroidsScreen;
+			sourceTree = "<group>";
+		};
+		04CA4C7B2845312B00E2D040 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C86284602C100E2D040 /* AsteroidTableViewCell.swift */,
+				04CA4C7E2845316600E2D040 /* AsteroidsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		04CA4C7C2845313200E2D040 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C802845317F00E2D040 /* AsteroidsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		04CA4C7D2845313800E2D040 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C822845318C00E2D040 /* AsteroidsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		04CA4C982846824000E2D040 /* AsteroidDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C9C2846828A00E2D040 /* View */,
+				04CA4C9B2846828400E2D040 /* Presenter */,
+				04CA4C9A2846827F00E2D040 /* Interactor */,
+				04CA4C9E284682C800E2D040 /* AsteroidDetailModuleBuilder.swift */,
+			);
+			path = AsteroidDetailScreen;
+			sourceTree = "<group>";
+		};
+		04CA4C992846825E00E2D040 /* AsteroidsModule */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4C982846824000E2D040 /* AsteroidDetailScreen */,
+				04CA4C7A2845310A00E2D040 /* AsteroidsScreen */,
+			);
+			path = AsteroidsModule;
+			sourceTree = "<group>";
+		};
+		04CA4C9A2846827F00E2D040 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4CA02846834E00E2D040 /* AsteroidDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		04CA4C9B2846828400E2D040 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4CA22846837900E2D040 /* AsteroidDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		04CA4C9C2846828A00E2D040 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04CA4CA42846839400E2D040 /* AsteroidDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		04CFF39D27D5DD150066A8D2 /* CoreDataEntities */ = {
 			isa = PBXGroup;
 			children = (
 				04CF3D5F27F1FE7A00685553 /* DatumEntity.swift */,
 				04CF3D0F27F0896300685553 /* PictureOfEarthEntity.swift */,
 				04CF3D1127F0896300685553 /* PlanetEntity.swift */,
-				04CF3D1327F0896300685553 /* NearEarthAsteroidsEntity.swift */,
 				04CF3D1527F0896300685553 /* SearchResultCollectionLinkEntity.swift */,
 				04CF3D1727F0896300685553 /* SearchResultEntity.swift */,
 				04CF3D1927F0896300685553 /* PictureFromMarsEntity.swift */,
@@ -378,7 +513,6 @@
 				04CF3D1F27F0896300685553 /* ArticleEntity.swift */,
 				04CF3D2127F0896300685553 /* WeatherOnMarsInfoEntity.swift */,
 				04CF3D2527F0896300685553 /* KeyWordEntity.swift */,
-				04CF3D2727F0896300685553 /* AsteroidEntity.swift */,
 				04CF3D2927F0896300685553 /* PictureOfDayEntity.swift */,
 				04CF3D2B27F0896300685553 /* SearchResultItemLinkEntity.swift */,
 				04CF3D2D27F0896300685553 /* AlbumEntity.swift */,
@@ -572,13 +706,13 @@
 			children = (
 				CF2F323827CD391B0043A12B /* WeatherOnMarsInfo.swift */,
 				CF2F323A27CD39710043A12B /* PictureOfDay.swift */,
-				CFEEA52927D512F400E05249 /* Asteroid.swift */,
 				CFEEA53127D5227300E05249 /* PictureFromMars.swift */,
 				CFEEA52D27D51A4000E05249 /* PictureOfEarth.swift */,
 				CFEEA52F27D51C1300E05249 /* Planet.swift */,
 				CFEEA53327D5284200E05249 /* SearchResult.swift */,
 				CFEEA53527D52C7900E05249 /* Article.swift */,
 				CF1CB18927F1DEED003FF24E /* Post.swift */,
+				04CA4C882846352700E2D040 /* Asteroid.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -859,6 +993,8 @@
 		CFA23B69282D95290028DAD7 /* SpaceArchiveModule */ = {
 			isa = PBXGroup;
 			children = (
+				04CA4C992846825E00E2D040 /* AsteroidsModule */,
+				04CA4C6C28424F7300E2D040 /* SearchResultModule */,
 				CFA23B8A282E9EFA0028DAD7 /* PlanetsModule */,
 				CFA23B79282DA9F60028DAD7 /* SpaceXModule */,
 				CFA23B78282DA9EA0028DAD7 /* SpaceArchive */,
@@ -1064,6 +1200,7 @@
 				CF2F321627CD37BB0043A12B /* Frameworks */,
 				CF2F321727CD37BB0043A12B /* Resources */,
 				5C90FE5CA864E2C3859A1BDF /* [CP] Embed Pods Frameworks */,
+				048FC0632817047A0060EEB3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1134,6 +1271,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		048FC0632817047A0060EEB3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 		5C90FE5CA864E2C3859A1BDF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1167,8 +1321,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\n    else\n    echo \"No SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1191,11 +1344,14 @@
 				04B2C19127FEEAAA00F0C617 /* PictureOfEarth.swift in Sources */,
 				CF3930B5283B7B30003583D5 /* CrewModuleBuilder.swift in Sources */,
 				049EB8D2280DB2C00088C7B5 /* FeedViewController.swift in Sources */,
+				04CA4C9F284682C800E2D040 /* AsteroidDetailModuleBuilder.swift in Sources */,
+				04CA4C892846352700E2D040 /* Asteroid.swift in Sources */,
 				04B2C18F27FEEA9600F0C617 /* NetworkService.swift in Sources */,
 				04B2C18E27FEEA8900F0C617 /* WeatherOnMarsInfo.swift in Sources */,
 				04CF3D5527F0896300685553 /* PicturesFromMarsCollectionEntity.swift in Sources */,
-				04B2C18927FED20300F0C617 /* Presenter.swift in Sources */,
+				04B2C18927FED20300F0C617 /* SavedPostsPresenter.swift in Sources */,
 				CF6B18B127FEFBEF005D09B6 /* ArticleDetailInteractor.swift in Sources */,
+				04CA4CA32846837900E2D040 /* AsteroidDetailPresenter.swift in Sources */,
 				CF3930C0283B7B6F003583D5 /* CrewPresenter.swift in Sources */,
 				CF3930D6283CC457003583D5 /* RocketsViewController.swift in Sources */,
 				CFA23B64282D8C560028DAD7 /* Launch.swift in Sources */,
@@ -1205,18 +1361,20 @@
 				CF296E722812F0B300616F48 /* PictureOfDayDetailInteractor.swift in Sources */,
 				CFA23B7E282DAA350028DAD7 /* SpaceXModuleBuilder.swift in Sources */,
 				CFA23B88282DAFC10028DAD7 /* WeatherOnMarsTableViewCell.swift in Sources */,
-				04CF3D3727F0896300685553 /* NearEarthAsteroidsEntity.swift in Sources */,
 				04CF3D4527F0896300685553 /* WeatherOnMarsInfoEntity.swift in Sources */,
 				04B2C17127FEC68E00F0C617 /* MainFlowCoordinator.swift in Sources */,
+				04CA4C85284532BF00E2D040 /* AsteroidsModuleBuilder.swift in Sources */,
 				CF296E702812F09D00616F48 /* PictureOfDayDetailViewController.swift in Sources */,
 				CF6B18AF27FEFBE3005D09B6 /* FeedInteractor.swift in Sources */,
 				CF296E622812EC8F00616F48 /* WeatherOnMarsDetailPresenter.swift in Sources */,
+				04CA4C7F2845316600E2D040 /* AsteroidsViewController.swift in Sources */,
 				CFD5C0FD283AC1E500AD3068 /* PlanetDetailPresenter.swift in Sources */,
 				CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */,
 				CF7E452A28241E4F0038D0A9 /* PictureFromMarsDetailViewController.swift in Sources */,
 				CFA23B6B282D956A0028DAD7 /* SpaceArchiveModuleBuilder.swift in Sources */,
 				CFA23B76282D97FA0028DAD7 /* SpaceArchiveFlowCoordinator.swift in Sources */,
 				CFA23B82282DAA970028DAD7 /* SpaceXInteractor.swift in Sources */,
+				04CA4CA12846834E00E2D040 /* AsteroidDetailInteractor.swift in Sources */,
 				CFEEA53027D51C1300E05249 /* Planet.swift in Sources */,
 				CF3930BC283B7B5E003583D5 /* CrewViewController.swift in Sources */,
 				CF3930C4283BC890003583D5 /* CrewDetailModuleBuilder.swift in Sources */,
@@ -1226,6 +1384,7 @@
 				CF296E602812EC8400616F48 /* WeatherOnMarsDetailInteractor.swift in Sources */,
 				CF296E3E2800343800616F48 /* FeedModuleBuilder.swift in Sources */,
 				CF296E662812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift in Sources */,
+				04CA4C812845317F00E2D040 /* AsteroidsPresenter.swift in Sources */,
 				049EB8D7280DB2CC0088C7B5 /* ArticleDetailViewController.swift in Sources */,
 				04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */,
 				CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */,
@@ -1234,13 +1393,11 @@
 				CF2F322727CD37BB0043A12B /* Mobile_Observatory.xcdatamodeld in Sources */,
 				CF3930E6283CFA15003583D5 /* RocketDetailInteractor.swift in Sources */,
 				CF2F321F27CD37BB0043A12B /* SceneDelegate.swift in Sources */,
-				CFEEA52A27D512F400E05249 /* Asteroid.swift in Sources */,
 				CF7E452828241D890038D0A9 /* PictureFromMarsModuleBuilder.swift in Sources */,
 				CF3930DF283CF9EB003583D5 /* RocketDetailModuleBuilder.swift in Sources */,
 				CF3930BE283B7B66003583D5 /* CrewInteractor.swift in Sources */,
 				CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */,
 				CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */,
-				CF296E56280FF08B00616F48 /* ArticleDetailFlowCoordinator.swift in Sources */,
 				CFA23B66282D905D0028DAD7 /* CrewMember.swift in Sources */,
 				CF3930CB283BC92F003583D5 /* CrewDetailInteractor.swift in Sources */,
 				04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */,
@@ -1248,7 +1405,6 @@
 				CF296E7A28148D8300616F48 /* ImageByUrlService.swift in Sources */,
 				CF2F323D27CD39BC0043A12B /* User.swift in Sources */,
 				CFA23B72282D95DB0028DAD7 /* SpaceArchiveInteractor.swift in Sources */,
-				04B2C18727FED1EA00F0C617 /* PresenterProtocols.swift in Sources */,
 				CF7E452E28241E7F0038D0A9 /* PictureFromMarsDetailPresenter.swift in Sources */,
 				04CF3D3527F0896300685553 /* PlanetEntity.swift in Sources */,
 				04CF3D3D27F0896300685553 /* PictureFromMarsEntity.swift in Sources */,
@@ -1256,6 +1412,7 @@
 				CFEEA53427D5284200E05249 /* SearchResult.swift in Sources */,
 				04CF3D4327F0896300685553 /* ArticleEntity.swift in Sources */,
 				04B2C18127FED10A00F0C617 /* SavedPostsModuleBuilder.swift in Sources */,
+				04CA4C832845318C00E2D040 /* AsteroidsInteractor.swift in Sources */,
 				04CF3D5327F0896300685553 /* RoverEntity.swift in Sources */,
 				04B2C18327FED12600F0C617 /* SavedPostsViewProtocols.swift in Sources */,
 				049EB8D8280DB2CC0088C7B5 /* ArticleTableViewCell.swift in Sources */,
@@ -1265,20 +1422,24 @@
 				04CF3D4B27F0896300685553 /* AsteroidEntity.swift in Sources */,
 				CFA23B86282DAF750028DAD7 /* WeatherOnMarsDetailViewController.swift in Sources */,
 				CF296E742812F0C000616F48 /* PictureOfDayDetailPresenter.swift in Sources */,
+				04CA4C792842509A00E2D040 /* SearchResultTableViewCell.swift in Sources */,
 				04CF3D4D27F0896300685553 /* PictureOfDayEntity.swift in Sources */,
 				CF3930DA283CC472003583D5 /* RocketsPresenter.swift in Sources */,
 				04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */,
 				CF3930D1283CC426003583D5 /* RocketsModuleBuilder.swift in Sources */,
 				04B2C18B27FED5D900F0C617 /* SavedPostsInteractor.swift in Sources */,
+				04CA4C7128424FC600E2D040 /* SearchResultModuleBuilder.swift in Sources */,
 				CF7E4530282420770038D0A9 /* PictureFromMarsTableViewCell.swift in Sources */,
 				CF296E6D2812F08800616F48 /* PictureOfDayTableViewCell.swift in Sources */,
 				CF3930C2283B7C9F003583D5 /* CrewMemberTableViewCell.swift in Sources */,
 				CFD5C0FB283AC1DC00AD3068 /* PlanetDetailInteractor.swift in Sources */,
 				040C725A27E73B09008A268A /* LocalFilesService.swift in Sources */,
+				04CA4C7528424FDF00E2D040 /* SearchResultPresenter.swift in Sources */,
 				CF7E452C28241E6A0038D0A9 /* PictureFromMarsDetailInteractor.swift in Sources */,
 				CFA23B68282D91C70028DAD7 /* Rocket.swift in Sources */,
 				CF3930C9283BC921003583D5 /* CrewDetailViewController.swift in Sources */,
 				CFA23B80282DAA8D0028DAD7 /* SpaceXPresenter.swift in Sources */,
+				04CA4CA52846839400E2D040 /* AsteroidDetailViewController.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
 				CFD5C0F4283AC1AE00AD3068 /* PlanetDetailModuleBuilder.swift in Sources */,
 				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
@@ -1287,9 +1448,11 @@
 				CFA23B91282E9FA40028DAD7 /* PlanetsViewController.swift in Sources */,
 				CF7EC6D727D533BF007197E6 /* NetworkService.swift in Sources */,
 				CF1CB18A27F1DEED003FF24E /* Post.swift in Sources */,
+				04CA4C87284602C100E2D040 /* AsteroidTableViewCell.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
 				04CF3D4F27F0896300685553 /* SearchResultItemLinkEntity.swift in Sources */,
 				CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */,
+				04CA4C7728424FEC00E2D040 /* SearchResultDetailViewController.swift in Sources */,
 				CF3930E4283CFA0A003583D5 /* RocketDetailViewController.swift in Sources */,
 				CFEEA53627D52C7900E05249 /* Article.swift in Sources */,
 				04CF3D3F27F0896300685553 /* SearchResultItemEntity.swift in Sources */,
@@ -1299,6 +1462,7 @@
 				CF3930E8283CFA21003583D5 /* RocketDetailPresenter.swift in Sources */,
 				CFD5C0F9283AC1D000AD3068 /* PlanetDetailViewController.swift in Sources */,
 				04CF3D3327F0896300685553 /* PictureOfEarthEntity.swift in Sources */,
+				04CA4C7328424FD200E2D040 /* SearchResultInteractor.swift in Sources */,
 				CF3930D8283CC467003583D5 /* RocketsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1505,7 +1669,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5NAKQ28539;
+				DEVELOPMENT_TEAM = 7944299YL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mobile-Observatory/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "обсерватория";
@@ -1548,7 +1712,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5NAKQ28539;
+				DEVELOPMENT_TEAM = 7944299YL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Mobile-Observatory/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "обсерватория";

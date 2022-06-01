@@ -45,6 +45,13 @@ extension PicturesFromMarsCollectionEntity {
 extension PicturesFromMarsCollectionEntity : Identifiable {
     
     func convertToFeedEntity() -> PictureFromMars {
-        return PictureFromMars(photos: pictures?.allObjects as! [Photo])
+        let photoEntities: [PictureFromMarsEntity] = pictures?.allObjects as! [PictureFromMarsEntity]
+        var photos: [Photo] = []
+        for photoEntity in photoEntities {
+            photos.append(photoEntity.convertToFeedEntity())
+        }
+        var pictureFromMars = PictureFromMars(photos: photos)
+        pictureFromMars.isSaved = true
+        return pictureFromMars
     }
 }

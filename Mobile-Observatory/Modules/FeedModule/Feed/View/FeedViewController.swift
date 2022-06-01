@@ -18,19 +18,17 @@ protocol FeedViewControllerOutput {
     func didSelectRow(at: Int)
     func getData(completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
-    func cellForRowAt (indexPath: IndexPath) -> Post
+    func postForRowAt (indexPath: IndexPath) -> Post
     func getPostsData() -> [Post]
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
+    func savePost(post: Post, index: IndexPath?)
+    func removePostFromSaved(post: Post, index: IndexPath?)
     func resetFeed()
 }
 
 class FeedViewController: UIViewController, UIScrollViewDelegate {
-    let api = NetworkService.shared
     private var output: FeedViewControllerOutput
     private var isFetching = false
     var feedTableView = UITableView()
-    
     
     init(output: FeedViewControllerOutput) {
         self.output = output
@@ -44,14 +42,12 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewDidLoad()
-        
         setupView()
         loadData()
         feedTableView.prefetchDataSource = self
         feedTableView.refreshControl = UIRefreshControl()
         feedTableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
-  
     
     private func setupView() {
         title = "Лента"
@@ -109,48 +105,39 @@ extension FeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = output.cellForRowAt(indexPath: indexPath)
+        let post = output.postForRowAt(indexPath: indexPath)
         switch post.postType {
         case .article:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
                 return UITableViewCell()
             }
             cell.article = post as? Article
-            cell.configure(delegate: self)
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .weatherOnMars:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherOnMarsTableViewCell", for: indexPath) as? WeatherOnMarsTableViewCell else {
                 return UITableViewCell()
             }
             cell.weatherOnMars = post as? WeatherOnMarsInfo
-            cell.configure()
+            cell.configure(delegate: self, index: indexPath)
             return cell
-        
-        case .none: break
-            //
         case .pictureOfDay:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureOfDayTableViewCell", for: indexPath) as?
                     PictureOfDayTableViewCell else {
-                return UITableViewCell()
-            }
+                        return UITableViewCell()
+                    }
             cell.pictureOfDay = post as? PictureOfDay
-            cell.configure()
+            cell.configure(delegate: self, index: indexPath)
             return cell
-        case .pictureFromMars: 
+        case .pictureFromMars:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PictureFromMarsTableViewCell", for: indexPath) as? PictureFromMarsTableViewCell else {
                 return UITableViewCell()
             }
             cell.picFromMars = post as? PictureFromMars
-            cell.configure()
+            cell.configure(delegate: self, index: indexPath)
             return cell
         case .pictureOfEarth: break
-            //
-        case .asteroid: break
-            //
-        case .planet: break
-            //
-        case .searchResult: break
-            //
+        case .none: break
         }
         return UITableViewCell()
         
@@ -160,50 +147,44 @@ extension FeedViewController: UITableViewDataSource {
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let post = output.cellForRowAt(indexPath: indexPath)
+        let post = output.postForRowAt(indexPath: indexPath)
         switch post.postType {
         case .article:
             let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
             vc.article = post as? Article
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .weatherOnMars:
             let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
             vc.weatherOnMars = post as? WeatherOnMarsInfo
             navigationController?.pushViewController(vc, animated: true)
-        
         case .pictureOfDay:
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             vc.picOfDay = post as? PictureOfDay
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
-            
         case .pictureFromMars:
             let vc: PictureFromMarsDetailViewController = PictureFromMarsDetailModuleBuilder().build()
             vc.picFromMars = post as? PictureFromMars
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
-            
         case .pictureOfEarth: break
-            //
-        case .asteroid: break
-            //
-        case .planet: break
-            //
-        case .searchResult: break
-            //
-            
         case .none: break
-                //
         }
-        
-        //к аутпуту
     }
 }
 
 extension FeedViewController: SavePostButtonDelegate {
-    func savePost(post: Post) {
-        output.savePost(post: post)
+    func savePost(post: Post, index: IndexPath?) {
+        output.savePost(post: post, index: index)
+        feedTableView.reloadData()
     }
     
-    func removePostFromSaved(post: Post) {
-        output.removePostFromSaved(post: post)
+    func removePostFromSaved(post: Post, index: IndexPath?) {
+        output.removePostFromSaved(post: post, index: index)
+        feedTableView.reloadData()
     }
 }

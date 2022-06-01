@@ -27,6 +27,7 @@ class FeedPresenter: FeedPresenterProtocol {
 
 extension FeedPresenter: FeedViewControllerOutput {
     
+    
     func getPostsData() -> [Post] {
         return interactor.getPostsData()
     }
@@ -52,15 +53,15 @@ extension FeedPresenter: FeedViewControllerOutput {
         return interactor.numberOfRowsInSection(section: section)
     }
     
-    func cellForRowAt (indexPath: IndexPath) -> Post {
+    func postForRowAt (indexPath: IndexPath) -> Post {
         return interactor.cellForRowAt(indexPath: indexPath)
     }
     
-    func savePost(post: Post) {
-        interactor.savePost(post: post)
+    func savePost(post: Post, index: IndexPath?) {
+        interactor.savePost(post: post, indexPath: index)
     }
     
-    func removePostFromSaved(post: Post) {
-        interactor.removePostFromSaved(post: post)
+    func removePostFromSaved(post: Post, index: IndexPath?) {
+        interactor.removePostFromSaved(post: post, indexPath: index)
     }
 }

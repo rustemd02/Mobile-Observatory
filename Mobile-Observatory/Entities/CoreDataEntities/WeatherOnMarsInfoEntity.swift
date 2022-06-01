@@ -45,7 +45,7 @@ extension WeatherOnMarsInfoEntity : Identifiable {
     }
     
     func convertToFeedEntity() -> WeatherOnMarsInfo {
-        return WeatherOnMarsInfo(id: Int(truncating: self.id),
+         var weatherOnMars = WeatherOnMarsInfo(id: Int(truncating: self.id),
                                  sol: Int(truncating: self.sol),
                                  earthDate: earthDate!,
                                  minTemp: Int(truncating: self.minTemp),
@@ -54,5 +54,7 @@ extension WeatherOnMarsInfoEntity : Identifiable {
                                  pressureString: pressureString ?? "",
                                  atmoOpacity: atmoOpacity!,
                                  monthOnMars: monthOnMars ?? "")
+        weatherOnMars.isSaved = true
+        return weatherOnMars
     }
 }

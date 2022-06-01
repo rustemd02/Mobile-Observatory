@@ -105,6 +105,17 @@ class CoreDataService{
         return weatherInfos
     }
     
+    public func containsWeatherOnMars(sol: Int) -> Bool {
+        let fetchRequest = WeatherOnMarsInfoEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "sol == %@", sol as CVarArg)
+        do {
+            guard (try viewContext.fetch(fetchRequest).first) != nil else { return false }
+            return true
+        } catch {
+            print(error)
+        }
+        return false
+    }
     
     // MARK: - Picture of day
     public func savePictureOfDay(_ pictureOfDay: PictureOfDay){
@@ -178,117 +189,16 @@ class CoreDataService{
         return feedEntities
     }
     
-    // MARK: - Asteroids near Earth
-    public func saveNearEarthAsteroids(_ nearEarthAsteroids: NearEarthAsteroids){
-        persistentContainer.performBackgroundTask{ (context) in
-            let nearEarthAsteroidsEntity = NearEarthAsteroidsEntity(context: context)
-            nearEarthAsteroidsEntity.nextLink = nearEarthAsteroids.nextLink
-            nearEarthAsteroidsEntity.prevLink = nearEarthAsteroids.prevLink
-            let asteroids: NSSet = self.convertAsteroidsArrayToSet(asteroids: nearEarthAsteroids.asteroids)
-            nearEarthAsteroidsEntity.addToAsteroids(asteroids)
-            
-            do {
-                try context.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    public func deleteNearEarthAsteroids(_ nearEarthAsteroids: NearEarthAsteroids){
-        saveContext.perform {
-            let fetchRequest = NearEarthAsteroidsEntity.fetchRequest()
-            var entities: [NearEarthAsteroidsEntity] = []
-            do {
-                entities = try self.saveContext.fetch(fetchRequest)
-            } catch {
-                print(error)
-            }
-            for entity in entities {
-                let e = entity.convertToFeedEntity()
-                if(e == nearEarthAsteroids){
-                    self.saveContext.delete(entity)
-                    break
-                }
-            }
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    public func deleteAllNearEarthAsteroids(){
-        saveContext.perform {
-            let fetchRequest = NearEarthAsteroidsEntity.fetchRequest()
-            var entities: [NearEarthAsteroidsEntity] = []
-            do {
-                entities = try self.saveContext.fetch(fetchRequest)
-            } catch {
-                print(error)
-            }
-            for entity in entities {
-                self.saveContext.delete(entity)
-            }
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    public func getAllNearEarthAsteroids() -> [NearEarthAsteroids]{
-        let fetchRequest = NearEarthAsteroidsEntity.fetchRequest()
-        var entities: [NearEarthAsteroidsEntity] = []
-        var feedEntities: [NearEarthAsteroids] = []
+    public func containsPictureOfDay(date: Date) -> Bool {
+        let fetchRequest = PictureOfDayEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", date as CVarArg)
         do {
-            entities = try viewContext.fetch(fetchRequest)
+            guard (try viewContext.fetch(fetchRequest).first) != nil else { return false }
+            return true
         } catch {
             print(error)
         }
-        for entity in entities {
-            feedEntities.append(entity.convertToFeedEntity())
-        }
-        return feedEntities
-    }
-    
-    private func convertAsteroidsArrayToSet(asteroids: [Asteroid]) -> NSSet {
-        var asteroidsSet: [AsteroidEntity] = []
-        for currentAsteroid in asteroids {
-            var temp = currentAsteroid
-            temp.uuid = UUID.init()
-            saveAsteroid(temp)
-            guard let savedEntity = getAsteroidEntity(uuid: temp.uuid!) else { continue }
-            asteroidsSet.append(savedEntity)
-        }
-        return NSSet(array: asteroidsSet)
-    }
-    
-    private func saveAsteroid(_ asteroid: Asteroid) {
-        saveContext.perform {
-            let asteroidEntity = AsteroidEntity(context: self.saveContext)
-            asteroidEntity.update(with: asteroid)
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
-    }
-    
-    private func getAsteroidEntity(uuid: UUID) -> AsteroidEntity?{
-        let fetchRequest = AsteroidEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id == %@", uuid as CVarArg)
-        
-        do {
-            guard let result = try viewContext.fetch(fetchRequest).first else { return nil }
-            return result
-        } catch {
-            print(error)
-        }
-        return nil
+        return false
     }
     
     // MARK: - Picture from Mars
@@ -320,8 +230,10 @@ class CoreDataService{
         saveContext.perform {
             let photoEntity = PictureFromMarsEntity(context: self.saveContext)
             photoEntity.update(with: photo, collection: collection)
-            self.saveRover(photo.rover, photo: photoEntity)
-            photoEntity.rover = self.getRoverEntity(id: photo.rover.id)
+            
+            let roverEntity = RoverEntity(context: self.saveContext)
+            roverEntity.update(with: photo.rover, photo: photoEntity)
+            
             do {
                 try self.saveContext.save()
             } catch let error {
@@ -343,15 +255,7 @@ class CoreDataService{
     }
     
     private func saveRover(_ rover: Rover, photo: PictureFromMarsEntity) {
-        saveContext.perform {
-            let roverEntity = RoverEntity(context: self.saveContext)
-            roverEntity.update(with: rover, photo: photo)
-            do {
-                try self.saveContext.save()
-            } catch let error {
-                print("Error: \(error)")
-            }
-        }
+        
     }
     
     private func getRoverEntity(id: Int) -> RoverEntity?{
@@ -423,6 +327,17 @@ class CoreDataService{
             feedEntities.append(entity.convertToFeedEntity())
         }
         return feedEntities
+    }
+    
+    public func containsPictureFromMars(id: Int) -> Bool {
+        let picturesFromMars = getAllPicturesFromMars()
+        var contains = false
+        for pictureFromMars in picturesFromMars {
+            if(pictureFromMars.photos.first?.id == id){
+                contains = true
+            }
+        }
+        return contains
     }
     
     // MARK: - Picture of Earth
@@ -936,5 +851,17 @@ class CoreDataService{
             feedEntities.append(entity.convertToFeedEntity())
         }
         return feedEntities
+    }
+    
+    public func containsArticle(date: Date) -> Bool {
+        let fetchRequest = ArticleEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "createdAt == %@", date as CVarArg)
+        do {
+            guard (try viewContext.fetch(fetchRequest).first) != nil else { return false }
+            return true
+        } catch {
+            print(error)
+        }
+        return false
     }
 }

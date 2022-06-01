@@ -18,6 +18,7 @@ protocol PictureOfDayDetailViewControllerOutput {
 
 class PictureOfDayDetailViewController: UIViewController {
     private var output: PictureOfDayDetailViewControllerOutput
+    var saveButtonDelegate: SavePostButtonDelegate?
     
     var picOfDay: PictureOfDay?
     
@@ -30,7 +31,7 @@ class PictureOfDayDetailViewController: UIViewController {
     var descriptionTextView = UITextView()
     var shareButton = UIButton(type: .roundedRect)
     var likeButton = UIButton(type: .roundedRect)
-    
+    var index: IndexPath?
 
     init(output: PictureOfDayDetailViewControllerOutput) {
         self.output = output
@@ -106,6 +107,7 @@ class PictureOfDayDetailViewController: UIViewController {
             make.right.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
         
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.setTitle(" Нравится", for: .normal)
         likeButton.setTitleColor(.link, for: .normal)
@@ -113,7 +115,6 @@ class PictureOfDayDetailViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(24)
         }
-        
     }
     
     func configure() {
@@ -132,6 +133,7 @@ class PictureOfDayDetailViewController: UIViewController {
         dateFormatter.dateFormat = "dd.MM.YYYY"
         stringDate = dateFormatter.string(from: picOfDay.date)
         dateLabel.attributedText = NSAttributedString(string: "ФОТО " + (stringDate ?? "ДНЯ"), attributes: [.kern: 10])
+        updateSaveButtonView()
     }
     
     @objc func presentShareMenu() {
@@ -154,9 +156,31 @@ class PictureOfDayDetailViewController: UIViewController {
             self.output.getPicOfDay(date: self.datePicker.date) { newPicOfDay in
                 self.picOfDay = newPicOfDay
                 self.configure()
+                self.updateSaveButtonView()
             }
         }))
         present(alert, animated: true)
     }
-
+    
+    func updateSaveButtonView() {
+        if (picOfDay?.isSaved ?? false) {
+            likeButton.setTitle("Понравилось", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else{
+            likeButton.setTitle("Нравится", for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        let saved = picOfDay?.isSaved ?? false
+        picOfDay?.isSaved = !saved
+        
+        if (picOfDay?.isSaved ?? false) {
+            saveButtonDelegate?.savePost(post: picOfDay!, index: index)
+        } else {
+            saveButtonDelegate?.removePostFromSaved(post: picOfDay!, index: index)
+        }
+        updateSaveButtonView()
+    }
 }

@@ -8,11 +8,6 @@
 import UIKit
 import SwiftUI
 
-protocol SavePostButtonDelegate {
-    func savePost(post: Post)
-    func removePostFromSaved(post: Post)
-}
-
 class ArticleTableViewCell: UITableViewCell {
     
     var sourceLabel = UILabel()
@@ -21,6 +16,7 @@ class ArticleTableViewCell: UITableViewCell {
     var summaryLabel = UILabel()
     var likeButton = UIButton()
     var article: Article?
+    var index: IndexPath?
     private var savePostsButtonDelegate: SavePostButtonDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -68,16 +64,19 @@ class ArticleTableViewCell: UITableViewCell {
             make.right.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
+        likeButton.setTitleColor(UIColor.link, for: .normal)
         likeButton.snp.makeConstraints { make in
             make.top.equalTo(summaryLabel.snp_bottomMargin).offset(12)
-            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+            make.left.equalTo(contentView.safeAreaLayoutGuide).offset(20)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            
         }
     }
     
-    func configure(delegate: SavePostButtonDelegate?) {
+    func configure(delegate: SavePostButtonDelegate?, index: IndexPath) {
         self.savePostsButtonDelegate = delegate
-        
+        self.index = index
         self.titleLabel.text = article?.title
         
         let dateFormatter = DateFormatter()
@@ -93,12 +92,10 @@ class ArticleTableViewCell: UITableViewCell {
     
     func updateSaveButtonView() {
         if (article?.isSaved ?? false) {
-            likeButton.setTitle("Понравилось", for: .normal)
-            //likeButton.titleLabel?.textColor = .link
+            likeButton.setTitle(" Понравилось", for: .normal)
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
-            likeButton.setTitle("Нравится", for: .normal)
-            //likeButton.titleLabel?.textColor = .link
+            likeButton.setTitle(" Нравится", for: .normal)
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
@@ -109,13 +106,12 @@ class ArticleTableViewCell: UITableViewCell {
         article?.isSaved = !saved
         
         if (article?.isSaved ?? false) {
-            savePostsButtonDelegate?.savePost(post: article!)
+            savePostsButtonDelegate?.savePost(post: article!, index: index)
         } else {
-            savePostsButtonDelegate?.removePostFromSaved(post: article!)
+            savePostsButtonDelegate?.removePostFromSaved(post: article!, index: index)
         }
         updateSaveButtonView()
     }
-    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
