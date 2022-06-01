@@ -7,10 +7,11 @@
 
 import Foundation
 
-// MARK: - Rocket
+// MARK: - RocketElement
 struct Rocket: Codable {
-    let height, diameter: Double
-    let mass: Double
+    let height, diameter: Diameter
+    let mass: Mass
+    let engines: Engines
     let flickrImages: [String]
     let name, type: String
     let active: Bool
@@ -21,6 +22,7 @@ struct Rocket: Codable {
 
     enum CodingKeys: String, CodingKey {
         case height, diameter, mass
+        case engines
         case flickrImages = "flickr_images"
         case name, type, active, stages, boosters
         case costPerLaunch = "cost_per_launch"
@@ -30,4 +32,53 @@ struct Rocket: Codable {
         case rocketDescription = "description"
         case id
     }
+}
+
+// MARK: - Diameter
+struct Diameter: Codable {
+    let meters, feet: Double?
+}
+
+// MARK: - Engines
+struct Engines: Codable {
+    let isp: ISP
+    let thrustSeaLevel, thrustVacuum: Thrust
+    let number: Int
+    let type, version: String
+    let layout: String?
+    let engineLossMax: Int?
+    let propellant1, propellant2: String
+    let thrustToWeight: Double
+
+    enum CodingKeys: String, CodingKey {
+        case isp
+        case thrustSeaLevel = "thrust_sea_level"
+        case thrustVacuum = "thrust_vacuum"
+        case number, type, version, layout
+        case engineLossMax = "engine_loss_max"
+        case propellant1 = "propellant_1"
+        case propellant2 = "propellant_2"
+        case thrustToWeight = "thrust_to_weight"
+    }
+}
+
+// MARK: - ISP
+struct ISP: Codable {
+    let seaLevel, vacuum: Int
+
+    enum CodingKeys: String, CodingKey {
+        case seaLevel = "sea_level"
+        case vacuum
+    }
+}
+
+// MARK: - Thrust
+struct Thrust: Codable {
+    let kN, lbf: Int
+}
+
+
+// MARK: - Mass
+struct Mass: Codable {
+    let kg, lb: Int
 }

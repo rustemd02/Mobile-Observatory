@@ -34,6 +34,7 @@ class NetworkService {
     let weatherApiUrl = "https://api.maas2.apollorion.com/"
     let spaceNewsArticlesUrl = "https://api.spaceflightnewsapi.net/v3/articles?_start="
     
+    let planetsInfo = "https://dry-plains-91502.herokuapp.com/planets/"
     let spacexLaunches = "https://api.spacexdata.com/v5/launches" //latest next upcoming
     let spacexCrew = "https://api.spacexdata.com/v4/crew"
     let spacexRockets = "https://api.spacexdata.com/v4/rockets"
@@ -258,7 +259,7 @@ class NetworkService {
         }
     }
     
-    func getSpaceXCrew(completion: @escaping(Result<CrewMember, NetworkError>) -> Void) {
+    func getSpaceXCrew(completion: @escaping(Result<[CrewMember], NetworkError>) -> Void) {
         AF.request(spacexCrew).response { (responseData) in
             guard let data = responseData.data else {
                 completion(.failure(.noDataAvailable))
@@ -266,7 +267,7 @@ class NetworkService {
             }
             do {
                 let jsonDecoder = JSONDecoder()
-                let crewMembers = try jsonDecoder.decode(CrewMember.self, from: data)
+                let crewMembers = try jsonDecoder.decode([CrewMember].self, from: data)
                 completion(.success(crewMembers))
             } catch {
                 print(error)
@@ -275,7 +276,7 @@ class NetworkService {
         }
     }
     
-    func getSpaceXRockets(completion: @escaping(Result<Rocket, NetworkError>) -> Void) {
+    func getSpaceXRockets(completion: @escaping(Result<[Rocket], NetworkError>) -> Void) {
         AF.request(spacexRockets).response { (responseData) in
             guard let data = responseData.data else {
                 completion(.failure(.noDataAvailable))
@@ -283,8 +284,25 @@ class NetworkService {
             }
             do {
                 let jsonDecoder = JSONDecoder()
-                let rockets = try jsonDecoder.decode(Rocket.self, from: data)
+                let rockets = try jsonDecoder.decode([Rocket].self, from: data)
                 completion(.success(rockets))
+            } catch {
+                print(error)
+                completion(.failure(.inputError))
+            }
+        }
+    }
+    
+    func getPlanetInfo(planet: String, completion: @escaping(Result<Planet, NetworkError>) -> Void) {
+        AF.request(planetsInfo + planet).response { (responseData) in
+            guard let data = responseData.data else {
+                completion(.failure(.noDataAvailable))
+                return
+            }
+            do {
+                let jsonDecoder = JSONDecoder()
+                let planet = try jsonDecoder.decode(Planet.self, from: data)
+                completion(.success(planet))
             } catch {
                 print(error)
                 completion(.failure(.inputError))
