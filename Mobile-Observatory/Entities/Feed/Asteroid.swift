@@ -1,70 +1,81 @@
 //
-//  Asteroid.swift
+//  Asteroids.swift
 //  Mobile-Observatory
 //
-//  Created by Рустем on 06.03.2022.
+//  Created by andrewoch on 31.05.2022.
 //
 
 import Foundation
+import UIKit
 
-struct NearEarthAsteroids: Decodable {
+// MARK: - Asteriod
+struct Asteroids: Codable {
+    let elementCount: Int
+    let nearEarthObjects: [String: [NearEarthObject]]
 
-    var prevLink: String
-    var nextLink: String
-    var asteroids: [Asteroid]
-    
-    init(prevLink: String, nextLink: String, asteroids: [Asteroid]) {
-        self.prevLink = prevLink
-        self.nextLink = nextLink
-        self.asteroids = asteroids
+    enum CodingKeys: String, CodingKey {
+        case elementCount = "element_count"
+        case nearEarthObjects = "near_earth_objects"
     }
 }
 
-extension NearEarthAsteroids: Equatable {
-    
-    static func == (larc: NearEarthAsteroids, rarc: NearEarthAsteroids) -> Bool {
-            return
-                larc.prevLink == rarc.prevLink &&
-                larc.nextLink == rarc.nextLink &&
-                larc.asteroids == rarc.asteroids
+// MARK: - NearEarthObject
+struct NearEarthObject: Codable {
+    let id, name: String
+    let absoluteMagnitudeH: Double
+    let estimatedDiameter: EstimatedDiameter
+    let isPotentiallyHazardousAsteroid: Bool
+    let closeApproachData: [CloseApproachDatum]
+    var image: UIImage?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case absoluteMagnitudeH = "absolute_magnitude_h"
+        case estimatedDiameter = "estimated_diameter"
+        case isPotentiallyHazardousAsteroid = "is_potentially_hazardous_asteroid"
+        case closeApproachData = "close_approach_data"
     }
 }
 
-struct Asteroid: Decodable {
-    
-    var uuid: UUID?
-    var id: Int
-    var name: String
-    var infoLink: String
-    var estimatedDiameter: Float
-    var isHazardous: Bool
-    var approachDate: Date
-    var velocity: Float
-    var missDistance: Float
-    
-    init(uuid: UUID?, id: Int, name: String, infoLink: String, estimatedDiameter: Float, isHazardous: Bool, approachDate: Date, velocity: Float, missDistance: Float) {
-        self.uuid = uuid
-        self.id = id
-        self.name = name
-        self.infoLink = infoLink
-        self.estimatedDiameter = estimatedDiameter
-        self.isHazardous = isHazardous
-        self.approachDate = approachDate
-        self.velocity = velocity
-        self.missDistance = missDistance
+// MARK: - CloseApproachDatum
+struct CloseApproachDatum: Codable {
+    let closeApproachDate: String
+    let relativeVelocity: RelativeVelocity
+    let missDistance: MissDistance
+
+    enum CodingKeys: String, CodingKey {
+        case closeApproachDate = "close_approach_date"
+        case relativeVelocity = "relative_velocity"
+        case missDistance = "miss_distance"
     }
 }
 
-extension Asteroid: Equatable {
-    
-    static func == (larc: Asteroid, rarc: Asteroid) -> Bool {
-            return
-                larc.name == rarc.name &&
-                larc.infoLink == rarc.infoLink &&
-                larc.estimatedDiameter == rarc.estimatedDiameter &&
-                larc.isHazardous == rarc.isHazardous &&
-                larc.approachDate == rarc.approachDate &&
-                larc.velocity == rarc.velocity &&
-                larc.missDistance == rarc.missDistance
+// MARK: - MissDistance
+struct MissDistance: Codable {
+    let kilometers: String
+}
+
+// MARK: - RelativeVelocity
+struct RelativeVelocity: Codable {
+    let kilometersPerSecond: String
+
+    enum CodingKeys: String, CodingKey {
+        case kilometersPerSecond = "kilometers_per_second"
+    }
+}
+
+// MARK: - EstimatedDiameter
+struct EstimatedDiameter: Codable {
+    let meters: Feet
+}
+
+// MARK: - Feet
+struct Feet: Codable {
+    let estimatedDiameterMin, estimatedDiameterMax: Double
+
+    enum CodingKeys: String, CodingKey {
+        case estimatedDiameterMin = "estimated_diameter_min"
+        case estimatedDiameterMax = "estimated_diameter_max"
     }
 }

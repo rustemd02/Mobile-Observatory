@@ -31,7 +31,7 @@ extension SpaceArchivePresenter: SpaceArchiveOutput {
         interactor.numberOfRowsInSection(section: section)
     }
     
-    func cellForRowAt(indexPath: IndexPath) -> Item {
+    func itemForRowAt(indexPath: IndexPath) -> Item {
         interactor.cellForRowAt(indexPath: indexPath)
     }
     

@@ -17,7 +17,7 @@ protocol SpaceArchiveOutput {
     func viewDidLoad()
     func didSelectRow(at: Int)
     func numberOfRowsInSection(section: Int) -> Int
-    func cellForRowAt (indexPath: IndexPath) -> Item
+    func itemForRowAt (indexPath: IndexPath) -> Item
 }
 
 class SpaceArchiveViewController: UIViewController {
@@ -48,6 +48,10 @@ class SpaceArchiveViewController: UIViewController {
         let spaceXTap = UITapGestureRecognizer(target: self, action: #selector(goToSpaceXScreen))
         spaceXImageView.isUserInteractionEnabled = true
         spaceXImageView.addGestureRecognizer(spaceXTap)
+        
+        let asteroidsTap = UITapGestureRecognizer(target: self, action: #selector(goToAsteroidsScreen))
+        asteroidsImageView.isUserInteractionEnabled = true
+        asteroidsImageView.addGestureRecognizer(asteroidsTap)
     }
     
     func setupView() {
@@ -143,6 +147,11 @@ class SpaceArchiveViewController: UIViewController {
         let vc: SpaceXViewController = SpaceXModuleBuilder().build()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func goToAsteroidsScreen() {
+        let vc: AsteroidsViewController = AsteroidsModuleBuilder().build()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension SpaceArchiveViewController: UISearchBarDelegate {
@@ -173,7 +182,7 @@ extension SpaceArchiveViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = output.cellForRowAt(indexPath: indexPath)
+        let item = output.itemForRowAt(indexPath: indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as? SearchResultTableViewCell else {
             return UITableViewCell()
         }
@@ -186,7 +195,7 @@ extension SpaceArchiveViewController: UITableViewDataSource {
 extension SpaceArchiveViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = output.cellForRowAt(indexPath: indexPath)
+        let item = output.itemForRowAt(indexPath: indexPath)
         let vc: SearchResultDetailViewController = SearchResultModuleBuilder().build()
         vc.item = item
         navigationController?.pushViewController(vc, animated: true)

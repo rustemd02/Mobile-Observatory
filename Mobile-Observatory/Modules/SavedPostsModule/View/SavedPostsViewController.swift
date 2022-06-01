@@ -103,13 +103,6 @@ extension SavedPostsViewController: UITableViewDataSource {
             cell.configure(delegate: self, index: indexPath)
             return cell
         case .pictureOfEarth: break
-            //
-        case .asteroid: break
-            //
-        case .planet: break
-            //
-        case .searchResult: break
-            //
         case .none: break
         }
         return UITableViewCell()
@@ -138,13 +131,6 @@ extension SavedPostsViewController: UITableViewDelegate {
             vc.picFromMars = post as? PictureFromMars
             navigationController?.pushViewController(vc, animated: true)
         case .pictureOfEarth: break
-            //
-        case .asteroid: break
-            //
-        case .planet: break
-            //
-        case .searchResult: break
-            //
         case .none: break
         }
     }

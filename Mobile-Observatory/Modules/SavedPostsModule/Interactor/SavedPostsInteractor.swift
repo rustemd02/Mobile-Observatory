@@ -57,12 +57,6 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
         case .pictureOfEarth:
             coreDataService.savePictureOfEarth(post as! PictureOfEarthElement)
             break
-        case .asteroid:
-            break
-        case .planet:
-            break
-        case .searchResult:
-            break
         case .none:
             break
         }
@@ -89,12 +83,6 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
             break
         case .pictureOfEarth:
             coreDataService.deletePictureOfEarth(post as! PictureOfEarthElement)
-            break
-        case .asteroid:
-            break
-        case .planet:
-            break
-        case .searchResult:
             break
         case .none:
             break

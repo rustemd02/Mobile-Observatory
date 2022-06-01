@@ -53,7 +53,7 @@ extension FeedPresenter: FeedViewControllerOutput {
         return interactor.numberOfRowsInSection(section: section)
     }
     
-    func cellForRowAt (indexPath: IndexPath) -> Post {
+    func postForRowAt (indexPath: IndexPath) -> Post {
         return interactor.cellForRowAt(indexPath: indexPath)
     }
     

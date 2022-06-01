@@ -18,7 +18,7 @@ protocol FeedViewControllerOutput {
     func didSelectRow(at: Int)
     func getData(completion: @escaping () -> ())
     func numberOfRowsInSection(section: Int) -> Int
-    func cellForRowAt (indexPath: IndexPath) -> Post
+    func postForRowAt (indexPath: IndexPath) -> Post
     func getPostsData() -> [Post]
     func savePost(post: Post, index: IndexPath?)
     func removePostFromSaved(post: Post, index: IndexPath?)
@@ -105,7 +105,7 @@ extension FeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = output.cellForRowAt(indexPath: indexPath)
+        let post = output.postForRowAt(indexPath: indexPath)
         switch post.postType {
         case .article:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell else {
@@ -137,13 +137,6 @@ extension FeedViewController: UITableViewDataSource {
             cell.configure(delegate: self, index: indexPath)
             return cell
         case .pictureOfEarth: break
-            //
-        case .asteroid: break
-            //
-        case .planet: break
-            //
-        case .searchResult: break
-            //
         case .none: break
         }
         return UITableViewCell()
@@ -154,7 +147,7 @@ extension FeedViewController: UITableViewDataSource {
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let post = output.cellForRowAt(indexPath: indexPath)
+        let post = output.postForRowAt(indexPath: indexPath)
         switch post.postType {
         case .article:
             let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
@@ -179,15 +172,7 @@ extension FeedViewController: UITableViewDelegate {
             vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .pictureOfEarth: break
-            //
-        case .asteroid: break
-            //
-        case .planet: break
-            //
-        case .searchResult: break
-            //
         case .none: break
-            //
         }
     }
 }

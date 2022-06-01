@@ -198,12 +198,6 @@ class FeedInteractor: FeedInteractorProtocol {
         case .pictureOfEarth:
             coreData.savePictureOfEarth(post as! PictureOfEarthElement)
             break
-        case .asteroid:
-            break
-        case .planet:
-            break
-        case .searchResult:
-            break
         case .none:
             break
         }
@@ -230,12 +224,6 @@ class FeedInteractor: FeedInteractorProtocol {
             break
         case .pictureOfEarth:
             coreData.deletePictureOfEarth(post as! PictureOfEarthElement)
-            break
-        case .asteroid:
-            break
-        case .planet:
-            break
-        case .searchResult:
             break
         case .none:
             break

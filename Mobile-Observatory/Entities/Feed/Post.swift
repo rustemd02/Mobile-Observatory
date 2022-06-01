@@ -19,8 +19,4 @@ enum PostType {
     case pictureOfDay
     case pictureFromMars
     case pictureOfEarth
-    
-    case asteroid
-    case planet
-    case searchResult
 }
