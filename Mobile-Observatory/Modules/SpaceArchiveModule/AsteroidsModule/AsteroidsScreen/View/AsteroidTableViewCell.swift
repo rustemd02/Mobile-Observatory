@@ -42,10 +42,10 @@ class AsteroidTableViewCell: UITableViewCell {
         }
         
         nameLabel.textColor = .white
-        nameLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .black)
         nameLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(asteroidImageView)
-            make.centerY.equalTo(asteroidImageView)
+            make.left.equalTo(asteroidImageView).offset(12)
+            make.bottom.equalTo(asteroidImageView).inset(12)
         }
     }
     

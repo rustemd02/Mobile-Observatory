@@ -123,7 +123,7 @@ class SearchResultDetailViewController: UIViewController  {
         case .image:
             imageView.isHidden = false
             self.imageView.image = UIImage(named: "loading")
-            output.getImage(url: item.links.first?.href ?? "") { loadedImage in
+            output.getImage(url: item.links?.first?.href ?? "") { loadedImage in
                 self.imageView.image = loadedImage
             }
         case .audio: break

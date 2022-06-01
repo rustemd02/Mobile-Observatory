@@ -26,7 +26,6 @@ class AsteroidsViewController: UIViewController, AsteroidsInput {
     private var output: AsteroidsOutput
     var asteroidsTableView = UITableView()
     
-    private var titleLabel = UILabel()
     private var dateLabel = UILabel()
     private var datePicker = UIDatePicker()
     
@@ -55,7 +54,7 @@ class AsteroidsViewController: UIViewController, AsteroidsInput {
         datePicker.date = Date()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YYYY"
+        dateFormatter.dateFormat = "dd-MM-YYYY"
         let stringDate = dateFormatter.string(from: datePicker.date)
         navigationItem.title = "Астероиды " + stringDate
         
