@@ -57,11 +57,11 @@
     </entity>
     <elements>
         <element name="ArticleEntity" positionX="154.7058715820312" positionY="-65.07745361328125" width="128" height="149"/>
-        <element name="PictureFromMarsEntity" positionX="-201.1103515625" positionY="-117.7656860351562" width="128" height="134"/>
-        <element name="PictureOfDayEntity" positionX="-18.15087890625" positionY="5.357513427734375" width="128" height="119"/>
+        <element name="PictureFromMarsEntity" positionX="-209.0460815429688" positionY="-123.0270385742187" width="128" height="148"/>
+        <element name="PictureOfDayEntity" positionX="21.07708740234375" positionY="35.989990234375" width="128" height="119"/>
         <element name="PictureOfEarthEntity" positionX="-183.9835205078125" positionY="-273.8130187988281" width="128" height="119"/>
-        <element name="PicturesFromMarsCollectionEntity" positionX="9" positionY="-108" width="128" height="59"/>
-        <element name="RoverEntity" positionX="0" positionY="-117" width="128" height="74"/>
-        <element name="WeatherOnMarsInfoEntity" positionX="-28.278076171875" positionY="-243.7298736572266" width="128" height="164"/>
+        <element name="PicturesFromMarsCollectionEntity" positionX="-40.7120361328125" positionY="-125.2070922851562" width="128" height="73"/>
+        <element name="RoverEntity" positionX="-245.2861328125" positionY="63.64862060546875" width="128" height="88"/>
+        <element name="WeatherOnMarsInfoEntity" positionX="119.4080200195312" positionY="-354.2757720947266" width="128" height="164"/>
     </elements>
 </model>
