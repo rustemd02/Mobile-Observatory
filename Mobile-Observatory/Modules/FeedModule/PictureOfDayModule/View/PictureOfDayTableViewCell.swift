@@ -47,7 +47,6 @@ class PictureOfDayTableViewCell: UITableViewCell {
         picOfDayImageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(45)
             make.width.equalTo(picOfDayImageView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
             make.width.height.equalToSuperview().priority(.high)
         }
@@ -64,7 +63,7 @@ class PictureOfDayTableViewCell: UITableViewCell {
         likeView.layer.cornerRadius = 12
         likeView.clipsToBounds = true
         likeView.snp.makeConstraints { make in
-            make.top.equalTo(picOfDayImageView.snp_bottomMargin).offset(20)
+            make.top.equalTo(picOfDayImageView.snp_bottomMargin).offset(12)
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(30)

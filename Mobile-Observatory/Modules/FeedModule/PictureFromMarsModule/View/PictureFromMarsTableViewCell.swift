@@ -46,7 +46,6 @@ class PictureFromMarsTableViewCell: UITableViewCell {
         picFromMarsImageView.snp.makeConstraints { make in
             make.left.top.equalToSuperview().offset(16)
             make.right.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(45)
             make.width.equalTo(picFromMarsImageView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
             make.width.height.equalToSuperview().priority(.high)
         }
@@ -63,7 +62,7 @@ class PictureFromMarsTableViewCell: UITableViewCell {
         likeView.layer.cornerRadius = 13
         likeView.clipsToBounds = true
         likeView.snp.makeConstraints { make in
-            make.top.equalTo(picFromMarsImageView.snp_bottomMargin).offset(20)
+            make.top.equalTo(picFromMarsImageView.snp_bottomMargin).offset(12)
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(20)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(30)
