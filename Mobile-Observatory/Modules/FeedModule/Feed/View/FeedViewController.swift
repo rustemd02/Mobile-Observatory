@@ -91,7 +91,8 @@ class FeedViewController: UIViewController, UIScrollViewDelegate {
 extension FeedViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         for index in indexPaths {
-            if index.row >= (output.getPostsData().count - 3) && !isFetching {
+            
+            if index.row >= (feedTableView.numberOfRows(inSection: 0) - 3) && !isFetching {
                 loadData()
                 break
             }
