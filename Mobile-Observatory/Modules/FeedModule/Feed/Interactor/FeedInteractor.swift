@@ -87,7 +87,8 @@ class FeedInteractor: FeedInteractorProtocol {
                 self?.howManyArticlesToSkip += 10
                 completion()
             case .failure(let error):
-                print(error)
+                print("Error fetching Articles: \(error)")
+                completion()
             }
         }
     }
@@ -99,7 +100,8 @@ class FeedInteractor: FeedInteractorProtocol {
                 self?.postsData.append(weatherData)
                 completion()
             case .failure(let error):
-                print(error)
+                print("Error fetching Weather on Mars: \(error)")
+                completion()
             }
         }
     }
@@ -125,7 +127,8 @@ class FeedInteractor: FeedInteractorProtocol {
                     completion()
                 }
             case .failure(let error):
-                print(error)
+                print("Error fetching Picture Of Day: \(error)")
+                completion()
             }
         }
     }
@@ -155,7 +158,8 @@ class FeedInteractor: FeedInteractorProtocol {
                     completion()
                 }
             case .failure(let error):
-                print(error)
+                print("Error fetching Picture From Mars: \(error)")
+                completion()
             }
         }
     }

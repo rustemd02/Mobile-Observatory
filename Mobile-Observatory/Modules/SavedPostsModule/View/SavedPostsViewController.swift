@@ -117,6 +117,8 @@ extension SavedPostsViewController: UITableViewDelegate {
         case .article:
             let vc: ArticleDetailViewController = ArticleDetailModuleBuilder().build()
             vc.article = post as? Article
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .weatherOnMars:
             let vc: WeatherOnMarsDetailViewController = WeatherOnMarsDetailModuleBuilder().build()
@@ -125,9 +127,13 @@ extension SavedPostsViewController: UITableViewDelegate {
         case .pictureOfDay:
             let vc: PictureOfDayDetailViewController = PictureOfDayDetailModuleBuilder().build()
             vc.picOfDay = post as? PictureOfDay
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             navigationController?.pushViewController(vc, animated: true)
         case .pictureFromMars:
             let vc: PictureFromMarsDetailViewController = PictureFromMarsDetailModuleBuilder().build()
+            vc.index = indexPath
+            vc.saveButtonDelegate = self
             vc.picFromMars = post as? PictureFromMars
             navigationController?.pushViewController(vc, animated: true)
         case .pictureOfEarth: break
