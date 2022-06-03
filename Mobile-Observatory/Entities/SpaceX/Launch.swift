@@ -12,12 +12,12 @@ import Foundation
 struct Launch: Codable {
     let links: Links
     let rocket: String
-    let success: Bool
-    let launchpad: String
+    let success: Bool?
+    let launchpad: String?
     let flightNumber: Int
     let name: String
     let dateLocal: Date
-    let launchLibraryID, id: String
+    let id: String
 
     enum CodingKeys: String, CodingKey {
         case links
@@ -25,7 +25,6 @@ struct Launch: Codable {
         case flightNumber = "flight_number"
         case name
         case dateLocal = "date_local"
-        case launchLibraryID = "launch_library_id"
         case id
     }
 }
@@ -34,11 +33,11 @@ struct Launch: Codable {
 
 // MARK: - Links
 struct Links: Codable {
-    let patch: Patch
-    let reddit: Reddit
-    let webcast: String
-    let youtubeID: String
-    let article, wikipedia: JSONNull?
+    let patch: Patch?
+    let reddit: Reddit?
+    let webcast: String?
+    let youtubeID: String?
+    let article, wikipedia: String?
 
     enum CodingKeys: String, CodingKey {
         case patch, reddit, webcast
@@ -50,14 +49,14 @@ struct Links: Codable {
 
 // MARK: - Patch
 struct Patch: Codable {
-    let small, large: String
+    let small, large: String?
 }
 
 // MARK: - Reddit
 struct Reddit: Codable {
-    let campaign, launch: String
-    let media: JSONNull?
-    let recovery: String
+    let campaign, launch: String?
+    let media: String?
+    let recovery: String?
 }
 
 // MARK: - Encode/decode helpers

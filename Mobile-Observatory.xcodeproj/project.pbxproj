@@ -112,6 +112,11 @@
 		CF7E452E28241E7F0038D0A9 /* PictureFromMarsDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E452D28241E7E0038D0A9 /* PictureFromMarsDetailPresenter.swift */; };
 		CF7E4530282420770038D0A9 /* PictureFromMarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7E452F282420770038D0A9 /* PictureFromMarsTableViewCell.swift */; };
 		CF7EC6D727D533BF007197E6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EC6D627D533BF007197E6 /* NetworkService.swift */; };
+		CF9BDF8D284A1F6B002B7876 /* LaunchesOverviewModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF8C284A1F6B002B7876 /* LaunchesOverviewModuleBuilder.swift */; };
+		CF9BDF92284A1FE0002B7876 /* LaunchesOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF91284A1FE0002B7876 /* LaunchesOverviewViewController.swift */; };
+		CF9BDF94284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF93284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift */; };
+		CF9BDF96284A2003002B7876 /* LaunchesOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF95284A2003002B7876 /* LaunchesOverviewInteractor.swift */; };
+		CF9BDF98284A2010002B7876 /* LaunchesOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF97284A2010002B7876 /* LaunchesOverviewPresenter.swift */; };
 		CFA23B64282D8C560028DAD7 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B63282D8C560028DAD7 /* Launch.swift */; };
 		CFA23B66282D905D0028DAD7 /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B65282D905D0028DAD7 /* CrewMember.swift */; };
 		CFA23B68282D91C70028DAD7 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B67282D91C60028DAD7 /* Rocket.swift */; };
@@ -275,6 +280,11 @@
 		CF7E452D28241E7E0038D0A9 /* PictureFromMarsDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFromMarsDetailPresenter.swift; sourceTree = "<group>"; };
 		CF7E452F282420770038D0A9 /* PictureFromMarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFromMarsTableViewCell.swift; sourceTree = "<group>"; };
 		CF7EC6D627D533BF007197E6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CF9BDF8C284A1F6B002B7876 /* LaunchesOverviewModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewModuleBuilder.swift; sourceTree = "<group>"; };
+		CF9BDF91284A1FE0002B7876 /* LaunchesOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewViewController.swift; sourceTree = "<group>"; };
+		CF9BDF93284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewTableViewCell.swift; sourceTree = "<group>"; };
+		CF9BDF95284A2003002B7876 /* LaunchesOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewInteractor.swift; sourceTree = "<group>"; };
+		CF9BDF97284A2010002B7876 /* LaunchesOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewPresenter.swift; sourceTree = "<group>"; };
 		CFA23B63282D8C560028DAD7 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		CFA23B65282D905D0028DAD7 /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
 		CFA23B67282D91C60028DAD7 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
@@ -759,6 +769,8 @@
 		CF3930B0283B7AE4003583D5 /* Launches */ = {
 			isa = PBXGroup;
 			children = (
+				CF9BDF8B284A1F55002B7876 /* LaunchesDetail */,
+				CF9BDF8A284A1F4A002B7876 /* LaunchesOverview */,
 			);
 			path = Launches;
 			sourceTree = "<group>";
@@ -1003,6 +1015,49 @@
 			isa = PBXGroup;
 			children = (
 				CF7E452D28241E7E0038D0A9 /* PictureFromMarsDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF9BDF8A284A1F4A002B7876 /* LaunchesOverview */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDF90284A1FCD002B7876 /* Presenter */,
+				CF9BDF8F284A1FC8002B7876 /* Interactor */,
+				CF9BDF8E284A1FBF002B7876 /* View */,
+				CF9BDF8C284A1F6B002B7876 /* LaunchesOverviewModuleBuilder.swift */,
+			);
+			path = LaunchesOverview;
+			sourceTree = "<group>";
+		};
+		CF9BDF8B284A1F55002B7876 /* LaunchesDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LaunchesDetail;
+			sourceTree = "<group>";
+		};
+		CF9BDF8E284A1FBF002B7876 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDF91284A1FE0002B7876 /* LaunchesOverviewViewController.swift */,
+				CF9BDF93284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF9BDF8F284A1FC8002B7876 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDF95284A2003002B7876 /* LaunchesOverviewInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CF9BDF90284A1FCD002B7876 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDF97284A2010002B7876 /* LaunchesOverviewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1407,6 +1462,7 @@
 				04B2C19627FF2B7C00F0C617 /* ViewController.swift in Sources */,
 				04B2C19527FF2B7800F0C617 /* SavedPostsViewController.swift in Sources */,
 				04B2C19027FEEAAA00F0C617 /* PictureOfDay.swift in Sources */,
+				CF9BDF94284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift in Sources */,
 				04B2C19127FEEAAA00F0C617 /* PictureOfEarth.swift in Sources */,
 				CF3930B5283B7B30003583D5 /* CrewModuleBuilder.swift in Sources */,
 				049EB8D2280DB2C00088C7B5 /* FeedViewController.swift in Sources */,
@@ -1438,6 +1494,7 @@
 				CF6B18A227FEEDE8005D09B6 /* FeedFlowCoordinator.swift in Sources */,
 				CF7E452A28241E4F0038D0A9 /* PictureFromMarsDetailViewController.swift in Sources */,
 				CFA23B6B282D956A0028DAD7 /* SpaceArchiveModuleBuilder.swift in Sources */,
+				CF9BDF8D284A1F6B002B7876 /* LaunchesOverviewModuleBuilder.swift in Sources */,
 				CFA23B76282D97FA0028DAD7 /* SpaceArchiveFlowCoordinator.swift in Sources */,
 				CFA23B82282DAA970028DAD7 /* SpaceXInteractor.swift in Sources */,
 				04CA4CA12846834E00E2D040 /* AsteroidDetailInteractor.swift in Sources */,
@@ -1453,6 +1510,7 @@
 				CF296E662812EE1300616F48 /* WeatherOnMarsDetailModuleBuilder.swift in Sources */,
 				04CA4C812845317F00E2D040 /* AsteroidsPresenter.swift in Sources */,
 				049EB8D7280DB2CC0088C7B5 /* ArticleDetailViewController.swift in Sources */,
+				CF9BDF92284A1FE0002B7876 /* LaunchesOverviewViewController.swift in Sources */,
 				04B2C17B27FECE2B00F0C617 /* TabBarFlowCoordinatorProtocol.swift in Sources */,
 				CF6B18AA27FEFB38005D09B6 /* FeedPresenter.swift in Sources */,
 				04CF3D4127F0896300685553 /* MoonEntity.swift in Sources */,
@@ -1465,6 +1523,7 @@
 				CF3930BE283B7B66003583D5 /* CrewInteractor.swift in Sources */,
 				CF296E54280FEE0800616F48 /* ArticleDetailModuleBuilder.swift in Sources */,
 				CF6B18AC27FEFB46005D09B6 /* ArticleDetailPresenter.swift in Sources */,
+				CF9BDF96284A2003002B7876 /* LaunchesOverviewInteractor.swift in Sources */,
 				CFA23B66282D905D0028DAD7 /* CrewMember.swift in Sources */,
 				CF3930CB283BC92F003583D5 /* CrewDetailInteractor.swift in Sources */,
 				04CF3D4927F0896300685553 /* KeyWordEntity.swift in Sources */,
@@ -1481,6 +1540,7 @@
 				04CA4C832845318C00E2D040 /* AsteroidsInteractor.swift in Sources */,
 				04CF3D5327F0896300685553 /* RoverEntity.swift in Sources */,
 				04B2C18327FED12600F0C617 /* SavedPostsViewProtocols.swift in Sources */,
+				CF9BDF98284A2010002B7876 /* LaunchesOverviewPresenter.swift in Sources */,
 				049EB8D8280DB2CC0088C7B5 /* ArticleTableViewCell.swift in Sources */,
 				04CF3D5127F0896300685553 /* AlbumEntity.swift in Sources */,
 				CFA23B74282D95FF0028DAD7 /* SpaceArchivePresenter.swift in Sources */,

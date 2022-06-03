@@ -1,18 +1,19 @@
 //
-//  CrewMemberTableViewCell.swift
+//  LaunchesOverviewTableViewCell.swift
 //  Mobile-Observatory
 //
-//  Created by Рустем on 23.05.2022.
+//  Created by Рустем on 03.06.2022.
 //
 
 import UIKit
 
-class CrewMemberTableViewCell: UITableViewCell {
+class LaunchTableViewCell: UITableViewCell {
     
     var api = ImageByUrlService()
     
-    var crewMember: CrewMember?
+    var launch: Launch?
     var name = UILabel()
+    var date = UILabel()
     var photo = UIImageView()
 
 
@@ -29,7 +30,7 @@ class CrewMemberTableViewCell: UITableViewCell {
     func uiInit() {
         contentView.addSubview(name)
         contentView.addSubview(photo)
-        //contentView.addSubview(agency)
+        contentView.addSubview(date)
         
         photo.contentMode = .scaleAspectFill
         photo.layer.cornerRadius = 15
@@ -47,23 +48,36 @@ class CrewMemberTableViewCell: UITableViewCell {
             make.centerY.equalTo(contentView.safeAreaLayoutGuide)
             
         }
+        
+        date.textColor = .lightGray
+        date.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        date.snp.makeConstraints { make in
+            make.top.equalTo(name.snp_bottomMargin).offset(8)
+            make.left.equalTo(photo.snp.right).offset(16)
+        }
 
     }
     
     func configure() {
-        guard let crewMember = crewMember else {
+        guard let launch = launch else {
             return
         }
-        name.text = crewMember.name
-        api.getImageByUrl(url: crewMember.image ) { result in
+        name.text = launch.name
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YYYY"
+        let stringDate = dateFormatter.string(from: launch.dateLocal)
+        date.text = stringDate
+        api.getImageByUrl(url: launch.links.patch?.large ?? "") { result in
             switch result {
             case .success(let image):
                 self.photo.image = image
             case .failure(let error):
-                print(error)
+                self.photo.image = UIImage(named: "earth")
             }
         }
         
     }
 
 }
+
