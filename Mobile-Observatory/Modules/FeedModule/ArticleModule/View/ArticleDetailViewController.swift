@@ -28,9 +28,13 @@ class ArticleDetailViewController: UIViewController {
     var titleLabel = UILabel()
     var imageView = UIImageView()
     var descriptionTextView = UITextView()
+    var shareView = UIView()
     var shareButton = UIButton(type: .roundedRect)
+    var likeView = UIView()
     var likeButton = UIButton(type: .roundedRect)
     var index: IndexPath?
+    let likeColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    let likeBackgroundColor = #colorLiteral(red: 0.8539047241, green: 0.8987153172, blue: 0.8979462981, alpha: 1)
     
     init(output: ArticleDetailViewControllerOutput) {
         self.output = output
@@ -53,8 +57,10 @@ class ArticleDetailViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(imageView)
         view.addSubview(descriptionTextView)
-        view.addSubview(shareButton)
-        view.addSubview(likeButton)
+        view.addSubview(likeView)
+        view.addSubview(shareView)
+        shareView.addSubview(shareButton)
+        likeView.addSubview(likeButton)
         
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         sourceLabel.snp.makeConstraints { make in
@@ -95,22 +101,42 @@ class ArticleDetailViewController: UIViewController {
             make.right.equalTo(view.safeAreaLayoutGuide).inset(8)
             make.bottom.equalTo(shareButton.safeAreaLayoutGuide).inset(32)
         }
-        shareButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-        shareButton.setTitle(" Поделиться", for: .normal)
-        shareButton.setTitleColor(.link, for: .normal)
-        shareButton.addTarget(self, action: #selector(presentShareMenu), for: .touchUpInside)
-        shareButton.snp.makeConstraints { make in
+        
+        shareView.backgroundColor = likeBackgroundColor
+        shareView.layer.cornerRadius = 13
+        shareView.clipsToBounds = true
+        shareView.snp.makeConstraints { make in
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.right.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.height.equalTo(32)
+        }
+        
+        shareButton.setImage(UIImage(systemName: "square.and.arrow.up")?.withTintColor(likeColor, renderingMode: .alwaysOriginal), for: .normal)
+        shareButton.setTitle("Поделиться", for: .normal)
+        shareButton.setTitleColor(likeColor, for: .normal)
+        shareButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        shareButton.addTarget(self, action: #selector(presentShareMenu), for: .touchUpInside)
+        shareButton.imageView?.contentMode = .scaleAspectFit
+        shareButton.snp.makeConstraints { make in
+            make.top.left.equalTo(shareView).offset(8)
+            make.bottom.right.equalTo(shareView).inset(8)
+        }
+        
+        likeView.backgroundColor = likeBackgroundColor
+        likeView.layer.cornerRadius = 13
+        likeView.clipsToBounds = true
+        likeView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(24)
+            make.height.equalTo(32)
         }
         
         likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
-        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        likeButton.setTitle(" Нравится", for: .normal)
-        likeButton.setTitleColor(.link, for: .normal)
+        likeButton.setTitleColor(likeColor, for: .normal)
+        likeButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         likeButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
-            make.left.equalTo(view.safeAreaLayoutGuide).offset(24)
+            make.top.left.equalTo(likeView).offset(8)
+            make.bottom.right.equalTo(likeView).inset(8)
         }
     }
     
@@ -137,13 +163,16 @@ class ArticleDetailViewController: UIViewController {
     }
     
     func updateSaveButtonView() {
+        let likedImage = UIImage(systemName: "heart.fill")?.withTintColor(likeColor, renderingMode: .alwaysOriginal)
+        let unlikedImage = UIImage(systemName: "heart")?.withTintColor(likeColor, renderingMode: .alwaysOriginal)
         if (article?.isSaved ?? false) {
             likeButton.setTitle("Понравилось", for: .normal)
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        } else{
+            likeButton.setImage(likedImage, for: .normal)
+        } else {
             likeButton.setTitle("Нравится", for: .normal)
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.setImage(unlikedImage, for: .normal)
         }
+        likeButton.imageView?.contentMode = .scaleAspectFit
     }
     
     @IBAction func likeButtonPressed(_ sender: UIButton) {

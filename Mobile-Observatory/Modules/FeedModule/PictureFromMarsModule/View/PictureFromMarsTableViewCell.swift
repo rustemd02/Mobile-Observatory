@@ -64,7 +64,7 @@ class PictureFromMarsTableViewCell: UITableViewCell {
         likeView.snp.makeConstraints { make in
             make.top.equalTo(picFromMarsImageView.snp_bottomMargin).offset(12)
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(20)
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(12)
             make.height.equalTo(30)
         }
         
