@@ -56,7 +56,7 @@ class AsteroidsViewController: UIViewController, AsteroidsInput {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-YYYY"
         let stringDate = dateFormatter.string(from: datePicker.date)
-        navigationItem.title = "Астероиды " + stringDate
+        navigationItem.title = stringDate
         
         asteroidsTableView.register(AsteroidTableViewCell.self, forCellReuseIdentifier: "AsteroidTableViewCell")
         asteroidsTableView.snp.makeConstraints { make in
@@ -86,7 +86,7 @@ class AsteroidsViewController: UIViewController, AsteroidsInput {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.YYYY"
         let stringDate = dateFormatter.string(from: datePicker.date)
-        navigationItem.title = "Астероиды " + stringDate
+        navigationItem.title = stringDate
         
         self.output.getNearAsteroids(date: self.datePicker.date) { [weak self] in
             self?.asteroidsTableView.dataSource = self
