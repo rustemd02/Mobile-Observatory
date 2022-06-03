@@ -242,7 +242,7 @@ class NetworkService {
         }
     }
     
-    func getSpaceXLaunches(period: String, completion: @escaping(Result<Launch, NetworkError>) -> Void) {
+    func getSpaceXLaunches(period: String, completion: @escaping(Result<[Launch], NetworkError>) -> Void) {
         AF.request(spacexLaunches).response { (responseData) in
             guard let data = responseData.data else {
                 completion(.failure(.noDataAvailable))
@@ -250,7 +250,10 @@ class NetworkService {
             }
             do {
                 let jsonDecoder = JSONDecoder()
-                let launches = try jsonDecoder.decode(Launch.self, from: data)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+                jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let launches = try jsonDecoder.decode([Launch].self, from: data)
                 completion(.success(launches))
             } catch {
                 print(error)

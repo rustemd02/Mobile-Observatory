@@ -54,6 +54,10 @@ class SpaceXViewController: UIViewController {
         let rocketsTap = UITapGestureRecognizer(target: self, action: #selector(goToRocketsScreen))
         rocketsImageView.isUserInteractionEnabled = true
         rocketsImageView.addGestureRecognizer(rocketsTap)
+        
+        let launchesTap = UITapGestureRecognizer(target: self, action: #selector(goToLaunchesScreen))
+        launchesImageView.isUserInteractionEnabled = true
+        launchesImageView.addGestureRecognizer(launchesTap)
     }
     
     @objc func goToCrewMembersScreen() {
@@ -63,6 +67,11 @@ class SpaceXViewController: UIViewController {
     
     @objc func goToRocketsScreen() {
         let vc: RocketsViewController = RocketsModuleBuilder().build()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func goToLaunchesScreen() {
+        let vc: LaunchesOverviewViewController = LaunchesOverviewModuleBuilder().build()
         navigationController?.pushViewController(vc, animated: true)
     }
     
