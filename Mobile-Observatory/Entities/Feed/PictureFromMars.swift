@@ -21,7 +21,6 @@ struct PictureFromMars: Codable, Post {
     enum CodingKeys: String, CodingKey {
         case photos = "photos"
     }
-
 }
 
 extension PictureFromMars: Equatable {

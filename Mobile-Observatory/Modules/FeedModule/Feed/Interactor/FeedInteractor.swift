@@ -220,7 +220,7 @@ class FeedInteractor: FeedInteractorProtocol {
             coreData.deletePictureOfDay(post as! PictureOfDay)
             break
         case .pictureFromMars:
-//            coreData.deletePictureFromMars(post)
+            coreData.deletePictureFromMars(post as! PictureFromMars)
             break
         case .pictureOfEarth:
             coreData.deletePictureOfEarth(post as! PictureOfEarthElement)
