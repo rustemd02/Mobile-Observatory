@@ -79,7 +79,7 @@ class SavedPostsInteractor: SavedPostsInteractorProtocol {
             coreDataService.deletePictureOfDay(post as! PictureOfDay)
             break
         case .pictureFromMars:
-//            coreDataService.deletePictureFromMars(post)
+            coreDataService.deletePictureFromMars(post as! PictureFromMars)
             break
         case .pictureOfEarth:
             coreDataService.deletePictureOfEarth(post as! PictureOfEarthElement)

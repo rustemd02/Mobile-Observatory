@@ -21,7 +21,6 @@ struct PictureFromMars: Codable, Post {
     enum CodingKeys: String, CodingKey {
         case photos = "photos"
     }
-
 }
 
 extension PictureFromMars: Equatable {
@@ -65,9 +64,7 @@ extension Photo: Equatable {
     
     static func == (larc: Photo, rarc: Photo) -> Bool {
             return
-                larc.id == rarc.id &&
                 larc.sol == rarc.sol &&
-                larc.imgSrc == rarc.imgSrc &&
                 larc.earthDate == rarc.earthDate &&
                 larc.rover == rarc.rover
     }
