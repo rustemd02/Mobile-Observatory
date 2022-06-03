@@ -17,11 +17,7 @@ class MobileObservatory_CoreDataTests: XCTestCase {
         coreDataService.deleteAllArticles()
         coreDataService.deleteAllWeatherOnMarsInfos()
         coreDataService.deleteAllPicturesOfDay()
-        coreDataService.deleteAllPlanets()
-        coreDataService.deleteAllSearchResults()
         coreDataService.deleteAllPicturesFromMars()
-        coreDataService.deleteAllNearEarthAsteroids()
-        coreDataService.deleteAllPictureOfEarthElements()
     }
     
     override func setUpWithError() throws {
@@ -102,26 +98,6 @@ class MobileObservatory_CoreDataTests: XCTestCase {
         coreDataService.deletePictureOfDay(entity)
         sleep(1)
         let entities: [PictureOfDay] = coreDataService.getAllPicturesOfDay()
-        XCTAssertEqual(entities.count, 0)
-    }
-    
-    //MARK: - Asteroids Tests
-    
-    func testSavingNearEarthAsteroidsToCoreData() throws {
-        let entity: NearEarthAsteroids = NearEarthAsteroids(prevLink: "/", nextLink: "/", asteroids: [])
-        
-        coreDataService.saveNearEarthAsteroids(entity)
-        sleep(1)
-        let entities: [NearEarthAsteroids] = coreDataService.getAllNearEarthAsteroids()
-        XCTAssertTrue(entities.contains(where: { $0.prevLink == entity.prevLink}))
-    }
-    
-    func testDeletingNearEarthAsteroidsFromCoreData() throws {
-        let entity: NearEarthAsteroids = NearEarthAsteroids(prevLink: "/", nextLink: "/", asteroids: [])
-        coreDataService.saveNearEarthAsteroids(entity)
-        coreDataService.deleteNearEarthAsteroids(entity)
-        sleep(1)
-        let entities: [NearEarthAsteroids] = coreDataService.getAllNearEarthAsteroids()
         XCTAssertEqual(entities.count, 0)
     }
     

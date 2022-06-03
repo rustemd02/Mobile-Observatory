@@ -15,7 +15,7 @@ struct SearchResult: Codable {
 // MARK: - Collection
 struct Collection: Codable {
     let items: [Item]
-    let links: [CollectionLink]
+    let links: [CollectionLink]?
 }
 
 // MARK: - Item
@@ -29,7 +29,7 @@ struct Item: Codable {
 struct Datum: Codable {
     let title, nasaID: String
     let mediaType: MediaType
-    let keywords: [String]
+    let keywords: [String]?
     let dateCreated: Date
     let datumDescription: String
     let album: [String]?
