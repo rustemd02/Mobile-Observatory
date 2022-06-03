@@ -14,9 +14,12 @@ class PictureFromMarsTableViewCell: UITableViewCell {
     var picFromMarsLabel = UILabel()
     var picFromMarsImageView = UIImageView()
     var likeButton = UIButton()
+    var likeView = UIView()
     var index: IndexPath?
     var picFromMars: PictureFromMars?
     
+    let likeColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    let likeBackgroundColor = #colorLiteral(red: 0.8539047241, green: 0.8987153172, blue: 0.8979462981, alpha: 1)
     private var savePostsButtonDelegate: SavePostButtonDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,7 +34,9 @@ class PictureFromMarsTableViewCell: UITableViewCell {
     func uiInit() {
         contentView.addSubview(picFromMarsImageView)
         contentView.addSubview(picFromMarsLabel)
-        contentView.addSubview(likeButton)
+        contentView.addSubview(likeView)
+        
+        likeView.addSubview(likeButton)
         
         let maxWidthContainer: CGFloat = 374
         let maxHeightContainer: CGFloat = 225
@@ -54,12 +59,22 @@ class PictureFromMarsTableViewCell: UITableViewCell {
             make.centerX.equalToSuperview()
         }
         
-        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
-        likeButton.setTitleColor(UIColor.link, for: .normal)
-        likeButton.snp.makeConstraints { make in
-            make.top.equalTo(picFromMarsImageView.snp_bottomMargin).offset(12)
+        likeView.backgroundColor = likeBackgroundColor
+        likeView.layer.cornerRadius = 13
+        likeView.clipsToBounds = true
+        likeView.snp.makeConstraints { make in
+            make.top.equalTo(picFromMarsImageView.snp_bottomMargin).offset(20)
             make.left.equalTo(contentView.safeAreaLayoutGuide).offset(20)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(30)
+        }
+        
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
+        likeButton.setTitleColor(likeColor, for: .normal)
+        likeButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        likeButton.snp.makeConstraints { make in
+            make.top.left.equalTo(likeView).offset(8)
+            make.bottom.right.equalTo(likeView).inset(8)
         }
     }
     
@@ -92,12 +107,15 @@ class PictureFromMarsTableViewCell: UITableViewCell {
     }
     
     func updateSaveButtonView() {
+        let likedImage = UIImage(systemName: "heart.fill")?.withTintColor(likeColor, renderingMode: .alwaysOriginal)
+        let unlikedImage = UIImage(systemName: "heart")?.withTintColor(likeColor, renderingMode: .alwaysOriginal)
         if (picFromMars?.isSaved ?? false) {
-            likeButton.setTitle(" Понравилось", for: .normal)
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        } else{
-            likeButton.setTitle(" Нравится", for: .normal)
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.setTitle("Понравилось", for: .normal)
+            likeButton.setImage(likedImage, for: .normal)
+        } else {
+            likeButton.setTitle("Нравится", for: .normal)
+            likeButton.setImage(unlikedImage, for: .normal)
         }
+        likeButton.imageView?.contentMode = .scaleAspectFit
     }
 }

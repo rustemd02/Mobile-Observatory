@@ -13,6 +13,7 @@ class LaunchTableViewCell: UITableViewCell {
     
     var launch: Launch?
     var name = UILabel()
+    var date = UILabel()
     var photo = UIImageView()
 
 
@@ -29,6 +30,7 @@ class LaunchTableViewCell: UITableViewCell {
     func uiInit() {
         contentView.addSubview(name)
         contentView.addSubview(photo)
+        contentView.addSubview(date)
         
         photo.contentMode = .scaleAspectFill
         photo.layer.cornerRadius = 15
@@ -46,6 +48,13 @@ class LaunchTableViewCell: UITableViewCell {
             make.centerY.equalTo(contentView.safeAreaLayoutGuide)
             
         }
+        
+        date.textColor = .lightGray
+        date.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        date.snp.makeConstraints { make in
+            make.top.equalTo(name.snp_bottomMargin).offset(8)
+            make.left.equalTo(photo.snp.right).offset(16)
+        }
 
     }
     
@@ -54,6 +63,11 @@ class LaunchTableViewCell: UITableViewCell {
             return
         }
         name.text = launch.name
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YYYY"
+        let stringDate = dateFormatter.string(from: launch.dateLocal)
+        date.text = stringDate
         api.getImageByUrl(url: launch.links.patch?.large ?? "") { result in
             switch result {
             case .success(let image):
