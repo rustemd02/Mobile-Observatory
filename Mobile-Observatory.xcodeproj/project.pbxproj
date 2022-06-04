@@ -117,6 +117,10 @@
 		CF9BDF94284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF93284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift */; };
 		CF9BDF96284A2003002B7876 /* LaunchesOverviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF95284A2003002B7876 /* LaunchesOverviewInteractor.swift */; };
 		CF9BDF98284A2010002B7876 /* LaunchesOverviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF97284A2010002B7876 /* LaunchesOverviewPresenter.swift */; };
+		CF9BDF9B284B67FA002B7876 /* LaunchModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF9A284B67FA002B7876 /* LaunchModuleBuilder.swift */; };
+		CF9BDFA0284B6857002B7876 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDF9F284B6857002B7876 /* LaunchViewController.swift */; };
+		CF9BDFA2284B6861002B7876 /* LaunchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDFA1284B6861002B7876 /* LaunchPresenter.swift */; };
+		CF9BDFA4284B6870002B7876 /* LaunchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9BDFA3284B686F002B7876 /* LaunchInteractor.swift */; };
 		CFA23B64282D8C560028DAD7 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B63282D8C560028DAD7 /* Launch.swift */; };
 		CFA23B66282D905D0028DAD7 /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B65282D905D0028DAD7 /* CrewMember.swift */; };
 		CFA23B68282D91C70028DAD7 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA23B67282D91C60028DAD7 /* Rocket.swift */; };
@@ -143,6 +147,20 @@
 		CFEEA53227D5227300E05249 /* PictureFromMars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53127D5227300E05249 /* PictureFromMars.swift */; };
 		CFEEA53627D52C7900E05249 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEEA53527D52C7900E05249 /* Article.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		CF9BDF99284B5F63002B7876 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		046EBE132800840800677839 /* PBXContainerItemProxy */ = {
@@ -285,6 +303,10 @@
 		CF9BDF93284A1FF3002B7876 /* LaunchesOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		CF9BDF95284A2003002B7876 /* LaunchesOverviewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewInteractor.swift; sourceTree = "<group>"; };
 		CF9BDF97284A2010002B7876 /* LaunchesOverviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesOverviewPresenter.swift; sourceTree = "<group>"; };
+		CF9BDF9A284B67FA002B7876 /* LaunchModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchModuleBuilder.swift; sourceTree = "<group>"; };
+		CF9BDF9F284B6857002B7876 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		CF9BDFA1284B6861002B7876 /* LaunchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPresenter.swift; sourceTree = "<group>"; };
+		CF9BDFA3284B686F002B7876 /* LaunchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInteractor.swift; sourceTree = "<group>"; };
 		CFA23B63282D8C560028DAD7 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		CFA23B65282D905D0028DAD7 /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
 		CFA23B67282D91C60028DAD7 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
@@ -1033,6 +1055,10 @@
 		CF9BDF8B284A1F55002B7876 /* LaunchesDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CF9BDF9E284B6822002B7876 /* Interactor */,
+				CF9BDF9D284B6818002B7876 /* Presenter */,
+				CF9BDF9C284B6802002B7876 /* View */,
+				CF9BDF9A284B67FA002B7876 /* LaunchModuleBuilder.swift */,
 			);
 			path = LaunchesDetail;
 			sourceTree = "<group>";
@@ -1060,6 +1086,30 @@
 				CF9BDF97284A2010002B7876 /* LaunchesOverviewPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF9BDF9C284B6802002B7876 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDF9F284B6857002B7876 /* LaunchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF9BDF9D284B6818002B7876 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDFA1284B6861002B7876 /* LaunchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF9BDF9E284B6822002B7876 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CF9BDFA3284B686F002B7876 /* LaunchInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		CFA23B62282D8C450028DAD7 /* SpaceX */ = {
@@ -1303,6 +1353,7 @@
 				048FC0632817047A0060EEB3 /* ShellScript */,
 			);
 			buildRules = (
+				CF9BDF99284B5F63002B7876 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -1478,6 +1529,7 @@
 				CF3930D6283CC457003583D5 /* RocketsViewController.swift in Sources */,
 				CFA23B64282D8C560028DAD7 /* Launch.swift in Sources */,
 				CF2F321D27CD37BB0043A12B /* AppDelegate.swift in Sources */,
+				CF9BDFA0284B6857002B7876 /* LaunchViewController.swift in Sources */,
 				CFA23B93282E9FB30028DAD7 /* PlanetsInteractor.swift in Sources */,
 				CFA23B95282E9FC10028DAD7 /* PlanetsPresenter.swift in Sources */,
 				CF296E722812F0B300616F48 /* PictureOfDayDetailInteractor.swift in Sources */,
@@ -1549,6 +1601,7 @@
 				CF296E742812F0C000616F48 /* PictureOfDayDetailPresenter.swift in Sources */,
 				04CA4C792842509A00E2D040 /* SearchResultTableViewCell.swift in Sources */,
 				04CF3D4D27F0896300685553 /* PictureOfDayEntity.swift in Sources */,
+				CF9BDF9B284B67FA002B7876 /* LaunchModuleBuilder.swift in Sources */,
 				CF3930DA283CC472003583D5 /* RocketsPresenter.swift in Sources */,
 				04B2C17327FEC80F00F0C617 /* SavedPostsFlowCoordinator.swift in Sources */,
 				CF3930D1283CC426003583D5 /* RocketsModuleBuilder.swift in Sources */,
@@ -1563,6 +1616,7 @@
 				CF7E452C28241E6A0038D0A9 /* PictureFromMarsDetailInteractor.swift in Sources */,
 				CFA23B68282D91C70028DAD7 /* Rocket.swift in Sources */,
 				CF3930C9283BC921003583D5 /* CrewDetailViewController.swift in Sources */,
+				CF9BDFA4284B6870002B7876 /* LaunchInteractor.swift in Sources */,
 				CFA23B80282DAA8D0028DAD7 /* SpaceXPresenter.swift in Sources */,
 				04CA4CA52846839400E2D040 /* AsteroidDetailViewController.swift in Sources */,
 				04CF3D3927F0896300685553 /* SearchResultCollectionLinkEntity.swift in Sources */,
@@ -1580,6 +1634,7 @@
 				CF3930E4283CFA0A003583D5 /* RocketDetailViewController.swift in Sources */,
 				CFEEA53627D52C7900E05249 /* Article.swift in Sources */,
 				04CF3D3F27F0896300685553 /* SearchResultItemEntity.swift in Sources */,
+				CF9BDFA2284B6861002B7876 /* LaunchPresenter.swift in Sources */,
 				04CF3D3B27F0896300685553 /* SearchResultEntity.swift in Sources */,
 				04CF3D6127F1FE7A00685553 /* DatumEntity.swift in Sources */,
 				CFA23B70282D95B30028DAD7 /* SpaceArchiveViewController.swift in Sources */,

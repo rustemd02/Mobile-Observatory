@@ -53,7 +53,7 @@ class LaunchesOverviewViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         launchesTableView = UITableView(frame: view.bounds, style: .plain)
-        //launchesTableView.delegate = self
+        launchesTableView.delegate = self
         view.addSubview(launchesTableView)
         
         launchesTableView.register(LaunchTableViewCell.self, forCellReuseIdentifier: "LaunchTableViewCell")
@@ -111,15 +111,15 @@ extension LaunchesOverviewViewController: UITableViewDataSourcePrefetching {
     }
 }
 
-//extension LaunchesOverviewViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let launch = output.cellForRowAt(indexPath: indexPath)
-//        let vc: CrewDetailViewController = CrewDetailModuleBuilder().build()
-//        vc.crewMember = theCrewMember
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-//}
+extension LaunchesOverviewViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let launch = output.cellForRowAt(indexPath: indexPath)
+        let vc: LaunchViewController = LaunchModuleBuilder().build()
+        vc.launch = launch
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
 
 
 
