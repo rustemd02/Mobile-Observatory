@@ -171,12 +171,17 @@ class PictureFromMarsDetailViewController: UIViewController {
     }
     
     @objc func changeDate() {
-        
+        guard let picFromMars = picFromMars else {
+            return
+        }
+
+        datePicker.date = picFromMars.photos.first?.earthDate ?? Date().date
         let alert = UIAlertController(title: "Выберите дату", message: " ", preferredStyle: .alert)
         alert.view.addSubview(datePicker)
         datePicker.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(alert.view)
         }
+        
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Применить", style: .default, handler: { _ in
             self.output.getPicFromMars(date: self.datePicker.date) { newPicFromMars in

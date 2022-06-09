@@ -173,6 +173,11 @@ class PictureOfDayDetailViewController: UIViewController {
     }
     
     @objc func changeDate() {
+        guard let picOfDay = picOfDay else {
+            return
+        }
+
+        datePicker.date = picOfDay.date
         
         let alert = UIAlertController(title: "Выберите дату", message: " ", preferredStyle: .alert)
         alert.view.addSubview(datePicker)

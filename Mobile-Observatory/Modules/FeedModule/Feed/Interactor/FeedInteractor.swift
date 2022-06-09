@@ -19,7 +19,7 @@ protocol FeedInteractorProtocol {
 }
 
 class FeedInteractor: FeedInteractorProtocol {
-    
+
     private var api = NetworkService.shared
     private var coreData = CoreDataService.shared
     var howManyArticlesToSkip = 0
